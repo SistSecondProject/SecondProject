@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>혜지닝</title>
+<title>혜지닝웨우에</title>
 </head>
 <body>
 	<section id="intro">
