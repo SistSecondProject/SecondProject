@@ -1,0 +1,35 @@
+
+span.rad {
+	display: inline-block;
+	vertical-align: middle;
+	background-color: white;
+	width: 120px;
+	height: 50px;
+	margin: 5px;
+	border: solid;
+	padding: 10px;
+	border-radius: 10px;
+	text-align: center;
+} 
+
+.com{
+    width: 1000px;
+    height: 150px;
+    vertical-align: middle;
+    margin:auto;
+}
+  
+.com_common{
+    display: inline-block;
+	border: 1px solid;
+    padding: 10px;
+    text-align: center;
+    float: left;
+    width: 500px;
+    height: 130px;
+}
+#com_button{
+	width: 100px;
+	height: 30px;
+	border-radius: 20px;
+}
