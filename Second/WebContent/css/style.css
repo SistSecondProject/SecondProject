@@ -941,7 +941,50 @@ ul.team-detail li ul.social-network li i {
 .pricing-box.special .pricing-offer{
 	color:#fff;
 }
+#intro {
+  width: 100%;
+  height: 60vh;
+  position: relative;
+	background: url(../img/intro-background.jpg) top center;
+  background-size: cover;
+}
 
+@media (min-width: 1024px) {
+	#intro {
+		background-attachment: fixed;
+	}
+}
+
+.intro-content {
+	background: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+	padding: 0 15px;
+}
+
+.intro-content  h2 {
+  color: #fff;
+  margin-bottom: 30px;
+  font-size: 64px;
+  font-weight: 700;
+}
+
+.intro-content  h3 {
+  color: #fff;
+  margin-bottom: 30px;
+  font-size: 26px;
+  font-weight: 500;
+}
 .pricing-offer strong{
 	font-size:78px;
 	line-height:89px;
