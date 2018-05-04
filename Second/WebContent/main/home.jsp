@@ -16,76 +16,112 @@
 			</div>
 		</div>
 	</section>
-	<section id="section-services" class="section pad-bot30 bg-white">
-		<div class="container">
-
-			<div class="row mar-bot40">
-				<div class="col-lg-1"></div>
-
-				<div class="col-lg-5">
-					<div
-						class="hi-icon-wrap hi-icon-effect-5 hi-icon-effect-5a mar-top20">
-						<div class="float-left mar-right20">
-							<a href="#" class="hi-icon hi-icon-screen">screen</a>
-						</div>
-					</div>
-					<h3 class="text-bold">Scores & Ratings</h3>
-					<p>기업평점 순위 Top5</p>
-
-					<div class="clear"></div>
-				</div>
-
-				<div class="col-lg-1"></div>
-
-				<div class="col-lg-5">
-					<div
-						class="hi-icon-wrap hi-icon-effect-5 hi-icon-effect-5a mar-top20">
-						<div class="float-left mar-right20">
-							<a href="#" class="hi-icon hi-icon-images">images</a>
-						</div>
-					</div>
-					<h3 class="text-bold">Recruitment calendar</h3>
-					<p>주간별 공채일정</p>
-
-					<div class="clear"></div>
-				</div>
-
-			</div>
-			<div class="row">
-				<div class="col-lg-1"></div>
-				<div class="col-lg-5">
-					<div
-						class="hi-icon-wrap hi-icon-effect-5 hi-icon-effect-5a mar-top20">
-						<div class="float-left mar-right20">
-							<a href="#" class="hi-icon hi-icon-archive">archive</a>
-						</div>
-					</div>
-					<h3 class="text-bold">Recruitment News</h3>
-					<p>채용 관련 뉴스</p>
-
-					<div class="clear"></div>
-				</div>
-
-				<div class="col-lg-1"></div>
-
-				<div class="col-lg-5">
-					<div
-						class="hi-icon-wrap hi-icon-effect-5 hi-icon-effect-5a mar-top20">
-						<div class="float-left mar-right20">
-							<a href="#" class="hi-icon hi-icon-contract">Mobile</a>
-						</div>
-					</div>
-					<h3 class="text-bold">Notice</h3>
-					<p>공지사항</p>
-
-					<div class="clear"></div>
-				</div>
-
-
-			</div>
-		</div>
-	</section>
 	<!-- about -->
+	
+			<section id="content">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="row">
+							<div class="col-lg-3">
+								<div class="box">
+									<div class="box-gray aligncenter">
+										<h4>Scores & Ratings</h4>
+										<div class="icon">
+											<i class="fa fa-desktop fa-3x"></i>
+										</div>
+
+									</div>
+									<div class="box-bottom">
+										<a href="#">Learn more</a>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-3">
+								<div class="box">
+									<div class="box-gray aligncenter">
+										<h4>Recruitment calendar</h4>
+										<div class="icon">
+											<i class="fa fa-pagelines fa-3x"></i>
+										</div>
+
+									</div>
+									<div class="box-bottom">
+										<a href="#">Learn more</a>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-3">
+								<div class="box">
+									<div class="box-gray aligncenter">
+										<h4>Recruitment News</h4>
+										<div class="icon">
+											<i class="fa fa-edit fa-3x"></i>
+										</div>
+
+									</div>
+									<div class="box-bottom">
+										<a href="#">Learn more</a>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-3">
+								<div class="box">
+									<div class="box-gray aligncenter">
+										<h4>Notice</h4>
+										<div class="icon">
+											<i class="fa fa-code fa-3x"></i>
+										</div>
+									</div>
+									<div class="box-bottom">
+										<a href="#">Learn more</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+	
+	<section id="featured">
+			<!-- start slider -->
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<!-- Slider -->
+						<div id="main-slider" class="flexslider">
+							<ul class="slides">
+								<li>
+									<img src="../img/slides/1.jpg" alt="" />
+									<div class="flex-caption" style="text-align:left">
+										<h3>Corporate Search</h3>
+										<p>입사하고 싶은 기업을 관심기업으로<br>등록하고 관심기업의 업데이트 소식을 받아보세요.</p>
+										<a href="#" class="btn btn-theme">Learn More</a>
+									</div>
+								</li>
+								<li>
+									<img src="../img/slides/2.jpg" alt="" />
+									<div class="flex-caption" style="text-align:left">
+										<h3>Corporate comparison</h3>
+										<p>Ready&Start의 기업 재무평가, 재직자평판 비교서비스입니다.</p>
+										<a href="#" class="btn btn-theme">Learn More</a>
+									</div>
+								</li>
+								<li>
+									<img src="../img/slides/3.jpg" alt="" />
+									<div class="flex-caption" style="text-align:left">
+										<h3>합격자소서</h3>
+										<p>인사담당자가 선택한 진짜 합격자소서를 확인해보세요.</p>
+										<a href="#" class="btn btn-theme">Learn More</a>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<!-- end slider -->
+					</div>
+				</div>
+			</div>
+		</section>
+	
 	<section id="section-about" class="section appear clearfix">
 		<div class="container">
 

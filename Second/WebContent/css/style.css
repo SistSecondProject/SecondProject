@@ -51,7 +51,7 @@ h1,h2, h3, h4, h5, h6 {
 ==================================== */
 
 .container {
-	padding:0 20px 0 20px;
+	padding:0px;
 	position:relative;
 }
 
@@ -328,7 +328,7 @@ ul.nav li.dropdown a {
 
 #featured .flexslider {
 	padding:0;
-	margin: 50px 0 30px; 
+	margin: 0px auto; 
 	background: #fff; 
 	position: relative; 
 	zoom: 1;
@@ -1973,9 +1973,9 @@ article img.pull-right, article .align-right{
 	}
 
 	#featured .flexslider .slide-caption {
-		width: 90%; 
-		padding: 2%; 
-		position: absolute; 
+		width: 100%; 
+		padding: 0%; 
+		position: relative; 
 		left: 0; 
 		bottom: -40px; 
 	}
