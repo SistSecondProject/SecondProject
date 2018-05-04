@@ -214,11 +214,28 @@ ul.clients li:hover {
 	border-bottom: #68A4C4 5px solid;
 }
 
+
 /* footer */
 footer{
 	background:#68A4C4;
 }
 #sub-footer{
 	background:#68A4C4;
+}
+
+
+
+/* --- icon box hover --- */
+.hi-icon-effect-5 .hi-icon {
+	color: #85b0be;
+	box-shadow: 0 0 0 4px #85b0be;
+}
+
+a.hi-icon.hi-icon-contract {}
+
+a.hi-icon.hi-icon-contract {}
+.no-touch .hi-icon-effect-5 .hi-icon:hover {
+	background: #85b0be;
+	box-shadow: 0 0 0 8px  #95cbdd;
 }
 

@@ -6,7 +6,8 @@
 */
 /* ==== Google font ==== */
 @import url('https://fonts.googleapis.com/css?family=Noto+Serif:400,400italic,700|Open+Sans:300,400,600,700');
-
+/* === icon component === */
+@import url('icon-component.css');
 /* === prettify === */
 @import url('../js/google-code-prettify/prettify.css');
 /* === fontawesome === */
@@ -985,6 +986,39 @@ ul.team-detail li ul.social-network li i {
   font-size: 26px;
   font-weight: 500;
 }
+.btn-get-started {
+  font-size: 15px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 10px 32px;
+  border-radius: 2px;
+  transition: 0.5s;
+  margin: 10px;
+  color: #fff;
+	background: #85b0be;
+}
+section.section {
+	margin:0;
+	padding: 80px 0 60px 0;
+}
+.mar-bot40 {
+	margin-bottom: 40px;
+}
+
+.mar-left5 { margin-left: 5px; }
+.mar-left10 { margin-left: 10px; }
+.mar-left15 { margin-left: 15px; }
+.mar-left20 { margin-left: 20px; }
+.mar-left25 { margin-left: 25px; }
+.mar-left30 { margin-left: 30px; }
+
+.mar-right5 { margin-right: 5px; }
+.mar-right10 { margin-right: 10px; }
+.mar-right15 { margin-right: 15px; }
+.mar-right20 { margin-right: 20px; }
+.mar-right25 { margin-right: 25px; }
+.mar-right30 { margin-right: 30px; }
 .pricing-offer strong{
 	font-size:78px;
 	line-height:89px;
