@@ -82,7 +82,8 @@
 						</div>
 					</div>
 				</div>
-	
+	</div>
+	</section>
 	<section id="featured">
 			<!-- start slider -->
 			<div class="container" >
