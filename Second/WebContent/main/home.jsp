@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+	pageEncoding="EUC-KR" import="com.sist.calender.*,java.util.*"%>
+	
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -81,7 +82,8 @@
 						</div>
 					</div>
 				</div>
-	
+	</div>
+	</section>
 	<section id="featured">
 			<!-- start slider -->
 			<div class="container" >
@@ -132,11 +134,13 @@
 							calendar</h2>
 						<table class="table table-striped">
 							<tr>
-								<th width=20% class="text-center">4岿 25老</th>
-								<th width=20% class="text-center">4岿 26老</th>
-								<th width=20% class="text-center">4岿 27老</th>
-								<th width=20% class="text-center">4岿 28老</th>
-								<th width=20% class="text-center">4岿 29老</th>
+								<th width=14% class="text-center">4岿 26老</th>
+								<th width=14% class="text-center">4岿 26老</th>
+								<th width=14% class="text-center">4岿 27老</th>
+								<th width=14% class="text-center">4岿 28老</th>
+								<th width=14% class="text-center">4岿 28老</th>
+								<th width=14% class="text-center">4岿 28老</th>
+								<th width=14% class="text-center">4岿 29老</th>
 							</tr>
 						</table>
 					</div>
@@ -145,6 +149,63 @@
 		</div>
 	</section>
 	<!-- /about -->
+	<section id="parallax1" class="section"
+		data-stellar-background-ratio="0.5">
+		<div class="container">
+			<div class="row appear stats">
+			<div class="col-lg-1">
+			</div>
+				<div class="col-lg-2">
+					<div class="align-center color-white txt-shadow">
+						<div class="icon">
+							<i class="fa fa-coffee fa-5x"></i>
+						</div>
+						<strong id="counter-coffee1" class="number">5</strong><font size=15>.</font><strong id="counter-coffee2" class="number">8</strong><br> <span
+							class="text">Black Coffee Cups</span>
+					</div>
+				</div>
+				<div class="col-lg-2">
+					<div class="align-center color-white txt-shadow">
+						<div class="icon">
+							<i class="fa fa-music fa-5x"></i>
+						</div>
+						<strong id="counter-music" class="number">345</strong><br> <span
+							class="text">MP3 Songs</span>
+					</div>
+				</div>
+				<div class="col-lg-2">
+					<div class="align-center color-white txt-shadow">
+						<div class="icon">
+							<i class="fa fa-music fa-5x"></i>
+						</div>
+						<strong id="counter-music" class="number">345</strong><br> <span
+							class="text">MP3 Songs</span>
+					</div>
+				</div>
+				<div class="col-lg-2">
+					<div class="align-center color-white txt-shadow">
+						<div class="icon">
+							<i class="fa fa-clock-o fa-5x"></i>
+						</div>
+						<strong id="counter-clock" class="number">1235</strong><br> <span
+							class="text">Hard Minutes</span>
+					</div>
+				</div>
+				<div class="col-lg-2">
+					<div class="align-center color-white txt-shadow">
+						<div class="icon">
+							<i class="fa fa-heart fa-5x"></i>
+						</div>
+						<strong id="counter-heart" class="number">478</strong><br> <span
+							class="text">Lovely Clients</span>
+					</div>
+				</div>
+				<div class="col-lg-1">
+			</div>
+				
+			</div>
+		</div>
+	</section>
 		
 </body>
 </html>
