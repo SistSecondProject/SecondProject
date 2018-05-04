@@ -11,7 +11,7 @@
 		<div class="intro-content">
 			<h2>Welcome to Ready&Start!</h2>
 			<div>
-				<a href="#section-services" class="btn-get-started scrollto">Get
+				<a href="#content" class="btn-get-started scrollto">Get
 					Started</a>
 			</div>
 		</div>
@@ -47,7 +47,7 @@
 
 									</div>
 									<div class="box-bottom">
-										<a href="#">Learn more</a>
+										<a href="#section-about">Learn more</a>
 									</div>
 								</div>
 							</div>
