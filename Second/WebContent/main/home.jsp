@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>테스트2</title>
+<title>테스트23</title>
 </head>
 <body>
 	<section id="intro">
