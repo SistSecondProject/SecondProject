@@ -7,7 +7,10 @@
 <meta charset="UTF-8">
 <title>Ready&Start</title>
 <link href="css/size.css" rel="stylesheet" />
-<link href="css/test.css" rel="stylesheet" />
+<link href="css/compare_button.css" rel="stylesheet" />
+<!DOCTYPE html>
+<html>
+<head>
 </head>
 <body>
 	<!-- headline -->
@@ -28,12 +31,6 @@
 
 
 	<section id="content">
-		<div class="container">
-			<h5 style="text-align: left;">인기 검색기업</h5>
-			<hr style="border: solid 1px black;" width="100%">
-			<br>
-		</div>
-		&emsp;&emsp;&emsp;
 
 		<div class="container">
 			<h5 style="text-align: left;">전체 기업비교</h5>
@@ -42,7 +39,7 @@
 			<div class="compare_vs">
 				<p>
 					<input type="button" class="btn btn-default btn-lg"
-						style="width: 300px; height: 100px" data-toggle="modal"
+						style="width: 300px; height: 100px; border:solid 1px" data-toggle="modal"
 						data-target="#compareModal" value=비교기업+>
 						
 						&emsp;&emsp;&emsp;&emsp;
@@ -51,13 +48,12 @@
 						&emsp;&emsp;&emsp;&emsp;
 						
 					<input type="button" class="btn btn-default btn-lg"
-						style="width: 300px; height: 100px" data-toggle="modal"
+						style="width: 300px; height: 100px; border:solid 1px"  data-toggle="modal"
 						data-target="#compareModal" value=비교기업+>
 						
-				</p><br>
-				<br> <input type="button" class="btn btn-info btn-lg"
-					style="width: 450px; height: 40px" value=비교하기> <br>
-				<br><br>
+				</p><br><br><br> 
+				<a href="#" class="btn btn-danger" style="width: 450px; height: 40px; border-radius:24px;">비교하기</a>
+				<br><br><br> 
 			</div>
 		</div>
 
@@ -69,19 +65,27 @@
 
 				<p>
 					<input type="button" class="btn btn-default btn-lg"
-						style="width: 300px; height: 100px" data-toggle="modal"
-						data-target="#compareModal" value=비교기업+>&emsp;&emsp;&emsp;&emsp;								
+						style="width: 300px; height: 100px; border:solid 1px" data-toggle="modal"
+						data-target="#compareModal" value=비교기업+>&emsp;&emsp;&emsp;&emsp;
+														
 						<span style="font-size:2.5em; font-weight:bold; color:darkblue">vs</span>
 						&emsp;&emsp;&emsp;&emsp;
+						
 					<input type="button" class="btn btn-default btn-lg"
-						style="width: 300px; height: 100px" data-toggle="modal"
+						style="width: 300px; height: 100px; border:solid 1px" data-toggle="modal"
 						data-target="#compareModal" value=비교기업+>
-				</p><br>
-				<br> <input type="button" class="btn btn-info btn-lg"
-					style="width: 450px; height: 40px" value=비교하기> <br>
-				<br>
+				</p><br><br><br> 
+				<a href="#" class="btn btn-danger" style="width: 450px; height: 40px; border-radius:24px;">비교하기</a><br>
+				<br><br><br> 
 			</div>
 		</div>
+		&emsp;&emsp;&emsp;
+			<div class="container">
+			<h5 style="text-align: left;">인기 검색기업</h5>
+			<hr style="border: solid 1px black;" width="100%">
+			<br>
+		</div>
+		&emsp;&emsp;&emsp;
 
 	</section>
 
