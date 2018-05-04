@@ -1,10 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR" import="com.sist.calender.*,java.util.*"%>
-	 <jsp:useBean id="cmModel" class="com.sist.calender.MovieModel"/>
-	 
-	 <%
-	 cmModel.movieListData(request);
-%>
+	
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -137,7 +133,7 @@
 							calendar</h2>
 						<table class="table table-striped">
 							<tr>
-								<th width=14% class="text-center">${vo. }</th>
+								<th width=14% class="text-center">4岿 26老</th>
 								<th width=14% class="text-center">4岿 26老</th>
 								<th width=14% class="text-center">4岿 27老</th>
 								<th width=14% class="text-center">4岿 28老</th>
