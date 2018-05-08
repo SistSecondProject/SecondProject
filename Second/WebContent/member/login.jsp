@@ -55,8 +55,8 @@
 
 							<div class="modal-footer">
 								<p>
-									<a href="" class="btn btn-block btn-outline-primary"> <i
-										class="fab fa-facebook-f"></i>   facebook
+									<a href="../member/join.jsp" class="btn btn-block btn-outline-primary"> <i
+										class="fab fa-facebook-f"></i>  회원가입
 									</a><a href="" class="btn btn-block btn-outline-primary"> <i
 										class="fab fa-google"></i>   Goolge
 									</a><a href="" class="btn btn-block btn-outline-info"> <i
