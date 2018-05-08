@@ -26,20 +26,6 @@
 					<div class="col-lg-3">
 						<div class="box">
 							<div class="box-gray aligncenter">
-								<h4>Scores & Ratings</h4>
-								<div class="icon">
-									<i class="fa fa-desktop fa-3x"></i>
-								</div>
-
-							</div>
-							<div class="box-bottom">
-								<a href="#">Learn more</a>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3">
-						<div class="box">
-							<div class="box-gray aligncenter">
 								<h4>Recruitment calendar</h4>
 								<div class="icon">
 									<i class="fa fa-pagelines fa-3x"></i>
@@ -54,6 +40,20 @@
 					<div class="col-lg-3">
 						<div class="box">
 							<div class="box-gray aligncenter">
+								<h4>Scores & Ratings</h4>
+								<div class="icon">
+									<i class="fa fa-desktop fa-3x"></i>
+								</div>
+
+							</div>
+							<div class="box-bottom">
+								<a href="#section-heading animated">Learn more</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="box">
+							<div class="box-gray aligncenter">
 								<h4>Recruitment News</h4>
 								<div class="icon">
 									<i class="fa fa-edit fa-3x"></i>
@@ -61,7 +61,7 @@
 
 							</div>
 							<div class="box-bottom">
-								<a href="#">Learn more</a>
+								<a href="#section-news">Learn more</a>
 							</div>
 						</div>
 					</div>
@@ -74,7 +74,7 @@
 								</div>
 							</div>
 							<div class="box-bottom">
-								<a href="#">Learn more</a>
+								<a href="#section-notice">Learn more</a>
 							</div>
 						</div>
 					</div>
@@ -117,15 +117,15 @@
 		</div>
 	</div>
 	</section>
-
+	
 	<section id="section-about" class="section appear clearfix">
 	<div class="container">
 
 		<div class="row mar-bot40">
 			<div>
 				<div class="section-header">
-					<h2 class="section-heading animated" data-animation="bounceInUp">Recruitment
-						calendar</h2>
+				<center>
+					<h2 class="section-heading animated" data-animation="bounceInUp">RECRUITMENT CALENDAR</h2>
 					<table class="table table-striped">
 						<tr>
 							<th width=14% class="text-center">4월 26일</th>
@@ -137,14 +137,17 @@
 							<th width=14% class="text-center">4월 29일</th>
 						</tr>
 					</table>
+					</center>
 				</div>
 			</div>
 		</div>
 	</div>
 	</section>
 	<!-- /about -->
-	<section id="parallax1" class="section"
-		data-stellar-background-ratio="0.5">
+	<center>
+		<h2 id="section-heading animated" data-animation="bounceInUp">SCORES & RATINGS</h2>
+	</center>
+	<section id="parallax1" class="section" data-stellar-background-ratio="0.5">
 	<div class="container">
 		<div class="row appear stats">
 			<div class="col-lg-1"></div>
@@ -196,6 +199,42 @@
 			</div>
 			<div class="col-lg-1"></div>
 
+		</div>
+	</div>
+	</section>
+	
+	<!-- 채용 뉴스 -->
+		<section id="section-news" class="section appear clearfix">
+	<div class="container">
+
+		<div class="row mar-bot40">
+			<div>
+				<div class="section-header">
+				<center>
+					<h2 class="section-heading animated" data-animation="bounceInUp">RECRUITMENT NEWS</h2>
+					<table class="table table-striped">
+					</table>
+					</center>
+				</div>
+			</div>
+		</div>
+	</div>
+	</section>
+	
+	<!-- 공지사항 -->
+		<section id="section-notice" class="section appear clearfix">
+	<div class="container">
+
+		<div class="row mar-bot40">
+			<div>
+				<div class="section-header">
+				<center>
+					<h2 class="section-heading animated" data-animation="bounceInUp">NOTICE</h2>
+					<table class="table table-striped">
+					</table>
+					</center>
+				</div>
+			</div>
 		</div>
 	</div>
 	</section>
