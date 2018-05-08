@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR" import="com.sist.calender.*,java.util.*"%>
-
+	pageEncoding="EUC-KR" import="com.sist.calender.*,java.util.*,com.sist.news.dao.*"%>
+<jsp:useBean id="newsdao" class="com.sist.news.dao.NewsManager"/>
+	 <%
+	  ArrayList<NewsVO> newsList=newsdao.newsFindData();
+    CalenderManager cm=new CalenderManager();
+    
+    ArrayList<CalenderVO> list=cm.calenderFindData();
+    int count=list.size();
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -208,16 +215,64 @@
 	<div class="container">
 
 		<div class="row mar-bot40">
-			<div>
-				<div class="section-header">
-				<center>
-					<h2 class="section-heading animated" data-animation="bounceInUp">RECRUITMENT NEWS</h2>
-					<table class="table table-striped">
-					</table>
-					</center>
+				<div class="col-md-offset-3 col-md-6">
+					<div class="section-header">
+						<h2 class="section-heading animated" data-animation="bounceInUp">Recruitment
+							News</h2>
+						<p></p>
+					</div>
 				</div>
 			</div>
-		</div>
+			</div>
+				<div class="imgs col-md-12">
+						<div class="row">
+						<div class="col-md-2">
+						</div>
+						<%
+						for(int i=0;i<4;i++){
+						%>
+								<div class="col-md-2">
+								<div class="box">
+									<div class="box-gray aligncenter" style="height: 235px">
+										<div class="icon">
+											<img src="<%=newsList.get(i).getNewsImg() %>" width="100%"/>
+										</div>
+										<p>
+										<%=newsList.get(i).getSubject() %>
+										</p>
+									</div>
+								</div>
+							</div>
+							<%
+						}
+							%>
+							<div class="col-md-2">
+						</div>
+							</div>
+						<div class="row">
+						<div class="col-md-2">
+						</div>
+						<%
+						for(int i=4;i<8;i++){
+						%>
+							<div class="col-md-2">
+								<div class="box">
+									<div class="box-gray aligncenter" style="height: 235px">
+										<div class="icon">
+											<img src="<%=newsList.get(i).getNewsImg() %>" width="100%"/>
+										</div>
+										<p>
+											<%=newsList.get(i).getSubject() %>
+										</p>
+									</div>
+								</div>
+							</div>
+							<%
+						}
+							%>
+							<div class="col-md-2">
+						</div>
+					</div>
 	</div>
 	</section>
 	
