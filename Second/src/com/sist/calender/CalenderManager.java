@@ -22,7 +22,7 @@ cm.calenderFindData();
 		  {
 			  CalenderVO vo=new CalenderVO();
 			 // System.out.println(day.get(i).text()+" "+state.get(i).attr("alt")+" "+data.get(i).text());
-			  System.out.println(data.get(i).text());
+			//  System.out.println(data.get(i).text());
 			  
 			 // list.add(vo);
 			  vo.setDay(day.get(i).text());

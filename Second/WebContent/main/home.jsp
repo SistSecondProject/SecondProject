@@ -3,6 +3,7 @@
 <jsp:useBean id="newsdao" class="com.sist.news.dao.NewsManager"/>
 	 <%
 	  ArrayList<NewsVO> newsList=newsdao.newsFindData();
+	 ArrayList<NewsVO> dt_List=newsdao.newsDetailData();
     CalenderManager cm=new CalenderManager();
     
     ArrayList<CalenderVO> list=cm.calenderFindData();
@@ -13,6 +14,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>테스트2311</title>
+<script type="text/javascript">
+
+</script>
+<style type="text/css">
+.viewWrap img {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto;
+}
+</style>
 </head>
 <body>
 	<section id="intro">
@@ -217,8 +228,10 @@
 		<div class="row mar-bot40">
 				<div class="col-md-offset-3 col-md-6">
 					<div class="section-header">
+					<center>
 						<h2 class="section-heading animated" data-animation="bounceInUp">Recruitment
 							News</h2>
+							</center>
 						<p></p>
 					</div>
 				</div>
@@ -230,7 +243,10 @@
 						</div>
 						<%
 						for(int i=0;i<4;i++){
+								
+							
 						%>
+						<a data-toggle="modal" data-target="#myModal<%=i%>">
 								<div class="col-md-2">
 								<div class="box">
 									<div class="box-gray aligncenter" style="height: 235px">
@@ -238,12 +254,17 @@
 											<img src="<%=newsList.get(i).getNewsImg() %>" width="100%"/>
 										</div>
 										<p>
-										<%=newsList.get(i).getSubject() %>
+										<center>
+										<strong><%=newsList.get(i).getSubject() %></strong>
+										</center>
 										</p>
 									</div>
 								</div>
 							</div>
+							</a>
+							
 							<%
+							
 						}
 							%>
 							<div class="col-md-2">
@@ -255,6 +276,7 @@
 						<%
 						for(int i=4;i<8;i++){
 						%>
+						<a data-toggle="modal" data-target="#myModal<%=i%>">
 							<div class="col-md-2">
 								<div class="box">
 									<div class="box-gray aligncenter" style="height: 235px">
@@ -262,11 +284,14 @@
 											<img src="<%=newsList.get(i).getNewsImg() %>" width="100%"/>
 										</div>
 										<p>
-											<%=newsList.get(i).getSubject() %>
+										<center>
+											<strong><%=newsList.get(i).getSubject() %></strong>
+											</center>
 										</p>
 									</div>
 								</div>
 							</div>
+							</a>
 							<%
 						}
 							%>
@@ -340,5 +365,37 @@
 		</div>
 	</div>
 	</section>
+	
+	<%
+	for(int i=0;i<8;i++){
+	%>
+	  <div class="modal fade" id="myModal<%=i %>" role="dialog">
+    <div class="modal-dialog" style="width: 800px">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"><%=dt_List.get(i).getDt_title() %></h4>
+        </div>
+        <div class="modal-body" style="width: 100%">
+        <div class="viewWrap" id="view_text">
+          <p><%=dt_List.get(i).getDt_info() %></p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    
+    </div>
+  </div>
+
+    <%
+      }
+      %>
+
+
+
 </body>
 </html>
