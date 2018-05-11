@@ -1,23 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="com.sist.change.*"%>
-	
+
 <%
-   // 화면 변경  main.jsp?mode=1
-   /*
-        ~main.jsp
-        => mode=null
-           if(mode==null)
-        ~main.jsp?mode=
-        => mode=""
-           if(mode=="")(X)
-           if(mode.equals(""))(O)
-   */
-   
-   String mode=request.getParameter("mode");
-   if(mode==null)
-	   mode="0";
-   int no=Integer.parseInt(mode);
-   String jsp=JspChange.change(no);
+	// 화면 변경  main.jsp?mode=1
+	/*
+	     ~main.jsp
+	     => mode=null
+	        if(mode==null)
+	     ~main.jsp?mode=
+	     => mode=""
+	        if(mode=="")(X)
+	        if(mode.equals(""))(O)
+	*/
+
+	String mode = request.getParameter("mode");
+	if (mode == null)
+		mode = "0";
+	int no = Integer.parseInt(mode);
+	String jsp = JspChange.change(no);
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -42,17 +42,17 @@
 		<!-- header첨부(메뉴) -->
 		<jsp:include page="header.jsp"></jsp:include>
 
-    <!-- content -->
-			    <jsp:include page="<%=jsp %>"></jsp:include>
-			    <!-- content end -->
-			    
-	<!-- Footer -->
-			<div id="footer-wrapper">
-				<!-- footer 첨부 -->
-				<jsp:include page="footer.jsp"></jsp:include>
-		    </div>
+		<!-- content -->
+		<jsp:include page="${jsp }"></jsp:include>
+		<!-- content end -->
+
+		<!-- Footer -->
+		<div id="footer-wrapper">
+			<!-- footer 첨부 -->
+			<jsp:include page="footer.jsp"></jsp:include>
+		</div>
 	</div>
-		<script src="../js/jquery.js"></script>
+	<script src="../js/jquery.js"></script>
 	<script src="../js/jquery.easing.1.3.js"></script>
 	<script src="../js/bootstrap.min.js"></script>
 	<script src="../js/jquery.fancybox.pack.js"></script>
