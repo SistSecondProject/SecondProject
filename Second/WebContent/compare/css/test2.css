@@ -11,6 +11,24 @@ span.rad {
 	border-radius: 10px;
 	text-align: center;
 } 
+span.num1 {
+	display: inline-block;
+	vertical-align: left;
+	background-color: white;
+	width: 120px;
+	height: 50px;
+	margin: 5px;
+	text-align: center;
+} 
+span.num2 {
+	display: inline-block;
+	vertical-align: right;
+	background-color: white;
+	width: 120px;
+	height: 50px;
+	margin: 5px;
+	text-align: center;
+} 
 
 .com{
     width: 1000px;
