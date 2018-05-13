@@ -97,7 +97,11 @@
 
 		</div>
 		<div>
-			<span class="rad">기업평점</span>
+		<span class="num1" style="font-size:20pt;font-weight:bold; color:red">0.0점</span>
+			&emsp;&emsp;&emsp;&emsp;
+			<span class="rad" style="font-weight:bold">기업평점</span>
+			&emsp;&emsp;&emsp;&emsp;
+			<span class="num1" style="font-size:20pt;font-weight:bold; color:blue">0.0점</span>
 		</div>
 
 		&emsp;&emsp;&emsp;
@@ -132,15 +136,27 @@
 		</div>
 		<br>
 		<div>
-			<span class="rad">매출액</span>
+	<span class="num1" style="font-size:20pt;font-weight:bold; color:red">0.0점</span>
+			&emsp;&emsp;&emsp;&emsp;
+			<span class="rad" style="font-weight:bold">매출액</span>
+			&emsp;&emsp;&emsp;&emsp;
+			<span class="num1" style="font-size:20pt;font-weight:bold; color:blue">0.0점</span>
 		</div>
 		<br>
 		<div>
-			<span class="rad">사원수</span>
+<span class="num1" style="font-size:20pt;font-weight:bold; color:red">0.0점</span>
+			&emsp;&emsp;&emsp;&emsp;
+			<span class="rad" style="font-weight:bold">사원수</span>
+			&emsp;&emsp;&emsp;&emsp;
+			<span class="num1" style="font-size:20pt;font-weight:bold; color:blue">0.0점</span>
 		</div>
 		<br>
 		<div>
-			<span class="rad">평균연봉</span><br>
+		<span class="num1" style="font-size:20pt;font-weight:bold; color:red">0.0점</span>
+			&emsp;&emsp;&emsp;&emsp;
+			<span class="rad" style="font-weight:bold">평균연봉</span>
+			&emsp;&emsp;&emsp;&emsp;
+			<span class="num1" style="font-size:20pt;font-weight:bold; color:blue">0.0점</span>
 		</div>
 		<br>
 	</section>
