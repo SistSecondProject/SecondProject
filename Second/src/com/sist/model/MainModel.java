@@ -10,8 +10,9 @@ public class MainModel {
 	@RequestMapping("main/main.do")
 	public String mainListData(HttpServletRequest request)
 	{
-		request.setAttribute("jsp", "home.jsp");
+		request.setAttribute("home_jsp", "home.jsp");
 		return "main.jsp";
 	}
+	
 }
 	
