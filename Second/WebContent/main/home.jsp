@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR" import="com.sist.calender.*,java.util.*,com.sist.news.dao.*"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:useBean id="newsdao" class="com.sist.news.dao.NewsManager"/>
+<jsp:useBean id="cm" class="com.sist.calender.CalenderManager"/>
 	 <%
 	  ArrayList<NewsVO> newsList=newsdao.newsFindData();
 	 ArrayList<NewsVO> dt_List=newsdao.newsDetailData();
-    CalenderManager cm=new CalenderManager();
-    
     ArrayList<CalenderVO> list=cm.calenderFindData();
-    int count=list.size();
+    ArrayList<CalenderVO> list2=cm.calenderinfoData();
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -137,7 +137,7 @@
 	</section>
 	
 	<section id="section-about" class="section appear clearfix">
-	<div class="container">
+	<div class="container" style="width: 80%">
 
 		<div class="row mar-bot40">
 			<div>
@@ -145,15 +145,38 @@
 				<center>
 					<h2 class="section-heading animated" data-animation="bounceInUp">RECRUITMENT CALENDAR</h2>
 					<table class="table table-striped">
-						<tr>
-							<th width=14% class="text-center">4岿 26老</th>
-							<th width=14% class="text-center">4岿 26老</th>
-							<th width=14% class="text-center">4岿 27老</th>
-							<th width=14% class="text-center">4岿 28老</th>
-							<th width=14% class="text-center">4岿 28老</th>
-							<th width=14% class="text-center">4岿 28老</th>
-							<th width=14% class="text-center">4岿 29老</th>
-						</tr>
+					 <tr>
+   <% 
+      for(CalenderVO vo:list){
+    	  %>
+    	  <th width="250px" style="text-align: center;"><%=vo.getDay() %></th>
+    	  <%
+      }
+    	  %> 
+    	  </tr>
+    	  <tr>
+    	  <% 
+    	  int no=0;
+    	  for(int i=0;i<7;i++){
+    		  %>
+    	  <td>
+    	  <dl>
+    	   <% 
+      for(int j=0;j<7;j++){
+    	  %>
+    	  <dd><%=list2.get(no).getData() %></dd>
+    	  <%
+    	  no++;
+      }
+    	  %> 
+    	    </dl>
+    	  </td>
+    	  <%
+    	  }
+    	  %>
+ </tr> 
+ 	
+
 					</table>
 					</center>
 				</div>
@@ -366,7 +389,7 @@
 	</div>
 	</section>
 	
-	<%
+	 <%
 	for(int i=0;i<8;i++){
 	%>
 	  <div class="modal fade" id="myModal<%=i %>" role="dialog">
@@ -393,7 +416,7 @@
 
     <%
       }
-      %>
+      %> 
 
 
 
