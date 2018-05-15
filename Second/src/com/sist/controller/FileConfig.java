@@ -21,7 +21,7 @@ public class FileConfig {
 	   List<String> list=new ArrayList<String>();
 	   try
 	   {
-		   String basePath="C:\\Users\\sist1\\git\\SecondProject\\Second";//System.getProperty("user.dir");
+		   String basePath="C:\\SecondProject\\Second";//System.getProperty("user.dir");
 		   System.out.println(basePath);
 		   String strPack=basePath+"\\src\\"+pack.replace(".", "\\");
 		   System.out.println(strPack);

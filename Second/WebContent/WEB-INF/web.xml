@@ -6,7 +6,7 @@
     <servlet-class>com.sist.controller.DispatcherServlet</servlet-class>
     <init-param>
       <param-name>contextConfigLocation</param-name>
-      <param-value>C:\Users\sist1\git\SecondProject\Second\WebContent\WEB-INF\applicationContext.xml</param-value>
+      <param-value>C:\SecondProject\Second\WebContent\WEB-INF\applicationContext.xml</param-value>
     </init-param>
   </servlet>
   <servlet-mapping>
