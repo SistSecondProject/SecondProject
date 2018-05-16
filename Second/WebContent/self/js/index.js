@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  $('div').on('click',function(){
+  $('div#side').on('click',function(){
   $(this).next().slideToggle();
   $(this).next().siblings('p').slideUp();
   });  

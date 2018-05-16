@@ -6,35 +6,23 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
 
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
-  <script>
-  $( function() {
-	  $('#dialog').dialog({autoOpen : false,
-		  maxWidth:600,
-		  maxHeight:500,
-		  width:600,
-		  height:500,
-		  modal:true});
-	  
-		$('.list_click').click(function(){
 
-		});
-	    $( "#tabs" ).tabs();
-	  } );
-  </script>
 <style type="text/css">
+
 #favorites{
 	border:1px solid #2F5030;
-	background-color :#045FB4;
+	background-color :#ffffff;
+	
    
 }
 
 #stars{
   border:1px solid #2F5030;
-  background-color :#58ACFA;
+  background-color :#4799F6;
 }
 
 .well{
@@ -54,43 +42,6 @@
   height: 0;
 }
 
-.clearfix { display: inline-block; }
-/* start commented backslash hack \*/
-* html .clearfix { height: 1%; }
-.clearfix { display: block; }
-/* close commented backslash hack */
-
-.iva-page6 {
-  border-radius: 30px;
-  display: flex;
-  background-color: #fff;
-}
-
-.iva-page6 a {
-   flex: 1;
-   border: 1px solid #dee0e4;
-    
-
-.iva-page6 a:first-child:hover:not(.active) {
-    background-color: #ddd;
-    border-radius: 30px 0 0 40px;
-  
-}
-
-.iva-page6 a:first-child{
-  border-radius: 30px 0 0 30px; 
-}
-.iva-page6 a:last-child{
-  border-radius: 0 30px 30px 0;
-}
-
-.iva-page6 a:nth-child(2) {
-    box-shadow: -7px 0px 5px #e8e3e3;
-}	
-
-.iva-page6 a:nth-last-child(2) {
-  box-shadow: 6px 0px 5px #e8e3e3;
-}
 
 
 </style>
@@ -106,7 +57,7 @@
         </div>
         <div class="btn-group" role="group">
             <button type="button" id="favorites" class="btn" href="#tab2" data-toggle="tab"><span class="glyphicon glyphicon-heart" ></span>
-                <div class="hidden-xs">내 자소서 보관함</div>
+                <div>내 자소서 보관함</div>
             </button>
         </div>
     </div>
@@ -143,18 +94,18 @@
 		      </center>
     </thead>
     <tbody>
-      <tr>
-        <td><a href="#" class="list_click">John</a></td>
+     <tr>
+        <td><a href="passdetail.jsp">삼성</a></td>
         <td>Doe</td>
         <td>john@example.com</td>
       </tr>
       <tr>
-        <td><a href="#" class="list_click">John</a></td>
+        <td><a href="passdetail.jsp">샘표</a></td>
         <td>Moe</td>
         <td>mary@example.com</td>
       </tr>
       <tr>
-        <td><a href="#" class="list_click">John</a></td>
+        <td><a href="passdetail.jsp">gs</a></td>
         <td>Dooley</td>
         <td>july@example.com</td>
       </tr>
@@ -179,8 +130,6 @@
         <td>july@example.com</td>
       </tr>
       
-      <div id="dialog" style="width=450 height=450">
-      </div>
     </tbody>
   </table>
       
