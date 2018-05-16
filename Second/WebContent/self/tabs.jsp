@@ -10,8 +10,21 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
-<script type="text/javascript">	 
-</script>
+  <script>
+  $( function() {
+	  $('#dialog').dialog({autoOpen : false,
+		  maxWidth:600,
+		  maxHeight:500,
+		  width:600,
+		  height:500,
+		  modal:true});
+	  
+		$('.list_click').click(function(){
+
+		});
+	    $( "#tabs" ).tabs();
+	  } );
+  </script>
 <style type="text/css">
 #favorites{
 	border:1px solid #2F5030;
@@ -131,17 +144,17 @@
     </thead>
     <tbody>
       <tr>
-        <td>John</td>
+        <td><a href="#" class="list_click">John</a></td>
         <td>Doe</td>
         <td>john@example.com</td>
       </tr>
       <tr>
-        <td>Mary</td>
+        <td><a href="#" class="list_click">John</a></td>
         <td>Moe</td>
         <td>mary@example.com</td>
       </tr>
       <tr>
-        <td>July</td>
+        <td><a href="#" class="list_click">John</a></td>
         <td>Dooley</td>
         <td>july@example.com</td>
       </tr>
@@ -166,6 +179,8 @@
         <td>july@example.com</td>
       </tr>
       
+      <div id="dialog" style="width=450 height=450">
+      </div>
     </tbody>
   </table>
       

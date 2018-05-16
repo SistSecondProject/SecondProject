@@ -74,7 +74,7 @@ ul.breadcrumb li a:hover {
 
 	   <div class="container">
 	<div class="row">
-		<div class="col-lg-7">
+		<div class="col-lg-5">
                <!-- tabs Ã·ºÎ -->
             <jsp:include page="tabs.jsp"></jsp:include>     
         </div>
