@@ -44,7 +44,7 @@
 					<div class="col-lg-3">
 						<div class="box">
 							<div class="box-gray aligncenter">
-								<h4>Recruitment calendar</h4>
+								<h4>Recruit Calendar</h4>
 								<div class="icon">
 									<i class="fa fa-pagelines fa-3x"></i>
 								</div>
@@ -72,7 +72,7 @@
 					<div class="col-lg-3">
 						<div class="box">
 							<div class="box-gray aligncenter">
-								<h4>Recruitment News</h4>
+								<h4>Career News</h4>
 								<div class="icon">
 									<i class="fa fa-edit fa-3x"></i>
 								</div>
@@ -143,7 +143,7 @@
 			<div>
 				<div class="section-header">
 				<center>
-					<h2 class="section-heading animated" data-animation="bounceInUp">RECRUITMENT CALENDAR</h2>
+					<h2 class="section-heading animated" data-animation="bounceInUp">RECRUIT CALENDAR</h2>
 					<table class="table table-striped">
 					 <tr>
    <% 
@@ -252,8 +252,7 @@
 				<div class="col-md-offset-3 col-md-6">
 					<div class="section-header">
 					<center>
-						<h2 class="section-heading animated" data-animation="bounceInUp">Recruitment
-							News</h2>
+						<h2 class="section-heading animated" data-animation="bounceInUp">CAREER NEWS</h2>
 							</center>
 						<p></p>
 					</div>
