@@ -15,13 +15,13 @@
 <style type="text/css">
 #favorites{
 	border:1px solid #2F5030;
-	background-color :#ffffff;
+	background-color :#045FB4;
    
 }
 
 #stars{
   border:1px solid #2F5030;
-  background-color :#E8FFC3;
+  background-color :#58ACFA;
 }
 
 .well{

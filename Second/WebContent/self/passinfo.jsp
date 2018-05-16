@@ -36,44 +36,7 @@
 10. Inner - Section: page headline
 ==================================== */
 
-#inner-headline2{
-	background:#DCE8C2;
-	position:relative;
-	margin:0;
-	padding:0;
-	color:#F2C0B9;
-	height: 60px;
-}
 
-
-#inner-headline2 .inner-heading h2 {
-	color:#fff;
-	margin:20px 0 0 0;
-}
-
-/* --- breadcrumbs --- */
-#inner-headline2 ul.breadcrumb {
-	margin:10px 0 0;
-	float:left;
-}
-
-#inner-headline2 ul.breadcrumb li {
-	margin-bottom:0;
-	padding-bottom:0;
-}
-#inner-headline2 ul.breadcrumb li {
-	font-size:13px;
-	
-	color:#42393B;
-}
-
-#inner-headline2 ul.breadcrumb li i{
-	color:#DE7067;
-}
-
-#inner-headline2 ul.breadcrumb li a {
-	color:#fff;
-}
 
 ul.breadcrumb li a:hover {
 	text-decoration:none;
@@ -87,107 +50,13 @@ ul.breadcrumb li a:hover {
    margin-top: 5px;
 
 }
-/*========Button css======  */
-@import bourbon
-	
-// Feel free to edit these settings
-// and try out different things.
-$animation-speed: 150ms
 
-$button-bg-color: tomato
-$button-text-color: white
-$button-text-size: 1.25em
-$button-spacing: 1.5rem
-
-
-
-// Here's the code for the buttons.
-.sbutton
-	display: inline-block
-	margin: $button-spacing / 2
-	padding: ($button-spacing / 2) $button-spacing
-	
-	border: none
-	border-radius: $button-spacing / 8
-	outline: none
-
-	background-color: $button-bg-color
-
-	color: $button-text-color
-	font-family: inherit
-	font-size: $button-text-size
-	font-weight: 400
-	line-height: $button-spacing
-	text-decoration: none
-	text-align: center
-
-	cursor: pointer
-	transition: all $animation-speed ease-out
-
-	&:focus,
-	&:hover
-		background-color: tint($button-bg-color, 10%)
-
-		box-shadow: 0 0 0 ($button-spacing / 8) $button-text-color, 0 0 0 ($button-spacing / 4) tint($button-bg-color, 10%)
-
-	&:active
-		background-color: shade($button-bg-color, 5%)
-
-		box-shadow: 0 0 0 ($button-spacing / 8) shade($button-bg-color, 5%), 0 0 0 ($button-spacing / 4) shade($button-bg-color, 5%)
-		transition-duration: $animation-speed / 2
-
-	&.is-outlined
-		border: ($button-spacing / 8) solid $button-bg-color
-		
-		background-color: transparent
-	
-		color: $button-bg-color
-	
-		&:focus,
-		&:hover
-			border-color: tint($button-bg-color, 10%)
-	
-			color: tint($button-bg-color, 10%)
-	
-		&:active
-			border-color: shade($button-bg-color, 5%)
-	
-			color: shade($button-bg-color, 5%)
-
-
-
-// Not relevant for the buttons. 
-// Only for this demo to look okay.
-*, *::before, *::after
-	box-sizing: border-box
-
-html
-	background-color: #fafafa
-
-	font-family: Roboto, sans-serif
-
-html, body
-	height: 100%
-	margin: 0
-	padding: 0
-	width: 100%
-
-body
-	align-items: right;
-	display: flex
-	flex-flow: column nowrap
-	justify-content: center
 
 </style>
-<script type="text/javascript">
-document.querySelector('.sbutton').addEventListener('click', function (event) {
-	event.preventDefault();
-});
-</script>
 </head>
 
 <body>	
-      <section id="inner-headline2">
+      <section id="inner-headline">
          <div class="container">
             <div class="row">
            
@@ -205,7 +74,7 @@ document.querySelector('.sbutton').addEventListener('click', function (event) {
 
 	   <div class="container">
 	<div class="row">
-		<div class="col-lg-5">
+		<div class="col-lg-7">
                <!-- tabs Ã·ºÎ -->
             <jsp:include page="tabs.jsp"></jsp:include>     
         </div>
