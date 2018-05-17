@@ -107,19 +107,19 @@
 								<p>
 									입사하고 싶은 기업을 관심기업으로<br>등록하고 관심기업의 업데이트 소식을 받아보세요.
 								</p>
-								<a href="#" class="btn btn-theme">Learn More</a>
+								<a href="company.do" class="btn btn-theme">Learn More</a>
 							</div></li>
 						<li><img src="../img/slides/2.jpg" alt="" />
 							<div class="flex-caption" style="text-align: left">
 								<h3>Corporate comparison</h3>
 								<p>Ready&Start의 기업 재무평가, 재직자평판 비교서비스입니다.</p>
-								<a href="#" class="btn btn-theme">Learn More</a>
+								<a href="compare.do" class="btn btn-theme">Learn More</a>
 							</div></li>
 						<li><img src="../img/slides/3.jpg" alt="" />
 							<div class="flex-caption" style="text-align: left">
 								<h3>합격자소서</h3>
 								<p>인사담당자가 선택한 진짜 합격자소서를 확인해보세요.</p>
-								<a href="#" class="btn btn-theme">Learn More</a>
+								<a href="passinfo.do" class="btn btn-theme">Learn More</a>
 							</div></li>
 					</ul>
 				</div>
@@ -298,10 +298,42 @@
 		<div class="row mar-bot40">
 			<div>
 				<div class="section-header">
-				<center>
-					<h2 class="section-heading animated" data-animation="bounceInUp">NOTICE</h2>
-					<table class="table table-striped">
-					</table>
+					<center>
+						<h2 class="section-heading animated" data-animation="bounceInUp">NOTICE</h2>
+						<table class="table table-hover">
+							<tr class="warning">
+								<th width=10% class="text-center">번호</th>
+								<th width=45% class="text-center">제목</th>
+								<th width=15% class="text-center">이름</th>
+								<th width=20% class="text-center">작성일</th>
+								<th width=10% class="text-center">조회수</th>
+							</tr>
+							<c:forEach var="vo" items="${list }">
+								<tr>
+									<td width=10% class="text-center">${vo.no }</td>
+									<td width=45% class="text-left"><a
+										href="content.do?no=${vo.no }">${vo.subject }</a></td>
+									<td width=15% class="text-center">${vo.name }</td>
+									<td width=20% class="text-center"><fmt:formatDate value="${vo.regdate }" pattern="yyyy-MM-dd" /></td>
+									<td width=10% class="text-center">${vo.hit }</td>
+								</tr>
+							</c:forEach>
+						</table>
+						<table class="table table-hover">
+							<tr>
+								<td class="text-left"><select class="input">
+										<option>이름</option>
+										<option>제목</option>
+										<option>내용</option>
+								</select>&nbsp; <input type=text name=ss class="input" size=12> <input
+									type=submit class="btn btn-rounded btn-sm btn-warning" value=찾기>
+								</td>
+								<td class="text-right">
+								<a href="#" class="btn btn-sm btn-rounded btn-theme">◀</a>
+								<a href="#" class="btn btn-sm btn-rounded btn-theme">▶</a>
+									&nbsp;&nbsp;&nbsp;${curpage } page / ${totalpage } pages </td>
+							</tr>
+						</table>
 					</center>
 				</div>
 			</div>
