@@ -11,7 +11,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 public class IntroductionDAO {
 	 private static SqlSessionFactory ssf;
 	 
-	 static // static 블럭 : static변수에 대한 초기화 
+	 static  
 	   {
 		   try
 		   {
