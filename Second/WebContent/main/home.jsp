@@ -1,14 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR" import="com.sist.calender.*,java.util.*,com.sist.news.dao.*"%>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<jsp:useBean id="newsdao" class="com.sist.news.dao.NewsManager"/>
-<jsp:useBean id="cm" class="com.sist.calender.CalenderManager"/>
-	 <%
-	  ArrayList<NewsVO> newsList=newsdao.newsFindData();
-	 ArrayList<NewsVO> dt_List=newsdao.newsDetailData();
-    ArrayList<CalenderVO> list=cm.calenderFindData();
-    ArrayList<CalenderVO> list2=cm.calenderinfoData();
-%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -146,34 +139,20 @@
 					<h2 class="section-heading animated" data-animation="bounceInUp">RECRUIT CALENDAR</h2>
 					<table class="table table-striped">
 					 <tr>
-   <% 
-      for(CalenderVO vo:list){
-    	  %>
-    	  <th width="250px" style="text-align: center;"><%=vo.getDay() %></th>
-    	  <%
-      }
-    	  %> 
+    	  <c:forEach var="i" begin="0" end="6">
+    	    <th width="250px" style="text-align: center;">${cfList[i].day }</th>
+    	  </c:forEach>
     	  </tr>
     	  <tr>
-    	  <% 
-    	  int no=0;
-    	  for(int i=0;i<7;i++){
-    		  %>
+    		  <c:forEach var="i" begin="0" end="6">
     	  <td>
     	  <dl>
-    	   <% 
-      for(int j=0;j<7;j++){
-    	  %>
-    	  <dd><%=list2.get(no).getData() %></dd>
-    	  <%
-    	  no++;
-      }
-    	  %> 
+    	  <c:forEach var="j" begin="0" end="6">
+    	  <dd>${ciList[(i*7)+j].data }</dd>
+    	  </c:forEach>
     	    </dl>
     	  </td>
-    	  <%
-    	  }
-    	  %>
+    	  </c:forEach>
  </tr> 
  	
 
@@ -263,60 +242,49 @@
 						<div class="row">
 						<div class="col-md-2">
 						</div>
-						<%
-						for(int i=0;i<4;i++){
-								
-							
-						%>
-						<a data-toggle="modal" data-target="#myModal<%=i%>">
+						<c:forEach var="i" begin="0" end="3">
+						<a data-toggle="modal" data-target="#myModal${i }">
 								<div class="col-md-2">
 								<div class="box">
 									<div class="box-gray aligncenter" style="height: 235px">
 										<div class="icon">
-											<img src="<%=newsList.get(i).getNewsImg() %>" width="100%"/>
+											<img src="${nfList[i].newsImg }" width="100%"/>
 										</div>
 										<p>
 										<center>
-										<strong><%=newsList.get(i).getSubject() %></strong>
+										<strong>${nfList[i].subject }</strong>
 										</center>
 										</p>
 									</div>
 								</div>
 							</div>
 							</a>
-							
-							<%
-							
-						}
-							%>
+							</c:forEach>
 							<div class="col-md-2">
 						</div>
 							</div>
 						<div class="row">
 						<div class="col-md-2">
 						</div>
-						<%
-						for(int i=4;i<8;i++){
-						%>
-						<a data-toggle="modal" data-target="#myModal<%=i%>">
+						<c:forEach var="i" begin="4" end="7">
+						
+						<a data-toggle="modal" data-target="#myModal${i }">
 							<div class="col-md-2">
 								<div class="box">
 									<div class="box-gray aligncenter" style="height: 235px">
 										<div class="icon">
-											<img src="<%=newsList.get(i).getNewsImg() %>" width="100%"/>
+											<img src="${nfList[i].newsImg }" width="100%"/>
 										</div>
 										<p>
 										<center>
-											<strong><%=newsList.get(i).getSubject() %></strong>
+											<strong>${nfList[i].subject }</strong>
 											</center>
 										</p>
 									</div>
 								</div>
 							</div>
 							</a>
-							<%
-						}
-							%>
+							</c:forEach>
 							<div class="col-md-2">
 						</div>
 					</div>
@@ -388,21 +356,19 @@
 	</div>
 	</section>
 	
-	 <%
-	for(int i=0;i<8;i++){
-	%>
-	  <div class="modal fade" id="myModal<%=i %>" role="dialog">
+	<c:forEach var="i" begin="0" end="7">
+	  <div class="modal fade" id="myModal${i }" role="dialog">
     <div class="modal-dialog" style="width: 800px">
     
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title"><%=dt_List.get(i).getDt_title() %></h4>
+          <h4 class="modal-title">${ndList[i].dt_title }</h4>
         </div>
         <div class="modal-body" style="width: 100%">
         <div class="viewWrap" id="view_text">
-          <p><%=dt_List.get(i).getDt_info() %></p>
+          <p>${ndList[i].dt_info }</p>
           </div>
         </div>
         <div class="modal-footer">
@@ -412,10 +378,7 @@
     
     </div>
   </div>
-
-    <%
-      }
-      %> 
+</c:forEach>
 
 
 

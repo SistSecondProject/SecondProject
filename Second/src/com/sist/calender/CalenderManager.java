@@ -6,11 +6,6 @@ import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 public class CalenderManager {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-CalenderManager cm=new CalenderManager();
-cm.calenderFindData();
-	}
 	public ArrayList<CalenderVO> calenderFindData(){
 		ArrayList<CalenderVO> list=new ArrayList<CalenderVO>();
 	try {

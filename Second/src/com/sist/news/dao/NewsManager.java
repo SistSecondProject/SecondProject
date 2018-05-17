@@ -23,13 +23,19 @@ public class NewsManager {
 			Elements subject = doc.select("ul.joodJobList li dl dt a");
 			Elements img = doc.select("ul.joodJobList li p.thumb a img");
 			Elements news_link = doc.select("ul.joodJobList li dl dt a");
+			int no=0;
 			for (int i = 0; i < 8; i++) {
 
 				NewsVO vo = new NewsVO();
 				vo.setSubject(subject.get(i).text());
-				vo.setNewsImg(img.get(i).attr("src"));
+				if((img.get(no).attr("src")).equals("http://i.jobkorea.kr/content/images/starter/star_icon_new02.png")) {
+					no++;
+				}
+				vo.setNewsImg(img.get(no).attr("src"));
+				
 				vo.setNews_link(news_link.get(i).attr("href"));
 				list.add(vo);
+				no++;
 			}
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
