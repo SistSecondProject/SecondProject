@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -49,6 +51,7 @@
 <body>
 <div class="col-lg-6 col-sm6"> 
     </div>
+    <br>
     <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
         <div class="btn-group" role="group">
             <button type="button" id="stars" class="btn" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-star" ></span>
@@ -137,42 +140,36 @@
         
         <div class="tab-pane fade in" id="tab2">
              <table class="table">
-    		<thead>
 		      <tr>
-		        <th>力格</th>
-		        <th>累己老</th>
+		        <th class="text-center">锅龋</th>
+		        <th class="text-center">力格</th>
+		        <th class="text-center">累己老</th>
 		      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>John</td>
-        <td>Doe</td>
-      
-      </tr>
-      <tr>
-        <td>Mary</td>
-        <td>Moe</td>
-        
-      </tr>
-    </tbody>
+      <c:forEach var="vo" items="${list }">
+		  <tr>
+          <td class="text-center">${vo.no }</td>
+          <td class="text-center">
+           <a href="#">${vo.content}</a>
+          </td>
+          <td class="text-center">
+           <fmt:formatDate value="${vo.regdate }" pattern="yyyy-MM-dd"/>
+          </td>
+         </tr> 
+		      
+	</c:forEach>
+    
   </table>
   
   
         </div>
       </div>
       
-        <div class="iva-pagination clearfix">
-    <div class="iva-page6">
-      <a href="#"><i class="fa fa-chevron-left"></i></a>
-      <a href="#">1</a>
-      <a class="active" href="#">2</a>
-      <a href="#">3</a>
-      <a href="#">4</a>
-      <a href="#">5</a>
-      <a href="#">6</a>
-      <a href="#"><i class="fa fa-chevron-right"></i></a>
-    </div>
-</div>
+      <td class="text-right">
+            <a href="#" class="btn btn-sm btn-primary">⒏</a>
+            <a href="#" class="btn btn-sm btn-primary">⒑</a>
+            &nbsp;&nbsp;&nbsp;${curpage } page / ${totalpage } pages
+			
+         </td>
     </div>
 </body>
 </html>

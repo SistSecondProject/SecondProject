@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.sist.dao.into-mapper">
+
+ <select id="infoListData" resultType="IntroductionVO" parameterType="java.util.Map">
+     SELECT userid,no,title,regdate
+     FROM (SELECT userid,no,content,regdate 
+     FROM User_Introduction ORDER BY no DESC))
+     WHERE num BETWEEN #{start} AND #{end}
+     
+         WHERE num BETWEEN ? AND ?
+         ps.setInt(1,map.get("start"))
+         ps.setInt(2,map.get("end"))
+     
+   </select>
+ 
+     <!-- 총페이지 읽기 -->
+    
+   <select id="infoTotalPage" resultType="int">
+     SELECT CEIL(COUNT(*)/10) FROM User_Introduction
+   </select> 
+
+   <!-- 내용 추가 -->   
+   <insert id="infoInsert" parameterType="IntroductionVO">
+     INSERT INTO User_Introduction VALUES(
+       (SELECT NVL(MAX(no)+1,1) FROM User_Introduction),
+       	#{content},SYSDATE
+     )
+   </insert>
+   
+  <!--  
+   content(내용보기)
+   <sql id="where-no">
+     WHERE no=#{no}
+   </sql>
+ 
+   <select id="infoContentData" resultType="IntroductionVO" parameterType="int">
+     SELECT no,title,subcontent,content,regdate
+     FROM User_Introduction
+     <include refid="where-no"/>
+   </select>
+   
+    수정하기 : 먼저 비밀 번호를 갖고 들어온다.
+   <select id="boardGetPwd" resultType="String" parameterType="int">
+   SELECT pwd FROM User_Introduction
+   <include refid="where-no"/>
+   </select>
+   
+   <update id="intoUpdate" parameterType="BoardVO">
+   UPDATE User_Introduction SET
+   title=#{title},subcontent=#{subcontent},content=#{content}
+   WHERE no=#{no}
+   </update>
+   
+    -->
+   
+</mapper>

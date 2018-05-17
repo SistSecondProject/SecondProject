@@ -11,6 +11,7 @@ public class MainModel {
 	public String mainListData(HttpServletRequest request)
 	{
 		request.setAttribute("home_jsp", "home.jsp");
+		
 		return "main.jsp";
 	}
 	
