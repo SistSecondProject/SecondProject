@@ -64,11 +64,64 @@
 									<li><a href="main.jsp?mode=5">자유게시판</a></li>
 									<!-- 	<li><a href="pricingbox.html">Pricing box</a></li> -->
 								</ul></li>
-						</ul>
-					</div>
+						<li><a data-target="#myModal" data-toggle="modal" href="#myModal">로그인</a> 
+						<!-- 모달 팝업 -->
+							<div style="z-index:9999" class="modal fade" id="myModal" tabindex="-1" role="dialog"
+								aria-labelledby="myModalLabel" aria-hidden="true">
+
+								<div class="modal-dialog modal-sm">
+
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal"
+												aria-label="Close">
+												<span style="font-size: 1.5em" aria-hidden="true">×</span>
+											</button>
+											<h3 id="myModalLabel">Login</h3>
+										</div>
+										<!-- 모달header부분 끝  -->
+
+										<div class="well login-box">
+											<form class="login-form">
+												<div class="form-group">
+													<label for="exampleInputEmail1">&nbsp;ID</label> <input
+														type="text" name="id" class="form-control" placeholder="">
+
+												</div>
+												<div class="form-group">
+													<label for="exampleInputPassword1">&nbsp;Password</label> <input
+														type="password" name="pwd" class="form-control"
+														placeholder="">
+												</div>
+												<div class="form-group text-center">
+													<input type="submit"
+														class="btn btn-warning btn-login-submit" value="login"
+														style="width: 100%;" />
+												</div>
+												<!-- form-group// -->
+												<p class="text-center">
+													<a href="../member/join.jsp"> <span
+														class="glyphicon glyphicon-ok"></span>&nbsp;회원가입
+													</a>
+												</p>
+												<hr>
+												<p class="text-left" style="color: gray">
+													&copy; Ready & Start All rights reserved. <br>
+													&nbsp;&nbsp;&nbsp;&nbsp;Hosting by ready & start
+												</p>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+							</li>
+							</ul>
 				</div>
 			</div>
-		</header>
+
+		</div>
+	</div>
+
 		<!-- end header -->
 
 		<!-- content -->
@@ -76,86 +129,71 @@
 		<!-- content end -->
 
 		<footer>
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-3">
-						<div class="widget">
-							<h5 class="widgetheading">Get in touch with us</h5>
-							<address>
-					<strong>Moderna company Inc</strong><br>
-					 Modernbuilding suite V124, AB 01<br>
-					 Someplace 16425 Earth </address>
-							<p>
-								<i class="icon-phone"></i> (123) 456-7890 - (123) 555-7891 <br>
-								<i class="icon-envelope-alt"></i> email@domainname.com
-							</p>
-						</div>
-					</div>
-					<div class="col-lg-3">
-						<div class="widget">
-							<h5 class="widgetheading">Pages</h5>
-							<ul class="link-list">
-								<li><a href="#">Press release</a></li>
-								<li><a href="#">Terms and conditions</a></li>
-								<li><a href="#">Privacy policy</a></li>
-								<li><a href="#">Career center</a></li>
-								<li><a href="#">Contact us</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-lg-3">
-						<div class="widget">
-							<h5 class="widgetheading">Latest posts</h5>
-							<ul class="link-list">
-								<li><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></li>
-								<li><a href="#">Pellentesque et pulvinar enim. Quisque at tempor ligula</a></li>
-								<li><a href="#">Natus error sit voluptatem accusantium doloremque</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-lg-3">
-						<div class="widget">
-							<h5 class="widgetheading">Flickr photostream</h5>
-							<div class="flickr_badge">
-								<script type="text/javascript" src="https://www.flickr.com/badge_code_v2.gne?count=8&amp;display=random&amp;size=s&amp;layout=x&amp;source=user&amp;user=34178660@N03"></script>
-							</div>
-							<div class="clear">
-							</div>
-						</div>
-					</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-3">
+				<div class="widget">
+					<h5 class="widgetheading">Get in touch with us</h5>
+					<address>
+						<strong>쌍용강북교육센터</strong><br> 강북 서울특별시 마포구 월드컵북로21<br>
+						풍성빌딩 2,3,4층
+					</address>
+					<p>
+						<i class="icon-phone"></i> Tel 02)336-8546~8 <br> <i
+							class="icon-envelope-alt"></i> Fax 02)334-5405
+					</p>
 				</div>
 			</div>
-			<div id="sub-footer">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-6">
-							<div class="copyright">
-								<p>&copy; Moderna Theme. All right reserved.</p>
-								<div class="credits">
-									<!--
-                    All the links in the footer should remain intact.
-                    You can delete the links only if you purchased the pro version.
-                    Licensing information: https://bootstrapmade.com/license/
-                    Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Moderna
-                  -->
-									<a href="https://bootstrapmade.com/">Free Bootstrap Themes</a> by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-6">
-							<ul class="social-network">
-								<li><a href="#" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-								<li><a href="#" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-								<li><a href="#" data-placement="top" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
-								<li><a href="#" data-placement="top" title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
-								<li><a href="#" data-placement="top" title="Google plus"><i class="fa fa-google-plus"></i></a></li>
-							</ul>
-						</div>
-					</div>
+			<div class="col-lg-3">
+				<div class="widget">
+					<h5 class="widgetheading">Pages</h5>
+					<ul class="link-list">
+						<li><a href="#">Press release</a></li>
+						<li><a href="#">Terms and conditions</a></li>
+						<li><a href="#">Privacy policy</a></li>
+						<li><a href="#">Career center</a></li>
+						<li><a href="#">Contact us</a></li>
+					</ul>
 				</div>
 			</div>
-		</footer>
+			<div class="col-lg-3">
+				<div class="widget">
+					<h5 class="widgetheading">Latest posts</h5>
+					<ul class="link-list">
+						<li><a href="#">Lorem ipsum dolor sit amet, consectetur
+								adipiscing elit.</a></li>
+						<li><a href="#">Pellentesque et pulvinar enim. Quisque at
+								tempor ligula</a></li>
+						<li><a href="#">Natus error sit voluptatem accusantium
+								doloremque</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-lg-3">
+				<div class="widget">
+					<h5 class="widgetheading">Ready & Start photostream</h5>
+					<div class="flickr_badge">
+						<script type="text/javascript"
+							src="https://www.flickr.com/badge_code_v2.gne?count=8&amp;display=random&amp;size=s&amp;layout=x&amp;source=user&amp;user=34178660@N03"></script>
+					</div>
+					<div class="clear"></div>
+				</div>
+			</div>
+		</div>
 	</div>
+	<div id="sub-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="copyright">
+						<p>&copy; Ready & Start. All rights reserved.</p>
+						<div class="credits"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</footer>
 	<script src="../js/jquery.js"></script>
 	<script src="../js/jquery.easing.1.3.js"></script>
 	<script src="../js/bootstrap.min.js"></script>

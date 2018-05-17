@@ -1,14 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR" import="com.sist.calender.*,java.util.*,com.sist.news.dao.*"%>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<jsp:useBean id="newsdao" class="com.sist.news.dao.NewsManager"/>
-<jsp:useBean id="cm" class="com.sist.calender.CalenderManager"/>
-	 <%
-	  ArrayList<NewsVO> newsList=newsdao.newsFindData();
-	 ArrayList<NewsVO> dt_List=newsdao.newsDetailData();
-    ArrayList<CalenderVO> list=cm.calenderFindData();
-    ArrayList<CalenderVO> list2=cm.calenderinfoData();
-%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -114,19 +107,19 @@
 								<p>
 									입사하고 싶은 기업을 관심기업으로<br>등록하고 관심기업의 업데이트 소식을 받아보세요.
 								</p>
-								<a href="#" class="btn btn-theme">Learn More</a>
+								<a href="company.do" class="btn btn-theme">Learn More</a>
 							</div></li>
 						<li><img src="../img/slides/2.jpg" alt="" />
 							<div class="flex-caption" style="text-align: left">
 								<h3>Corporate comparison</h3>
 								<p>Ready&Start의 기업 재무평가, 재직자평판 비교서비스입니다.</p>
-								<a href="#" class="btn btn-theme">Learn More</a>
+								<a href="compare.do" class="btn btn-theme">Learn More</a>
 							</div></li>
 						<li><img src="../img/slides/3.jpg" alt="" />
 							<div class="flex-caption" style="text-align: left">
 								<h3>합격자소서</h3>
 								<p>인사담당자가 선택한 진짜 합격자소서를 확인해보세요.</p>
-								<a href="#" class="btn btn-theme">Learn More</a>
+								<a href="passinfo.do" class="btn btn-theme">Learn More</a>
 							</div></li>
 					</ul>
 				</div>
@@ -146,34 +139,20 @@
 					<h2 class="section-heading animated" data-animation="bounceInUp">RECRUIT CALENDAR</h2>
 					<table class="table table-striped">
 					 <tr>
-   <% 
-      for(CalenderVO vo:list){
-    	  %>
-    	  <th width="250px" style="text-align: center;"><%=vo.getDay() %></th>
-    	  <%
-      }
-    	  %> 
+    	  <c:forEach var="i" begin="0" end="6">
+    	    <th width="250px" style="text-align: center;">${cfList[i].day }</th>
+    	  </c:forEach>
     	  </tr>
     	  <tr>
-    	  <% 
-    	  int no=0;
-    	  for(int i=0;i<7;i++){
-    		  %>
+    		  <c:forEach var="i" begin="0" end="6">
     	  <td>
     	  <dl>
-    	   <% 
-      for(int j=0;j<7;j++){
-    	  %>
-    	  <dd><%=list2.get(no).getData() %></dd>
-    	  <%
-    	  no++;
-      }
-    	  %> 
+    	  <c:forEach var="j" begin="0" end="6">
+    	  <dd>${ciList[(i*7)+j].data }</dd>
+    	  </c:forEach>
     	    </dl>
     	  </td>
-    	  <%
-    	  }
-    	  %>
+    	  </c:forEach>
  </tr> 
  	
 
@@ -263,60 +242,49 @@
 						<div class="row">
 						<div class="col-md-2">
 						</div>
-						<%
-						for(int i=0;i<4;i++){
-								
-							
-						%>
-						<a data-toggle="modal" data-target="#myModal<%=i%>">
+						<c:forEach var="i" begin="0" end="3">
+						<a data-toggle="modal" data-target="#myModal${i }">
 								<div class="col-md-2">
 								<div class="box">
 									<div class="box-gray aligncenter" style="height: 235px">
 										<div class="icon">
-											<img src="<%=newsList.get(i).getNewsImg() %>" width="100%"/>
+											<img src="${nfList[i].newsImg }" width="100%"/>
 										</div>
 										<p>
 										<center>
-										<strong><%=newsList.get(i).getSubject() %></strong>
+										<strong>${nfList[i].subject }</strong>
 										</center>
 										</p>
 									</div>
 								</div>
 							</div>
 							</a>
-							
-							<%
-							
-						}
-							%>
+							</c:forEach>
 							<div class="col-md-2">
 						</div>
 							</div>
 						<div class="row">
 						<div class="col-md-2">
 						</div>
-						<%
-						for(int i=4;i<8;i++){
-						%>
-						<a data-toggle="modal" data-target="#myModal<%=i%>">
+						<c:forEach var="i" begin="4" end="7">
+						
+						<a data-toggle="modal" data-target="#myModal${i }">
 							<div class="col-md-2">
 								<div class="box">
 									<div class="box-gray aligncenter" style="height: 235px">
 										<div class="icon">
-											<img src="<%=newsList.get(i).getNewsImg() %>" width="100%"/>
+											<img src="${nfList[i].newsImg }" width="100%"/>
 										</div>
 										<p>
 										<center>
-											<strong><%=newsList.get(i).getSubject() %></strong>
+											<strong>${nfList[i].subject }</strong>
 											</center>
 										</p>
 									</div>
 								</div>
 							</div>
 							</a>
-							<%
-						}
-							%>
+							</c:forEach>
 							<div class="col-md-2">
 						</div>
 					</div>
@@ -330,10 +298,42 @@
 		<div class="row mar-bot40">
 			<div>
 				<div class="section-header">
-				<center>
-					<h2 class="section-heading animated" data-animation="bounceInUp">NOTICE</h2>
-					<table class="table table-striped">
-					</table>
+					<center>
+						<h2 class="section-heading animated" data-animation="bounceInUp">NOTICE</h2>
+						<table class="table table-hover">
+							<tr class="warning">
+								<th width=10% class="text-center">번호</th>
+								<th width=45% class="text-center">제목</th>
+								<th width=15% class="text-center">이름</th>
+								<th width=20% class="text-center">작성일</th>
+								<th width=10% class="text-center">조회수</th>
+							</tr>
+							<c:forEach var="vo" items="${list }">
+								<tr>
+									<td width=10% class="text-center">${vo.no }</td>
+									<td width=45% class="text-left"><a
+										href="content.do?no=${vo.no }">${vo.subject }</a></td>
+									<td width=15% class="text-center">${vo.name }</td>
+									<td width=20% class="text-center"><fmt:formatDate value="${vo.regdate }" pattern="yyyy-MM-dd" /></td>
+									<td width=10% class="text-center">${vo.hit }</td>
+								</tr>
+							</c:forEach>
+						</table>
+						<table class="table table-hover">
+							<tr>
+								<td class="text-left"><select class="input">
+										<option>이름</option>
+										<option>제목</option>
+										<option>내용</option>
+								</select>&nbsp; <input type=text name=ss class="input" size=12> <input
+									type=submit class="btn btn-rounded btn-sm btn-warning" value=찾기>
+								</td>
+								<td class="text-right">
+								<a href="#" class="btn btn-sm btn-rounded btn-theme">◀</a>
+								<a href="#" class="btn btn-sm btn-rounded btn-theme">▶</a>
+									&nbsp;&nbsp;&nbsp;${curpage } page / ${totalpage } pages </td>
+							</tr>
+						</table>
 					</center>
 				</div>
 			</div>
@@ -388,21 +388,19 @@
 	</div>
 	</section>
 	
-	 <%
-	for(int i=0;i<8;i++){
-	%>
-	  <div class="modal fade" id="myModal<%=i %>" role="dialog">
+	<c:forEach var="i" begin="0" end="7">
+	  <div class="modal fade" id="myModal${i }" role="dialog">
     <div class="modal-dialog" style="width: 800px">
     
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title"><%=dt_List.get(i).getDt_title() %></h4>
+          <h4 class="modal-title">${ndList[i].dt_title }</h4>
         </div>
         <div class="modal-body" style="width: 100%">
         <div class="viewWrap" id="view_text">
-          <p><%=dt_List.get(i).getDt_info() %></p>
+          <p>${ndList[i].dt_info }</p>
           </div>
         </div>
         <div class="modal-footer">
@@ -412,10 +410,7 @@
     
     </div>
   </div>
-
-    <%
-      }
-      %> 
+</c:forEach>
 
 
 
