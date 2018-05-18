@@ -17,7 +17,7 @@ public class PassIntoModel {
 	public String compareListData(HttpServletRequest request) {
 		request.setAttribute("home_jsp", "../self/passinfo.jsp");
 		request.setAttribute("content_jsp", "../self/selftest.jsp"); //자소서 작성부분 include함.
-		
+		//제발
 	/*	String page=request.getParameter("page");
 		
 		   if(page==null)
