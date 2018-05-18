@@ -1,20 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR" import="com.sist.calender.*,java.util.*,com.sist.news.dao.*"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	pageEncoding="EUC-KR"
+	import="com.sist.calender.*,java.util.*,com.sist.news.dao.*"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>테스트2311</title>
-<script type="text/javascript">
-
-</script>
 <style type="text/css">
-.viewWrap img {
-    display: block;
-    max-width: 100%;
-    margin: 0 auto;
+.modal{
+overflow-y: auto;
+}
+.modal-open{
+overflow:auto;
+overflow-x:hidden;
 }
 </style>
 </head>
@@ -128,35 +128,36 @@
 		</div>
 	</div>
 	</section>
-	
+
 	<section id="section-about" class="section appear clearfix">
 	<div class="container" style="width: 80%">
 
 		<div class="row mar-bot40">
 			<div>
 				<div class="section-header">
-				<center>
-					<h2 class="section-heading animated" data-animation="bounceInUp">RECRUIT CALENDAR</h2>
-					<table class="table table-striped">
-					 <tr>
-    	  <c:forEach var="i" begin="0" end="6">
-    	    <th width="250px" style="text-align: center;">${cfList[i].day }</th>
-    	  </c:forEach>
-    	  </tr>
-    	  <tr>
-    		  <c:forEach var="i" begin="0" end="6">
-    	  <td>
-    	  <dl>
-    	  <c:forEach var="j" begin="0" end="6">
-    	  <dd>${ciList[(i*7)+j].data }</dd>
-    	  </c:forEach>
-    	    </dl>
-    	  </td>
-    	  </c:forEach>
- </tr> 
- 	
+					<center>
+						<h2 class="section-heading animated" data-animation="bounceInUp">RECRUIT
+							CALENDAR</h2>
+						<table class="table table-striped">
+							<tr>
+								<c:forEach var="i" begin="0" end="6">
+									<th width="250px" style="text-align: center;">${cfList[i].day }</th>
+								</c:forEach>
+							</tr>
+							<tr>
+								<c:forEach var="i" begin="0" end="6">
+									<td>
+										<dl>
+											<c:forEach var="j" begin="0" end="6">
+												<dd>${ciList[(i*7)+j].data }</dd>
+											</c:forEach>
+										</dl>
+									</td>
+								</c:forEach>
+							</tr>
 
-					</table>
+
+						</table>
 					</center>
 				</div>
 			</div>
@@ -165,9 +166,11 @@
 	</section>
 	<!-- /about -->
 	<center>
-		<h2 id="section-heading animated" data-animation="bounceInUp">SCORES & RATINGS</h2>
+		<h2 id="section-heading animated" data-animation="bounceInUp">SCORES
+			& RATINGS</h2>
 	</center>
-	<section id="parallax1" class="section" data-stellar-background-ratio="0.5">
+	<section id="parallax1" class="section"
+		data-stellar-background-ratio="0.5">
 	<div class="container">
 		<div class="row appear stats">
 			<div class="col-lg-1"></div>
@@ -222,77 +225,74 @@
 		</div>
 	</div>
 	</section>
-	
+
 	<!-- 채용 뉴스 -->
-		<section id="section-news" class="section appear clearfix">
+	<section id="section-news" class="section appear clearfix">
 	<div class="container">
 
 		<div class="row mar-bot40">
-				<div class="col-md-offset-3 col-md-6">
-					<div class="section-header">
+			<div class="col-md-offset-3 col-md-6">
+				<div class="section-header">
 					<center>
-						<h2 class="section-heading animated" data-animation="bounceInUp">CAREER NEWS</h2>
-							</center>
-						<p></p>
-					</div>
+						<h2 class="section-heading animated" data-animation="bounceInUp">CAREER
+							NEWS</h2>
+					</center>
+					<p></p>
 				</div>
 			</div>
-			</div>
-				<div class="imgs col-md-12">
-						<div class="row">
-						<div class="col-md-2">
-						</div>
-						<c:forEach var="i" begin="0" end="3">
-						<a data-toggle="modal" data-target="#myModal${i }">
-								<div class="col-md-2">
-								<div class="box">
-									<div class="box-gray aligncenter" style="height: 235px">
-										<div class="icon">
-											<img src="${nfList[i].newsImg }" width="100%"/>
-										</div>
-										<p>
-										<center>
-										<strong>${nfList[i].subject }</strong>
-										</center>
-										</p>
-									</div>
+		</div>
+	</div>
+	<div class="imgs col-md-12">
+		<div class="row">
+			<div class="col-md-2"></div>
+			<c:forEach var="i" begin="0" end="3">
+				<a data-toggle="modal" data-target="#myModal${i }">
+					<div class="col-md-2">
+						<div class="box">
+							<div class="box-gray aligncenter" style="height: 235px">
+								<div class="icon">
+									<img src="${nfList[i].newsImg }" width="100%" />
 								</div>
+								<p>
+								<center>
+									<strong>${nfList[i].subject }</strong>
+								</center>
+								</p>
 							</div>
-							</a>
-							</c:forEach>
-							<div class="col-md-2">
-						</div>
-							</div>
-						<div class="row">
-						<div class="col-md-2">
-						</div>
-						<c:forEach var="i" begin="4" end="7">
-						
-						<a data-toggle="modal" data-target="#myModal${i }">
-							<div class="col-md-2">
-								<div class="box">
-									<div class="box-gray aligncenter" style="height: 235px">
-										<div class="icon">
-											<img src="${nfList[i].newsImg }" width="100%"/>
-										</div>
-										<p>
-										<center>
-											<strong>${nfList[i].subject }</strong>
-											</center>
-										</p>
-									</div>
-								</div>
-							</div>
-							</a>
-							</c:forEach>
-							<div class="col-md-2">
 						</div>
 					</div>
+				</a>
+			</c:forEach>
+			<div class="col-md-2"></div>
+		</div>
+		<div class="row">
+			<div class="col-md-2"></div>
+			<c:forEach var="i" begin="4" end="7">
+
+				<a data-toggle="modal" data-target="#myModal${i }">
+					<div class="col-md-2">
+						<div class="box">
+							<div class="box-gray aligncenter" style="height: 235px">
+								<div class="icon">
+									<img src="${nfList[i].newsImg }" width="100%" />
+								</div>
+								<p>
+								<center>
+									<strong>${nfList[i].subject }</strong>
+								</center>
+								</p>
+							</div>
+						</div>
+					</div>
+				</a>
+			</c:forEach>
+			<div class="col-md-2"></div>
+		</div>
 	</div>
 	</section>
-	
+
 	<!-- 공지사항 -->
-		<section id="section-notice" class="section appear clearfix">
+	<section id="section-notice" class="section appear clearfix">
 	<div class="container">
 
 		<div class="row mar-bot40">
@@ -314,7 +314,8 @@
 									<td width=45% class="text-left"><a
 										href="content.do?no=${vo.no }">${vo.subject }</a></td>
 									<td width=15% class="text-center">${vo.name }</td>
-									<td width=20% class="text-center"><fmt:formatDate value="${vo.regdate }" pattern="yyyy-MM-dd" /></td>
+									<td width=20% class="text-center"><fmt:formatDate
+											value="${vo.regdate }" pattern="yyyy-MM-dd" /></td>
 									<td width=10% class="text-center">${vo.hit }</td>
 								</tr>
 							</c:forEach>
@@ -328,10 +329,10 @@
 								</select>&nbsp; <input type=text name=ss class="input" size=12> <input
 									type=submit class="btn btn-rounded btn-sm btn-warning" value=찾기>
 								</td>
-								<td class="text-right">
-								<a href="#" class="btn btn-sm btn-rounded btn-theme">◀</a>
-								<a href="#" class="btn btn-sm btn-rounded btn-theme">▶</a>
-									&nbsp;&nbsp;&nbsp;${curpage } page / ${totalpage } pages </td>
+								<td class="text-right"><a href="#"
+									class="btn btn-sm btn-rounded btn-theme">◀</a> <a href="#"
+									class="btn btn-sm btn-rounded btn-theme">▶</a>
+									&nbsp;&nbsp;&nbsp;${curpage } page / ${totalpage } pages</td>
 							</tr>
 						</table>
 					</center>
@@ -387,30 +388,30 @@
 		</div>
 	</div>
 	</section>
-	
+
 	<c:forEach var="i" begin="0" end="7">
-	  <div class="modal fade" id="myModal${i }" role="dialog">
-    <div class="modal-dialog" style="width: 800px">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">${ndList[i].dt_title }</h4>
-        </div>
-        <div class="modal-body" style="width: 100%">
-        <div class="viewWrap" id="view_text">
-          <p>${ndList[i].dt_info }</p>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    
-    </div>
-  </div>
-</c:forEach>
+		<div class="modal fade" id="myModal${i }" role="dialog">
+			<div class="modal-dialog" style="width: 800px">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">${ndList[i].dt_title }</h4>
+					</div>
+					<div class="modal-body" style="width: 100%">
+						<div class="viewWrap" id="view_text">
+							<p>${ndList[i].dt_info }</p>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</c:forEach>
 
 
 

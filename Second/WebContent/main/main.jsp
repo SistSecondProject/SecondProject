@@ -2,22 +2,22 @@
 	pageEncoding="UTF-8" import="com.sist.change.*"%>
 
 <%-- <%
-	// 화면 변경  main.jsp?mode=1
-	/*
-	     ~main.jsp
-	     => mode=null
-	        if(mode==null)
-	     ~main.jsp?mode=
-	     => mode=""
-	        if(mode=="")(X)
-	        if(mode.equals(""))(O)
-	*/
+   // 화면 변경  main.jsp?mode=1
+   /*
+        ~main.jsp
+        => mode=null
+           if(mode==null)
+        ~main.jsp?mode=
+        => mode=""
+           if(mode=="")(X)
+           if(mode.equals(""))(O)
+   */
 
-	String mode = request.getParameter("mode");
-	if (mode == null)
-		mode = "0";
-	int no = Integer.parseInt(mode);
-	String jsp = JspChange.change(no);
+   String mode = request.getParameter("mode");
+   if (mode == null)
+      mode = "0";
+   int no = Integer.parseInt(mode);
+   String jsp = JspChange.change(no);
 %> --%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -33,102 +33,114 @@
 <link href="../css/flexslider.css" rel="stylesheet" />
 <link href="../css/style.css" rel="stylesheet" />
 <link href="../css/size.css" rel="stylesheet" />
+<style type="text/css">
+body, body.modal {
+    margin-right: 0 !important;
+}
+
+body.modal {
+    overflow-y: hidden;
+}
+.glyph-icon svg {
+width:16px;
+height:16px;
+}
+</style>
 <!-- Theme skin -->
 <link href="../skins/default.css" rel="stylesheet" />
 </head>
 <body>
 	<div id="wrapper">
 		<!-- start header -->
+		
 		<header>
-			<div class="navbar navbar-default navbar-static-top">
-				<div class="container">
-					<div class="navbar-header">
-						<button type="button" class="navbar-toggle" data-toggle="collapse"
-							data-target=".navbar-collapse">
-							<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-								class="icon-bar"></span>
-						</button>
-						<a class="navbar-brand" href="main.do"><span>T</span>EST</a>
-					</div>
-					<div class="navbar-collapse collapse ">
-						<ul class="nav navbar-nav">
-							<li class="active"><a href="main.do">Home</a></li>
-							<li><a href="company.do">기업검색</a></li>
-							<li><a href="compare.do">기업비교</a></li>
-							<li><a href="passinfo.do">합격자소서</a></li>
-							<li class="dropdown"><a href="#" class="dropdown-toggle "
-								data-toggle="dropdown" data-hover="dropdown" data-delay="0"
-								data-close-others="false">커뮤니티 <b class=" icon-angle-down"></b></a>
-								<ul class="dropdown-menu">
-									<li><a href="main.jsp?mode=4">스펙평가</a></li>
-									<li><a href="main.jsp?mode=5">자유게시판</a></li>
-									<!-- 	<li><a href="pricingbox.html">Pricing box</a></li> -->
-								</ul></li>
-						<li><a data-target="#myModal" data-toggle="modal" href="#myModal">로그인</a> 
-						<!-- 모달 팝업 -->
-							<div style="z-index:9999" class="modal fade" id="myModal" tabindex="-1" role="dialog"
-								aria-labelledby="myModalLabel" aria-hidden="true">
-
-								<div class="modal-dialog modal-sm">
-
-									<div class="modal-content">
-										<div class="modal-header">
-											<button type="button" class="close" data-dismiss="modal"
-												aria-label="Close">
-												<span style="font-size: 1.5em" aria-hidden="true">×</span>
-											</button>
-											<h3 id="myModalLabel">Login</h3>
-										</div>
-										<!-- 모달header부분 끝  -->
-
-										<div class="well login-box">
-											<form class="login-form">
-												<div class="form-group">
-													<label for="exampleInputEmail1">&nbsp;ID</label> <input
-														type="text" name="id" class="form-control" placeholder="">
-
-												</div>
-												<div class="form-group">
-													<label for="exampleInputPassword1">&nbsp;Password</label> <input
-														type="password" name="pwd" class="form-control"
-														placeholder="">
-												</div>
-												<div class="form-group text-center">
-													<input type="submit"
-														class="btn btn-warning btn-login-submit" value="login"
-														style="width: 100%;" />
-												</div>
-												<!-- form-group// -->
-												<p class="text-center">
-													<a href="../member/join.jsp"> <span
-														class="glyphicon glyphicon-ok"></span>&nbsp;회원가입
-													</a>
-												</p>
-												<hr>
-												<p class="text-left" style="color: gray">
-													&copy; Ready & Start All rights reserved. <br>
-													&nbsp;&nbsp;&nbsp;&nbsp;Hosting by ready & start
-												</p>
-											</form>
-										</div>
-									</div>
-								</div>
-							</div>
-							</li>
-							</ul>
+		<div class="navbar navbar-default navbar-static-top">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse"
+						data-target=".navbar-collapse">
+						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="main.do"><span>T</span>EST</a>
+				</div>
+				<div class="navbar-collapse collapse ">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="main.do">Home</a></li>
+						<li><a href="company.do">기업검색</a></li>
+						<li><a href="compare.do">기업비교</a></li>
+						<li><a href="passinfo.do">합격자소서</a></li>
+						<li class="dropdown"><a href="#" class="dropdown-toggle "
+							data-toggle="dropdown" data-hover="dropdown" data-delay="0"
+							data-close-others="false">커뮤니티 <b class=" icon-angle-down"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="main.jsp?mode=4">스펙평가</a></li>
+								<li><a href="main.jsp?mode=5">자유게시판</a></li>
+								<!--    <li><a href="pricingbox.html">Pricing box</a></li> -->
+							</ul></li>
+						<li><a href="#" data-toggle="modal" data-target="#myModal">│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;로그인</a></li>
+					</ul>
 				</div>
 			</div>
 
 		</div>
 	</div>
+	<!-- end header -->
+	<!-- 모달 팝업 -->
+	
+	<div style="z-index: 9999" class="modal fade" id="myModal"
+		tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+		aria-hidden="true">
 
-		<!-- end header -->
+		<div class="modal-dialog modal-sm">
 
-		<!-- content -->
-		<jsp:include page="${home_jsp }"></jsp:include>
-		<!-- content end -->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span style="font-size: 1.5em" aria-hidden="true">×</span>
+					</button>
+					<h3 id="myModalLabel">Login</h3>
+				</div>
 
-		<footer>
+				<!-- 모달header부분 끝  -->
+
+				<div class="well login-box">
+					<form class="login-form">
+						<div class="form-group">
+							<label for="exampleInputEmail1">&nbsp;ID</label> <input
+								type="text" name="id" class="form-control" placeholder="">
+
+						</div>
+						<div class="form-group">
+							<label for="exampleInputPassword1">&nbsp;Password</label> <input
+								type="password" name="pwd" class="form-control" placeholder="">
+						</div>
+						<div class="form-group text-center">
+							<input type="submit" class="btn btn-warning btn-login-submit"
+								value="login" style="width: 100%;" />
+						</div>
+						<!-- form-group// -->
+						<p class="text-center">
+							<a href="../member/join.jsp">
+								<i id="glyphicon glyphicon-ok"></i>&nbsp;회원가입
+							</a>
+						</p>
+						<hr>
+						<p class="text-left" style="color: gray">
+							&copy; Ready & Start All rights reserved. <br>
+							&nbsp;&nbsp;&nbsp;&nbsp;Hosting by ready & start
+						</p>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- content -->
+	<jsp:include page="${home_jsp }"></jsp:include>
+	<!-- content end -->
+
+	<footer>
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-3">
