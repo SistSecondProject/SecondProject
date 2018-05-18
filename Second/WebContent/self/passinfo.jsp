@@ -149,12 +149,12 @@
            <a href="#">${vo.content }</a>
           </td>
           
-          <td  class="text-center" align="center">
+          <td class="text-center" align="center">
            <%-- <fmt:formatDate value="${vo.regdate }" pattern="yyyy-MM-dd"/> --%>
           </td>
       
          </tr>
-        </c:forEach>
+        </c:forEach>               
       </table>
         </div>
       </div>

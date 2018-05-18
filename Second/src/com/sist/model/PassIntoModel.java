@@ -22,7 +22,7 @@ public class PassIntoModel {
 		
 		   if(page==null)
 			   page="1";
-		   int curpage=Integer.parseInt(page);
+		   int curpage=Integer.parseInt(page);     
 		   int rowSize=10;
 		   // rownum = 1
 		   // 1~10

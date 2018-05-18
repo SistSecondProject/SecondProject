@@ -15,7 +15,8 @@ public class PassVO {
 	private String position; // 지원분야 
 	private String recruitmenttitle; //  몇년도 자소서인지(채용명) --자소서 제목 *
     private String infocode;// 자소서 번호(회사코드 : companycode)*
-    private String content;//내용 --전체*	
+    private String content;//내용 --전체*
+    
 	public int getNo() {
 		return no;
 	}
