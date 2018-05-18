@@ -38,6 +38,7 @@
      <include refid="where-no"/>
    </select>
    
+   
     수정하기 : 먼저 비밀 번호를 갖고 들어온다.
    <select id="boardGetPwd" resultType="String" parameterType="int">
    SELECT pwd FROM User_Introduction
