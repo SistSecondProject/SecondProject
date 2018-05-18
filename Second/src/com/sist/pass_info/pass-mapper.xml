@@ -4,13 +4,13 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 
-<mapper namespace="com.sist.dao.into-mapper">
+<mapper namespace="com.sist.dao.pass-mapper">
 
- <select id="intoListData" resultType="IntroductionVO" parameterType="java.util.Map">
-     SELECT userid,no,content,regdate,num
-     FROM (SELECT userid,no,content,regdate,rownum as num
-     FROM (SELECT userid,no,content,regdate 
-     FROM User_Introduction ORDER BY no DESC))
+ <select id="passListData" resultType="PassVO" parameterType="java.util.Map">
+     SELECT no,position,recruitmenttitle,num
+     FROM (SELECT no,position,recruitmenttitle,rownum as num
+     FROM (SELECT no,position,recruitmenttitle
+     FROM Pass_Introduction ORDER BY no DESC))
      WHERE num BETWEEN #{start} AND #{end}
      
         <!--  WHERE num BETWEEN ? AND ?
@@ -22,18 +22,9 @@
  
      <!-- 총페이지 읽기 -->
     
-   <select id="intoTotalPage" resultType="int">
-     SELECT CEIL(COUNT(*)/10) FROM User_Introduction
+   <select id="passTotalPage" resultType="int">
+     SELECT CEIL(COUNT(*)/10) FROM Pass_Introduction
    </select> 
-
-   <!-- 내용 추가 --> 
-     
-   <insert id="intoInsert" parameterType="IntroductionVO">
-     INSERT INTO User_Introduction VALUES(
-       (SELECT NVL(MAX(no)+1,1) FROM User_Introduction),
-       	#{content},SYSDATE
-     )
-   </insert>
    
   <!--  
    content(내용보기)

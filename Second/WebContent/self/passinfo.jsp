@@ -101,79 +101,56 @@
 	</div>
        
         <div class="tab-pane fade in active" id="tab1">
-           <table class="table">
-    		<thead>
-    		<center>
-		      <tr>
-		        <th>기업명</th>
-		        <th>지원 분야</th>
-		        <th>제목</th>
-		      </tr>
-		      </center>
-    </thead>
-    <tbody>
-     <tr>
-        <td><a href="#" data-toggle="modal" data-target="#myModal">삼성</a></td>
-        <td>Doe</td>
-        <td>john@example.com</td>
-      </tr>
-      <tr>
-        <td><a href="#" data-toggle="modal" data-target="#myModal">샘표</a></td>
-        <td>Moe</td>
-        <td>mary@example.com</td>
-      </tr>
-      <tr>
-        <td><a href="#" data-toggle="modal" data-target="#myModal">gs</a></td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
-      </tr>
-      <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
-      </tr>
-      <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
-      </tr>
-      <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
-      </tr>
-      <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
-      </tr>
-      
-    </tbody>
-  </table>
+    	     <table class="table table-hover">
+        <tr class="success">
+        
+         <th width=10% class="text-center" align="center">번호</th>
+         <th width=30% class="text-center" align="center">지원분야</th>
+         <th width=40% class="text-center" align="center">제목</th>
+         
+        </tr>
+        <c:forEach var="vo" items="${list }">
+         <tr>
+          <td class="text-center" align="center">
+          ${vo.no }
+          </td>
+ 
+          <td class="text-center" align="center">
+           ${vo.position }
+          </td>
+          
+          <td class="text-center" align="center">
+           ${vo.recruitmenttitle } 
+          </td>
+         </tr>
+        </c:forEach>
+      </table>
   
   
       
         </div>
     
-        
         <div class="tab-pane fade in" id="tab2">
              
     	     <table class="table table-hover">
         <tr class="success">
-         <th class="text-center">번호</th>
-         <th class="text-center">제목</th>
-         <th class="text-center">작성일</th>
+        
+         <th width=10% class="text-center"  align="center">번호</th>
+         <th width=40% class="text-center" align="center">제목</th>
+         <th width=20% class="text-center" align="center">작성일</th>
          
         </tr>
         <c:forEach var="vo" items="${list }">
          <tr>
-          <td class="text-center">${vo.no }</td>
-          <td class="text-center">
+          <td class="text-center" align="center">
+          ${vo.no }</a>
+          </td>
+          <td class="text-center" align="center">
            <a href="#">${vo.content }</a>
           </td>
           
-          <td width=20% class="text-center">
-           <fmt:formatDate value="${vo.regdate }" pattern="yyyy-MM-dd"/>
+          <td  class="text-center" align="center">
+           <%-- <fmt:formatDate value="${vo.regdate }" pattern="yyyy-MM-dd"/> --%>
           </td>
       
          </tr>
@@ -194,8 +171,8 @@
 		 					
 	 <div class="col-lg-5">
 			  <!-- 자소서 작성부분 첨부 -->
-                <jsp:include page="selftest.jsp"></jsp:include> 
-                 <%--  <jsp:include page="${passinfo_jsp }"></jsp:include --%>   
+                
+                   <jsp:include page="${content_jsp }"></jsp:include>  
 				</div>
  			
 				</div>

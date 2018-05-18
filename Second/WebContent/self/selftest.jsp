@@ -5,7 +5,30 @@
 <head>
   <meta charset="EUC-KR">
   <title>Drop Down The Text with jQuery :D </title>
-  
+<script type="text/javascript">
+$(function(){
+	 $.ajax({
+		 type:'post',
+		 url:'passinfo.do',
+		 success:function(res)
+		 {
+			 $('#print').html(res); 
+		 }
+	   });
+	   $('#save').click(function(){
+		   $.ajax({
+			   type:'post',
+		       url:'passinfo.do',
+		       data:{"content":content},
+		       success:function(res)
+		       {
+		    	   $('#print').html(res);
+		       }
+		   }); 
+	   })
+});
+
+</script>  
 <style>
 body
 {
@@ -58,7 +81,7 @@ div#p
 
 <body>
     <br>
-    <form method=post action="insert_ok.do"> 
+    
     <div id="side" class="ct" style="font-family:arial;">항목 1<span style="float:right">+</span></div>
          <div class="p">
          <div id="p"><textarea rows="2" cols="95" placeholder="항목 또는 제목을 입력하세요" ></textarea></div>
@@ -77,10 +100,10 @@ div#p
          <div id="p"><textarea rows="2" cols="95" placeholder="항목 또는 제목을 입력하세요" ></textarea></div>
          <textarea rows="11" cols="95" placeholder="내용을 입력하세요" style="margin: 0px;" height="236px;" width="283px;"></textarea>
          </div>
-         </form>
+        
          <br>
          <tr>
-        <td colspan="4" class="text-center">
+        <td colspan="4" class="text-center" id="save">
          <input type="submit" class="btn btn-sm btn-primary"
           value="저장" id="writeBtn">
         </td>

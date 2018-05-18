@@ -1,4 +1,4 @@
-package com.sist.self_introduction;
+package com.sist.pass_info;
 import java.io.Reader;
 import java.util.*;
 
@@ -8,7 +8,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 
-public class IntroductionDAO {
+public class PassinfoDAO {
 	 private static SqlSessionFactory ssf;
 	 
 	 static  
@@ -30,9 +30,9 @@ public class IntroductionDAO {
 	
 	   // 목록 읽기 (저장된 내용 출력)
 	   //            리턴형  (resultType)   매개변수(parameterType)
-	   public static List<IntroductionVO> intoListData(Map map) 
+	   public static List<PassVO> passListData(Map map) 
 	   {
-		   List<IntroductionVO> list=new ArrayList<IntroductionVO>();
+		   List<PassVO> list= new ArrayList<PassVO>();
 		   SqlSession session=null;//connection연결=>sql문장수행 
 		   try
 		   {
@@ -41,7 +41,7 @@ public class IntroductionDAO {
 			   // openSession() => openSession(true)
 			   // autoCommit(false)   autoCommit(true)
 			   // 실행 결과값 받기 
-			   list=session.selectList("intoListData", map);
+			   list=session.selectList("passListData", map);
 		   }catch(Exception ex)
 		   {
 			   System.out.println(ex.getMessage());
@@ -54,7 +54,7 @@ public class IntroductionDAO {
 		   return list;
 	   }
 	   
-	   public static int intoTotalPage()
+	   public static int passTotalPage()
 	   {
 		   int total=0;
 		   SqlSession session=null;
@@ -62,7 +62,7 @@ public class IntroductionDAO {
 		   {
 			   // connection 주소 읽기
 			   session=ssf.openSession();
-			   total=session.selectOne("intoTotalPage");
+			   total=session.selectOne("passTotalPage");
 		   }catch(Exception ex)
 		   {
 			   System.out.println(ex.getMessage());
@@ -76,7 +76,7 @@ public class IntroductionDAO {
 		   return total;
 	   }
 	   
-	   // 추가    
+	 /*  // 추가    
 	   public static void intoInsert(IntroductionVO vo)
 	   {
 		   SqlSession session=null;
@@ -94,7 +94,7 @@ public class IntroductionDAO {
 			   if(session!=null)
 				   session.close();
 		   }
-	   }
+	   }*/
 	   
 /*	   //내용 보기
 	   public static IntroductionVO intoContent(int no)
