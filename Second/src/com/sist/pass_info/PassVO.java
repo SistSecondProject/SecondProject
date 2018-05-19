@@ -14,9 +14,8 @@ public class PassVO {
 	private String companyName; // 회사명
 	private String position; // 지원분야 
 	private String recruitmenttitle; //  몇년도 자소서인지(채용명) --자소서 제목 *
-    private String infocode;// 자소서 번호(회사코드 : companycode)*
+    private String companycode;// 자소서 번호(회사코드 : companycode)*
     private String content;//내용 --전체*
-    
 	public int getNo() {
 		return no;
 	}
@@ -41,11 +40,11 @@ public class PassVO {
 	public void setRecruitmenttitle(String recruitmenttitle) {
 		this.recruitmenttitle = recruitmenttitle;
 	}
-	public String getInfocode() {
-		return infocode;
+	public String getCompanycode() {
+		return companycode;
 	}
-	public void setInfocode(String infocode) {
-		this.infocode = infocode;
+	public void setCompanycode(String companycode) {
+		this.companycode = companycode;
 	}
 	public String getContent() {
 		return content;
@@ -53,6 +52,8 @@ public class PassVO {
 	public void setContent(String content) {
 		this.content = content;
 	}
+    
+	
 
 	
     

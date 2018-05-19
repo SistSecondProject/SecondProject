@@ -104,7 +104,7 @@
     	     <table class="table table-hover">
         <tr class="success">
         
-         <th width=10% class="text-center" align="center">번호</th>
+         <th width=10% class="text-center" align="center">기업명</th>
          <th width=30% class="text-center" align="center">지원분야</th>
          <th width=40% class="text-center" align="center">제목</th>
          
