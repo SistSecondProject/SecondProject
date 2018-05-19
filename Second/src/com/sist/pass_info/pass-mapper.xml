@@ -10,7 +10,7 @@
      SELECT no,position,recruitmenttitle,num
      FROM (SELECT no,position,recruitmenttitle,rownum as num
      FROM (SELECT no,position,recruitmenttitle
-     FROM Pass_Introduction ORDER BY no ASC))
+     FROM Pass_Introduction ORDER BY no DESC))
      WHERE num BETWEEN #{start} AND #{end}   
     
      
