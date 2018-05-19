@@ -7,12 +7,12 @@
 <mapper  namespace="com.sist.dao.pass-mapper">
 
  <select id="passListData" resultType="PassVO" parameterType="java.util.Map">
-       
      SELECT no,position,recruitmenttitle,num
      FROM (SELECT no,position,recruitmenttitle,rownum as num
      FROM (SELECT no,position,recruitmenttitle
      FROM Pass_Introduction ORDER BY no ASC))
-     WHERE num BETWEEN #{start} AND #{end}
+     WHERE num BETWEEN #{start} AND #{end}   
+    
      
      <!-- CONSTRAINT pi_comcode_fk FOREIGN KEY(companyCode) REFERENCES Company(companyCode)  on delete cascade); -->
         <!--  WHERE num BETWEEN ? AND ?
