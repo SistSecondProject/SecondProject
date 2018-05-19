@@ -15,6 +15,7 @@ import java.util.*;
 public class PassIntoModel {
 	@RequestMapping("main/passinfo.do")
 	public String compareListData(HttpServletRequest request) {
+		
 		request.setAttribute("home_jsp", "../self/passinfo.jsp");
 		request.setAttribute("content_jsp", "../self/selftest.jsp"); //자소서 작성부분 include함.
 		//제발
@@ -125,7 +126,7 @@ public class PassIntoModel {
 	   @RequestMapping("main/content_jsp")
 	   public String intoInsert(HttpServletRequest request)
 	   {
-		   
+		   List
 		   return "redirect:main/passinfo.do";
 	   }
 	   

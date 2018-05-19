@@ -30,4 +30,16 @@ public class HomeModel {
 	  
 	  return "main.jsp";
 }
+  @RequestMapping("main/calender_dt.do")
+  public String caldt_page(HttpServletRequest request)throws Exception {
+	  request.setCharacterEncoding("EUC-KR");
+	  String link=request.getParameter("link");
+	 CalenderManager cm=new CalenderManager();
+	 
+	 List<Calender_dtVO> list=cm.calenderDetailData(link);
+	 request.setAttribute("list", list);
+	  
+	  
+	  return "calender_dt.jsp";
+}
 }

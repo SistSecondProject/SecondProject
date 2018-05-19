@@ -8,6 +8,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>테스트2311</title>
+<script type="text/javascript">
+    function tar(n){
+        $('html, body').stop().animate({
+            scrollTop : $('div.scroll').eq(n).offset().top
+        },1500);
+    }
+    
+    
+</script>
+
+
 <style type="text/css">
 .modal{
 overflow-y: auto;
@@ -23,14 +34,14 @@ overflow-x:hidden;
 	<div class="intro-content">
 		<h2>Welcome to Ready&Start!</h2>
 		<div>
-			<a href="#content" class="btn-get-started scrollto">Get Started</a>
+			<a href="#" onclick="tar(0)" class="btn-get-started scrollto">Get Started</a>
 		</div>
 	</div>
 	</section>
 	<!-- about -->
 
 	<section id="content">
-	<div class="container">
+	<div class="container scroll">
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="row">
@@ -44,7 +55,7 @@ overflow-x:hidden;
 
 							</div>
 							<div class="box-bottom">
-								<a href="#section-about">Learn more</a>
+								<a href="#" onclick="tar(1)">Learn more</a>
 							</div>
 						</div>
 					</div>
@@ -58,7 +69,7 @@ overflow-x:hidden;
 
 							</div>
 							<div class="box-bottom">
-								<a href="#section-heading animated">Learn more</a>
+								<a href="#" onclick="tar(1)">Learn more</a>
 							</div>
 						</div>
 					</div>
@@ -72,7 +83,7 @@ overflow-x:hidden;
 
 							</div>
 							<div class="box-bottom">
-								<a href="#section-news">Learn more</a>
+								<a href="#" onclick="tar(2)">Learn more</a>
 							</div>
 						</div>
 					</div>
@@ -85,7 +96,7 @@ overflow-x:hidden;
 								</div>
 							</div>
 							<div class="box-bottom">
-								<a href="#section-notice">Learn more</a>
+								<a href="#" onclick="tar(3)">Learn more</a>
 							</div>
 						</div>
 					</div>
@@ -130,7 +141,7 @@ overflow-x:hidden;
 	</section>
 
 	<section id="section-about" class="section appear clearfix">
-	<div class="container" style="width: 80%">
+	<div class="container scroll" style="width: 80%">
 
 		<div class="row mar-bot40">
 			<div>
@@ -149,7 +160,7 @@ overflow-x:hidden;
 									<td>
 										<dl>
 											<c:forEach var="j" begin="0" end="6">
-												<dd>${ciList[(i*7)+j].data }</dd>
+												<dd><a href="javascript:void(window.open('calender_dt.do?link=${ciList[(i*7)+j].url }','정보','width=1050px,height=450px','top=500px,left=500px'))">${ciList[(i*7)+j].data }</a></dd>
 											</c:forEach>
 										</dl>
 									</td>
@@ -228,7 +239,7 @@ overflow-x:hidden;
 
 	<!-- 채용 뉴스 -->
 	<section id="section-news" class="section appear clearfix">
-	<div class="container">
+	<div class="container scroll">
 
 		<div class="row mar-bot40">
 			<div class="col-md-offset-3 col-md-6">
@@ -293,7 +304,7 @@ overflow-x:hidden;
 
 	<!-- 공지사항 -->
 	<section id="section-notice" class="section appear clearfix">
-	<div class="container">
+	<div class="container scroll">
 
 		<div class="row mar-bot40">
 			<div>
