@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title</title>
+<title>실행하는 곳</title>
 <script type = "text/javascript">
 location.href="main/main.do";
 </script>
