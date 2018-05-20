@@ -16,7 +16,11 @@
  USERLEVEL
  */-->
 <!-- id 중복체크 -->
-
+  <select id="IdCheck" parameterType="String" resultType="int">
+        SELECT count(*) FROM member WHERE userid=#{userid}
+    </select>
+    
+<!-- join -->    
 <insert id="insert" parameterType="MemberVO">
   insert into member
   values(#{userid},#{password},#{name},#{emailaddress})

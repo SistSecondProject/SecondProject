@@ -30,20 +30,12 @@ public class MemberDAO {
 			   }
 		   }
 		 
-		 //id중복
-		 public void idCheck(String id)
-		 {
-			 SqlSession sqlSession=null;
-			  try{
-				  // sqlSession=sqlFactory.openSession();
-				  // int n=sqlSession.insert("idcheck",vo);
-				   sqlSession.commit();
-				   //return n;
-				  }finally{
-				   sqlSession.close();
-				  }
-		    	 
-		 }
+		/* //id중복
+		    public int cheakId(String id){
+
+		       // return sqlSession.selectOne("IdCheck", id);
+
+		    }*/
 		 
 		 
 		 public int insert(MemberVO vo){
