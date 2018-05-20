@@ -1,24 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" import="com.sist.change.*"%>
+	pageEncoding="UTF-8"%>
 
-<%-- <%
-   // 화면 변경  main.jsp?mode=1
-   /*
-        ~main.jsp
-        => mode=null
-           if(mode==null)
-        ~main.jsp?mode=
-        => mode=""
-           if(mode=="")(X)
-           if(mode.equals(""))(O)
-   */
-
-   String mode = request.getParameter("mode");
-   if (mode == null)
-      mode = "0";
-   int no = Integer.parseInt(mode);
-   String jsp = JspChange.change(no);
-%> --%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>

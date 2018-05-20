@@ -16,7 +16,6 @@
 <link href="css/flexslider.css" rel="stylesheet" />
 <link href="css/style.css" rel="stylesheet" />
 <link href="css/size.css" rel="stylesheet" />
-<link href="css/test.css" rel="stylesheet" />
 <link href="css/test2.css" rel="stylesheet" />
 <link href="Nwagon/style.css" rel="stylesheet" />
 <link href="css/button.css" rel="stylesheet" />
@@ -81,31 +80,19 @@
 
 	<section id="content">
 		<div class="com">
-			<!-- 	<div
-					style="border: 1px solid; float: left; width: 500px; height:130px; padding: 10px;">
-					첫번째 영역</div>
-				<div
-					style="border: 1px solid; float: left; width: 500px; height:130px; padding: 10px;">
-					두번째 영역</div>
- -->
-			<div class="com_common">
+			<div class="com_common" >
 			<button id="com_button" class="btn btn-default pull-right" type="button">기업정보</button>
+			<br><br>
+			<span style="font-size:25pt">${vo.companyName }</span>
 			</div>
+			
 			<div class="com_common">
 				<button id="com_button" class="btn btn-default pull-right" type="button">기업정보</button>
+					<br><br>
+			<span style="font-size:25pt">${vo.companyName }</span>
 			</div>
 
 		</div>
-		<div>
-		<span class="num1" style="font-size:20pt;font-weight:bold; color:red">0.0점</span>
-			&emsp;&emsp;&emsp;&emsp;
-			<span class="rad" style="font-weight:bold">기업평점</span>
-			&emsp;&emsp;&emsp;&emsp;
-			<span class="num1" style="font-size:20pt;font-weight:bold; color:blue">0.0점</span>
-		</div>
-
-		&emsp;&emsp;&emsp;
-
 		<!-- chart -->
 		<div style="border-style: ridge; width: 1000px;" class="container">
 			<div class="example col-lg" id="chart11">
@@ -113,13 +100,13 @@
 					var options = {
 						'legend' : {
 							names : [ '승진 기회 및 가능성', '복지 및 급여', '업무와 삶의 균형',
-									'사내문화', '경영진 평점', '매출액', '사원수', '평균연봉' ],
+									'사내문화', '경영진 평점'],
 							hrefs : []
 						},
 						'dataset' : {
 							title : 'Web accessibility status',
-							values : [ [ 33, 53, 67, 23, 78, 45, 69, 89 ],
-									[ 53, 67, 23, 78, 45, 69, 89, 33 ] ],
+							values : [ [ 33, 53, 67, 23, 78],
+									[ 53, 67, 23, 78, 45 ] ],
 							bgColor : '#f9f9f9',
 							fgColor : '#cc79a7'
 						},
@@ -135,28 +122,40 @@
 			</div>
 		</div>
 		<br>
-		<div>
-	<span class="num1" style="font-size:20pt;font-weight:bold; color:red">0.0점</span>
+	<div>
+		<span class="num1" style="font-size:20pt;font-weight:bold; color:red">${vo.welfare_pay }</span>
 			&emsp;&emsp;&emsp;&emsp;
-			<span class="rad" style="font-weight:bold">매출액</span>
+			<span class="rad" style="font-weight:bold">복지 및 급여</span>
 			&emsp;&emsp;&emsp;&emsp;
-			<span class="num1" style="font-size:20pt;font-weight:bold; color:blue">0.0점</span>
+			<span class="num1" style="font-size:20pt;font-weight:bold; color:blue">${vo.welfare_pay }</span>
 		</div>
-		<br>
 		<div>
-<span class="num1" style="font-size:20pt;font-weight:bold; color:red">0.0점</span>
+<span class="num1" style="font-size:20pt;font-weight:bold; color:red">${vo.work_life_balance }</span>
 			&emsp;&emsp;&emsp;&emsp;
-			<span class="rad" style="font-weight:bold">사원수</span>
+			<span class="rad" style="font-weight:bold">업무 삶 균형</span>
 			&emsp;&emsp;&emsp;&emsp;
-			<span class="num1" style="font-size:20pt;font-weight:bold; color:blue">0.0점</span>
+			<span class="num1" style="font-size:20pt;font-weight:bold; color:blue">${vo.work_life_balance }</span>
 		</div>
-		<br>
 		<div>
-		<span class="num1" style="font-size:20pt;font-weight:bold; color:red">0.0점</span>
+		<span class="num1" style="font-size:20pt;font-weight:bold; color:red">${vo.corporate_culture }</span>
 			&emsp;&emsp;&emsp;&emsp;
-			<span class="rad" style="font-weight:bold">평균연봉</span>
+			<span class="rad" style="font-weight:bold">사내문화</span>
 			&emsp;&emsp;&emsp;&emsp;
-			<span class="num1" style="font-size:20pt;font-weight:bold; color:blue">0.0점</span>
+			<span class="num1" style="font-size:20pt;font-weight:bold; color:blue">${vo.corporate_culture }</span>
+		</div>
+		<div>
+		<span class="num1" style="font-size:20pt;font-weight:bold; color:red">${vo.management }</span>
+			&emsp;&emsp;&emsp;&emsp;
+			<span class="rad" style="font-weight:bold">경영진</span>
+			&emsp;&emsp;&emsp;&emsp;
+			<span class="num1" style="font-size:20pt;font-weight:bold; color:blue">${vo.management }</span>
+		</div>
+		<div>
+		<span class="num1" style="font-size:20pt;font-weight:bold; color:red">${vo.promotion_possibility }</span>
+			&emsp;&emsp;&emsp;&emsp;
+			<span class="rad" style="font-weight:bold">승진 가능성</span>
+			&emsp;&emsp;&emsp;&emsp;
+			<span class="num1" style="font-size:20pt;font-weight:bold; color:blue">${vo.promotion_possibility }</span>
 		</div>
 		<br>
 	</section>
