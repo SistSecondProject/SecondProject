@@ -7,15 +7,31 @@
 <mapper namespace="com.sist.dao.into-mapper">
 
  <select id="intoListData" resultType="IntroductionVO" parameterType="java.util.Map">
-     SELECT userid,no,content,regdate,num
-     FROM (SELECT userid,no,content,regdate,rownum as num
-     FROM (SELECT userid,no,content,regdate 
-     FROM User_Introduction ORDER BY no DESC))
+    <!--  SELECT c.userid,u.no,u.content,u.regdate,num
+     FROM (SELECT c.userid,u.no,u.content,u.regdate,rownum as num
+     FROM (SELECT c.userid,u.no,u.content,u.regdate 
+     FROM Company AS c JOIN User_Introduction AS u ON c.infocode=u.infocode))
+     WHERE num BETWEEN #{start1} AND #{end1} -->
+     
+     SELECT no,content,regdate,num
+     FROM (SELECT no,content,regdate,rownum as num
+     FROM (SELECT no,content,regdate 
+     FROM User_Introduction ORDER BY regdate DESC))
      WHERE num BETWEEN #{start} AND #{end}
+    
      
         <!--  WHERE num BETWEEN ? AND ?
          ps.setInt(1,map.get("start"))
-         ps.setInt(2,map.get("end")) -->
+         ps.setInt(2,map.get("end")) 
+         
+     SELECT no,content,regdate,num
+     FROM (SELECT no,content,regdate,rownum as num
+     FROM (SELECT no,content,regdate 
+     FROM User_Introduction ORDER BY no DESC))
+     WHERE num BETWEEN #{start1} AND #{end1}
+         
+         
+         -->
          
      
    </select>

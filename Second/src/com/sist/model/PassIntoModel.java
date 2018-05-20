@@ -18,58 +18,75 @@ public class PassIntoModel {
 		
 		request.setAttribute("home_jsp", "../self/passinfo.jsp");
 		request.setAttribute("content_jsp", "../self/selftest.jsp"); //자소서 작성부분 include함.
-		//제발
-	/*	String page=request.getParameter("page");
-		
-		   if(page==null)
-			   page="1";
-		   int curpage=Integer.parseInt(page);     
-		   int rowSize=10;
-		   // rownum = 1
-		   // 1~10
-		   // 11~20
-		   int start=(curpage*rowSize)-(rowSize-1);
-		   int end=curpage*rowSize;
-		   Map map=new HashMap();
-		   map.put("start", start);
-		   map.put("end", end);
-		   
-		   List<IntroductionVO> list=IntroductionDAO.intoListData(map);
-		   int totalpage=IntroductionDAO.intoTotalPage();
-		   request.setAttribute("list", list);
-		   request.setAttribute("curpage", curpage);
-		   request.setAttribute("totalpage", totalpage);
-		return "main.jsp";*/
-		
-		String page=request.getParameter("page");
-		
-		   if(page==null)
-			   page="1";
-		   int curpage=Integer.parseInt(page);
-		   int rowSize=10;
-		   // rownum = 1
-		   // 1~10
-		   // 11~20
-		   int start=(curpage*rowSize)-(rowSize-1);
-		   int end=curpage*rowSize;
-		   Map map=new HashMap();
-		   map.put("start", start);
-		   map.put("end", end);
-		   
-		   List<PassVO> list=PassinfoDAO.passListData(map);
-		   int totalpage=PassinfoDAO.passTotalPage();
-		   request.setAttribute("list", list);
-		   request.setAttribute("curpage", curpage);
-		   request.setAttribute("totalpage", totalpage);
+	
 		return "main.jsp";
+	}
+	
+	
+	   @RequestMapping("main/passinfo.do")
+	   public String passListData(HttpServletRequest request)
+	   {
+		   request.setAttribute("home_jsp", "../self/passinfo.jsp");
+		 //합격 자소서 리스트를 출력
+			String page=request.getParameter("page");
+			
+			   if(page==null)
+				   page="1";
+			   int curpage=Integer.parseInt(page);
+			   int rowSize=10;
+			   // rownum = 1
+			   // 1~10
+			   // 11~20
+			  
+			   int start=(curpage*rowSize)-(rowSize-1);
+			   int end=curpage*rowSize;
+			   Map map=new HashMap();
+			   map.put("start", start);
+			   map.put("end", end);
+		
+
+			
+			   List<PassVO> list=PassinfoDAO.passListData(map);
+			   int totalpage=PassinfoDAO.passTotalPage();
+			  
+			   request.setAttribute("list", list);
+			   request.setAttribute("curpage", curpage);
+			   request.setAttribute("totalpage", totalpage);
+			
+		/*	String page=request.getParameter("page");
+			
+			   if(page==null)
+				   page="1";
+			   int curpage=Integer.parseInt(page);
+			   int rowSize=10;
+			   // rownum = 1
+			   // 1~10
+			   // 11~20
+			   int start=(curpage*rowSize)-(rowSize-1);
+			   int end=curpage*rowSize;
+			   Map map=new HashMap();
+			   map.put("start", start);
+			   map.put("end", end);
+			   
+			   List<IntroductionVO> list=IntroductionDAO.intoListData(map);
+			   int totalpage=IntroductionDAO.intoTotalPage();
+			   request.setAttribute("list", list);
+			   request.setAttribute("curpage", curpage);
+			   request.setAttribute("totalpage", totalpage);*/
+		   return "main.jsp";
+	   }
+		
+		
+		
+		
 		    
 		
 		
 	
-}    
-	
-	/*@RequestMapping("main/passinfo.do")
-	public String passListData(HttpServletRequest request) {
+    
+	//자기 자소서 출력하는 관련 값 넘기기
+	@RequestMapping("main/passinfo.do")
+	public String intoListData(HttpServletRequest request) {
 		request.setAttribute("home_jsp", "../self/passinfo.jsp");
 		request.setAttribute("content_jsp", "../self/selftest.jsp"); //자소서 작성부분 include함.
 		
@@ -88,14 +105,14 @@ public class PassIntoModel {
 		   map.put("start", start);
 		   map.put("end", end);
 		   
-		   List<PassVO> list=PassinfoDAO.passListData(map);
-		   int totalpage=PassinfoDAO.passTotalPage();
+		   List<IntroductionVO> list=IntroductionDAO.intoListData(map);
+		   int totalpage=IntroductionDAO.intoTotalPage();
 		   request.setAttribute("list", list);
 		   request.setAttribute("curpage", curpage);
 		   request.setAttribute("totalpage", totalpage);
 		return "main.jsp";
 	
-}*/
+}
 	
 	/*    장르 -self 
 	 *    result- 

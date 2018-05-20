@@ -103,8 +103,8 @@
         <div class="tab-pane fade in active" id="tab1">
     	     <table class="table table-hover">
         <tr class="success">
-        
-         <th width=10% class="text-center" align="center">회사명</th>
+        <!-- 합자리스트 -->
+         <th width=30% class="text-center" align="center">회사명</th>
          <th width=30% class="text-center" align="center">지원분야</th>
          <th width=40% class="text-center" align="center">제목</th>
          
@@ -112,7 +112,7 @@
         <c:forEach var="vo" items="${list }">
          <tr>
           <td class="text-center" align="center">
-          ${vo.no }
+          ${vo.companyName }
           </td>
  
           <td class="text-center" align="center">
@@ -120,7 +120,7 @@
           </td>
           
           <td class="text-center" align="center">
-           ${vo.recruitmenttitle } 
+           ${vo.recruitmentTitle } 
           </td>
          </tr>
         </c:forEach>
@@ -134,7 +134,7 @@
              
     	     <table class="table table-hover">
         <tr class="success">
-        
+        <!--  자기소개서 보관함 -->
          <th width=10% class="text-center"  align="center">번호</th>
          <th width=40% class="text-center" align="center">제목</th>
          <th width=20% class="text-center" align="center">작성일</th>
@@ -150,7 +150,7 @@
           </td>
           
           <td class="text-center" align="center">
-           <%-- <fmt:formatDate value="${vo.regdate }" pattern="yyyy-MM-dd"/> --%>
+           <fmt:formatDate value="${vo.regdate }" pattern="yyyy-MM-dd"/> 
           </td>
       
          </tr>
@@ -160,8 +160,11 @@
       </div>
       
       <td class="text-right">
-            <a href="#" class="btn btn-sm btn-primary">◀</a>
-            <a href="#" class="btn btn-sm btn-primary">▶</a>
+            <a href="passinfo.do?page=${curpage-1 }" class="btn btn-sm btn-primary">◀</a>
+            <!-- <a href="/MVC_BBS/list.do?pageNumber=${currentPage - pageSize}">[이전]</a> -->
+            
+            <a href="passinfo.do?page=${curpage+1 }" class="btn btn-sm btn-primary">▶</a>
+            <!-- <a href="/MVC_BBS/list.do?pageNumber=${startPage + pageSize}">[다음]</a> -->
             &nbsp;&nbsp;&nbsp;${curpage } page / ${totalpage } pages
 			
          </td>

@@ -6,7 +6,8 @@
   <properties resource="db.properties"/>
   <typeAliases>
      <typeAlias type="com.sist.self_introduction.IntroductionVO" alias="IntroductionVO"/>
-    <typeAlias type="com.sist.pass_info.PassVO" alias="PassVO"/> 
+    <typeAlias type="com.sist.pass_info.PassVO" alias="PassVO"/>
+    <typeAlias type="com.sist.member.MemberVO" alias="MemberVO"/> 
      
   </typeAliases>
   <environments default="development">
@@ -22,6 +23,7 @@
   </environments>
   <mappers>
      <mapper resource="com/sist/self_introduction/into-mapper.xml"/> 
-      <mapper resource="com/sist/pass_info/pass-mapper.xml"/> 
+    <mapper resource="com/sist/pass_info/pass-mapper.xml"/>
+     <mapper resource="com/sist/member/member-mapper.xml"/>   
   </mappers>
 </configuration>
