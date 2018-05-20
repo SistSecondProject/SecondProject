@@ -20,10 +20,22 @@
         SELECT count(*) FROM member WHERE userid=#{userid}
     </select>
     
+<!-- 우편번호  검색 --> 
+   <select id="postfind" resultMap="list" parameterType="String">
+   SELECT zipcode,sido,gugun,dong,
+   NVL(bunji,' ') FROM zipcode 
+   WHERE dong LIKE '%'||?||'%' 
+   </select>
+   
+<!-- 동으로 검색 -->  
+   <select id="postfindCount" resultType="int" parameterType="String">
+   SELECT COUNT(*) FROM zipcode 
+   WHERE dong LIKE '%'||?||'%'
+   </select> 
+   
 <!-- join -->    
-<insert id="insert" parameterType="MemberVO">
+<insert id="memberJoin" parameterType="MemberVO">
   insert into member
-  values(#{userid},#{password},#{name},#{emailaddress})
+  values(#{userid},#{password},#{name},#{emailaddress},#{favoriteCategory},#{zipcodeAddress},#{detailAddress},#{userLevel})
 </insert>
-
 </mapper>

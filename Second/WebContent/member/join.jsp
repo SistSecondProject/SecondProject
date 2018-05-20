@@ -23,7 +23,7 @@
 				<!-- 입력폼 -->
 				<!-- <form name="frm" method="post" action="../member/join_ok.jsp"> -->
 				<form class="form-horizontal" method="post" name="signup"
-					id="signup" enctype="multipart/form-data" action="../member/join_ok.jsp"ㄴ>
+					id="signup" enctype="multipart/form-data" action="member/login_ok.do">
 
 					<div class="form-group">
 						<label class="col-md-4 control-label" for="textinput">아이디<span

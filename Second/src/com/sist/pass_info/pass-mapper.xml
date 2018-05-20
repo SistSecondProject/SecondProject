@@ -7,19 +7,21 @@
 <mapper  namespace="com.sist.dao.pass-mapper">
 
  <select id="passListData" resultType="PassVO" parameterType="java.util.Map">
+     
      SELECT c.companyname, p.position, p.recruitmentTitle
      FROM company c
      RIGHT JOIN Pass_Introduction p
-     ON c.companyCode = p.companyCode
+     ON c.companyCode = p.companyCode  
      
      
     <!--  SELECT c.companyname, p.position, p.recruitmentTitle,num
      FROM (SELECT c.companyname, p.position, p.recruitmentTitle,rownum as num
+     FROM (SELECT c.companyname, p.position
      FROM company c
      RIGHT JOIN Pass_Introduction p
-     ON c.companyCode = p.companyCode)
-     WHERE num BETWEEN #{start} AND #{end}  -->
-     
+     ON c.companyCode = p.companyCode))
+     WHERE num BETWEEN #{start} AND #{end}  
+      -->
 	<!--  SELECT c.companyname, p.position, p.recruitmentTitle,num
      FROM (SELECT c.companyname, p.position, p.recruitmentTitle,rownum as num
      FROM (SELECT c.companyname, p.position, p.recruitmentTitle
@@ -43,31 +45,15 @@
      SELECT CEIL(COUNT(*)/10) FROM Pass_Introduction
    </select> 
    
-  <!--  
-   content(내용보기)
+   
+   <!-- content(내용보기) -->
    <sql id="where-no">
      WHERE no=#{no}
    </sql>
  
    <select id="infoContentData" resultType="IntroductionVO" parameterType="int">
-     SELECT no,title,subcontent,content,regdate
+     SELECT position,recruitmentTitle,content
      FROM User_Introduction
      <include refid="where-no"/>
-   </select>
-   
-   //제발
-    수정하기 : 먼저 비밀 번호를 갖고 들어온다.
-   <select id="boardGetPwd" resultType="String" parameterType="int">
-   SELECT pwd FROM User_Introduction
-   <include refid="where-no"/>
-   </select>
-   
-   <update id="intoUpdate" parameterType="BoardVO">
-   UPDATE User_Introduction SET
-   title=#{title},subcontent=#{subcontent},content=#{content}
-   WHERE no=#{no}
-   </update>
-   
-    -->
-   
+   </select>   
 </mapper>

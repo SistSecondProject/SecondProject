@@ -9,6 +9,24 @@
 <title>Ready&Start</title>
 <!-- css -->
 <link href="css/size.css" rel="stylesheet" />
+<script type="text/javascript">
+$( function() {
+	  $('#dialog').dialog({autoOpen : false,
+		  maxWidth:600,
+		  maxHeight:500,
+		  width:600,
+		  height:500,
+		  modal:true});
+	  
+		$('#passdetail').click(function(){
+			//var companyname=$(this).attr("companyname");
+			//var content=$(this).attr("content");
+			$('#dialog').dialog("open");
+		});
+	   
+	  } );
+
+</script>
 <style type="text/css">
 #favorites{
 	border:1px solid #2F5030;
@@ -103,16 +121,18 @@
         <div class="tab-pane fade in active" id="tab1">
     	     <table class="table table-hover">
         <tr class="success">
-        <!-- 합자리스트 -->
+        <!-- 합자리스트 --> 
          <th width=30% class="text-center" align="center">회사명</th>
          <th width=30% class="text-center" align="center">지원분야</th>
          <th width=40% class="text-center" align="center">제목</th>
          
         </tr>
-        <c:forEach var="vo" items="${list }">
+        <c:forEach var="vo" items="${plist }">
          <tr>
-          <td class="text-center" align="center">
+          <td class="text-center" align="center" id="passdetail">
           ${vo.companyName }
+         
+          
           </td>
  
           <td class="text-center" align="center">
@@ -140,10 +160,10 @@
          <th width=20% class="text-center" align="center">작성일</th>
          
         </tr>
-        <c:forEach var="vo" items="${list }">
+        <c:forEach var="vo" items="${ilist }">
          <tr>
-          <td class="text-center" align="center">
-          ${vo.no }</a>
+          <td class="passdetail" align="center">
+          ${vo.no }
           </td>
           <td class="text-center" align="center">
            <a href="#">${vo.content }</a>
@@ -168,8 +188,12 @@
             &nbsp;&nbsp;&nbsp;${curpage } page / ${totalpage } pages
 			
          </td>
-    </div>   
-        </div>
+    </div>
+        <dialog>
+  <p>This is da dialog!</p>
+  <button id="close">Close</button>
+</dialog>
+<button id="show">Open Dialog!</button>
 		 
 		 					
 	 <div class="col-lg-5">
@@ -177,6 +201,8 @@
                 
                    <jsp:include page="${content_jsp }"></jsp:include>  
 				</div>
+ 			
+ 					
  			
 				</div>
 				</div>

@@ -96,16 +96,16 @@ public class PassinfoDAO {
 		   }
 	   }*/
 	   
-/*	   //내용 보기
-	   public static IntroductionVO intoContent(int no)
+	   //내용 보기
+	   public static PassVO passDetail(int no)
 	   {
-		   IntroductionVO vo = new IntroductionVO();
+		   PassVO vo = new PassVO();
 		   SqlSession session=null;
 		   try
 		   {
 			   session=ssf.openSession();
 			  
-			   vo = session.selectOne("intoContentData",no);
+			   vo = session.selectOne("passDetail",no);
 			   
 		   }catch(Exception ex)
 		   {
@@ -119,59 +119,7 @@ public class PassinfoDAO {
 		   return vo;
 	   }
 	   
-	   // 내용 수정부분(update)
-	   public static IntroductionVO intoUpdateData(int no)
-	   {
-		   IntroductionVO vo = new IntroductionVO();
-		   SqlSession session=null;
-		   try
-		   {
-			   session=ssf.openSession();
-			   vo = session.selectOne("intoUpdateData",no);
-			   
-		   }catch(Exception ex)
-		   {
-			   System.out.println(ex.getMessage());
-		   }
-		   finally
-		   {
-			   if(session!=null)
-				   session.close();
-		   }
-		   return vo;
-	   }
-	   */
-	   /*public static boolean boardUpdate(BoardVO vo)
-	   {
-		   //비밀번호가 같으면 수정한다.
-		   boolean bCheck=false;
-		   SqlSession session =null;
-		   try
-		   {
-			   session= ssf.openSession();
-			   String pwd=session.selectOne("boardGetPwd", vo.getNo());
-			   if(pwd.equals(vo.getPwd()))
-			   {
-				   bCheck=true;
-				   session.update("boardUpdate",vo);
-				   session.commit();
-			   }
-			   else
-			   {
-				   bCheck=false;
-			   }
-		   }catch(Exception ex)
-		   {
-			   System.out.println(ex.getMessage());
-		   }
-		   finally
-		   {
-			   if(session!=null)
-				   session.close();
-					   
-		   }
-		   return bCheck;
-	   }*/
+
 	   
 	 
 	   

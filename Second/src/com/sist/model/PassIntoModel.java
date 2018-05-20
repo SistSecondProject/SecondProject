@@ -18,16 +18,9 @@ public class PassIntoModel {
 		
 		request.setAttribute("home_jsp", "../self/passinfo.jsp");
 		request.setAttribute("content_jsp", "../self/selftest.jsp"); //자소서 작성부분 include함.
-	
-		return "main.jsp";
-	}
-	
-	
-	   @RequestMapping("main/passinfo.do")
-	   public String passListData(HttpServletRequest request)
-	   {
-		   request.setAttribute("home_jsp", "../self/passinfo.jsp");
-		 //합격 자소서 리스트를 출력
+
+		  
+	//합격 자소서 리스트를 출력
 			String page=request.getParameter("page");
 			
 			   if(page==null)
@@ -44,12 +37,10 @@ public class PassIntoModel {
 			   map.put("start", start);
 			   map.put("end", end);
 		
-
-			
-			   List<PassVO> list=PassinfoDAO.passListData(map);
+			   List<PassVO> plist=PassinfoDAO.passListData(map);
 			   int totalpage=PassinfoDAO.passTotalPage();
 			  
-			   request.setAttribute("list", list);
+			   request.setAttribute("plist", plist);
 			   request.setAttribute("curpage", curpage);
 			   request.setAttribute("totalpage", totalpage);
 			
@@ -78,12 +69,6 @@ public class PassIntoModel {
 		
 		
 		
-		
-		    
-		
-		
-	
-    
 	//자기 자소서 출력하는 관련 값 넘기기
 	@RequestMapping("main/passinfo.do")
 	public String intoListData(HttpServletRequest request) {
@@ -105,9 +90,9 @@ public class PassIntoModel {
 		   map.put("start", start);
 		   map.put("end", end);
 		   
-		   List<IntroductionVO> list=IntroductionDAO.intoListData(map);
+		   List<IntroductionVO> ilist=IntroductionDAO.intoListData(map);
 		   int totalpage=IntroductionDAO.intoTotalPage();
-		   request.setAttribute("list", list);
+		   request.setAttribute("ilist", ilist);
 		   request.setAttribute("curpage", curpage);
 		   request.setAttribute("totalpage", totalpage);
 		return "main.jsp";

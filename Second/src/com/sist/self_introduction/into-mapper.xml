@@ -7,7 +7,14 @@
 <mapper namespace="com.sist.dao.into-mapper">
 
  <select id="intoListData" resultType="IntroductionVO" parameterType="java.util.Map">
-    <!--  SELECT c.userid,u.no,u.content,u.regdate,num
+    <!-- 
+     // 시퀀스 
+		<selectKey keyProperty="no" resultType="int" order="BEFORE">
+			SELECT NVL(MAX(no)+1,1) as no FROM music_chart
+		</selectKey>
+    
+    
+     SELECT c.userid,u.no,u.content,u.regdate,num
      FROM (SELECT c.userid,u.no,u.content,u.regdate,rownum as num
      FROM (SELECT c.userid,u.no,u.content,u.regdate 
      FROM Company AS c JOIN User_Introduction AS u ON c.infocode=u.infocode))

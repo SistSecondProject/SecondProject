@@ -1,12 +1,15 @@
 package com.sist.member;
 
 import java.io.Reader;
+import java.sql.ResultSet;
 import java.util.*;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.apache.tools.ant.util.SymbolicLinkUtils;
+
 
 import com.sist.pass_info.PassVO;
 
@@ -30,26 +33,94 @@ public class MemberDAO {
 			   }
 		   }
 		 
-		/* //id중복
-		    public int cheakId(String id){
+		 //id중복
+		 public int idCheck(String id) {
+                SqlSession session=null;
+                int count=0;
+                try
+                {
+                      session=ssf.openSession();
+                      count = session.selectOne("IdCheck", id);
+                  	
+            	}catch(Exception ex) {
+            	
+            		System.out.println(ex.getMessage());
+            	}
+                
+                finally {
+            		if(session!=null)
+            			session.close();
+            	}
+            	return count;
 
-		       // return sqlSession.selectOne("IdCheck", id);
-
-		    }*/
+		    }
+		 //우편번호 검색
+		 public ArrayList<ZipcodeVO> postfind(String dong)
+		 {
+		 ArrayList<ZipcodeVO> list = new ArrayList<ZipcodeVO>();
+		 SqlSession session= null;  
+		 try
+		   {
+			 session = ssf.openSession();
+		     list = session.selectOne("postfindData",dong);
+		   }catch(Exception ex)
+		   {
+			   System.out.println(ex.getMessage());
+		   }
+		   finally
+		   {
+			   if(session!=null)
+       			session.close();
+		   }
+		   return list;
+				   
+		 }		   
+		 //동으로 검색
+		   public int postfindCount(String dong)
+		   {
+			   SqlSession session=null;
+               int count=0;
+			   try
+			   {
+				   session=ssf.openSession();
+                   count = session.selectOne("postfindCount", dong);
+				   
+			   }catch(Exception ex)
+			   {
+				   System.out.println(ex.getMessage());
+			   }
+			   finally
+			   {
+				   if(session!=null)
+		       			session.close();
+			   }
+			   
+			   return count;
+		   } 
+		  //회원 가입하기 
+		   public static void memberJoin(MemberVO vo)
+		   { 
+				//Connecion = SqlSession
+				SqlSession session = null;
+				try {
+					session=ssf.openSession(true);
+					session.insert("memberJoin",vo);
+				}catch (Exception ex) 
+				{
+					System.out.println(ex.getMessage());
+				}
+				finally 
+				{
+						if(session!=null) 
+						session.close();
+					}
+		   }
+} 
+			
+		   
+		   
 		 
-		 
-		 public int insert(MemberVO vo){
-			  SqlSession sqlSession=null;
-			  try{
-			 //  sqlSession=sqlFactory.openSession();
-			   int n=sqlSession.insert("insert",vo);
-			   sqlSession.commit();
-			   return n;
-			  }finally{
-			   sqlSession.close();
-			  }
-			}
-			}
+		
 	       
 			
 	   
@@ -58,13 +129,23 @@ public class MemberDAO {
 
 
 
-
-	   
-	   
 	   
 	   //회원가입 - 로그인 처리
 
 	   //로그인 처리
-
-
+/*
+public static List<MusicChartVO> musicAllData(Map map){
+	List<MusicChartVO> list = new ArrayList<MusicChartVO>();
+	SqlSession session= null;
+	try {
+		session = ssf.openSession();
+		list = session.selectList("musicAllData",map);
+	}catch (Exception e) {
+		System.out.println(e.getMessage());
+	}finally {
+		if(session!=null)
+			session.close();
+	}
+	return list;
+}*/
 

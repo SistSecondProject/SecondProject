@@ -24,6 +24,6 @@
   <mappers>
      <mapper resource="com/sist/self_introduction/into-mapper.xml"/> 
     <mapper resource="com/sist/pass_info/pass-mapper.xml"/>
-     <mapper resource="com/sist/member/member-mapper.xml"/>   
+     <!-- <mapper resource="com/sist/member/member-mapper.xml"/>  -->  
   </mappers>
 </configuration>

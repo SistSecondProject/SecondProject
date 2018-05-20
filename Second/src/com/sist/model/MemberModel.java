@@ -25,22 +25,33 @@ public class MemberModel {
 		   
 		   return "login.jsp";
 	   }
-	 //  @RequestMapping ("main/login_ok.do")
-	  // public String loginInsertOk(HttpServletRequest request)
-	 //  throws Exception
+	@RequestMapping ("main/login.do")
+	public String loginInsert(HttpServletRequest request)
+	{
+	 return "main.do";	
+}
+@RequestMapping ("main/login_ok.do")
+		public String loginInsertOk(HttpServletRequest request)
+				throws Exception
 	   {
-		   /*request.setCharacterEncoding("EUC-KR");
+	      //#{userid},#{password},#{name},#{emailaddress},#{favoriteCategory},#{ zipcodeAddress},#{detailAddress},#{userLevel
+		   request.setCharacterEncoding("EUC-KR");
+		   
+		   String userid=request.getParameter("userid");
+		   String password=request.getParameter("password");
 		   String name=request.getParameter("name");
-		   String subject=request.getParameter("subject");
-		   String content=request.getParameter("content");
-		   String pwd=request.getParameter("pwd");
+		   String emailaddress=request.getParameter("emailaddress");
+		 //  int favoriteCategory=request.getParameter(Integer.getInteger(favoriteCategory));
+		   String detailAddress=request.getParameter("detailAddress");
+		 //  int userLevel=request.getParameter("pwd");
 		   //DB¿¬µ¿ 
 		   MemberVO vo = new MemberVO();
+		   vo.setUserId(userid);
+		   vo.setPassword(password);
 		   vo.setName(name);
-		   vo.setSubject(subject);
-		   vo.setContent(content);
-		   vo.setPwd(pwd);
-		  MemberDAO.inser
-		   return "redirect:main.do";*/
+		   vo.setEmailaddress(emailaddress);
+		   vo.setDetailaddress(detailAddress);
+		   MemberDAO.memberJoin(vo);
+		   return "redirect:main.do";
 	   }
 }
