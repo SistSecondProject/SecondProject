@@ -20,15 +20,17 @@
 					<span>회원가입</span>
 				</h1>
 				<hr>
+				<!-- 입력폼 -->
+				<!-- <form name="frm" method="post" action="../member/join_ok.jsp"> -->
 				<form class="form-horizontal" method="post" name="signup"
-					id="signup" enctype="multipart/form-data">
+					id="signup" enctype="multipart/form-data" action="../member/join_ok.jsp"ㄴ>
 
 					<div class="form-group">
 						<label class="col-md-4 control-label" for="textinput">아이디<span
 							class="text-danger">*</span></label>
 						<div class="col-md-4">
-							<input type="password" class="form-control" name="password"
-								id="password" placeholder="" value="">
+							<input type="id" class="form-control" name="id"
+								id="id" placeholder="" value="" required>
 						</div>
 					</div>
 
@@ -41,7 +43,7 @@
 								<span class="input-group-addon"><i
 									class="glyphicon glyphicon-lock"></i></span> <input type="password"
 									class="form-control" name="password" id="password"
-									placeholder="" value="">
+									placeholder="" value="" required>
 							</div>
 						</div>
 					</div>
@@ -54,7 +56,7 @@
 								<span class="input-group-addon"><i
 									class="glyphicon glyphicon-lock"></i></span> <input type="password"
 									class="form-control" name="cpassword" id="cpassword"
-									placeholder="" value="">
+									placeholder="" value="" required>
 							</div>
 						</div>
 					</div>
@@ -63,7 +65,7 @@
 							class="text-danger">*</span></label>
 						<div class="col-md-4">
 							<input type="text" class="form-control" name="mem_name"
-								id="user_name" placeholder="" value="">
+								id="user_name" placeholder="" value="" required>
 						</div>
 					</div>
 			
@@ -74,7 +76,7 @@
 							class="text-danger">*</span></label>
 			<div class="col-md-2  col-xs-4">
 				<input id="Permanent Address" name="Permanent Address" type="text"
-					placeholder="" class="form-control input-md ">
+					placeholder="" class="form-control input-md " >
 			</div>
 			<div class="col-md-2 col-xs-4">
 				<input id="Permanent Address" name="Permanent Address" type="text"
@@ -124,7 +126,7 @@
 			<div class="col-md-4">
 				<input name="Submit" type="submit" value="회원가입"
 					class="btn btn-primary">
-				<button class="btn btn-danger btn-cancel-action">취소</button>
+				<button class="btn btn-danger btn-cancel-action" onclick="javascript:history.back()">취소</button>
 			</div>
 		</div>
 		</form>
