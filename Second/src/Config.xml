@@ -23,6 +23,7 @@
     </environment>
   </environments>
   <mappers>
+  		<mapper resource="com/sist/dao/company-mapper.xml" />
      <mapper resource="com/sist/self_introduction/into-mapper.xml"/> 
     <mapper resource="com/sist/pass_info/pass-mapper.xml"/>
      <mapper resource="com/sist/compare/compare-mapper.xml"/>

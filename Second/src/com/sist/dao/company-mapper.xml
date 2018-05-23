@@ -9,9 +9,53 @@
 	<select id="categoryName" resultType="String">
 		select categoryname from company_category where categorycode>0 order by categorycode asc
 	</select>
+<!-- 	<select id="searchList" parameterType="String" resultType="com.sist.vo.CompanyVO">
+		select * from company where companyname like '%'||#{strSearch}||'%'
+	</select> -->
+	<select id="searchList" parameterType="map" resultType="com.sist.vo.CompanyVO">
+		<!-- select * from company comp, company_category cate where comp.categorycode=cate.categorycode and comp.companyname like '%'||#{strSearch}||'%' and cate.categoryname like '%'||#{strCate}||'%' -->
+	<!-- select comp.companyCode,comp.categoryCode,comp.ceo,comp.companyDetail,comp.companyName,comp.formOfCompany,comp.foundationDay,comp.headOffice,comp.imageURL,comp.numOfEmployee,comp.salary,comp.turnover,comp.webURL,num
+from(select comp.companyCode,comp.categoryCode,comp.ceo,comp.companyDetail,comp.companyName,comp.formOfCompany,comp.foundationDay,comp.headOffice,comp.imageURL,comp.numOfEmployee,comp.salary,comp.turnover,comp.webURL,lownum as num
+from(select comp.companyCode,comp.categoryCode,comp.ceo,comp.companyDetail,comp.companyName,comp.formOfCompany,comp.foundationDay,comp.headOffice,comp.imageURL,comp.numOfEmployee,comp.salary,comp.turnover,comp.webURL 
+from company comp, company_category cate where comp.categorycode=cate.categorycode and comp.companyname like '%'||#{strSearch}||'%' and cate.categoryname like '%'||#{strCate}||'%'))
+WHERE num BETWEEN #{start} AND #{end}
+ -->
+ select companyCode,categoryCode,ceo,companyDetail,companyName,formOfCompany,foundationDay,headOffice,imageURL,numOfEmployee,salary,turnover,webURL, num
+from(select companyCode,categoryCode,ceo,companyDetail,companyName,formOfCompany,foundationDay,headOffice,imageURL,numOfEmployee,salary,turnover,webURL,rownum as num
+from(select comp.companyCode,comp.categoryCode,comp.ceo,comp.companyDetail,comp.companyName,comp.formOfCompany,comp.foundationDay,comp.headOffice,comp.imageURL,comp.numOfEmployee,comp.salary,comp.turnover,comp.webURL 
+from company comp, company_category cate where comp.categorycode=cate.categorycode and comp.companyname like '%'||#{strSearch}||'%' and cate.categoryname like '%'||#{strCate}||'%'))
+WHERE num BETWEEN #{start} AND #{end}
+	</select>
+	<select id ="totalPage" parameterType="map" resultType="int">
+		select Ceil(count(*)/10) from company comp, company_category cate where comp.categorycode=cate.categorycode and comp.companyname like '%'||#{strSearch}||'%' and cate.categoryname like '%'||#{strCate}||'%'
+	</select>
+	
+	<select id="recent" resultType="String">
+		select companyname from(select companyname, rownum as nu from (SELECT comp.companyname , rownum num from company comp, company_score score where comp.companycode = score.companycode order by rownum desc)) where nu between 1 and 20 order by nu asc
+	</select>
+	<select id="companyDetail" parameterType="String" resultType="com.sist.vo.CompanyVO">
+		select * from company where companycode = #{companyCode}
+	</select>
+	<select id="recruitmentList" resultType="com.sist.vo.RecruitmentVO" parameterType="String">
+		select * from Recruitment where companycode=#{companyCode}
+	</select>
+	<select id="recruitmentDetail" resultType="com.sist.vo.RecruitmentVO" parameterType="String" >
+		select * from Recruitment where recruitmentCode=#{recruitmentCode}
+	</select>
+	<insert id="insertScore" parameterType="com.sist.vo.Company_ScoreVO">
+		insert into Company_Score
+		values( #{companyCode},#{userID}, #{promotion_possibility}, #{welfare_pay}, #{work_life_balance},#{corporate_culture},#{management}, #{evaluation})
+	</insert>
+	<select id="searchCompanyBookmark" resultType="int" parameterType="map">
+		select count(*) from Favorite_Company where userID=#{userid} and companyCode=#{companycode}
+	</select>
+	<insert id="insertCompanyBookmark" parameterType="map">
+		insert into Favorite_Company values( #{userid}, #{companycode})
+	</insert>
+	<delete id="deleteCompanyBookmark" parameterType="map">
+		delete from Favorite_Company where userID=#{userid} and companyCode=#{companycode}
+	</delete>
+	
+	
+	
 </mapper>
-
-
-
-
-
