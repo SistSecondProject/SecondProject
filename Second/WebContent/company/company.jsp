@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <body>
 	<div id="wrapper">
 		<section id="inner-headline">
@@ -22,36 +24,40 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-8">
-						<jsp:include page="../company/companyList.jsp"></jsp:include>
+						<c:choose>
+							<c:when test="${vo ne null}">
+								<jsp:include page="../company/companyDetail.jsp"></jsp:include>
+							</c:when>
+							<c:when test="${recruitment ne null}">
+								<jsp:include page="../company/recruitment.jsp"></jsp:include>
+							</c:when>
+							<c:otherwise>
+								<jsp:include page="../company/companyList.jsp"></jsp:include>
+							</c:otherwise>
+						</c:choose>
 					</div>
 					<div class="col-lg-4">
 						<aside class="right-sidebar">
 							<div class="widget">
-								<form class="form-search">
-									<input class="form-control" type="text" placeholder="Search..">
+								<form class="form-search" method="get">
+									<input class="form-control" type="text" name="search"
+										placeholder="Search.."> <input type="hidden"
+										name="category" value="${category}">
 								</form>
 							</div>
 							<div class="widget">
-								<h5 class="widgetheading">Categories</h5>
+								<h5 class="widgetheading">카테고리</h5>
 								<ul class="cat">
 									<c:forEach var="str" items="${catename}" varStatus="status">
-										<li>
-											<i class="icon-angle-right"></i>
-											<a href="#">${str}</a><span> (${catecount[status.index]})</span>
-										</li>
-										<!-- <li><i class="icon-angle-right"></i><a href="#">Online
-												business</a><span> (11)</span></li>
-										<li><i class="icon-angle-right"></i><a href="#">Marketing
-												strategy</a><span> (9)</span></li>
-										<li><i class="icon-angle-right"></i><a href="#">Technology</a><span>
-												(12)</span></li>
-										<li><i class="icon-angle-right"></i><a href="#">About
-												finance</a><span> (18)</span></li> -->
+										<li><i class="icon-angle-right"></i> <a
+											href="company.do?category=${str}">${str}</a><span>
+												(${catecount[status.index]})</span></li>
+
 									</c:forEach>
 								</ul>
 							</div>
 							<div class="widget">
-								<h5 class="widgetheading">Latest posts</h5>
+								<h5 class="widgetheading">최근 평가</h5>
 								<ul class="recent">
 									<li><img src="img/dummies/blog/65x65/thumb1.jpg"
 										class="pull-left" alt="" />
@@ -79,7 +85,7 @@
 								</ul>
 							</div>
 							<div class="widget">
-								<h5 class="widgetheading">Popular tags</h5>
+								<h5 class="widgetheading">고평점 기업</h5>
 								<ul class="tags">
 									<li><a href="#">Web design</a></li>
 									<li><a href="#">Trends</a></li>
