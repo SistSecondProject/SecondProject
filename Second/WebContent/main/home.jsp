@@ -24,7 +24,10 @@ overflow:auto;
 overflow-x:hidden;
 }
 div.viewWrap img{ width: 100%}
-
+span.count{
+font-size: 20px;
+font-weight: bold;
+}
 </style>
 </head>
 <body>
@@ -159,7 +162,7 @@ div.viewWrap img{ width: 100%}
 										<dl>
 											<c:forEach var="j" begin="0" end="6">
 											<c:if test="${j!=6 }">
-												<dd><a href="javascript:void(window.open('calender_dt.do?link=${ciList[(i*7)+j].url }','정보','width=1050px,height=450px','top=500px,left=500px'))">${ciList[(i*7)+j].data }</a></dd>
+												<dd><a href="javascript:void(window.open('calender_dt.do?link=${ciList[(i*7)+j].url }','정보','width=1050px,height=450px,top=200px,left=400px'))">${ciList[(i*7)+j].data }</a></dd>
 												</c:if>
 											</c:forEach>
 										</dl>
@@ -190,8 +193,7 @@ div.viewWrap img{ width: 100%}
 					<div class="icon">
 						<i class="fa fa-coffee fa-5x"></i>
 					</div>
-					<strong id="counter-coffee1" class="number">5</strong><font size=15>.</font><strong
-						id="counter-coffee2" class="number">8</strong><br> <span
+					 <span class="count">5</span><font size=15>.</font> <span class="count">8</span><br> <span
 						class="text">Black Coffee Cups</span>
 				</div>
 			</div>
@@ -200,7 +202,7 @@ div.viewWrap img{ width: 100%}
 					<div class="icon">
 						<i class="fa fa-music fa-5x"></i>
 					</div>
-					<strong id="counter-music" class="number">345</strong><br> <span
+					  <span class="count">202</span><br> <span
 						class="text">MP3 Songs</span>
 				</div>
 			</div>
@@ -209,7 +211,7 @@ div.viewWrap img{ width: 100%}
 					<div class="icon">
 						<i class="fa fa-music fa-5x"></i>
 					</div>
-					  <span class="count">202</span><br> 
+					  <span class="count">503</span><br> 
 					<span class="text">MP3 Songs</span>
 				</div>
 			</div>
@@ -218,7 +220,7 @@ div.viewWrap img{ width: 100%}
 					<div class="icon">
 						<i class="fa fa-clock-o fa-5x"></i>
 					</div>
-					<strong id="counter-clock" class="number">1235</strong><br> <span
+					 <span class="count">1235</span><br> <span
 						class="text">Hard Minutes</span>
 				</div>
 			</div>
@@ -227,7 +229,7 @@ div.viewWrap img{ width: 100%}
 					<div class="icon">
 						<i class="fa fa-heart fa-5x"></i>
 					</div>
-					<strong id="counter-heart" class="number">478</strong><br> <span
+					 <span class="count">478</span><br> <span
 						class="text">Lovely Clients</span>
 				</div>
 			</div>
@@ -425,6 +427,11 @@ div.viewWrap img{ width: 100%}
 	</c:forEach>
 
 
+ <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+
+  
+
+    <script  src="../js/index.js"></script>
 
 </body>
 </html>
