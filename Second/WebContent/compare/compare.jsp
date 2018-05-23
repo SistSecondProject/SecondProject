@@ -8,14 +8,28 @@
 <script src="../compare/js/jquery-2.1.3.min.js"></script>
 <script src="../compare/js/jquery.js"></script>
 <script type="text/javascript">
-$(document).ready(function(){
-	//var 변수지정 
+$(document).ready(function() {
+    //엔터키로도 검색버튼 눌리게 함
+    $("#search").keydown(function(evt) {
+       if (evt.keyCode == 13) {
+             $("#searchBtn").last().trigger('click'); // 검색버튼 클릭 하는것과 동일한 작동
+          }
+    });
+    //검색 입력값 초기화 
+    $('#compareModal').on('hidden.bs.modal', function (e) { 
+       $('#search').val('');
+       //검색결과 값 초기화
+         $('#resultSearch').empty();
+    });
+
+	//버튼
 	$("#searchBtn").on("click", function(){
 		var rdata = $("#search").val();
 		//syso 같은것 consol
 		console.log(rdata)
 		
 		$.ajax({
+			type:"POST",
 			url:"result.do",
 			data:{
 				"rdata" : rdata
@@ -60,20 +74,17 @@ $(document).ready(function(){
 			<br> <br>
 			<div class="compare_vs">
 				<p>
-					<input type="button" class="btn btn-default btn-lg"
-						style="width: 300px; height: 100px; border: solid 1px"
-						data-toggle="modal" data-target="#compareModal" id="comp1"
-						value=비교기업+> &emsp;&emsp;&emsp;&emsp; <span
-						style="font-size: 2.5em; font-weight: bold; color: darkblue">vs</span>
-					&emsp;&emsp;&emsp;&emsp; <input type="button"
-						class="btn btn-default btn-lg"
-						style="width: 300px; height: 100px; border: solid 1px"
-						data-toggle="modal" data-target="#compareModal" id="comp2"
-						value=비교기업+>
+					<input type="button" class="btn btn-default btn-lg" style="width: 300px; height: 120px; border: solid 1px; 
+					font-size:20px; font-weight:bold" data-toggle="modal" data-target="#compareModal" id="comp1" value=전체기업+> 	
+						&emsp;&emsp;&emsp;&emsp; 	
+					<span style="font-size: 2.5em; font-weight: bold; color: darkblue">vs</span>	
+						&emsp;&emsp;&emsp;&emsp; 
+					<input type="button" class="btn btn-default btn-lg" style="width: 300px; height: 120px;  border: solid 1px; 
+					font-size:20px; font-weight:bold" data-toggle="modal" data-target="#compareModal" id="comp2" value=전체기업+>
 				</p>
-				<br> <br> <br> <a href="#" class="btn btn-info"
-					style="width: 450px; height: 40px; font-size: 15pt; font-weight: bold; border-radius: 24px;">비교하기</a><br>
-				<br> <br>
+				<br> <br> <br> 
+				<a href="compare_result.do" class="btn btn-info" style="width: 450px; height: 40px; font-size: 15pt; font-weight: bold; border-radius: 24px;">비교하기</a><br>
+				<br><br>
 			</div>
 		</div>
 		<br>
@@ -82,23 +93,20 @@ $(document).ready(function(){
 			<hr style="border: solid 1px black;" width="100%">
 			<br>
 			<div class="compare_vs">
-				<br>
 				<p>
-					<input type="button" class="btn btn-default btn-lg"
-						style="width: 300px; height: 100px; border: solid 1px"
-						data-toggle="modal" data-target="#compareModal" id="mycomp1"
-						value=비교기업+> &emsp;&emsp;&emsp;&emsp; <span
-						style="font-size: 2.5em; font-weight: bold; color: darkblue">vs</span>
-					&emsp;&emsp;&emsp;&emsp; <input type="button"
-						class="btn btn-default btn-lg"
-						style="width: 300px; height: 100px; border: solid 1px"
-						data-toggle="modal" data-target="#compareModal" id="mycomp2"
-						value=비교기업+>
+					<input type="button" class="btn btn-default btn-lg" style="width: 300px; height: 120px;  border: solid 1px; 
+					font-size:20px; font-weight:bold" data-toggle="modal" data-target="#compareModal" id="mycomp1" value=나의기업+> 	
+						&emsp;&emsp;&emsp;&emsp; 	
+					<span style="font-size: 2.5em; font-weight: bold; color: darkblue">vs</span>	
+						&emsp;&emsp;&emsp;&emsp; 
+					<input type="button" class="btn btn-default btn-lg" style="width: 300px; height: 120px;  border: solid 1px; 
+					font-size:20px; font-weight:bold" data-toggle="modal" data-target="#compareModal" id="mycomp2" value=나의기업+>
 				</p>
-				<br> <br> <br> <a href="#" class="btn btn-info"
-					style="width: 450px; height: 40px; font-size: 15pt; font-weight: bold; border-radius: 24px;">비교하기</a><br>
-				<br> <br> <br>
+				<br> <br> <br> 
+				<a href="compare_result.do" class="btn btn-info" style="width: 450px; height: 40px; font-size: 15pt; font-weight: bold; border-radius: 24px;">비교하기</a><br>
+				<br><br>
 			</div>
+		</div>
 		</div>
 	</section>
 
@@ -115,12 +123,13 @@ $(document).ready(function(){
 					</button>
 					<h4 class="modal-title" id="compareModalLabel">비교기업 추가</h4>
 					<hr style="border: solid 1px black;" width="100%">
+					
 					<!-- 기업 검색 부분 -->
 					<div class="input-group">
 						<input type="text" class="form-control" placeholder="기업명을 검색 하세요"
 							id="search" name="search">
 						<div class="input-group-btn">
-							<input type="submit" id="searchBtn"
+							<input type="button" id="searchBtn"
 								style="font-weight: bold; font-size: 11pt; weight: 20px; height: 34px;"
 								value="Search" onkeydown="javascript:if(event.keyCode==13)">
 						</div>

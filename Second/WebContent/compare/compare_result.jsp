@@ -10,57 +10,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="description" content="" />
 <!-- css -->
-<link href="css/bootstrap.min.css" rel="stylesheet" />
-<link href="css/fancybox/jquery.fancybox.css" rel="stylesheet">
-<link href="css/jcarousel.css" rel="stylesheet" />
-<link href="css/flexslider.css" rel="stylesheet" />
-<link href="css/style.css" rel="stylesheet" />
-<link href="css/size.css" rel="stylesheet" />
-<link href="css/test2.css" rel="stylesheet" />
-<link href="Nwagon/style.css" rel="stylesheet" />
-<link href="css/button.css" rel="stylesheet" />
-<link href="css/chartsize.css" rel="stylesheet" />
-<link href="css/button2.css" rel="stylesheet" />
-<link href='http://fonts.googleapis.com/css?family=Oswald'
-	rel='stylesheet' type='text/css'>
+<link href="../css/test2.css" rel="stylesheet" />
+<link href="../css/Nwagon.css" rel="stylesheet" />
+<link href="../css/chartsize.css" rel="stylesheet" />
 <link rel='stylesheet' href='Nwagon.css' type='text/css'>
-<script src='Nwagon.js'></script>
-<!-- Theme skin -->
-<link href="skins/default.css" rel="stylesheet" />
-
+	<script src="js/Nwagon.js"></script>
 </head>
 <body>
-	<header>
-		<div class="navbar navbar-default navbar-static-top">
-			<div class="container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse"
-						data-target=".navbar-collapse">
-						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-							class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="index.html"><span>T</span>EST</a>
-				</div>
-				<div class="navbar-collapse collapse ">
-					<ul class="nav navbar-nav">
-						<li class="active"><a href="index.html">Home</a></li>
-						<li><a href="portfolio.html">기업검색</a></li>
-						<li><a href="blog.html">합격자소서</a></li>
-						<li><a href="contact.html">기업비교</a></li>
-						<li class="dropdown"><a href="#" class="dropdown-toggle "
-							data-toggle="dropdown" data-hover="dropdown" data-delay="0"
-							data-close-others="false">커뮤니티 <b class=" icon-angle-down"></b></a>
-							<ul class="dropdown-menu">
-								<li><a href="typography.html">스펙평가</a></li>
-								<li><a href="components.html">자유게시판</a></li>
-							</ul></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</header>
-	<!-- end header -->
-
 	<!-- headline -->
 	<section id="inner-headline">
 		<div class="container">
@@ -81,13 +37,10 @@
 	<section id="content">
 		<div class="com">
 			<div class="com_common" >
-			<button id="com_button" class="btn btn-default pull-right" type="button">기업정보</button>
 			<br><br>
 			<span style="font-size:25pt">${vo.companyName }</span>
 			</div>
-			
 			<div class="com_common">
-				<button id="com_button" class="btn btn-default pull-right" type="button">기업정보</button>
 					<br><br>
 			<span style="font-size:25pt">${vo.companyName }</span>
 			</div>

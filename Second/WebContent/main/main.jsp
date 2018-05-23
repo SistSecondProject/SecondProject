@@ -15,6 +15,11 @@
 <link href="../css/flexslider.css" rel="stylesheet" />
 <link href="../css/style.css" rel="stylesheet" />
 <link href="../css/size.css" rel="stylesheet" />
+<link href="../css/test2.css" rel="stylesheet" />
+<link href="../css/Nwagon.css" rel="stylesheet" />
+<link href="../css/chartsize.css" rel="stylesheet" />
+<link rel='stylesheet' href='Nwagon.css' type='text/css'>
+<script src="../js/Nwagon.js"></script>
 <style type="text/css">
 body, body.modal {
     margin-right: 0 !important;

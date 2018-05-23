@@ -17,14 +17,20 @@ public class CompareModel {
 		
 		return "main.jsp";
 	}
-	
+	//모달 검색결과
 	@RequestMapping("main/result.do")
 	public String compareData(HttpServletRequest request) {
 		String searchValue = request.getParameter("rdata");
 		List<CompareVO> clist=CompareDAO.compareData(searchValue);
 		request.setAttribute("clist", clist);
-		
 		return "../compare/result.jsp";
+	}
+	//비교 결과
+	@RequestMapping("main/compare_result.do")
+	public String compare_resultData(HttpServletRequest request)throws Exception {
+		System.out.println("compare_result.do");
+		request.setAttribute("home_jsp", "../compare/compare_result.jsp");
+		return "main.jsp";
 	}
 	
 }
