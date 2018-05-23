@@ -14,11 +14,7 @@
             scrollTop : $('div.scroll').eq(n).offset().top
         },1500);
     }
-    
-    
 </script>
-
-
 <style type="text/css">
 .modal{
 overflow-y: auto;
@@ -27,6 +23,8 @@ overflow-y: auto;
 overflow:auto;
 overflow-x:hidden;
 }
+div.viewWrap img{ width: 100%}
+
 </style>
 </head>
 <body>
@@ -160,7 +158,9 @@ overflow-x:hidden;
 									<td>
 										<dl>
 											<c:forEach var="j" begin="0" end="6">
+											<c:if test="${j!=6 }">
 												<dd><a href="javascript:void(window.open('calender_dt.do?link=${ciList[(i*7)+j].url }','Á¤º¸','width=1050px,height=450px','top=500px,left=500px'))">${ciList[(i*7)+j].data }</a></dd>
+												</c:if>
 											</c:forEach>
 										</dl>
 									</td>
@@ -209,8 +209,8 @@ overflow-x:hidden;
 					<div class="icon">
 						<i class="fa fa-music fa-5x"></i>
 					</div>
-					<strong id="counter-music" class="number">345</strong><br> <span
-						class="text">MP3 Songs</span>
+					  <span class="count">202</span><br> 
+					<span class="text">MP3 Songs</span>
 				</div>
 			</div>
 			<div class="col-lg-2">
@@ -410,7 +410,7 @@ overflow-x:hidden;
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
 						<h4 class="modal-title">${ndList[i].dt_title }</h4>
 					</div>
-					<div class="modal-body" style="width: 100%">
+					<div class="modal-body">
 						<div class="viewWrap" id="view_text">
 							<p>${ndList[i].dt_info }</p>
 						</div>
