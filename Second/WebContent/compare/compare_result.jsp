@@ -36,11 +36,11 @@
 		<div class="com">
 			<div class="com_common" >
 			<br><br>
-			<span style="font-size:25pt; color:red; font-weight:bold;">${comp1 }</span>
+			<span id="comname" style="font-size:25pt; color:red; font-weight:bold;">${vo.companyName }</span>
 			</div>
 			<div class="com_common">
 					<br><br>
-			<span style="font-size:25pt; color:blue; font-weight:bold;">${comp2 }</span>
+			<span id="comname" style="font-size:25pt; color:blue; font-weight:bold;">${vo.companyName  }</span>
 			</div>
 
 		</div>
@@ -52,10 +52,8 @@
 						'legend' : {
 							names : [ '승진 기회 및 가능성', '복지 및 급여', '업무와 삶의 균형',
 									'사내문화', '경영진 평점'],
-							hrefs : []
 						},
 						'dataset' : {
-							title : 'Web accessibility status',
 							values : [ [ 33, 53, 67, 23, 78],
 									[ 53, 67, 23, 78, 45 ] ],
 							bgColor : '#f9f9f9',
@@ -73,40 +71,40 @@
 			</div>
 		</div>
 		<br>
-	<div>
-		<span class="num1" style="font-size:20pt;font-weight:bold; color:red">${vo.welfare_pay }</span>
+	<div><br>
+		<span class="num1" id="pay" style="font-size:20pt;font-weight:bold; color:red">${vo1.welfare_pay }&nbsp;점</span>
 			&emsp;&emsp;&emsp;&emsp;
 			<span class="rad" style="font-weight:bold">복지 및 급여</span>
 			&emsp;&emsp;&emsp;&emsp;
-			<span class="num1" style="font-size:20pt;font-weight:bold; color:blue">${vo.welfare_pay }</span>
+			<span class="num1" id="pay" style="font-size:20pt;font-weight:bold; color:blue">${vo2.welfare_pay }&nbsp;점</span>
 		</div>
-		<div>
-<span class="num1" style="font-size:20pt;font-weight:bold; color:red">${vo.work_life_balance }</span>
+		<div><br>
+<span class="num1" id="work" style="font-size:20pt;font-weight:bold; color:red">${vo1.work_life_balance }&nbsp;점</span>
 			&emsp;&emsp;&emsp;&emsp;
 			<span class="rad" style="font-weight:bold">업무 삶 균형</span>
 			&emsp;&emsp;&emsp;&emsp;
-			<span class="num1" style="font-size:20pt;font-weight:bold; color:blue">${vo.work_life_balance }</span>
+			<span class="num1" id="work" style="font-size:20pt;font-weight:bold; color:blue">${vo2.work_life_balance }&nbsp;점</span>
 		</div>
-		<div>
-		<span class="num1" style="font-size:20pt;font-weight:bold; color:red">${vo.corporate_culture }</span>
+		<div><br>
+		<span class="num1" id="culture"  style="font-size:20pt;font-weight:bold; color:red">${vo1.corporate_culture }&nbsp;점</span>
 			&emsp;&emsp;&emsp;&emsp;
 			<span class="rad" style="font-weight:bold">사내문화</span>
 			&emsp;&emsp;&emsp;&emsp;
-			<span class="num1" style="font-size:20pt;font-weight:bold; color:blue">${vo.corporate_culture }</span>
+			<span class="num1" id="culture" style="font-size:20pt;font-weight:bold; color:blue">${vo2corporate_culture }&nbsp;점</span>
 		</div>
-		<div>
-		<span class="num1" style="font-size:20pt;font-weight:bold; color:red">${vo.management }</span>
+		<div><br>
+		<span class="num1" id="manage" style="font-size:20pt;font-weight:bold; color:red">${vo1.management }&nbsp;점</span>
 			&emsp;&emsp;&emsp;&emsp;
 			<span class="rad" style="font-weight:bold">경영진</span>
 			&emsp;&emsp;&emsp;&emsp;
-			<span class="num1" style="font-size:20pt;font-weight:bold; color:blue">${vo.management }</span>
+			<span class="num1" id="manage" style="font-size:20pt;font-weight:bold; color:blue">${vo2.management }&nbsp;점</span>
 		</div>
-		<div>
-		<span class="num1" style="font-size:20pt;font-weight:bold; color:red">${vo.promotion_possibility }</span>
+		<div><br>
+		<span class="num1" id="possible" style="font-size:20pt;font-weight:bold; color:red">${vo1.promotion_possibility }&nbsp;점</span>
 			&emsp;&emsp;&emsp;&emsp;
 			<span class="rad" style="font-weight:bold">승진 가능성</span>
 			&emsp;&emsp;&emsp;&emsp;
-			<span class="num1" style="font-size:20pt;font-weight:bold; color:blue">${vo.promotion_possibility }</span>
+			<span class="num1" id="possible" style="font-size:20pt;font-weight:bold; color:blue">${vo2.promotion_possibility }&nbsp;점</span>
 		</div>
 		<br>
 	</section>

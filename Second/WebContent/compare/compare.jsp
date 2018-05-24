@@ -13,7 +13,7 @@ function a(){
 	var comp2=$('#comp2').attr("name");
 	location.href ="compare_result.do?comp1="+comp1+"&comp2="+comp2; 
 }
-	
+
 $(document).ready(function() {
     //엔터키로도 검색버튼 눌리게 함
     $("#search").keydown(function(evt) {

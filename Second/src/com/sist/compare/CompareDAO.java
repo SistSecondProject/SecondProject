@@ -10,6 +10,8 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.sist.vo.CompanyVO;
 
+import oracle.jdbc.OracleResultSetMetaData.SecurityAttribute;
+
 public class CompareDAO {
 
 	private static SqlSessionFactory ssf;
@@ -41,12 +43,15 @@ public class CompareDAO {
 		}
 		return list;
 	}
-	public static Compare_ResultVO resultData(String companyCode) {
+	public static Compare_ResultVO resultData(int companyCode) {
 		Compare_ResultVO vo = null;
 		SqlSession session = null;
 		try {
 			session = ssf.openSession();
+			System.out.println("DAO CompanyCode : "+companyCode);
 			vo = session.selectOne("resultData", companyCode);
+			System.out.println("DAO vo : " + vo.getCompanyCode());
+		
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		} finally {

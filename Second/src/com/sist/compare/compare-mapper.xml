@@ -4,15 +4,20 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sist.compare.compare-mapper">
 
-<select id="compareData" resultType="CompareVO"
-	parameterType="String">
-	 SELECT imageURL,companyName,formOfCompany,companyCode
-	FROM company
-	WHERE companyName LIKE '%'||#{searchValue}||'%'
+	<select id="compareData" resultType="CompareVO" parameterType="String">
+		SELECT imageURL,companyName,formOfCompany,companyCode
+		FROM company
+		WHERE companyName LIKE '%'||#{searchValue}||'%'
 	</select>
 
-<select id="resultData" resultType="Compare_ResultVO" parameterType="String">
-	SELECT companyCode,promotion_possibility,welfare_pay,work_life_balance,corporate_culture,management
-	FROM company_Score;
-</select>
+	<select id="resultData" resultType="Compare_ResultVO"
+		parameterType="int">
+		SELECT companyCode,round(avg(promotion_possibility),1) as promotion_possibility,
+		round(avg(welfare_pay),1) as welfare_pay,
+		round(avg(work_life_balance),1) as work_life_balance,
+		round(avg(corporate_culture),1) as corporate_culture,round(avg(management),1)as management
+		FROM company_Score
+		WHERE companyCode=#{companyCode}
+		Group by companyCode
+	</select>
 </mapper>
