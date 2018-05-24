@@ -85,6 +85,7 @@ div#p
          <a href="../main/passinfo.do" class="btn btn-sm btn-info">목록</a>
         </td>
        </tr>  
+       
     <div id="side" class="ct" style="font-family:arial;">항목 1<span style="float:right">+</span></div>
          <div class="p">
          <div id="p"><textarea rows="2" cols="95" readonly="readonly">${vo.content }</textarea></div>

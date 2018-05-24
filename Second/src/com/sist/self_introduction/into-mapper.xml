@@ -40,8 +40,7 @@
    <insert id="intoInsert" parameterType="IntroductionVO">
          INSERT INTO User_Introduction VALUES(
        (SELECT NVL(MAX(no)+1,1) FROM User_Introduction),
-       #{content},
-       SYSDATE,0
+       #{content},SYSDATE,0
      )
    </insert>
  

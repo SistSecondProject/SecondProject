@@ -8,13 +8,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-<c:forEach var="no" items="${vo }">
-      <tr>
-       <td width=10% align="center">${vo.no }</td>
-       <td width=30% align="center">
-        ${vo.content }
-       </td>
-      </tr>
-    </c:forEach>
+
+   
+    <P>${vo.content }</P>
+    
+      
+   
 </body>
 </html>

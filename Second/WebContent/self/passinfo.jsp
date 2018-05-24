@@ -13,7 +13,7 @@
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <!-- css -->
-<!--ajax -->
+<!--ajax : 검색하기 -->
 <script type="text/javascript">
 $(function(){
 	
@@ -23,9 +23,38 @@ $(function(){
 		 var temp=$("#user-table>tbody>tr>td:nth-child(3n+1):contains('"+k+"')");
 	     $(temp).parent().show();
 	 });
+
+	 $(".tm").on("click", function(){
+			var no = $(this).attr("value");
+			//syso 같은것 consol
+			//alert("no="+no);
+			$.ajax({
+				type:"POST",
+				url:"pass_result.do",
+				data:{
+					"no" : no
+					},
+				success: function(data){
+					$("#passdetail").html(data)
+					
+				},
+				error: function(data){
+					console.log("실패")
+				}
+			});
+			
+		});
+	 
 	
 });
+
+
+
+
 </script>
+
+
+
 <link href="css/size.css" rel="stylesheet" /><style>
 body
 {
@@ -69,25 +98,11 @@ div#p
  padding-bottom:5px; 
 }
 
-
-
 </style>
 <!-- 내용쓰기 관련 -->
 
 <script type="text/javascript">
 
-$(function(){
-	   $.ajax({
-		 type:'post',
-		 url:'pass_result.do',
-		 success:function(res)
-		 {
-			 $('#passdetail').html(res); 
-		 }
-	   });
-
-});
-</script>
 <!-- 저장버튼 누르면 값보내기 -->
 <script type="text/javascript">
 $(function(){
@@ -96,7 +111,7 @@ $(function(){
 		 url:'passinfo.do',
 		 success:function(res)
 		 {
-			 $('#table table-hover2').html(res); 
+			 $('#table table-hover2>tbody').html(res); 
 		 }
 	   });
 	   $('#save').click(function(){
@@ -106,7 +121,7 @@ $(function(){
 		       data:{"content":content},
 		       success:function(res)
 		       {
-		    	   $('#table table-hover2').html(res);
+		    	   $('#table table-hover2>tbody').html(res);
 		       }
 		   }); 
 	   })
@@ -119,9 +134,10 @@ $(function(){
 </script>
 <style type="text/css">
 
-.modal-content{
-    width: 500px;
-     height: 900px;
+#testModal{
+   max-height: 900px;
+   max-width: 1200px;  
+
 }
 #favorites{
 	border:1px solid #2F5030;
@@ -228,10 +244,9 @@ $(function(){
         <tbody>
         <c:forEach var="vo" items="${plist }">
          <tr>
-          <td class="text-center" align="center" data-toggle="modal" data-target="#compareModal" id="comp1">
-          ${vo.companyName }
-          
-          </td>
+          <td class="text-center" align="center">
+		 <a href="#" class="tm" data-toggle="modal" data-target="#testModal" value=${vo.no }>${vo.companyName }</a>
+         </td>
  
           <td class="text-center" align="center">
            ${vo.position }
@@ -259,9 +274,9 @@ $(function(){
          <th width=20% class="text-center" align="center">작성일</th>
          
         </tr>
-        
+        <form id=detail>
         <c:forEach var="vo" items="${list }">
-         <tr>
+         <tr id="print">
           <td class="text-center" align="center">
           ${vo.no }
           </td>
@@ -273,7 +288,8 @@ $(function(){
            <fmt:formatDate value="${vo.regdate }" pattern="yyyy-MM-dd"/> 
           </td>
          </tr>
-        </c:forEach>  
+        </c:forEach> 
+        </form> 
          
                      
       </table>
@@ -296,7 +312,7 @@ $(function(){
 	 <div class="col-lg-5">
 			  <!-- 자소서 작성부분 첨부 -->           
     <br>
-    <form method=post action="insert_ok.do">
+    <form method=post action="selftest_ok.do">
     <div id="side" class="ct" style="font-family:arial;">항목 1<span style="float:right">+</span></div>
          <div class="p">
          <div id="p"><textarea rows="2" cols="95" placeholder="항목 또는 제목을 입력하세요" ></textarea></div>
@@ -319,16 +335,38 @@ $(function(){
          <br>
          <tr>
         <td colspan="4" class="text-center" id="save">
-         <input type="button" class="btn btn-sm btn-primary"
+         <input type="submit" class="btn btn-sm btn-primary"
           value="저장" id="writeBtn">
         </td>
        </tr>
         </form>
-        
+        <!-- 합격 자소서 내용 보기 -->
+<div class="modal" id="testModal" tabindex="-1" role="dialog">
+
+	<div class="modal-dialog modal-lg">
+
+		<div class="modal-content">
+			<div class="modal-body">
+				<h1>합격 자소서 내용</h1>
+			</div>
+			<div>
+			<span id=passdetail></span>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn" data-dismiss="modal">닫기</button>
+			</div>
+		</div>
+
+	</div>
+
+</div>
+
+
+
          
     
        
-      
+  
           
 	
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
@@ -342,32 +380,6 @@ $(function(){
       
 <script  src="../self/js/index.js"></script>
 
-	<div class="modal fade" id="compareModal" tabindex="-1" role="dialog"
-		aria-labelledby="compareModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-md">
-		
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span style="font-size: 1.5em" aria-hidden="true">×</span>
-					</button>
-					<h4 class="modal-title" id="compareModalLabel">합격자소서 내용</h4>
-					<hr style="border: solid 1px black;" width="100%">
-					<div class="input-group">
-				    <span id="passdetail"></span>
-					
-						</div>
-					
-					<br>
-			
-				</div>
-				
-			</div>
-		</div> 
-		
-		<br>
-	</div>
 
 </body>       
 </html>

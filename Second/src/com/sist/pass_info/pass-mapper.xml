@@ -8,7 +8,7 @@
 
  <select id="passListData" resultType="PassVO" parameterType="java.util.Map">
      
- 	 SELECT c.companyname, p.position, p.recruitmentTitle
+ 	 SELECT p.no, c.companyname, p.position, p.recruitmentTitle
      FROM company c
      RIGHT JOIN Pass_Introduction p 
      ON c.companyCode = p.companyCode  
@@ -45,7 +45,7 @@
    </sql>
  
    <select id="passContentData" resultType="PassVO" parameterType="int">
-     SELECT content
+     SELECT no,content
      FROM Pass_Introduction
      WHERE no=#{no}
    </select>   

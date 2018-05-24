@@ -98,7 +98,7 @@ public class PassIntoModel {
 	
 	   
 	   //저장--> 리스트에 값 추가
-	   @RequestMapping("main/insert_ok.do")
+	   @RequestMapping("main/selftest_ok.do")
 	   public String intoInsertOk(HttpServletRequest request)
 	   throws Exception
 	   {
