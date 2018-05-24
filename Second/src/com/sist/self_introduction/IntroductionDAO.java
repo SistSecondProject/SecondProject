@@ -32,7 +32,7 @@ public class IntroductionDAO {
 	   //            리턴형  (resultType)   매개변수(parameterType)
 	   public static List<IntroductionVO> intoListData(Map map) 
 	   {
-		   List<IntroductionVO> list=new ArrayList<IntroductionVO>();
+		   List<IntroductionVO> ilist=new ArrayList<IntroductionVO>();
 		   SqlSession session=null;//connection연결=>sql문장수행 
 		   try
 		   {
@@ -41,7 +41,7 @@ public class IntroductionDAO {
 			   // openSession() => openSession(true)
 			   // autoCommit(false)   autoCommit(true)
 			   // 실행 결과값 받기 
-			   list=session.selectList("intoListData", map);
+			   ilist=session.selectList("intoListData", map);
 		   }catch(Exception ex)
 		   {
 			   System.out.println(ex.getMessage());
@@ -51,7 +51,7 @@ public class IntroductionDAO {
 			   if(session!=null)
 				   session.close();
 		   }
-		   return list;
+		   return ilist;
 	   }
 	   
 	   public static int intoTotalPage()
@@ -76,9 +76,10 @@ public class IntroductionDAO {
 		   return total;
 	   }
 	   
-	   // 추가    
+	   // 내용추가    
 	   public static void intoInsert(IntroductionVO vo)
 	   {
+		   
 		   SqlSession session=null;
 		   try
 		   {
@@ -94,10 +95,11 @@ public class IntroductionDAO {
 			   if(session!=null)
 				   session.close();
 		   }
+		 
 	   }
 	   
-/*	   //내용 보기
-	   public static IntroductionVO intoContent(int no)
+	   //내용 보기
+	   public static IntroductionVO intoContentData(int no)
 	   {
 		   IntroductionVO vo = new IntroductionVO();
 		   SqlSession session=null;
@@ -105,7 +107,7 @@ public class IntroductionDAO {
 		   {
 			   session=ssf.openSession();
 			  
-			   vo = session.selectOne("intoContentData",no);
+			   vo = session.selectOne("infoContentData",no);
 			   
 		   }catch(Exception ex)
 		   {
@@ -120,7 +122,7 @@ public class IntroductionDAO {
 	   }
 	   
 	   // 내용 수정부분(update)
-	   public static IntroductionVO intoUpdateData(int no)
+	  /* public static IntroductionVO intoUpdateData(int no)
 	   {
 		   IntroductionVO vo = new IntroductionVO();
 		   SqlSession session=null;
@@ -139,8 +141,8 @@ public class IntroductionDAO {
 				   session.close();
 		   }
 		   return vo;
-	   }
-	   */
+	   }*/
+	   
 	   /*public static boolean boardUpdate(BoardVO vo)
 	   {
 		   //비밀번호가 같으면 수정한다.

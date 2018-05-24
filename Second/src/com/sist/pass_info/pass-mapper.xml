@@ -8,25 +8,18 @@
 
  <select id="passListData" resultType="PassVO" parameterType="java.util.Map">
      
-     SELECT c.companyname, p.position, p.recruitmentTitle
+ 	 SELECT c.companyname, p.position, p.recruitmentTitle
      FROM company c
-     RIGHT JOIN Pass_Introduction p
+     RIGHT JOIN Pass_Introduction p 
      ON c.companyCode = p.companyCode  
-     
-     
-    <!--  SELECT c.companyname, p.position, p.recruitmentTitle,num
-     FROM (SELECT c.companyname, p.position, p.recruitmentTitle,rownum as num
-     FROM (SELECT c.companyname, p.position
-     FROM company c
-     RIGHT JOIN Pass_Introduction p
-     ON c.companyCode = p.companyCode))
-     WHERE num BETWEEN #{start} AND #{end}  
-      -->
-	<!--  SELECT c.companyname, p.position, p.recruitmentTitle,num
+    
+  
+<!-- 
+     SELECT c.companyname, p.position, p.recruitmentTitle,num
      FROM (SELECT c.companyname, p.position, p.recruitmentTitle,rownum as num
      FROM (SELECT c.companyname, p.position, p.recruitmentTitle
      FROM company c RIGHT JOIN Pass_Introduction p ON c.companyCode = p.companyCode))
-     WHERE num BETWEEN #{start} AND #{end} -->
+     WHERE num BETWEEN #{start} AND #{end}  -->
      
 
   
@@ -51,9 +44,18 @@
      WHERE no=#{no}
    </sql>
  
-   <select id="infoContentData" resultType="IntroductionVO" parameterType="int">
-     SELECT position,recruitmentTitle,content
-     FROM User_Introduction
-     <include refid="where-no"/>
+   <select id="passContentData" resultType="PassVO" parameterType="int">
+     SELECT content
+     FROM Pass_Introduction
+     WHERE no=#{no}
    </select>   
+   
+   <!-- 검색 -->
+    <select id="passAllData" resultType="PassVO" parameterType="String">
+  		SELECT c.companyname, p.position, p.recruitmentTitle
+     	FROM company c
+     	RIGHT JOIN Pass_Introduction p 
+     	ON c.companyCode = p.companyCode
+ 	    WHERE companyname=#{companyname} <!-- list=session.selectOne("genreAlldata", genre);==> #{genre} -->
+  </select>
 </mapper>

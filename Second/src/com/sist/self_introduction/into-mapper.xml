@@ -5,25 +5,12 @@
 
 
 <mapper namespace="com.sist.dao.into-mapper">
-
- <select id="intoListData" resultType="IntroductionVO" parameterType="java.util.Map">
-    <!-- 
-     // 시퀀스 
-		<selectKey keyProperty="no" resultType="int" order="BEFORE">
-			SELECT NVL(MAX(no)+1,1) as no FROM music_chart
-		</selectKey>
-    
-    
-     SELECT c.userid,u.no,u.content,u.regdate,num
-     FROM (SELECT c.userid,u.no,u.content,u.regdate,rownum as num
-     FROM (SELECT c.userid,u.no,u.content,u.regdate 
-     FROM Company AS c JOIN User_Introduction AS u ON c.infocode=u.infocode))
-     WHERE num BETWEEN #{start1} AND #{end1} -->
-     
+<!-- 자기소개서함 리스트 띄우기 -->
+<select id="intoListData" resultType="IntroductionVO" parameterType="java.util.Map">     
      SELECT no,content,regdate,num
      FROM (SELECT no,content,regdate,rownum as num
      FROM (SELECT no,content,regdate 
-     FROM User_Introduction ORDER BY regdate DESC))
+     FROM User_Introduction ORDER BY no DESC))
      WHERE num BETWEEN #{start} AND #{end}
     
      
@@ -40,8 +27,7 @@
          
          -->
          
-     
-   </select>
+      </select>
  
      <!-- 총페이지 읽기 -->
     
@@ -49,39 +35,44 @@
      SELECT CEIL(COUNT(*)/10) FROM User_Introduction
    </select> 
 
-   <!-- 내용 추가 --> 
+ <!-- 내용 추가   아직안 됨-->    
      
    <insert id="intoInsert" parameterType="IntroductionVO">
-     INSERT INTO User_Introduction VALUES(
+         INSERT INTO User_Introduction VALUES(
        (SELECT NVL(MAX(no)+1,1) FROM User_Introduction),
-       	#{content},SYSDATE
+       #{content},
+       SYSDATE,0
      )
    </insert>
-   
-  <!--  
-   content(내용보기)
+ 
+ 
+   <!--  content(내용보기)-->
    <sql id="where-no">
      WHERE no=#{no}
-   </sql>
- 
+   </sql> 
+   
    <select id="infoContentData" resultType="IntroductionVO" parameterType="int">
-     SELECT no,title,subcontent,content,regdate
+     SELECT no,content
      FROM User_Introduction
-     <include refid="where-no"/>
+     WHERE no=#{no}
    </select>
    
+ 
+   
+<!--   
     수정하기 : 먼저 비밀 번호를 갖고 들어온다.
    <select id="boardGetPwd" resultType="String" parameterType="int">
    SELECT pwd FROM User_Introduction
    <include refid="where-no"/>
    </select>
+  -->
    
-   <update id="intoUpdate" parameterType="BoardVO">
+  <!--  <update id="intoUpdateData" parameterType="int">
    UPDATE User_Introduction SET
-   title=#{title},subcontent=#{subcontent},content=#{content}
+   content=#{content}
    WHERE no=#{no}
-   </update>
+   </update> -->
    
-    -->
+    
    
 </mapper>

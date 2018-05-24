@@ -8,6 +8,8 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 
+
+
 public class PassinfoDAO {
 	 private static SqlSessionFactory ssf;
 	 
@@ -97,15 +99,14 @@ public class PassinfoDAO {
 	   }*/
 	   
 	   //내용 보기
-	   public static PassVO passDetail(int no)
-	   {
+	   public static PassVO passContentData(int no)   {
 		   PassVO vo = new PassVO();
 		   SqlSession session=null;
 		   try
 		   {
 			   session=ssf.openSession();
 			  
-			   vo = session.selectOne("passDetail",no);
+			   vo = session.selectOne("passContentData",no);
 			   
 		   }catch(Exception ex)
 		   {
@@ -118,6 +119,32 @@ public class PassinfoDAO {
 		   }
 		   return vo;
 	   }
+	 /*  public static List<PassVO> passAllData(String companyname)
+	   {
+		   List<PassVO> list=new ArrayList<PassVO>();
+		   SqlSession session=null;
+		   try
+		   {
+			   // 연결 Connection
+			   session=ssf.openSession(); //getConnection()
+			   list=session.selectList("passAllData", companyname);
+			   
+		   }catch(Exception ex)
+		   {
+			   System.out.println(ex.getMessage());
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close();// 반환 disConnection()
+		   }
+		   return list;
+	   }*/
+
+
+	
+
+
 	   
 
 	   
