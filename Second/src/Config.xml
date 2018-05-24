@@ -9,6 +9,7 @@
     <typeAlias type="com.sist.pass_info.PassVO" alias="PassVO"/>
     <typeAlias type="com.sist.member.MemberVO" alias="MemberVO"/> 
       <typeAlias type="com.sist.compare.CompareVO" alias="CompareVO"/> 
+      <typeAlias type="com.sist.community.SpecVO" alias="SpecVO"/> 
   </typeAliases>
   
   <environments default="development">
@@ -27,6 +28,7 @@
      <mapper resource="com/sist/self_introduction/into-mapper.xml"/> 
     <mapper resource="com/sist/pass_info/pass-mapper.xml"/>
      <mapper resource="com/sist/compare/compare-mapper.xml"/>
+     <mapper resource="com/sist/community/community-mapper.xml"/>
      <!-- <mapper resource="com/sist/member/member-mapper.xml"/>  -->  
   </mappers>
 </configuration>

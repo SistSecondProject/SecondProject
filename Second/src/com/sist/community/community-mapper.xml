@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.sist.community.community-mapper.xml">
+ <insert id="specInsert" parameterType="SpecVO">
+  insert into spec_board
+  values((SELECT NVL(MAX(no)+1,1) FROM spec_board),#{userId},#{subject},#{content},SYSDATE,0,0,0)
+</insert>
+ </mapper>
