@@ -23,9 +23,61 @@ public class CompanyDAO {
 			System.out.println(e.getMessage());
 		}
 	}
+	
+	public static void deleteRecruitmentBookmark(String userid, String recruitmentcode) {
+		SqlSession session = null;
+		try {
+			session = ssf.openSession(true);
+			Map map = new HashMap<String, String>();
+			map.put("userid", userid);
+			map.put("recruitmentcode", recruitmentcode);
+			session.delete("deleteRecruitmentBookmark", map);	
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			if (session != null)
+				session.close();
+		}
+	}
+
+	public static void insertRecruitmentBookmark(String userid, String recruitmentcode) {
+		SqlSession session = null;	
+		try {
+			session = ssf.openSession(true);
+			Map map = new HashMap<String, String>();
+			map.put("userid", userid);
+			map.put("recruitmentcode", recruitmentcode);
+			session.insert("insertRecruitmentBookmark", map);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			if (session != null)
+				session.close();
+		}
+	}
+
+	public static boolean searchRecruitmentBookmark(String userid, String recruitmentcode) {
+		SqlSession session = null;
+		boolean flag = false;
+		try {
+			session = ssf.openSession();
+			Map map = new HashMap<String, String>();
+			map.put("userid", userid);
+			map.put("recruitmentcode", recruitmentcode);
+			int count = session.selectOne("searchRecruitmentBookmark", map);
+			if (count != 0)
+				flag = true;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			if (session != null)
+				session.close();
+		}
+		return flag;
+	}
 
 	public static void deleteCompanyBookmark(String userid, String companycode) {
-		SqlSession session = null;	
+		SqlSession session = null;
 		try {
 			session = ssf.openSession(true);
 			Map map = new HashMap<String, String>();
@@ -210,5 +262,54 @@ public class CompanyDAO {
 				session.close();
 		}
 		return count;
+	}
+	
+	public static List<CompanyVO> findFavoriteCompany(String userid){
+		List<CompanyVO> list = null;
+		SqlSession session = null;
+		try {
+			session = ssf.openSession();
+			list = session.selectList("findFavoriteCompany", userid);
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			if (session != null)
+				session.close();
+		}
+		return list;
+	}
+	
+	public static List<Integer> highScoreList(){
+		SqlSession session = null;
+		List<Integer> list = new ArrayList<Integer>();
+		try {
+			session = ssf.openSession();
+
+			list= session.selectList("highScoreList");
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			if (session != null)
+				session.close();
+		}
+		return list;
+	}
+	public static CompanyVO findCompany(int code) {
+		SqlSession session = null;
+		CompanyVO vo = null;
+		try {
+			session = ssf.openSession();
+
+			vo= session.selectOne("findCompany",code);
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			if (session != null)
+				session.close();
+		}
+		return vo;
 	}
 }

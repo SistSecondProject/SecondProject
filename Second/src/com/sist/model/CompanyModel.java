@@ -1,6 +1,7 @@
 package com.sist.model;
 
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,14 +13,42 @@ import com.sist.controller.RequestMapping;
 import com.sist.dao.CompanyDAO;
 import com.sist.vo.Company_ScoreVO;
 
+import com.sist.vo.*;
+
 @Controller
 public class CompanyModel {
 
+	@RequestMapping("main/recruitment_bookmark.do")
+	public String recruitment_bookmark(HttpServletRequest request) {
+		String type = request.getParameter("type");
+		String recruitmentcode = request.getParameter("recruitmentcode");
+		request.getSession().setAttribute("userid", "admin");//////////////////////////
+		String userid = (String) request.getSession().getAttribute("userid");
+		
+		if (type == null) {
+			if (CompanyDAO.searchRecruitmentBookmark(userid, recruitmentcode))
+				request.setAttribute("flag", true);
+			else
+				request.setAttribute("flag", false);			
+		} else {
+			if(type.equals("bookmarktrue")) {
+				CompanyDAO.deleteRecruitmentBookmark(userid, recruitmentcode);
+				request.setAttribute("flag", false);
+			}else {
+				CompanyDAO.insertRecruitmentBookmark(userid, recruitmentcode);
+				request.setAttribute("flag", true);
+			}
+		}
+		
+		
+		
+		return "../company/recruitment_bookmark.jsp";
+	}
 	@RequestMapping("main/company_bookmark.do")
-	public String company_bookmark(HttpServletRequest request) throws UnsupportedEncodingException {
+	public String company_bookmark(HttpServletRequest request) {
 		String type = request.getParameter("type");
 		String companyCode = request.getParameter("companycode");
-		request.getSession().setAttribute("userid", "admin");
+		request.getSession().setAttribute("userid", "admin");///////////////////////////
 		String userid = (String) request.getSession().getAttribute("userid");
 		
 		if (type == null) {
@@ -88,7 +117,10 @@ public class CompanyModel {
 		}
 
 		if (companyCode != null) {
-			request.setAttribute("vo", CompanyDAO.companyDetail(companyCode));
+			CompanyVO cvo =CompanyDAO.companyDetail(companyCode);
+			cvo.setCompanyDetail(cvo.getCompanyDetail().replaceAll("\n", "<br>"));
+			request.setAttribute("vo", cvo);
+			
 			request.setAttribute("list", CompanyDAO.recruitmentList(companyCode));
 		}
 		if (curPage == null)
@@ -118,6 +150,16 @@ public class CompanyModel {
 			else
 				end = Integer.parseInt(curPage) + 5;
 		}
+		
+		List<Integer> highlist=CompanyDAO.highScoreList();
+		List<CompanyVO> highscorecompanylist = new ArrayList<CompanyVO>();
+		for(Integer code : highlist) {
+			CompanyVO vo = CompanyDAO.findCompany(code);
+			highscorecompanylist.add(vo);
+		}
+		request.setAttribute("highList", highscorecompanylist);		
+		request.setAttribute("favoritelist", CompanyDAO.findFavoriteCompany("admin"));
+		
 		request.setAttribute("companyList", CompanyDAO.searchList(strSearch, strCate, curPage));
 		request.setAttribute("start", start);
 		request.setAttribute("end", end);
@@ -128,5 +170,5 @@ public class CompanyModel {
 		request.setAttribute("catecount", CompanyDAO.categoryCount());
 		return "main.jsp";
 	}
-
+	
 }

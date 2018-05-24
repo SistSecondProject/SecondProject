@@ -245,7 +245,7 @@
 				</div>
 				</div>
 				<div class="col-lg-7">
-				<textarea name="content" cols="50" rows="15" required></textarea>
+				<textarea class="form-control" name="content" cols="50" rows="15" required></textarea>
 				</div>
 				<input type="submit" value="평가">
 			
@@ -255,7 +255,7 @@
 		
 	</article>
 
-
+	<c:if test="${not(empty(list))}">
 	<article>
 		<h3 class="widgetheading">채용정보</h3>
 		<c:forEach var="recruitment" items="${list}">
@@ -268,5 +268,6 @@
 			</div>
 		</c:forEach>
 	</article>
+	</c:if>
 </body>
 </html>

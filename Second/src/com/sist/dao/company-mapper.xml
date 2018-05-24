@@ -46,6 +46,9 @@ WHERE num BETWEEN #{start} AND #{end}
 		insert into Company_Score
 		values( #{companyCode},#{userID}, #{promotion_possibility}, #{welfare_pay}, #{work_life_balance},#{corporate_culture},#{management}, #{evaluation})
 	</insert>
+	<select id="findFavoriteCompany" resultType="com.sist.vo.CompanyVO" parameterType="String">
+	select * from company com, favorite_company fav where com.companycode=fav.companycode and fav.userid=#{userid}
+	</select>
 	<select id="searchCompanyBookmark" resultType="int" parameterType="map">
 		select count(*) from Favorite_Company where userID=#{userid} and companyCode=#{companycode}
 	</select>
@@ -54,8 +57,24 @@ WHERE num BETWEEN #{start} AND #{end}
 	</insert>
 	<delete id="deleteCompanyBookmark" parameterType="map">
 		delete from Favorite_Company where userID=#{userid} and companyCode=#{companycode}
+	</delete>	
+	
+	
+	<select id="searchRecruitmentBookmark" resultType="int" parameterType="map">
+		select count(*) from Favorite_Recruitment where userID=#{userid} and RecruitmentCode=#{recruitmentcode}
+	</select>
+	<insert id="insertRecruitmentBookmark" parameterType="map">
+		insert into Favorite_Recruitment values( #{userid}, #{recruitmentcode})
+	</insert>
+	<delete id="deleteRecruitmentBookmark" parameterType="map">
+		delete from Favorite_Recruitment where userID=#{userid} and recruitmentCode=#{recruitmentcode}
 	</delete>
 	
 	
-	
+	<select id="highScoreList" resultType="int">
+	select companycode from (select companycode from company_score having count(*)>50 group by companycode order by  AVG(PROMOTION_POSSIBILITY+WELFARE_PAY+WORK_LIFE_BALANCE+CORPORATE_CULTURE+MANAGEMENT)/5  desc ) where 10>rownum
+	</select>
+	<select id="findCompany" parameterType="int" resultType="com.sist.vo.CompanyVO">
+	select * from company where companycode=#{code}
+	</select>
 </mapper>

@@ -46,8 +46,11 @@
 								</form>
 							</div>
 							<div class="widget">
-								<h5 class="widgetheading">카테고리</h5>
+								<h4 class="widgetheading">카테고리</h4>
 								<ul class="cat">
+								<li><i class="icon-angle-right"></i> <a
+											href="company.do?">ALL</a><span>
+												</span></li>
 									<c:forEach var="str" items="${catename}" varStatus="status">
 										<li><i class="icon-angle-right"></i> <a
 											href="company.do?category=${str}">${str}</a><span>
@@ -57,42 +60,23 @@
 								</ul>
 							</div>
 							<div class="widget">
-								<h5 class="widgetheading">최근 평가</h5>
-								<ul class="recent">
-									<li><img src="img/dummies/blog/65x65/thumb1.jpg"
-										class="pull-left" alt="" />
-										<h6>
-											<a href="#">Lorem ipsum dolor sit</a>
-										</h6>
-										<p>Mazim alienum appellantur eu cu ullum officiis pro pri
-										</p></li>
-									<li><a href="#"><img
-											src="img/dummies/blog/65x65/thumb2.jpg" class="pull-left"
-											alt="" /></a>
-										<h6>
-											<a href="#">Maiorum ponderum eum</a>
-										</h6>
-										<p>Mazim alienum appellantur eu cu ullum officiis pro pri
-										</p></li>
-									<li><a href="#"><img
-											src="img/dummies/blog/65x65/thumb3.jpg" class="pull-left"
-											alt="" /></a>
-										<h6>
-											<a href="#">Et mei iusto dolorum</a>
-										</h6>
-										<p>Mazim alienum appellantur eu cu ullum officiis pro pri
-										</p></li>
+								<h4 class="widgetheading">관심 기업</h4>
+								<ul class="tags">
+									<c:forEach var="companyvo" items="${favoritelist }"	varStatus="x">
+										
+										<li><a href="company.do?companycode=${companyvo.companyCode}">${companyvo.companyName }</a></li>
+										
+									</c:forEach>
+
 								</ul>
 							</div>
 							<div class="widget">
-								<h5 class="widgetheading">고평점 기업</h5>
+								<h4 class="widgetheading" title="평가횟수 50 이상 기업중 상위 기업">고평점
+									기업</h4>
 								<ul class="tags">
-									<li><a href="#">Web design</a></li>
-									<li><a href="#">Trends</a></li>
-									<li><a href="#">Technology</a></li>
-									<li><a href="#">Internet</a></li>
-									<li><a href="#">Tutorial</a></li>
-									<li><a href="#">Development</a></li>
+									<c:forEach var="cvo" items="${highList}">
+										<li><a href="company.do?companycode=${cvo.companyCode}">${cvo.companyName }</a></li>
+									</c:forEach>
 								</ul>
 							</div>
 						</aside>

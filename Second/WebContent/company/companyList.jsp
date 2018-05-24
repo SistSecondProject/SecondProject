@@ -7,6 +7,7 @@
 <meta charset="EUC-KR">
 </head>
 <body>
+
 	<c:forEach var="com" items="${companyList}">
 		<article>
 			
