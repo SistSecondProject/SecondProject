@@ -32,17 +32,15 @@
 		</div>
 	</section>
 	<!--end headline -->
-
-
 	<section id="content">
 		<div class="com">
 			<div class="com_common" >
 			<br><br>
-			<span style="font-size:25pt">${vo.companyName }</span>
+			<span style="font-size:25pt; color:red; font-weight:bold;">${comp1 }</span>
 			</div>
 			<div class="com_common">
 					<br><br>
-			<span style="font-size:25pt">${vo.companyName }</span>
+			<span style="font-size:25pt; color:blue; font-weight:bold;">${comp2 }</span>
 			</div>
 
 		</div>

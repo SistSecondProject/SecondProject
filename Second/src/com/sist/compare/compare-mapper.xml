@@ -6,8 +6,13 @@
 
 <select id="compareData" resultType="CompareVO"
 	parameterType="String">
-	 SELECT imageURL,companyName,formOfCompany 
+	 SELECT imageURL,companyName,formOfCompany,companyCode
 	FROM company
 	WHERE companyName LIKE '%'||#{searchValue}||'%'
 	</select>
+
+<select id="resultData" resultType="Compare_resultVO" parameterType="String">
+	SELECT avgcompanyCode,promotion_possibility,welfare_pay,work_life_balance,corporate_culture,management
+	FROM company_Score;
+</select>
 </mapper>

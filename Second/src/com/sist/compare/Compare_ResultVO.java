@@ -1,12 +1,20 @@
-package com.sist.compare_result;
+package com.sist.compare;
 
 public class Compare_ResultVO {
+	private int companyCode;//기업코드
 	private double promotion_possibility; //승진 가능성
 	private double welfare_pay;  //복지 및 급여
 	private double work_life_balance; //업무 삶 균형
 	private double corporate_culture; //사내문화
 	private double management; //경영진
 	
+	
+	public int getCompanyCode() {
+		return companyCode;
+	}
+	public void setCompanyCode(int companyCode) {
+		this.companyCode = companyCode;
+	}
 	public double getPromotion_possibility() {
 		return promotion_possibility;
 	}

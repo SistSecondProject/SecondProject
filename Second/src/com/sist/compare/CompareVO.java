@@ -1,11 +1,18 @@
 package com.sist.compare;
 
 public class CompareVO {
+	private int companyCode; 
 	private String imageURL; //회사사진 
 	private String companyName; //회사이름
 	private String formOfCompany; //규모 
 	
 	
+	public int getCompanyCode() {
+		return companyCode;
+	}
+	public void setCompanyCode(int companyCode) {
+		this.companyCode = companyCode;
+	}
 	public String getImageURL() {
 		return imageURL;
 	}

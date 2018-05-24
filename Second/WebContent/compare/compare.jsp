@@ -8,6 +8,12 @@
 <script src="../compare/js/jquery-2.1.3.min.js"></script>
 <script src="../compare/js/jquery.js"></script>
 <script type="text/javascript">
+function a(){ 
+	var comp1=$('#comp1').attr("name"); 
+	var comp2=$('#comp2').attr("name");
+	location.href ="compare_result.do?comp1="+comp1+"&comp2="+comp2; 
+}
+	
 $(document).ready(function() {
     //엔터키로도 검색버튼 눌리게 함
     $("#search").keydown(function(evt) {
@@ -36,7 +42,7 @@ $(document).ready(function() {
 				},
 			success: function(data){
 				console.log("성공")
-				console.log(data)
+			/* 	console.log(data) */
 				$("#resultSearch").html(data)
 				
 			},
@@ -44,7 +50,6 @@ $(document).ready(function() {
 				console.log("실패")
 			}
 		})
-		
 	})
 });
 </script>
@@ -75,15 +80,16 @@ $(document).ready(function() {
 			<div class="compare_vs">
 				<p>
 					<input type="button" class="btn btn-default btn-lg" style="width: 300px; height: 120px; border: solid 1px; 
-					font-size:20px; font-weight:bold" data-toggle="modal" data-target="#compareModal" id="comp1" value=전체기업+> 	
+					font-size:20px; font-weight:bold" data-toggle="modal" data-target="#compareModal" id="comp1"  value=전체기업+> 	
 						&emsp;&emsp;&emsp;&emsp; 	
 					<span style="font-size: 2.5em; font-weight: bold; color: darkblue">vs</span>	
 						&emsp;&emsp;&emsp;&emsp; 
 					<input type="button" class="btn btn-default btn-lg" style="width: 300px; height: 120px;  border: solid 1px; 
-					font-size:20px; font-weight:bold" data-toggle="modal" data-target="#compareModal" id="comp2" value=전체기업+>
+					font-size:20px; font-weight:bold" data-toggle="modal" data-target="#compareModal" id="comp2"  value=전체기업+>
 				</p>
 				<br> <br> <br> 
-				<a href="compare_result.do" class="btn btn-info" style="width: 450px; height: 40px; font-size: 15pt; font-weight: bold; border-radius: 24px;">비교하기</a><br>
+				<a href="#" onclick="a();" class="btn btn-info" 
+				style="width: 450px; height: 40px; font-size: 15pt; font-weight: bold; border-radius: 24px;">비교하기</a><br>
 				<br><br>
 			</div>
 		</div>
@@ -92,7 +98,7 @@ $(document).ready(function() {
 			<h5 style="text-align: left;">나의 기업비교</h5>
 			<hr style="border: solid 1px black;" width="100%">
 			<br>
-			<div class="compare_vs">
+			<div class="compare_myvs">
 				<p>
 					<input type="button" class="btn btn-default btn-lg" style="width: 300px; height: 120px;  border: solid 1px; 
 					font-size:20px; font-weight:bold" data-toggle="modal" data-target="#compareModal" id="mycomp1" value=나의기업+> 	
@@ -106,7 +112,6 @@ $(document).ready(function() {
 				<a href="compare_result.do" class="btn btn-info" style="width: 450px; height: 40px; font-size: 15pt; font-weight: bold; border-radius: 24px;">비교하기</a><br>
 				<br><br>
 			</div>
-		</div>
 		</div>
 	</section>
 
@@ -137,7 +142,7 @@ $(document).ready(function() {
 					<br>
 					<!-- 검색결과 부분 -->
 					<div>
-						<table class="table text-center">
+						<table>
 							<thead>
 								<tr>
 									<th style="width: 150px">검색결과</th>

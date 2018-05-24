@@ -25,11 +25,15 @@ public class CompareModel {
 		request.setAttribute("clist", clist);
 		return "../compare/result.jsp";
 	}
-	//비교 결과
+	
+	//비교 결과 
 	@RequestMapping("main/compare_result.do")
 	public String compare_resultData(HttpServletRequest request)throws Exception {
-		System.out.println("compare_result.do");
+		/*System.out.println("compare_result.do");
+		System.out.println(request.getParameter("comp1")+" "+request.getParameter("comp2"));*/
 		request.setAttribute("home_jsp", "../compare/compare_result.jsp");
+		request.setAttribute("comp1", request.getParameter("comp1"));
+		request.setAttribute("comp2", request.getParameter("comp2")); 
 		return "main.jsp";
 	}
 	
