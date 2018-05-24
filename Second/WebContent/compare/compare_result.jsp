@@ -90,7 +90,7 @@
 			&emsp;&emsp;&emsp;&emsp;
 			<span class="rad" style="font-weight:bold">사내문화</span>
 			&emsp;&emsp;&emsp;&emsp;
-			<span class="num1" id="culture" style="font-size:20pt;font-weight:bold; color:blue">${vo2corporate_culture }&nbsp;점</span>
+			<span class="num1" id="culture" style="font-size:20pt;font-weight:bold; color:blue">${vo2.corporate_culture }&nbsp;점</span>
 		</div>
 		<div><br>
 		<span class="num1" id="manage" style="font-size:20pt;font-weight:bold; color:red">${vo1.management }&nbsp;점</span>
