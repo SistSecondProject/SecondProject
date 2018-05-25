@@ -31,18 +31,23 @@ public class CompareModel {
 	public String compare_resultData(HttpServletRequest request)throws Exception {
 		int companycode1=Integer.parseInt(request.getParameter("comp1"));
 		int companycode2=Integer.parseInt(request.getParameter("comp2"));
-		System.out.println("Model code1 : "+companycode1);
-		System.out.println("Model code2 : "+companycode2);
+		/*System.out.println("Model code1 : "+companycode1);
+		System.out.println("Model code2 : "+companycode2);*/
 		Compare_ResultVO vo1=CompareDAO.resultData(companycode1);
 		Compare_ResultVO vo2=CompareDAO.resultData(companycode2);
-		System.out.println("Model VO : "+vo1.getCompanyCode());
-		System.out.println("Model VO : "+vo2.getCompanyCode());
+/*		System.out.println("Model VO : "+vo1.getCompanyCode());
+		System.out.println("Model VO : "+vo2.getCompanyCode());*/
 		request.setAttribute("vo1", vo1);
 		request.setAttribute("vo2", vo2);
 		request.setAttribute("home_jsp", "../compare/compare_result.jsp");
 		return "main.jsp";
 	}
 	
+	@RequestMapping("main/myResult.do")
+	public String myData(HttpServletRequest request) {
+		
+		return "../compare/myResult.jsp";
+	}
 }
 
 /*

@@ -7,10 +7,18 @@
 <script src="../compare/js/jquery-2.1.3.min.js"></script>
 <script src="../compare/js/jquery.js"></script>
 <script type="text/javascript">
+//전체 비교하기 클릭
 function a(){ 
 	var comp1=$('#comp1').attr("name"); 
 	var comp2=$('#comp2').attr("name");
 	location.href ="compare_result.do?comp1="+comp1+"&comp2="+comp2; 
+}
+
+//나의 비교하기 클릭
+function b(){ 
+	var mycomp1=$('#mycomp1').attr("name"); 
+	var mycomp2=$('#mycomp2').attr("name");
+	location.href ="compare_result.do?mycomp1="+mycomp1+"&mycomp2="+mycomp2; 
 }
 
 $(document).ready(function() {
@@ -50,8 +58,24 @@ $(document).ready(function() {
 			}
 		})
 	})
+	
+	//나의 기업
+	 $("#mycomp1").on("click", function(){
+			$.ajax({
+				type:"POST",
+				url:"myResult.do",
+				success: function(data){
+					//alert(data);
+					$("#mycomp").html(data)
+				},
+				error: function(data){
+					console.log("실패")
+				}
+			});
+		});
 });
 </script>
+
 </head>
 <body>
 	<!-- headline -->
@@ -100,24 +124,23 @@ $(document).ready(function() {
 			<div class="compare_myvs">
 				<p>
 					<input type="button" class="btn btn-default btn-lg" style="width: 300px; height: 120px;  border: solid 1px; 
-					font-size:20px; font-weight:bold" data-toggle="modal" data-target="#compareModal" id="mycomp1" value=나의기업+> 	
+					font-size:20px; font-weight:bold" data-toggle="modal" data-target="#mycompareModal" id="mycomp1" value=나의기업+> 	
 						&emsp;&emsp;&emsp;&emsp; 	
 					<span style="font-size: 2.5em; font-weight: bold; color: darkblue">vs</span>	
 						&emsp;&emsp;&emsp;&emsp; 
 					<input type="button" class="btn btn-default btn-lg" style="width: 300px; height: 120px;  border: solid 1px; 
-					font-size:20px; font-weight:bold" data-toggle="modal" data-target="#compareModal" id="mycomp2" value=나의기업+>
+					font-size:20px; font-weight:bold" data-toggle="modal" data-target="#mycompareModal" id="mycomp2" value=나의기업+>
 				</p>
 				<br> <br> <br> 
-				<a href="compare_result.do" class="btn btn-info" style="width: 450px; height: 40px; font-size: 15pt; font-weight: bold; border-radius: 24px;">비교하기</a><br>
+				<a href="#" onclick="b()"; class="btn btn-info" style="width: 450px; height: 40px; font-size: 15pt; font-weight: bold; border-radius: 24px;">비교하기</a><br>
 				<br><br>
 			</div>
 		</div>
 	</section>
 
-	<!-- 모달 팝업 -->
+	<!-- 전체 기업 모달 팝업 -->
 	<div class="modal fade" id="compareModal" tabindex="-1" role="dialog"
 		aria-labelledby="compareModalLabel" aria-hidden="true">
-
 		<div class="modal-dialog modal-md">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -155,5 +178,34 @@ $(document).ready(function() {
 		</div>
 		<br>
 	</div>
+	
+	<!-- 나의기업 모달팝업 -->
+	<div class="modal fade" id="mycompareModal" tabindex="-1" role="dialog">
+		<div class="modal-dialog modal-md">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span style="font-size: 1.5em" aria-hidden="true">×</span>
+					</button>
+					<h4 class="modal-title" id="compareModalLabel">비교기업 추가</h4>
+					<hr style="border: solid 1px black;" width="100%">
+					<!-- 결과 부분 -->
+					<div>
+						<table>
+							<thead>
+								<tr>
+									<th>나의기업 보기</th>
+								</tr>
+							</thead>
+							<tbody id="mycomp"></tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br>
+	</div>
+	
 </body>
 </html>

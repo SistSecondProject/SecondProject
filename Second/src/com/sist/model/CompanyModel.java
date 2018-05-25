@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import com.sist.controller.Controller;
 import com.sist.controller.RequestMapping;
@@ -159,6 +160,9 @@ public class CompanyModel {
 		}
 		request.setAttribute("highList", highscorecompanylist);		
 		request.setAttribute("favoritelist", CompanyDAO.findFavoriteCompany("admin"));
+		
+		HttpSession session=request.getSession();
+		session.setAttribute("favoritelist", CompanyDAO.findFavoriteCompany("admin"));
 		
 		request.setAttribute("companyList", CompanyDAO.searchList(strSearch, strCate, curPage));
 		request.setAttribute("start", start);
