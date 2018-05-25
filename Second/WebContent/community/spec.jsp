@@ -1,29 +1,35 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+	pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <style type="text/css">
-  .row{
-  margin: 0px auto;
-  }
-  </style>
 </head>
 <body>
 
-<div class="container">
+	<div id="wrapper">
+		<section id="inner-headline">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<ul class="breadcrumb">
+							<li><a href="#"><i class="fa fa-home"></i></a><i
+								class="icon-angle-right"></i></li>
+							<li class="active">스펙 평가</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section id="content">
+		<div class="container">
 	<div class="row">
   <h2>스펙 평가</h2>
   <p>누구나 자유롭게 자신의 스펙을 평가받는 공간입니다</p>
   <div class="row" style="height: 60px">
   <a href="spec_insert.do">
-  <button type="button" class="btn btn-primary" style="float: right;" >글쓰기</button>
+  <button type="button" class="btn btn-primary" style="float: right;background-color: #4374D9" >글쓰기</button>
   </a>
    </div>
   <table class="table table-hover">
@@ -39,16 +45,19 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td class="text-center">John</td>
+    <c:forEach var="vo" items="${list }">
+      <tr class="list" style="height: 50px">
+        <td class="text-center">${vo.no }</td>
         <td></td>
-        <td>Doe</td>
-        <td class="text-center">john@example.com</td>
-          <td class="text-center">John</td>
-        <td class="text-center">Doe</td>
-        <td class="text-center">john@example.com</td>
+        
+        <td class="text-left"><a href="spec_content.do?no=${vo.no }">${vo.subject }</a></td>
+        
+        <td class="text-center">${vo.userId }</td>
+          <td class="text-center"><fmt:formatDate value="${vo.regdate }" pattern="yyyy-MM-dd"/></td>
+        <td class="text-center">${vo.hit }</td>
+        <td class="text-center">${vo.likePoint }</td>
       </tr>
-     
+     </c:forEach>
     </tbody>
   </table>
   <table class="table table-hover">
@@ -75,6 +84,19 @@
       </table>
   </div>
 </div>
+		</section>
+
+	</div>
+	<a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
+	
 
 </body>
+
 </html>
+
+
+
+
+ 
+
+

@@ -42,6 +42,45 @@ public class SpecDAO {
 		return list;
 	}
 	
+	public static List<SpecVO> specListData(){
+		List<SpecVO> list=new ArrayList<SpecVO>();
+		SqlSession session=null;
+		try
+		{
+			session=ssf.openSession();
+			list=session.selectList("specList");
+			
+		}catch(Exception ex)
+		{
+			System.out.println(ex.getMessage());
+		}
+		finally
+		{
+			if(session!=null)
+				session.close();
+		}
+		return list;
+	}
+	
+	public static SpecVO specContentListData(int no){
+		SpecVO vo=null;
+		SqlSession session=null;
+		try
+		{
+			session=ssf.openSession();
+			vo=session.selectOne("specContentList",no);
+			
+		}catch(Exception ex)
+		{
+			System.out.println(ex.getMessage());
+		}
+		finally
+		{
+			if(session!=null)
+				session.close();
+		}
+		return vo;
+	}
 	
 	
 }

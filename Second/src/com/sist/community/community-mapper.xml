@@ -7,4 +7,10 @@
   insert into spec_board
   values((SELECT NVL(MAX(no)+1,1) FROM spec_board),#{userId},#{subject},#{content},SYSDATE,0,0,0)
 </insert>
+<select id="specList" resultType="SpecVO" >
+		SELECT no,userid,subject,content,regdate,hit,likepoint,dislikepoint FROM spec_board
+	</select>
+	<select id="specContentList" resultType="SpecVO" parameterType="int">
+		SELECT * FROM spec_board WHERE no=#{no}
+	</select>
  </mapper>
