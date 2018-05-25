@@ -4,7 +4,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="css/size.css" rel="stylesheet" />
 <script src="../compare/js/jquery-2.1.3.min.js"></script>
 <script src="../compare/js/jquery.js"></script>
 <script type="text/javascript">
