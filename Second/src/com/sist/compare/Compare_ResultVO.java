@@ -7,8 +7,14 @@ public class Compare_ResultVO {
 	private double work_life_balance; //업무 삶 균형
 	private double corporate_culture; //사내문화
 	private double management; //경영진
-	
-	
+	private String companyName;
+
+	public String getCompanyName() {
+		return companyName;
+	}
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
+	}
 	public int getCompanyCode() {
 		return companyCode;
 	}

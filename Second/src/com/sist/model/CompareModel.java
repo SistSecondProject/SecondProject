@@ -16,6 +16,7 @@ public class CompareModel {
 		request.setAttribute("home_jsp", "../compare/compare.jsp");
 		return "main.jsp";
 	}
+	
 	//모달 검색결과
 	@RequestMapping("main/result.do")
 	public String compareData(HttpServletRequest request) {
