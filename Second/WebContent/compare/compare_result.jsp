@@ -58,7 +58,7 @@
 											${vo1.corporate_culture }, ${vo1.management }],
 									[ ${vo2.promotion_possibility }, ${vo2.welfare_pay },${vo2.work_life_balance },
 											${vo2.corporate_culture }, ${vo2.management }] ]
-							bgColor : '#f9f9f9',
+							bgColor : '#f9f9f9'
 							fgColor : '#cc79a7'
 						},
 						'chartDiv' : 'chart11',
