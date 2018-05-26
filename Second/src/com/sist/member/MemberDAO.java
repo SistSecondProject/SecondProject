@@ -115,6 +115,56 @@ public class MemberDAO {
 						session.close();
 					}
 		   }
+		   
+
+		   //로그인 처리
+		   
+		   public static String isLogin(String userId,String password)
+		   {
+		      String result ="";
+		      int id_count=0;
+		      SqlSession session=null;//Connection
+		      try
+		      {
+		         session=ssf.openSession();
+		         id_count=session.selectOne("isLogin_id",userId);
+		         if(id_count==0)
+		         {
+		            result="NOID";
+		            System.out.println("로그인 실패");
+		          
+		         }
+		         else
+		         {
+		        	 
+		            MemberVO vo = new MemberVO();
+		            vo = session.selectOne("isLogin_pwd",userId);
+		            
+		            if(password.equals(vo.getPassword()))
+		            {
+		               result= vo.getName();
+		               System.out.println("로그인 성공");
+		              
+		           
+		            }
+		            else
+		            {
+		               result="NOPW";
+		               System.out.println("로그인 실패");
+		            }
+		         }
+		      }catch(Exception ex)
+		      {
+		         System.out.println(ex.getMessage());
+		      }
+		      finally
+		      {
+		         if(session!=null)
+		            session.close();
+		      }
+		      return result;
+		   }
+		   
 } 
 			
 		   

@@ -30,6 +30,6 @@
     <mapper resource="com/sist/pass_info/pass-mapper.xml"/>
      <mapper resource="com/sist/compare/compare-mapper.xml"/>
      <mapper resource="com/sist/community/community-mapper.xml"/>
-     <!-- <mapper resource="com/sist/member/member-mapper.xml"/>  -->  
+      <mapper resource="com/sist/member/member-mapper.xml"/>   
   </mappers>
 </configuration>

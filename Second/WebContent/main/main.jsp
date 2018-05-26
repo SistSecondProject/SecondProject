@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
+
+<%
+	String cp = request.getContextPath();
+    session.getAttribute("name");
+    
+%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -15,10 +22,10 @@
 <link href="../css/flexslider.css" rel="stylesheet" />
 <link href="../css/style.css" rel="stylesheet" />
 <link href="../css/size.css" rel="stylesheet" />
-<link href="../css/test2.css" rel="stylesheet" />
+<!-- <link href="../css/test2.css" rel="stylesheet" /> -->
 <link href="../css/Nwagon.css" rel="stylesheet" />
 <link href="../css/chartsize.css" rel="stylesheet" />
-<link rel='stylesheet' href='Nwagon.css' type='text/css'>
+<!-- <link rel='stylesheet' href='Nwagon.css' type='text/css'> -->
 <script src="../js/Nwagon.js"></script>
 <style type="text/css">
 body, body.modal {
@@ -61,11 +68,25 @@ height:16px;
 							data-toggle="dropdown" data-hover="dropdown" data-delay="0"
 							data-close-others="false">커뮤니티 <b class=" icon-angle-down"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="spec.do">스펙평가</a></li>
+								<li><a href="main.jsp?mode=4">스펙평가</a></li>
 								<li><a href="main.jsp?mode=5">자유게시판</a></li>
 								<!--    <li><a href="pricingbox.html">Pricing box</a></li> -->
 							</ul></li>
-						<li><a href="#" data-toggle="modal" data-target="#myModal">│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;로그인</a></li>
+						<li>
+						
+						
+						<c:choose>
+						<c:when test="${empty sessionScope.name}">
+						  <a href="login.do">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|로그인</a>
+						</c:when>
+						<c:otherwise>
+						<form action="../main/logout.do" method="post">
+						 &nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="로그아웃"/>
+						 <div> <h5>${name }님 환영합니다.</h5></div> 
+						   </form>
+						</c:otherwise>
+						</c:choose>
+						</li>
 					</ul>
 				</div>
 			</div>
@@ -75,54 +96,7 @@ height:16px;
 	<!-- end header -->
 	<!-- 모달 팝업 -->
 	
-	<div style="z-index: 9999" class="modal fade" id="myModal"
-		tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-		aria-hidden="true">
 
-		<div class="modal-dialog modal-sm">
-
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span style="font-size: 1.5em" aria-hidden="true">×</span>
-					</button>
-					<h3 id="myModalLabel">Login</h3>
-				</div>
-
-				<!-- 모달header부분 끝  -->
-
-				<div class="well login-box">
-					<form class="login-form">
-						<div class="form-group">
-							<label for="exampleInputEmail1">&nbsp;ID</label> <input
-								type="text" name="id" class="form-control" placeholder="">
-
-						</div>
-						<div class="form-group">
-							<label for="exampleInputPassword1">&nbsp;Password</label> <input
-								type="password" name="pwd" class="form-control" placeholder="">
-						</div>
-						<div class="form-group text-center">
-							<input type="submit" class="btn btn-warning btn-login-submit"
-								value="login" style="width: 100%;" />
-						</div>
-						<!-- form-group// -->
-						<p class="text-center">
-							<a href="../member/join.jsp">
-								<i id="glyphicon glyphicon-ok"></i>&nbsp;회원가입
-							</a>
-						</p>
-						<hr>
-						<p class="text-left" style="color: gray">
-							&copy; Ready & Start All rights reserved. <br>
-							&nbsp;&nbsp;&nbsp;&nbsp;Hosting by ready & start
-						</p>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
 	<!-- content -->
 	<jsp:include page="${home_jsp }"></jsp:include>
 	<!-- content end -->
