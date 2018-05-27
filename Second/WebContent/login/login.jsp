@@ -70,7 +70,7 @@
 				</div>
 
 				<a class="btn btn-primary btn-large btn-block" onclick="login();" type=button>login</a>
-				<a class="login-link" href="../member/join.jsp">회원가입</a>
+				<a class="login-link" href="../member/join.do">회원가입</a>
 				
 				<span>${message}</span>
 		    
