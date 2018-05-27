@@ -107,6 +107,7 @@ public class MemberModel {
 		vo.setPostAddress(postAddress);
 		vo.setRoadnameAddress(roadnameAddress);
 		vo.setDetailAddress(detailAddress);
+		vo.setUserLevel(userLevel);
 		MemberDAO.memberJoin(vo);
 		
 		return "redirect:../main/main.do";

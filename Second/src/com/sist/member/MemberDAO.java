@@ -48,7 +48,7 @@ public class MemberDAO {
 
 	// 회원가입
 	public static void memberJoin(MemberVO vo) {
-		System.out.println("getUserId >>> " + vo.getUserId());
+		/*System.out.println("getUserId >>> " + vo.getUserId());
 		System.out.println("getpassword >>> " + vo.getPassword());
 		System.out.println("getName >>> " + vo.getName());
 		System.out.println("getEmailAddress >>> " + vo.getEmailAddress());
@@ -57,7 +57,7 @@ public class MemberDAO {
 		System.out.println("getRoadnameAddress >>> " + vo.getRoadnameAddress());
 		System.out.println("getDetailAddress >>> " + vo.getDetailAddress());
 		System.out.println("getUserLevel >>> " + vo.getUserLevel());
-		System.out.println("getIsLogin >>> " + vo.getIsLogin());
+		System.out.println("getIsLogin >>> " + vo.getIsLogin());*/
 		SqlSession session = null;
 		try {
 			session = ssf.openSession(true);

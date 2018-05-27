@@ -28,7 +28,7 @@
 	</select>
 
 	<!-- id 중복체크 -->
-	<select id="IdCheck" parameterType="String" resultType="int">
+	<select id="idCheck" parameterType="String" resultType="int">
 		SELECT count(*) FROM member WHERE userId=#{userId}
 	</select>
 
@@ -39,3 +39,25 @@
 		#{userId},#{password},#{name},#{emailAddress},#{favoriteCategory},#{postAddress},#{roadnameAddress},#{detailAddress},#{userLevel},0)
 	</insert>
 </mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
