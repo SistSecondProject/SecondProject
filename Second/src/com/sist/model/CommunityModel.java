@@ -10,7 +10,8 @@ import com.sist.controller.RequestMapping;
 @Controller
 public class CommunityModel {
 	@RequestMapping("main/spec.do")
-	public String specboard(HttpServletRequest request) {
+	public String specboard(HttpServletRequest request) throws Exception{
+		request.setCharacterEncoding("utf-8");
 		List<SpecVO> list=SpecDAO.specListData();
 		request.setAttribute("list", list);
 		
@@ -19,13 +20,14 @@ public class CommunityModel {
 		  return "main.jsp";
 	}
 	@RequestMapping("main/spec_insert.do")
+	
 	public String spec_okboard(HttpServletRequest request) {
 		request.setAttribute("home_jsp", "../community/spec_insert.jsp");
 		return "main.jsp";
 	}
 	@RequestMapping("main/spec_insert_ok.do")
 	public String spec_insertok(HttpServletRequest request) throws Exception{
-		request.setCharacterEncoding("EUC-KR");
+		request.setCharacterEncoding("utf-8");
 		request.getSession().setAttribute("userid", "admin");
 		   String userid=(String)request.getSession().getAttribute("userid");
 		   String subject=request.getParameter("subject");

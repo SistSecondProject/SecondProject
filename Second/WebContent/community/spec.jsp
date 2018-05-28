@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
@@ -16,7 +16,7 @@
 						<ul class="breadcrumb">
 							<li><a href="#"><i class="fa fa-home"></i></a><i
 								class="icon-angle-right"></i></li>
-							<li class="active">½ºÆå Æò°¡</li>
+							<li class="active">ìŠ¤íŽ™ í‰ê°€</li>
 						</ul>
 					</div>
 				</div>
@@ -25,23 +25,23 @@
 		<section id="content">
 		<div class="container">
 	<div class="row">
-  <h2>½ºÆå Æò°¡</h2>
-  <p>´©±¸³ª ÀÚÀ¯·Ó°Ô ÀÚ½ÅÀÇ ½ºÆåÀ» Æò°¡¹Þ´Â °ø°£ÀÔ´Ï´Ù</p>
+  <h2>ìŠ¤íŽ™ í‰ê°€</h2>
+  <p>ëˆ„êµ¬ë‚˜ ìžìœ ë¡­ê²Œ ìžì‹ ì˜ ìŠ¤íŽ™ì„ í‰ê°€ë°›ëŠ” ê³µê°„ìž…ë‹ˆë‹¤</p>
   <div class="row" style="height: 60px">
   <a href="spec_insert.do">
-  <button type="button" class="btn btn-primary" style="float: right;background-color: #4374D9" >±Û¾²±â</button>
+  <button type="button" class="btn btn-primary" style="float: right;background-color: #4374D9" >ê¸€ì“°ê¸°</button>
   </a>
    </div>
   <table class="table table-hover">
     <thead>
       <tr>
-        <th width=10% class="text-center">¹øÈ£</th>
+        <th width=10% class="text-center">ë²ˆí˜¸</th>
         <th width=5%></th>
-        <th width=40% class="text-center">Á¦¸ñ</th>
-        <th width=20% class="text-center">ÀÛ¼ºÀÚ</th>
-        <th width=10% class="text-center">ÀÛ¼ºÀÏ</th>
-        <th width=10% class="text-center">Á¶È¸¼ö</th>
-        <th width=5% class="text-center">ÁÁ¾Æ¿ä</th>
+        <th width=40% class="text-center">ì œëª©</th>
+        <th width=20% class="text-center">ìž‘ì„±ìž</th>
+        <th width=10% class="text-center">ìž‘ì„±ì¼</th>
+        <th width=10% class="text-center">ì¡°íšŒìˆ˜</th>
+        <th width=5% class="text-center">ì¢‹ì•„ìš”</th>
       </tr>
     </thead>
     <tbody>
@@ -64,20 +64,20 @@
         <tr>
          <td class="text-left">
           Search:&nbsp;  <select class="input">
-                  <option>ÀÛ¼ºÀÚ</option>
-                  <option>Á¦¸ñ</option>
+                  <option>ìž‘ì„±ìž</option>
+                  <option>ì œëª©</option>
                  </select>&nbsp;
                  <input type=text name=ss class="input" size=12>
-                 <input type=submit class="btn btn-sm btn-info" value=°Ë»ö>
+                 <input type=submit class="btn btn-sm btn-info" value=ê²€ìƒ‰>
          </td>
          <td class="text-right" style="padding-right: 100px">
-         <button type="button" class="btn btn-xs btn-default">¢¸</button>
+         <button type="button" class="btn btn-xs btn-default">â—€</button>
            <a href="#">1</a>&nbsp;&nbsp;
            <a href="#">2</a>&nbsp;&nbsp;
            <a href="#">3</a>&nbsp;&nbsp;
            <a href="#">4</a>&nbsp;&nbsp;
            <a href="#">5</a>
-           <button type="button" class="btn btn-xs btn-default">¢º</button>
+           <button type="button" class="btn btn-xs btn-default">â–¶</button>
            
          </td>
         </tr>

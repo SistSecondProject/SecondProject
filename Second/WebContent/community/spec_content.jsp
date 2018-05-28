@@ -36,26 +36,31 @@
          
         </tr>
         <tr>
-         <td class="text-center success" colspan="2">${vo.no }</td>
+         <td class="text-center info" colspan="2">작성자 :${vo.userId} &nbsp;&nbsp;|&nbsp;&nbsp; 개시일 :<fmt:formatDate value="${vo.regdate }" pattern="yyyy-MM-dd"/> &nbsp;&nbsp;|&nbsp;&nbsp; 조회수 : ${vo. hit }</td>
         
         </tr>
         
         <tr>
-         <td class="text-center success">${vo.content }</td>
+         <td class="text-left" colspan="2" height="180px"><font size="6px">${vo.content }</font><br></td>
         </tr>
-        
-        
+        <tr>
+        <td class="text-center" colspan="2" style="border: 0; padding-right: 50px"><a href="#" class="btn btn-sm btn-warning" style="background-color: #4374D9; border: 0" >${vo.likePoint }<br>좋아요</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="#" class="btn btn-sm btn-warning" style="background-color: #FFE08C; border: 0">${vo.dislikePoint }<br>싫어요</a>
+        <a href="#" class="btn btn- btn-warning" style="background-color: #4374D9; border: 0;float: right;width: 100px ;height:40px;"><font size="4px">답변하기</font></a>
+        </td>
+        <td></td>
+        </tr>
       </table>
-      <table class="table">
+      <hr>
+      <!-- <table class="table">
         <tr>
          <td class="text-right">
           <a href="" class="btn btn-sm btn-warning">답변</a>
           <a href="" class="btn btn-sm btn-primary">수정</a>
           <a href="#" class="btn btn-sm btn-success">삭제</a>
-          <a href="" class="btn btn-sm btn-info">목록</a>
+          <a href="spec.do" class="btn btn-sm btn-info">목록</a>
          </td>
         </tr>
-      </table>
+      </table> -->
   
   </div>
 </div>
