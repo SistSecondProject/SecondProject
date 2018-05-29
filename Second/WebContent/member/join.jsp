@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -231,7 +230,7 @@ $(document).ready(function() {
 						<div class="col-md-4">
 							<input name="submit" type="submit" value="회원가입"
 								class="btn btn-warning">
-							<button class="btn btn-default btn-cancel-action">취소</button>
+							<button class="btn btn-default btn-cancel-action" onclick="javascript:history.back()">취소</button>
 						</div>
 					</div>
 				</form>

@@ -11,6 +11,7 @@
       <typeAlias type="com.sist.compare.CompareVO" alias="CompareVO"/> 
        <typeAlias type="com.sist.compare.Compare_ResultVO" alias="Compare_ResultVO"/> 
       <typeAlias type="com.sist.community.SpecVO" alias="SpecVO"/> 
+      <typeAlias type="com.sist.community.NoticeVO" alias="NoticeVO"/> 
   </typeAliases>
   
   <environments default="development">

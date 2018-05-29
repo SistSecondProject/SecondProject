@@ -21,10 +21,8 @@
 		SELECT COUNT(*) from member WHERE userId=#{userId}
 	</select>
 
-	<select id="isLogin_pwd" resultType="MemberVO"
-		parameterType="String">
-		SELECT * FROM member
-		WHERE userId=#{userId}
+	<select id="isLogin_pwd" resultType="MemberVO" parameterType="String">
+		SELECT * FROM member WHERE userId=#{userId}
 	</select>
 
 	<!-- id 중복체크 -->

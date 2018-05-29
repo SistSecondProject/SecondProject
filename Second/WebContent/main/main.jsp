@@ -68,8 +68,8 @@ height:16px;
 							data-toggle="dropdown" data-hover="dropdown" data-delay="0"
 							data-close-others="false">커뮤니티 <b class=" icon-angle-down"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="main.jsp?mode=4">스펙평가</a></li>
-								<li><a href="main.jsp?mode=5">자유게시판</a></li>
+								<li><a href="spec.do">스펙평가</a></li>
+								<li><a href="noticeList.do">공지사항</a></li>
 								<!--    <li><a href="pricingbox.html">Pricing box</a></li> -->
 							</ul></li>		
 						<li>

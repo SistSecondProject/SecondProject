@@ -98,7 +98,7 @@ public class MemberModel {
 	}
 	@RequestMapping("member/join_ok.do")
 	public String joinData(HttpServletRequest request) throws Exception{
-		request.setCharacterEncoding("EUC-KR");
+		request.setCharacterEncoding("UTF-8");
 		String userId = request.getParameter("userId");
 		String password = request.getParameter("password");
 		String name = request.getParameter("name");
