@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
-<% session.getAttribute("message"); %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,10 +13,6 @@
 
   <link rel="stylesheet" href="../login/css/loginstyle.css"> 
    <script type="text/javascript">
-   $(function(){
-	  
-  });
- 	
  
   
  function login() {
@@ -35,8 +31,8 @@
          f.password.focus();
          return;
      }
-
-        
+     
+       
      f.action = "login_ok.do";
 	 f.submit();
 }
@@ -60,19 +56,19 @@
 				<div class="control-group">
 				<input type="text" class="login-field" value="" placeholder="username" name="userId" id="userId">
 				<label class="login-field-icon fui-user" for="login-name" ></label>
-				 <div id="log_text" style="text-algin:center" class="danger" ></div>
+				 
 				</div>
 
 				<div class="control-group">
 				<input type="password" class="login-field" value="" placeholder="password" name="password" id="password" >
 				<label class="login-field-icon fui-lock" for="login-pass"></label>
-				 <div id="pass_text" style="text-algin:center" class="danger"></div>
+				 <div id="pass_text" style="text-algin:center" class="danger">${message}</div>
 				</div>
 
 				<a class="btn btn-primary btn-large btn-block" onclick="login();" type=button>login</a>
-				<a class="login-link" href="../member/join.do">회원가입</a>
+				<a class="login-link" href="../member/join.jsp">회원가입</a>
 				
-				<span>${message}</span>
+				
 		    
 			</div>
 			    

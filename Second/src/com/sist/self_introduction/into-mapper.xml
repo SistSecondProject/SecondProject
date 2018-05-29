@@ -5,29 +5,16 @@
 
 
 <mapper namespace="com.sist.dao.into-mapper">
+
 <!-- 자기소개서함 리스트 띄우기 -->
 <select id="intoListData" resultType="IntroductionVO" parameterType="java.util.Map">     
-     SELECT no,content,regdate,num
-     FROM (SELECT no,content,regdate,rownum as num
-     FROM (SELECT no,content,regdate 
+     SELECT no,title,content,regdate,num
+     FROM (SELECT no,title,content,regdate,rownum as num
+     FROM (SELECT no,title,content,regdate 
      FROM User_Introduction ORDER BY no DESC))
      WHERE num BETWEEN #{start} AND #{end}
-    
-     
-        <!--  WHERE num BETWEEN ? AND ?
-         ps.setInt(1,map.get("start"))
-         ps.setInt(2,map.get("end")) 
-         
-     SELECT no,content,regdate,num
-     FROM (SELECT no,content,regdate,rownum as num
-     FROM (SELECT no,content,regdate 
-     FROM User_Introduction ORDER BY no DESC))
-     WHERE num BETWEEN #{start1} AND #{end1}
-         
-         
-         -->
-         
-      </select>
+             
+</select>
  
      <!-- 총페이지 읽기 -->
     
@@ -35,13 +22,17 @@
      SELECT CEIL(COUNT(*)/10) FROM User_Introduction
    </select> 
 
- <!-- 내용 추가   아직안 됨-->    
+ <!-- 내용 추가  -->    
      
    <insert id="intoInsert" parameterType="IntroductionVO">
+     <!--     INSERT INTO User_Introduction VALUES(#{userId},#{no},#{title},#{content},#{regdate} -->)
+         
          INSERT INTO User_Introduction VALUES(
        (SELECT NVL(MAX(no)+1,1) FROM User_Introduction),
-       #{content},SYSDATE,0
+      #{userId},#{no},#{title},#{content},
+       SYSDATE
      )
+     
    </insert>
  
  
@@ -66,12 +57,11 @@
    </select>
   -->
    
-  <!--  <update id="intoUpdateData" parameterType="int">
-   UPDATE User_Introduction SET
-   content=#{content}
+  <update id="intoUpdateData" parameterType="int">
+   UPDATE User_Introduction SET content=#{content}
    WHERE no=#{no}
-   </update> -->
-   
+   </update>  
+    
     
    
 </mapper>

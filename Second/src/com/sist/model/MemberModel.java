@@ -31,41 +31,53 @@ public class MemberModel {
 
 	// 로그인
 	@RequestMapping("main/login_ok.do")
-	public String LoginPage(HttpServletRequest request) {
-
-		try {
-			// HttpSession session = request.getSession();
-			// String result="";
-			request.setCharacterEncoding("EUC-KR");
-			String id = request.getParameter("userId");
-			System.out.println("userId:" + id);
-			String pwd = request.getParameter("password");
-			System.out.println("password:" + pwd);
-			// MemberDAO
-			String login_result = MemberDAO.isLogin(id, pwd);
-			System.out.println(login_result);
-			if (login_result == ("NOID")) {
-				request.setAttribute("message", "아이디 또는 패스워드를 잘못 입력 하셨습니다.");
-				return "redirect:../main/login.do";
-
-			}
-
-			if (login_result == "NOPW") {
-				request.setAttribute("message", "아이디 또는 패스워드를 잘못 입력 하셨습니다.");
-				return "redirect:../main/login.do";
-			}
-
-			// result값에 따라서
-			HttpSession session = request.getSession(true);
-			session.setAttribute("name", login_result);
-
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
-		return "../login/welcome.jsp";
-		// return "main/main.do";
-
-	}
+	   public String LoginPage(HttpServletRequest request){ 
+		  
+		request.setAttribute("home_jsp", "../login/login.jsp");
+	  
+	      try
+	      {
+	         //HttpSession session = request.getSession();
+	         //String result="";
+	    	 request.setCharacterEncoding("EUC-KR"); 
+	         String id = request.getParameter("userId");
+	         System.out.println("userId:"+id);
+	         String pwd = request.getParameter("password");
+	         System.out.println("password:"+pwd);
+	         //MemberDAO
+	         String login_result = MemberDAO.isLogin(id, pwd);
+	         System.out.println(login_result);
+	         
+	         if(login_result.equals("NOID")) {
+	 			request.setAttribute("message", "아이디 또는 패스워드를 잘못 입력 하셨습니다.");
+	 			
+	 			return "../login/login.jsp";
+	 		//return	"redirect:main/login.do";
+	 			
+	 		}
+	       
+	 		if(login_result.equals("NOPW")) {
+	 			request.setAttribute("message", "아이디 또는 패스워드를 잘못 입력 하셨습니다.");
+	 			
+	 		  return "../login/login.jsp";
+	 		 // return	"redirect:main/login.do";
+	 		}
+	 		
+	         //result값에 따라서
+	         HttpSession session=request.getSession(true);
+	         session.setAttribute("name", login_result);
+	         
+	         
+	      }
+	      catch(Exception e)
+	      {
+	         System.out.println(e.getMessage());
+	      }
+	     
+	     return "main.do";
+		
+		
+	   }
 
 	// 로그 아웃
 	@RequestMapping("main/logout.do")

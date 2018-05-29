@@ -5,20 +5,26 @@
 
 
 <mapper  namespace="com.sist.dao.pass-mapper">
-
+<!-- 합격자소서 리스트 출력  (페이징) -->
  <select id="passListData" resultType="PassVO" parameterType="java.util.Map">
-     
- 	 SELECT p.no, c.companyname, p.position, p.recruitmentTitle
+   
+	<!--  SELECT p.no, c.companyname, p.position, p.recruitmentTitle
      FROM company c
      RIGHT JOIN Pass_Introduction p 
-     ON c.companyCode = p.companyCode  
+     ON c.companyCode = p.companyCode   -->
     
+     SELECT no,companyname,position,recruitmentTitle,num
+     FROM (SELECT no,companyname,position,recruitmentTitle,rownum as num
+     FROM (SELECT p.no,c.companyname, p.position, p.recruitmentTitle
+     FROM company c RIGHT JOIN Pass_Introduction p on c.companyCode = p.companyCode))
+     WHERE num BETWEEN #{start} AND #{end} 
+
   
 <!-- 
-     SELECT c.companyname, p.position, p.recruitmentTitle,num
-     FROM (SELECT c.companyname, p.position, p.recruitmentTitle,rownum as num
+     SELECT companyname,position,recruitmentTitle,num
+     FROM (SELECT companyname,position,recruitmentTitle,rownum as num
      FROM (SELECT c.companyname, p.position, p.recruitmentTitle
-     FROM company c RIGHT JOIN Pass_Introduction p ON c.companyCode = p.companyCode))
+     FROM company c RIGHT JOIN Pass_Introduction p where c.companyCode = p.companyCode))
      WHERE num BETWEEN #{start} AND #{end}  -->
      
 

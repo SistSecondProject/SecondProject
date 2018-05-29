@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+        
+
 <!DOCTYPE>
 <html>
 <head>
@@ -12,6 +14,7 @@
   <link rel="stylesheet" href="./css/bootstrap.min.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <link href="css/size.css" rel="stylesheet" />
 <!-- css -->
 <!--ajax : 검색하기 -->
 <script type="text/javascript">
@@ -45,8 +48,20 @@ $(function(){
 			
 		});
 	 
+
 	
 });
+
+function save()
+{
+	 var f = document.insert-form;
+	 var str = f.title.value;
+	 var str = f.content.value;
+	 
+    
+     f.action = "selftest_ok.do";
+	 f.submit();
+}
 
 
 
@@ -55,7 +70,14 @@ $(function(){
 
 
 
-<link href="css/size.css" rel="stylesheet" /><style>
+<style>
+.pagination{
+ 
+ margin: 5px auto;
+ margin-left: 80px;
+
+}
+
 body
 {
   font-family:arial;
@@ -101,37 +123,6 @@ div#p
 </style>
 <!-- 내용쓰기 관련 -->
 
-<script type="text/javascript">
-
-<!-- 저장버튼 누르면 값보내기 -->
-<script type="text/javascript">
-$(function(){
-	 $.ajax({
-		 type:'post',
-		 url:'passinfo.do',
-		 success:function(res)
-		 {
-			 $('#table table-hover2>tbody').html(res); 
-		 }
-	   });
-	   $('#save').click(function(){
-		   $.ajax({
-			   type:'post',
-		       url:'passinfo.do',
-		       data:{"content":content},
-		       success:function(res)
-		       {
-		    	   $('#table table-hover2>tbody').html(res);
-		       }
-		   }); 
-	   })
-});
-
-</script> 
-<script type="text/javascript">
-
-
-</script>
 <style type="text/css">
 
 #testModal{
@@ -168,6 +159,13 @@ $(function(){
   height: 0;
 }
 
+#title2{
+padding:8px;
+
+
+}
+
+
 </style>
 </head>
 <body>
@@ -203,21 +201,30 @@ $(function(){
             </button>
         </div>
         <div class="btn-group" role="group">
-            <button type="button" id="favorites" class="btn" href="#tab2" data-toggle="tab"><span class="glyphicon glyphicon-heart" ></span>
+          <c:choose>
+			<c:when test="${empty sessionScope.name}">
+		       <button type="button"  class="btn" data-toggle="tab"><span class="glyphicon glyphicon-heart" ></span>
+                <div>로그인이 필요한 서비스입니다.</div>
+			</c:when>
+			<c:otherwise>
+			<button type="button" id="favorites" class="btn" href="#tab2" data-toggle="tab"><span class="glyphicon glyphicon-heart" ></span>
                 <div>내 자소서 보관함</div>
             </button>
+            </c:otherwise>
+			</c:choose>
+            
+           
         </div>
     </div>
-  
+    
+
    
         
 
       <div class="well">
       <div class="tab-content">
               	<!-- 검색 창 -->
-	         <table class="table">
-     		<tr>
-     		<td>
+	         <td>
 		     <form class="form-horizontal">
 		  <div class="form-group">
 		    <div class="col-sm-10">
@@ -227,10 +234,9 @@ $(function(){
 		  </div>
 		  </form>
 		  </td>
-		  </tr>
-		  </table>
+		
        
-        <div class="tab-pane fade in active" id="tab1">
+        <div class="tab-pane fade in active" id="tab1" hight="450">
     	<table class="table table-hover" id="user-table">
     	<thead>     
         <tr class="success">
@@ -256,10 +262,12 @@ $(function(){
            ${vo.recruitmentTitle } 
           </td>
          </tr>
-        </c:forEach>
+        </c:forEach>  
      </tbody>
      </table>
-  
+           <tr class="text-center">
+         ${curpage } page / ${totalpage} pages
+         </tr>
       
         </div>
     
@@ -274,14 +282,14 @@ $(function(){
          <th width=20% class="text-center" align="center">작성일</th>
          
         </tr>
-        <form id=detail>
+        <form id=insert>
         <c:forEach var="vo" items="${list }">
          <tr id="print">
           <td class="text-center" align="center">
           ${vo.no }
           </td>
           <td class="text-center" align="center">
-            <a href="../main/selfinto_content.do?no=${vo.no }">${vo.content }</a>
+            <a href="../main/selfinto_content.do?no=${vo.no }">${vo.title }</a>
           </td>
           
           <td class="text-center" align="center">
@@ -290,20 +298,26 @@ $(function(){
          </tr>
         </c:forEach> 
         </form> 
-         
-                     
+               
       </table>
         </div>
       </div>
       
-       <td class="text-right">
-            <a href="passinfo.do?page=${curpage-1 }" class="btn btn-sm btn-primary">◀</a>
-            <!-- <a href="/MVC_BBS/list.do?pageNumber=${currentPage - pageSize}">[이전]</a> -->
-            
-            <a href="passinfo.do?page=${curpage+1 }" class="btn btn-sm btn-primary">▶</a>
-            <!-- <a href="/MVC_BBS/list.do?pageNumber=${startPage + pageSize}">[다음]</a> -->
-            &nbsp;&nbsp;&nbsp;${curpage } page / ${totalpage } pages
-			
+       <td class="text-center">
+          
+           
+             <ul class="pagination">
+              
+   				    <li><a href="passinfo.do?page=${curpage-1 }">◀</a></li>
+   				
+   				    <li><a href="passinfo.do?page=${curpage}">1</a></li>
+				    <li><a href="passinfo.do?page=${curpage+1 }">2</a></li>
+				    <li><a href="passinfo.do?page=${curpage+2 }">3</a></li>
+				    <li><a href="passinfo.do?page=${curpage+3 }">4</a></li>
+				    <li><a href="passinfo.do?page=${curpage+4 }">5</a></li>
+				   
+				    <li> <a href="passinfo.do?page=${curpage+1 }">▶</a></li>
+  			</ul>
          </td> 
     </div>
           
@@ -311,31 +325,34 @@ $(function(){
 		 					
 	 <div class="col-lg-5">
 			  <!-- 자소서 작성부분 첨부 -->           
+    
+    <form name="insert-form" method=post action="selftest_ok.do">
     <br>
-    <form method=post action="selftest_ok.do">
+    <div id="title2"><textarea rows="2" cols="97" placeholder="자기소개서 제목을 입력하세요"  name="title"></textarea></div>
+    
     <div id="side" class="ct" style="font-family:arial;">항목 1<span style="float:right">+</span></div>
          <div class="p">
-         <div id="p"><textarea rows="2" cols="95" placeholder="항목 또는 제목을 입력하세요" ></textarea></div>
-         <textarea rows="11" cols="95" placeholder="내용을 입력하세요" style="margin: 0px;" height="236px;" width="283px;"></textarea>
+         <div id="p"><textarea rows="2" cols="95" placeholder="항목 또는 제목을 입력하세요" name="content" ></textarea></div>
+         <textarea rows="11" cols="95" placeholder="내용을 입력하세요" style="margin: 0px;" height="236px;" width="283px;" name="content"></textarea>
          </div>
          
       
       <div id="side" class="ct">항목 2<span style="float:right">+</span></div>
           <div class="p">
-         <div id="p"><textarea rows="2" cols="95" placeholder="항목 또는 제목을 입력하세요" ></textarea></div>
-         <textarea rows="11" cols="95" placeholder="내용을 입력하세요" style="margin: 0px;" height="236px;" width="283px;"></textarea>
+         <div id="p"><textarea rows="2" cols="95" placeholder="항목 또는 제목을 입력하세요" name="content" ></textarea></div>
+         <textarea rows="11" cols="95" placeholder="내용을 입력하세요" style="margin: 0px;" height="236px;" width="283px;" name="content"></textarea>
          </div>
          
        <div id="side" class="ct">항목 3<span style="float:right">+</span></div>
           <div class="p">
-         <div id="p"><textarea rows="2" cols="95" placeholder="항목 또는 제목을 입력하세요" ></textarea></div>
-         <textarea rows="11" cols="95" placeholder="내용을 입력하세요" style="margin: 0px;" height="236px;" width="283px;"></textarea>
+         <div id="p"><textarea rows="2" cols="95" placeholder="항목 또는 제목을 입력하세요" name="content" ></textarea></div>
+         <textarea rows="11" cols="95" placeholder="내용을 입력하세요" style="margin: 0px;" height="236px;" width="283px;" name="content"></textarea>
          </div>
        
          <br>
          <tr>
         <td colspan="4" class="text-center" id="save">
-         <input type="submit" class="btn btn-sm btn-primary"
+         <input type="submit" class="btn btn-sm btn-primary" onclick="save()"
           value="저장" id="writeBtn">
         </td>
        </tr>

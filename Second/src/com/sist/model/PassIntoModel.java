@@ -1,6 +1,9 @@
 package com.sist.model;
 
+import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.sist.controller.Controller;
 import com.sist.controller.RequestMapping;
@@ -10,12 +13,13 @@ import com.sist.pass_info.PassinfoDAO;
 import com.sist.self_introduction.IntroductionDAO;
 import com.sist.self_introduction.IntroductionVO;
 
+import java.io.UnsupportedEncodingException;
 import java.util.*;
 
 @Controller
 public class PassIntoModel {
 	@RequestMapping("main/passinfo.do")
-	public String compareListData(HttpServletRequest request) {
+	public String compareListData(HttpServletRequest request) throws Exception {
 		
 		request.setAttribute("home_jsp", "../self/passinfo.jsp");
 		//request.setAttribute("content_jsp", "../self/selftest.jsp"); //자소서 작성부분 include함.
@@ -65,10 +69,12 @@ public class PassIntoModel {
 			   request.setAttribute("curpage", curpage);
 			   request.setAttribute("totalpage", totalpage);
 			   
-			 //자기 자소서 출력하는 관련 값 넘기기
-			   List<IntroductionVO> list=IntroductionDAO.intoListData(map);
-			   request.setAttribute("list", list);
-			   
+			
+			   //자기 자소서 출력하는 관련 값 넘기기
+		  
+			  List<IntroductionVO> list=IntroductionDAO.intoListData(map);
+			  request.setAttribute("list", list);
+			  
 			   
 			  
 			
@@ -102,20 +108,30 @@ public class PassIntoModel {
 	   public String intoInsertOk(HttpServletRequest request)
 	   throws Exception
 	   {
-		   request.setCharacterEncoding("EUC-KR");
+		   request.setCharacterEncoding("UTF-8");
+	
+		   String title=request.getParameter("title");
 		   String content=request.getParameter("content");
+		   System.out.println(title);
+		   System.out.println(content);
 		 
-		   
 		   //DB연동 
 		   IntroductionVO vo=new IntroductionVO();
+		   vo.setTitle(title);
 		   vo.setContent(content);
-		   
 		  
+		   
 		   IntroductionDAO.intoInsert(vo);
-		   return "redirect:passinfo.do";
+		  // System.out.println(vo);
+		   
+		   request.getSession().setAttribute("userId","admin");
+		   String userId = (String) request.getSession().getAttribute("userId");
+		   System.out.println(userId);
+		   return "passinfo.do";
 	   }
 	   
-	/*   //자기소개서수정하기
+	   
+	  //자기소개서수정하기
 	   @RequestMapping("main/selfinto_update.do")
 	   public String intoUpdate(HttpServletRequest request)
 	   {
@@ -126,7 +142,9 @@ public class PassIntoModel {
 		   // 결과값 전송
 		   request.setAttribute("vo", vo);
 		   return "../self/selfinto_update.jsp";
-	   }*/
+	   }
+	   
+	   
 /*	   @RequestMapping("main/selfinto_ok.do")
 	   public String intoUpdateOk(HttpServletRequest request)
 	   throws Exception
@@ -154,6 +172,6 @@ public class PassIntoModel {
 	   
 	   
 	   
-	   }
+}
 	
 

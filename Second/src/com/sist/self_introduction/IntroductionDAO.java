@@ -83,7 +83,7 @@ public class IntroductionDAO {
 		   SqlSession session=null;
 		   try
 		   {
-			   session=ssf.openSession(true);
+			   session=ssf.openSession();
 			   // autoCommit(true)
 			   session.insert("intoInsert",vo);
 		   }catch(Exception ex)
@@ -122,7 +122,7 @@ public class IntroductionDAO {
 	   }
 	   
 	   // 내용 수정부분(update)
-	  /* public static IntroductionVO intoUpdateData(int no)
+	   public static IntroductionVO intoUpdateData(int no)
 	   {
 		   IntroductionVO vo = new IntroductionVO();
 		   SqlSession session=null;
@@ -141,39 +141,7 @@ public class IntroductionDAO {
 				   session.close();
 		   }
 		   return vo;
-	   }*/
-	   
-	   /*public static boolean boardUpdate(BoardVO vo)
-	   {
-		   //비밀번호가 같으면 수정한다.
-		   boolean bCheck=false;
-		   SqlSession session =null;
-		   try
-		   {
-			   session= ssf.openSession();
-			   String pwd=session.selectOne("boardGetPwd", vo.getNo());
-			   if(pwd.equals(vo.getPwd()))
-			   {
-				   bCheck=true;
-				   session.update("boardUpdate",vo);
-				   session.commit();
-			   }
-			   else
-			   {
-				   bCheck=false;
-			   }
-		   }catch(Exception ex)
-		   {
-			   System.out.println(ex.getMessage());
-		   }
-		   finally
-		   {
-			   if(session!=null)
-				   session.close();
-					   
-		   }
-		   return bCheck;
-	   }*/
+	   }
 	   
 	 
 	   
