@@ -68,24 +68,25 @@ height:16px;
 							data-toggle="dropdown" data-hover="dropdown" data-delay="0"
 							data-close-others="false">커뮤니티 <b class=" icon-angle-down"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="spec.do">스펙평가</a></li>
+								<li><a href="main.jsp?mode=4">스펙평가</a></li>
 								<li><a href="main.jsp?mode=5">자유게시판</a></li>
 								<!--    <li><a href="pricingbox.html">Pricing box</a></li> -->
-							</ul></li>
+							</ul></li>		
 						<li>
-						
-						
-						<c:choose>
-						<c:when test="${empty sessionScope.name}">
-						  <a href="login.do">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|로그인</a>
-						</c:when>
-						<c:otherwise>
-						<form action="../main/logout.do" method="post">
-						 &nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="로그아웃"/>
-						 <div> <h5>${name }님 환영합니다.</h5></div> 
-						   </form>
-						</c:otherwise>
-						</c:choose>
+				<c:choose>
+                  <c:when test="${empty sessionScope.name}">
+                    <a href="login.do">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|로그인</a>
+                  </c:when>
+                  <c:otherwise>
+                  <a href="#">회원정보 &emsp; </a>
+                  <li><p>
+                   <form action="../main/logout.do" method="post">
+                  <input type="submit" style="border:none; font-size:10pt; font-weight:bold; background-color:white" value="|로그아웃">
+                  <div><h5><p>${name }님 환영합니다.</h5></div>
+                     </form>
+                 
+                  </c:otherwise>
+                  </c:choose>
 						</li>
 					</ul>
 				</div>

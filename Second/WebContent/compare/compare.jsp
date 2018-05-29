@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE>
 <html>
 <head>
@@ -18,7 +19,7 @@ function a(){
 function b(){ 
 	var mycomp1=$('#mycomp1').attr("name"); 
 	var mycomp2=$('#mycomp2').attr("name");
-	location.href ="compare_result.do?mycomp1="+mycomp1+"&mycomp2="+mycomp2; 
+	location.href ="compare_result.do?comp1="+mycomp1+"&comp2="+mycomp2; 
 }
 
 $(document).ready(function() {
@@ -117,8 +118,15 @@ $(document).ready(function() {
 			</div>
 		</div>
 		<br>
+		
 		<div class="container">
-			<h5 style="text-align: left;">나의 기업비교</h5>
+			<c:choose>
+				<c:when test="${sessionScope.name==null }">
+		
+				</c:when>
+				<c:otherwise>
+				
+				<h5 style="text-align: left;">나의 기업비교</h5>
 			<hr style="border: solid 1px black;" width="100%">
 			<br>
 			<div class="compare_myvs">
@@ -135,6 +143,9 @@ $(document).ready(function() {
 				<a href="#" onclick="b()"; class="btn btn-info" style="width: 450px; height: 40px; font-size: 15pt; font-weight: bold; border-radius: 24px;">비교하기</a><br>
 				<br><br>
 			</div>
+				</c:otherwise>
+			</c:choose>
+
 		</div>
 	</section>
 
