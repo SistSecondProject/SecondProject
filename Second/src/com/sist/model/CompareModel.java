@@ -5,6 +5,7 @@ import com.sist.compare.CompareVO;
 import com.sist.compare.Compare_ResultVO;
 import com.sist.controller.Controller;
 import com.sist.controller.RequestMapping;
+import com.sist.dao.CompanyDAO;
 
 import java.util.*;
 
@@ -46,6 +47,7 @@ public class CompareModel {
 	@RequestMapping("main/myResult.do")
 	public String myData(HttpServletRequest request) {
 		
+		request.setAttribute("favoritelist", CompanyDAO.findFavoriteCompany((String)request.getSession().getAttribute("name")));
 		return "../compare/myResult.jsp";
 	}
 }

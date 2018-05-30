@@ -167,7 +167,7 @@ public class CompanyModel {
 
 		String userid =(String) request.getSession().getAttribute("name");
 		if(userid!=null)
-			request.getSession().setAttribute("favoritelist", CompanyDAO.findFavoriteCompany(userid));
+			request.setAttribute("favoritelist", CompanyDAO.findFavoriteCompany(userid));
 
 		request.setAttribute("companyList", CompanyDAO.searchList(strSearch, strCate, curPage));
 		request.setAttribute("start", start);

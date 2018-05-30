@@ -31,7 +31,7 @@ $(function(){
 </head>
 <body>
 
-	<c:forEach var="vo" items="${sessionScope.favoritelist }">
+	<c:forEach var="vo" items="${favoritelist }">
 							<tr>
 								&emsp;&emsp;
 								<td width=35% align="center">
