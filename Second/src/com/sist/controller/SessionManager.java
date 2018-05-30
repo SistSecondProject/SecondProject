@@ -4,6 +4,7 @@
  * 
  * 추가 아이디어-
  * https://blog.naver.com/skarion/10112660926
+ * http://cafe.naver.com/planetzone/35
 */
 
 package com.sist.controller;

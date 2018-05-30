@@ -55,4 +55,9 @@
      DELETE FROM User_Introduction
      WHERE no=#{no}
     </delete>
+    
+    <select id="findList" parameterType="String" resultType="IntroductionVO">
+    	select * from user_introduction where userid=#{userid}
+    </select>
+    
 </mapper>

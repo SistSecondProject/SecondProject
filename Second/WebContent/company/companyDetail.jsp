@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -135,28 +135,28 @@
 		<p>${vo.companyDetail}</p>
 		<div class="bottom-article">
 			<ul class="meta-post">
-				<li><i class="icon-user"></i><a href="#">´ëÇ¥ : ${vo.ceo}</a></li>
-				<li><i class="icon-calendar"></i><a href="#">¼³¸³ÀÏ:
+				<li><i class="icon-user"></i><a href="#">ëŒ€í‘œ : ${vo.ceo}</a></li>
+				<li><i class="icon-calendar"></i><a href="#">ì„¤ë¦½ì¼:
 						${vo.foundationDay}</a></li>
 				<li><i class="icon-folder-open"></i><a href="http://${vo.webURL}">${vo.webURL}</a></li>
-				<li><i class="icon-comments"></i><a href="#">±â¾÷ÇüÅÂ:
+				<li><i class="icon-comments"></i><a href="#">ê¸°ì—…í˜•íƒœ:
 						${vo.formOfCompany}</a></li>
 				
 			</ul>
 		</div>
 		<div class="bottom-article">
 			<ul class="meta-post">
-				<li><i class="icon-comments"></i><a href="#">º»»ç:
+				<li><i class="icon-comments"></i><a href="#">ë³¸ì‚¬:
 						${vo.headOffice}</a></li>
 			</ul>
 		</div>
 		<div class="bottom-article">
 			<ul class="meta-post">
-				<li><i class="icon-comments"></i><a href="#">¼³¸³ÀÏ:
+				<li><i class="icon-comments"></i><a href="#">ì„¤ë¦½ì¼:
 						${vo.foundationDay}</a></li>
-				<li><i class="icon-comments"></i><a href="#">»ç¿ø¼ö:
+				<li><i class="icon-comments"></i><a href="#">ì‚¬ì›ìˆ˜:
 						${vo.numOfEmployee}</a></li>
-				<li><i class="icon-comments"></i><a href="#">¸ÅÃâ¾×:
+				<li><i class="icon-comments"></i><a href="#">ë§¤ì¶œì•¡:
 						${vo.turnover}</a></li>
 			</ul>
 		</div>
@@ -164,7 +164,7 @@
 	
 	<c:if test="${sessionScope.name ne null }">
 	<article>
-		<h3 class="widgetheading">Æò°¡ÇÏ±â</h3>
+		<h3 class="widgetheading">í‰ê°€í•˜ê¸°</h3>
 		
 	<div class="bottom-article">
 			<div class="row">
@@ -172,7 +172,7 @@
 				<input type="hidden" name="companycode" id="ccode" value="${vo.companyCode }">
 				<div class="col-lg-5">	
 					<div class="row">
-					<b>½ÂÁø ±âÈ¸ ¹× °¡´É¼º</b>
+					<b>ìŠ¹ì§„ ê¸°íšŒ ë° ê°€ëŠ¥ì„±</b>
 					<fieldset class="rating one">
 						<input type="radio" id="star5" name="rating" value="5" required/><label
 							for="star5" title="Rocks!"><span>&#9733</span></label> <input
@@ -187,7 +187,7 @@
 					</fieldset>
 					</div>
 					<div class="row">	
-		<b>º¹Áö ¹× ±Þ¿©</b>
+		<b>ë³µì§€ ë° ê¸‰ì—¬</b>
 					<fieldset class="rating two">
 						<input type="radio" id="star5-1" name="ratingtwo" value="5" required/><label
 							for="star5-1" title="Rocks!"><span>&#9733</span></label> <input
@@ -202,7 +202,7 @@
 					</fieldset>
 			</div>
 				<div class="row">	
-				<b>¾÷¹«¿Í »îÀÇ ±ÕÇü</b>
+				<b>ì—…ë¬´ì™€ ì‚¶ì˜ ê· í˜•</b>
 					<fieldset class="rating three">
 						<input type="radio" id="star5-2" name="ratingthree" value="5" required/><label
 							for="star5-2" title="Rocks!"><span>&#9733</span></label> <input
@@ -217,7 +217,7 @@
 					</fieldset>
 				</div>
 				<div class="row">	
-				<b>»ç³»¹®È­</b>
+				<b>ì‚¬ë‚´ë¬¸í™”</b>
 					<fieldset class="rating four">
 						<input type="radio" id="star5-3" name="ratingfour" value="5" required/><label
 							for="star5-3" title="Rocks!"><span>&#9733</span></label> <input
@@ -232,7 +232,7 @@
 					</fieldset>
 			</div>
 				<div class="row">	
-				<b>°æ¿µÁø</b>
+				<b>ê²½ì˜ì§„</b>
 					<fieldset class="rating five">
 						<input type="radio" id="star5-4" name="ratingfive" value="5" required/><label
 							for="star5-4" title="Rocks!"><span>&#9733</span></label> <input
@@ -250,7 +250,7 @@
 				<div class="col-lg-7">
 				<textarea class="form-control" name="content" cols="50" rows="15" required></textarea>
 				</div>
-				<input type="submit" value="Æò°¡">
+				<input type="submit" value="í‰ê°€">
 			
 				<span id ="message"></span>
 		</form>
@@ -261,7 +261,7 @@
 
 	<c:if test="${not(empty(list))}">
 	<article>
-		<h3 class="widgetheading">Ã¤¿ëÁ¤º¸</h3>
+		<h3 class="widgetheading">ì±„ìš©ì •ë³´</h3>
 		<c:forEach var="recruitment" items="${list}">
 			<div class="bottom-article">
 				<ul class="meta-post">

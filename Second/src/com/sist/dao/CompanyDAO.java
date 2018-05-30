@@ -296,6 +296,7 @@ public class CompanyDAO {
 		}
 		return list;
 	}
+	
 	public static CompanyVO findCompany(int code) {
 		SqlSession session = null;
 		CompanyVO vo = null;

@@ -30,12 +30,35 @@
 		SELECT count(*) FROM member WHERE userId=#{userId}
 	</select>
 
-
+	<select id="findData" parameterType="String" resultType="MemberVO">
+		select * from member WHERE userId=#{userId}
+	</select>
+	<select id="categoryname2" resultType="String">
+		select categoryname from company_category order by categorycode asc
+	</select>
+	<select id="recruitmentList2" resultType="com.sist.vo.RecruitmentVO" parameterType="String">
+		select * from recruitment rec, favorite_recruitment fav where rec.recruitmentcode=fav.recruitmentcode and fav.userid=#{userid}
+	</select>
 	<!-- join -->
 	<insert id="memberJoin" parameterType="MemberVO">
 		INSERT INTO member VALUES(
 		#{userId},#{password},#{name},#{emailAddress},#{favoriteCategory},#{postAddress},#{roadnameAddress},#{detailAddress},#{userLevel},0)
 	</insert>
+	<update id="changeName" parameterType="Map">
+		UPDATE member SET name = #{name} WHERE userid=#{userid}
+	</update>
+	<update id="changeEmailAddress" parameterType="Map">
+		UPDATE member SET EmailAddress = #{emailAddress} WHERE userid=#{userid}
+	</update>
+	<update id="changeFavoriteCategory" parameterType="Map">
+		UPDATE member SET FavoriteCategory = #{favoriteCategory} WHERE userid=#{userid}
+	</update>
+	<update id="changePW" parameterType="Map">
+		UPDATE member SET password = #{password} WHERE userid=#{userid}
+	</update>
+	<delete id="withdrawal" parameterType="String">
+		delete from member where userid=#{userid}
+	</delete>
 </mapper>
 
 

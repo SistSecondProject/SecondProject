@@ -2,12 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 
-<%
-	String cp = request.getContextPath();
-    session.getAttribute("name");
-    
-%>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -27,6 +21,15 @@
 <link href="../css/chartsize.css" rel="stylesheet" />
 <!-- <link rel='stylesheet' href='Nwagon.css' type='text/css'> -->
 <script src="../js/Nwagon.js"></script>
+<script src="https://code.jquery.com/jquery.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	var message= $('#message').attr('value');
+	if(message!=null)
+		alert('이미 로그인한 사용자 입니다. 이전 접속을 종료합니다.');
+});
+</script>
 <style type="text/css">
 body, body.modal {
     margin-right: 0 !important;
@@ -44,6 +47,9 @@ height:16px;
 <link href="../skins/default.css" rel="stylesheet" />
 </head>
 <body>
+<c:if test="${message ne null }">
+<input type="hidden" id="message" value="1">
+</c:if>
 	<div id="wrapper">
 		<!-- start header -->
 		
@@ -78,7 +84,7 @@ height:16px;
                     <a href="login.do">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|로그인</a>
                   </c:when>
                   <c:otherwise>
-                  <a href="#">회원정보 &emsp; </a>
+                  <a href="user.do">회원정보 &emsp; </a>
                   <li><p>
                    <form action="../main/logout.do" method="post">
                   <input type="submit" style="border:none; font-size:10pt; font-weight:bold; background-color:white" value="|로그아웃">

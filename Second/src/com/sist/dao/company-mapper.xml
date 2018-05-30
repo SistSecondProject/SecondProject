@@ -72,8 +72,9 @@ WHERE num BETWEEN #{start} AND #{end}
 	
 	
 	<select id="highScoreList" resultType="int">
-	select companycode from (select companycode from company_score having count(*)>50 group by companycode order by  AVG(PROMOTION_POSSIBILITY+WELFARE_PAY+WORK_LIFE_BALANCE+CORPORATE_CULTURE+MANAGEMENT)/5  desc ) where 10>rownum
+	select companycode from (select companycode from company_score having count(*)>50 group by companycode order by  AVG(PROMOTION_POSSIBILITY+WELFARE_PAY+WORK_LIFE_BALANCE+CORPORATE_CULTURE+MANAGEMENT)/5  desc ) where 1000>rownum
 	</select>
+	
 	<select id="findCompany" parameterType="int" resultType="com.sist.vo.CompanyVO">
 	select * from company where companycode=#{code}
 	</select>

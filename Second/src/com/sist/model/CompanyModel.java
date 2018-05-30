@@ -159,6 +159,8 @@ public class CompanyModel {
 		for (Integer code : highlist) {
 			CompanyVO vo = CompanyDAO.findCompany(code);
 			highscorecompanylist.add(vo);
+			if(highscorecompanylist.size()>=10)
+				break;
 		}
 		request.setAttribute("highList", highscorecompanylist);
 		
