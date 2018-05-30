@@ -20,7 +20,10 @@ public class HomeModel {
 	  List<CalenderVO> ciList=cm.calenderinfoData();
 	  List<NewsVO> nfList=nm.newsFindData();
 	  List<NewsVO> ndList=nm.newsDetailData();
-	 
+	  
+	  String message=request.getParameter("duplicate");
+		if(message!=null)
+			request.setAttribute("message", message);
 	  request.setAttribute("cfList", cfList);
 	  request.setAttribute("ciList", ciList);
 	  request.setAttribute("nfList", nfList);

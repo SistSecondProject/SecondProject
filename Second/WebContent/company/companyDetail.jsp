@@ -126,7 +126,9 @@
 		<h1>${vo.companyName}</h1>
 		</div>
 		<div class="col-lg-2">
-		<span id="bookmark"></span>
+		<c:if test="${sessionScope.name ne null }">
+			<span id="bookmark"></span>
+		</c:if>
 		</div>
 		</div>
 		
@@ -159,7 +161,8 @@
 			</ul>
 		</div>
 	</article>
-
+	
+	<c:if test="${sessionScope.name ne null }">
 	<article>
 		<h3 class="widgetheading">평가하기</h3>
 		
@@ -254,6 +257,7 @@
 		</div>
 		
 	</article>
+	</c:if>
 
 	<c:if test="${not(empty(list))}">
 	<article>

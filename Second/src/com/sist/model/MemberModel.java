@@ -16,6 +16,7 @@ import javax.servlet.http.HttpSession;
 
 import com.sist.controller.Controller;
 import com.sist.controller.RequestMapping;
+import com.sist.controller.SessionManager;
 import com.sist.member.MemberDAO;
 import com.sist.member.MemberVO;
 
@@ -63,10 +64,15 @@ public class MemberModel {
 	 		 // return	"redirect:main/login.do";
 	 		}
 	 		
-	         //result값에 따라서
-	         HttpSession session=request.getSession(true);
+	 		HttpSession session=request.getSession(true);
 	         session.setAttribute("name", login_result);
 	         
+	         
+	 		if(SessionManager.getInstance().checkDuplicationLogin(session.getId(), login_result)) {
+	 			//request.setAttribute("message", "이미 로그인한 사용자 입니다. 이전 접속을 종료합니다.");
+	 			return "redirect:main.do?duplicate=1";
+			}
+	         //result값에 따라서
 	         
 	      }
 	      catch(Exception e)
@@ -74,7 +80,7 @@ public class MemberModel {
 	         System.out.println(e.getMessage());
 	      }
 	     
-	     return "main.do";
+	     return "redirect:main.do";
 		
 		
 	   }

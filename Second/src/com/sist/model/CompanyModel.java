@@ -23,49 +23,51 @@ public class CompanyModel {
 	public String recruitment_bookmark(HttpServletRequest request) {
 		String type = request.getParameter("type");
 		String recruitmentcode = request.getParameter("recruitmentcode");
-		request.getSession().setAttribute("userid", "admin");//////////////////////////
-		String userid = (String) request.getSession().getAttribute("userid");
-		
-		if (type == null) {
+		// request.getSession().setAttribute("userid",
+		// "admin");//////////////////////////
+		String userid = (String) request.getSession().getAttribute("name");
+
+		if (type == null && userid != null) {
 			if (CompanyDAO.searchRecruitmentBookmark(userid, recruitmentcode))
 				request.setAttribute("flag", true);
 			else
-				request.setAttribute("flag", false);			
+				request.setAttribute("flag", false);
 		} else {
-			if(type.equals("bookmarktrue")) {
+			if (type.equals("bookmarktrue") && userid != null) {
 				CompanyDAO.deleteRecruitmentBookmark(userid, recruitmentcode);
 				request.setAttribute("flag", false);
-			}else {
+			} else {
 				CompanyDAO.insertRecruitmentBookmark(userid, recruitmentcode);
 				request.setAttribute("flag", true);
 			}
 		}
-		
-		
-		
+
 		return "../company/recruitment_bookmark.jsp";
 	}
+
 	@RequestMapping("main/company_bookmark.do")
 	public String company_bookmark(HttpServletRequest request) {
 		String type = request.getParameter("type");
 		String companyCode = request.getParameter("companycode");
-		request.getSession().setAttribute("userid", "admin");///////////////////////////
-		String userid = (String) request.getSession().getAttribute("userid");
-		
-		if (type == null) {
+		// request.getSession().setAttribute("userid",
+		// "admin");///////////////////////////
+		String userid = (String) request.getSession().getAttribute("name");
+		if (userid != null) {
+			if (type == null) {
 
-			if (CompanyDAO.searchCompanyBookmark(userid, companyCode))
-				request.setAttribute("flag", true);
-			else
-				request.setAttribute("flag", false);
-			
-		} else {
-			if(type.equals("bookmarktrue")) {
-				CompanyDAO.deleteCompanyBookmark(userid, companyCode);
-				request.setAttribute("flag", false);
-			}else {
-				CompanyDAO.insertCompanyBookmark(userid, companyCode);
-				request.setAttribute("flag", true);
+				if (CompanyDAO.searchCompanyBookmark(userid, companyCode))
+					request.setAttribute("flag", true);
+				else
+					request.setAttribute("flag", false);
+
+			} else {
+				if (type.equals("bookmarktrue")) {
+					CompanyDAO.deleteCompanyBookmark(userid, companyCode);
+					request.setAttribute("flag", false);
+				} else {
+					CompanyDAO.insertCompanyBookmark(userid, companyCode);
+					request.setAttribute("flag", true);
+				}
 			}
 		}
 		return "../company/company_bookmark.jsp";
@@ -87,8 +89,8 @@ public class CompanyModel {
 		double cc = Double.parseDouble(request.getParameter("ratingfour"));
 		double m = Double.parseDouble(request.getParameter("ratingfive"));
 
-		request.getSession().setAttribute("userid", "admin");
-		String userid = (String) request.getSession().getAttribute("userid");
+		// request.getSession().setAttribute("userid", "admin");
+		String userid = (String) request.getSession().getAttribute("name");
 
 		Company_ScoreVO vo = new Company_ScoreVO();
 		vo.setCompanyCode(Integer.parseInt(companyCode));
@@ -102,7 +104,7 @@ public class CompanyModel {
 
 		CompanyDAO.insertScore(vo);
 
-		return "redirect:company.do";
+		return "redirect:company.do?companycode="+companyCode;
 	}
 
 	@RequestMapping("main/company.do")
@@ -118,10 +120,10 @@ public class CompanyModel {
 		}
 
 		if (companyCode != null) {
-			CompanyVO cvo =CompanyDAO.companyDetail(companyCode);
+			CompanyVO cvo = CompanyDAO.companyDetail(companyCode);
 			cvo.setCompanyDetail(cvo.getCompanyDetail().replaceAll("\n", "<br>"));
 			request.setAttribute("vo", cvo);
-			
+
 			request.setAttribute("list", CompanyDAO.recruitmentList(companyCode));
 		}
 		if (curPage == null)
@@ -151,19 +153,22 @@ public class CompanyModel {
 			else
 				end = Integer.parseInt(curPage) + 5;
 		}
-		
-		List<Integer> highlist=CompanyDAO.highScoreList();
+
+		List<Integer> highlist = CompanyDAO.highScoreList();
 		List<CompanyVO> highscorecompanylist = new ArrayList<CompanyVO>();
-		for(Integer code : highlist) {
+		for (Integer code : highlist) {
 			CompanyVO vo = CompanyDAO.findCompany(code);
 			highscorecompanylist.add(vo);
 		}
-		request.setAttribute("highList", highscorecompanylist);		
-		request.setAttribute("favoritelist", CompanyDAO.findFavoriteCompany("admin"));
+		request.setAttribute("highList", highscorecompanylist);
 		
-		HttpSession session=request.getSession();
-		session.setAttribute("favoritelist", CompanyDAO.findFavoriteCompany("admin"));
 		
+		
+
+		String userid =(String) request.getSession().getAttribute("name");
+		if(userid!=null)
+			request.getSession().setAttribute("favoritelist", CompanyDAO.findFavoriteCompany(userid));
+
 		request.setAttribute("companyList", CompanyDAO.searchList(strSearch, strCate, curPage));
 		request.setAttribute("start", start);
 		request.setAttribute("end", end);
@@ -174,5 +179,5 @@ public class CompanyModel {
 		request.setAttribute("catecount", CompanyDAO.categoryCount());
 		return "main.jsp";
 	}
-	
+
 }

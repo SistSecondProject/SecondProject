@@ -27,7 +27,7 @@ public class DispatcherServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String cmd=request.getRequestURI();
 		cmd=cmd.substring(request.getContextPath().length()+1);
-		System.out.println("cmd:"+cmd);
+		//System.out.println("cmd:"+cmd);
 		try
 		{
 			// com.sist.model.BoardModel
@@ -47,7 +47,7 @@ public class DispatcherServlet extends HttpServlet {
 				{
 					//System.out.println(m.getName());
 					RequestMapping rm=m.getAnnotation(RequestMapping.class);
-					System.out.println("rm:value():"+rm.value());
+					//System.out.println("rm:value():"+rm.value());
 					if(cmd.equals(rm.value()))
 					{
 						String jsp=(String)m.invoke(obj, request);

@@ -59,7 +59,8 @@
 									</c:forEach>
 								</ul>
 							</div>
-							<div class="widget">
+							<c:if test="${sessionScope.name ne null }">
+							<div class="widget">							
 								<h4 class="widgetheading">관심 기업</h4>
 								<ul class="tags">
 									<c:forEach var="companyvo" items="${favoritelist }"	varStatus="x">
@@ -70,6 +71,7 @@
 
 								</ul>
 							</div>
+							</c:if>
 							<div class="widget">
 								<h4 class="widgetheading" title="평가횟수 50 이상 기업중 상위 기업">고평점
 									기업</h4>
