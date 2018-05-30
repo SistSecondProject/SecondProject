@@ -32,7 +32,7 @@ public class IntroductionDAO {
 	   //            리턴형  (resultType)   매개변수(parameterType)
 	   public static List<IntroductionVO> intoListData(Map map) 
 	   {
-		   List<IntroductionVO> ilist=new ArrayList<IntroductionVO>();
+		   List<IntroductionVO> list=new ArrayList<IntroductionVO>();
 		   SqlSession session=null;//connection연결=>sql문장수행 
 		   try
 		   {
@@ -41,7 +41,7 @@ public class IntroductionDAO {
 			   // openSession() => openSession(true)
 			   // autoCommit(false)   autoCommit(true)
 			   // 실행 결과값 받기 
-			   ilist=session.selectList("intoListData", map);
+			  list=session.selectList("intoListData", map);
 		   }catch(Exception ex)
 		   {
 			   System.out.println(ex.getMessage());
@@ -51,7 +51,7 @@ public class IntroductionDAO {
 			   if(session!=null)
 				   session.close();
 		   }
-		   return ilist;
+		   return list;
 	   }
 	   
 	   public static int intoTotalPage()
@@ -84,8 +84,9 @@ public class IntroductionDAO {
 		   try
 		   {
 			   session=ssf.openSession();
-			   // autoCommit(true)
+			
 			   session.insert("intoInsert",vo);
+			   session.commit();
 		   }catch(Exception ex)
 		   {
 			   System.out.println(ex.getMessage());
@@ -142,6 +143,53 @@ public class IntroductionDAO {
 		   }
 		   return vo;
 	   }
+	   
+	   public static List<IntroductionVO> intoUpdate(IntroductionVO vo)
+	   {
+		   List<IntroductionVO> list = new ArrayList<IntroductionVO>();
+		   
+		   SqlSession session=null;
+		   try
+		   {
+			   session=ssf.openSession(true);
+			   session.update("intoUpdate",vo);
+			   session.commit();
+			   
+		   }catch(Exception ex)
+		   {
+			   System.out.println(ex.getMessage());
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close();
+		   }
+		   return list;         
+	   }
+	 
+	   
+	   //내용 삭제
+
+   public static void Delete(int no)
+   {
+	   SqlSession session=null;
+	   try
+	   {
+		   session=ssf.openSession(true);
+		   session.delete("infoDelete",no);
+	   }catch(Exception ex)
+	   {
+		   System.out.println(ex.getMessage());
+	   }
+	   finally
+	   {
+		   if(session!=null)
+			   session.close();
+	   }
+   }
+
+	    
+	   
 	   
 	 
 	   

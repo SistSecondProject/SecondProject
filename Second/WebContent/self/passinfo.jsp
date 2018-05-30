@@ -52,16 +52,7 @@ $(function(){
 	
 });
 
-function save()
-{
-	 var f = document.insert-form;
-	 var str = f.title.value;
-	 var str = f.content.value;
-	 
-    
-     f.action = "selftest_ok.do";
-	 f.submit();
-}
+
 
 
 
@@ -93,7 +84,7 @@ body
   padding:5px;
   border:1px solid #8F9F7B;
   background:#001C54;
-  color: #F7F7F9;
+  color: #F7F7F7;
   font-size: 20px;
   width:700px;
   font:arial;
@@ -101,7 +92,26 @@ body
   margin:10px 0 0 10px;
   cursor:pointer
   
+  
 }
+
+
+#side1
+{
+  padding:5px;
+  border:1px solid #8F9F7B;
+  background:#DE5863;
+  color: #F7F7F9;
+  color:black;
+  font-size: 15px;
+  width:700px;
+  font:arial;
+  height:50px;
+  margin:10px 0 0 10px;
+  cursor:pointer
+  
+}
+
 .p
 {
   
@@ -196,24 +206,23 @@ padding:8px;
     <br>
     <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
         <div class="btn-group" role="group">
-            <button type="button" id="stars" class="btn" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-star" ></span>
+            <button type="button" id="stars" class="btn" href="#tab1" data-toggle="tab">
                 <div>합격자기소개서</div>
             </button>
         </div>
         <div class="btn-group" role="group">
           <c:choose>
 			<c:when test="${empty sessionScope.name}">
-		       <button type="button"  class="btn" data-toggle="tab"><span class="glyphicon glyphicon-heart" ></span>
+		       <button type="button"  class="btn" data-toggle="tab">
                 <div>로그인이 필요한 서비스입니다.</div>
 			</c:when>
 			<c:otherwise>
-			<button type="button" id="favorites" class="btn" href="#tab2" data-toggle="tab"><span class="glyphicon glyphicon-heart" ></span>
+			<button type="button" id="favorites" class="btn" href="#tab2" data-toggle="tab">
                 <div>내 자소서 보관함</div>
             </button>
             </c:otherwise>
 			</c:choose>
-            
-           
+
         </div>
     </div>
     
@@ -326,33 +335,33 @@ padding:8px;
 	 <div class="col-lg-5">
 			  <!-- 자소서 작성부분 첨부 -->           
     
-    <form name="insert-form" method=post action="selftest_ok.do">
+    <form method=post action="selftest_ok.do">
     <br>
-    <div id="title2"><textarea rows="2" cols="97" placeholder="자기소개서 제목을 입력하세요"  name="title"></textarea></div>
-    
+ 
+   <div id="side1" class="ct" style="font-family:arial;">자기소개서 제목을 입력하세요 : <textarea rows="1" cols="55" style="margin: 2px;" height="236px;" width="283px;" name="title" ></textarea></div>
+     <div class="p" height=100px;>
+       
+         </div>
     <div id="side" class="ct" style="font-family:arial;">항목 1<span style="float:right">+</span></div>
          <div class="p">
-         <div id="p"><textarea rows="2" cols="95" placeholder="항목 또는 제목을 입력하세요" name="content" ></textarea></div>
-         <textarea rows="11" cols="95" placeholder="내용을 입력하세요" style="margin: 0px;" height="236px;" width="283px;" name="content"></textarea>
+         <textarea rows="15" cols="95" placeholder="내용을 입력하세요" style="margin: 0px;" height="236px;" width="283px;" name="content1" ></textarea>
          </div>
          
       
       <div id="side" class="ct">항목 2<span style="float:right">+</span></div>
           <div class="p">
-         <div id="p"><textarea rows="2" cols="95" placeholder="항목 또는 제목을 입력하세요" name="content" ></textarea></div>
-         <textarea rows="11" cols="95" placeholder="내용을 입력하세요" style="margin: 0px;" height="236px;" width="283px;" name="content"></textarea>
+         <textarea rows="15" cols="95" placeholder="내용을 입력하세요" style="margin: 0px;" height="236px;" width="283px;" name="content2" ></textarea>
          </div>
          
        <div id="side" class="ct">항목 3<span style="float:right">+</span></div>
           <div class="p">
-         <div id="p"><textarea rows="2" cols="95" placeholder="항목 또는 제목을 입력하세요" name="content" ></textarea></div>
-         <textarea rows="11" cols="95" placeholder="내용을 입력하세요" style="margin: 0px;" height="236px;" width="283px;" name="content"></textarea>
+         <textarea rows="15" cols="95" placeholder="내용을 입력하세요" style="margin: 0px;" height="236px;" width="283px;" name="content3"></textarea>
          </div>
        
          <br>
          <tr>
         <td colspan="4" class="text-center" id="save">
-         <input type="submit" class="btn btn-sm btn-primary" onclick="save()"
+         <input type="submit" class="btn btn-sm btn-primary"
           value="저장" id="writeBtn">
         </td>
        </tr>

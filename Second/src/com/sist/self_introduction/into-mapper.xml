@@ -15,24 +15,16 @@
      WHERE num BETWEEN #{start} AND #{end}
              
 </select>
- 
      <!-- 총페이지 읽기 -->
-    
    <select id="intoTotalPage" resultType="int">
      SELECT CEIL(COUNT(*)/10) FROM User_Introduction
    </select> 
-
- <!-- 내용 추가  -->    
-     
+   
+ <!-- 내용 추가  -->     
    <insert id="intoInsert" parameterType="IntroductionVO">
-     <!--     INSERT INTO User_Introduction VALUES(#{userId},#{no},#{title},#{content},#{regdate} -->)
-         
-         INSERT INTO User_Introduction VALUES(
-       (SELECT NVL(MAX(no)+1,1) FROM User_Introduction),
-      #{userId},#{no},#{title},#{content},
-       SYSDATE
-     )
-     
+         INSERT INTO User_Introduction
+         VALUES(
+      #{userId},(SELECT NVL(MAX(no)+1,1) FROM User_Introduction),#{title,jdbcType=VARCHAR},#{content,jdbcType=VARCHAR},sysdate) 
    </insert>
  
  
@@ -42,26 +34,25 @@
    </sql> 
    
    <select id="infoContentData" resultType="IntroductionVO" parameterType="int">
-     SELECT no,content
+     SELECT title,content
      FROM User_Introduction
      WHERE no=#{no}
    </select>
    
  
    
-<!--   
-    수정하기 : 먼저 비밀 번호를 갖고 들어온다.
-   <select id="boardGetPwd" resultType="String" parameterType="int">
-   SELECT pwd FROM User_Introduction
-   <include refid="where-no"/>
-   </select>
-  -->
+<!-- 수정하기 -->
+ 
    
-  <update id="intoUpdateData" parameterType="int">
-   UPDATE User_Introduction SET content=#{content}
+ <update id="intoUpdateData" parameterType="int">
+   UPDATE User_Introduction SET title=#{title},content=#{content}
    WHERE no=#{no}
    </update>  
-    
-    
    
+   
+   <!-- 삭제하기 -->
+  <delete id="infoDelete" parameterType="int">
+     DELETE FROM User_Introduction
+     WHERE no=#{no}
+    </delete>
 </mapper>

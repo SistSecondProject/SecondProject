@@ -5,14 +5,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.sist.community.SpecDAO;
+import com.sist.community.SpecVO;
 import com.sist.controller.Controller;
 import com.sist.controller.RequestMapping;
-
 import com.sist.pass_info.PassVO;
 import com.sist.pass_info.PassinfoDAO;
 import com.sist.self_introduction.IntroductionDAO;
 import com.sist.self_introduction.IntroductionVO;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.*;
 
@@ -74,7 +76,7 @@ public class PassIntoModel {
 		  
 			  List<IntroductionVO> list=IntroductionDAO.intoListData(map);
 			  request.setAttribute("list", list);
-			  
+			
 			   
 			  
 			
@@ -92,15 +94,7 @@ public class PassIntoModel {
 		   return "../self/pass_result.jsp";
 	   }    
 	
-	   // 자기소개서상세보기
-	   @RequestMapping("main/selfinto_content.do")
-	   public String intoContentData(HttpServletRequest request)
-	   {
-		   String no=request.getParameter("no");
-		   IntroductionVO vo=IntroductionDAO.intoContentData(Integer.parseInt(no));
-		   request.setAttribute("vo", vo);
-		   return "../self/selfinto_content.jsp";
-	   }
+
 	
 	   
 	   //저장--> 리스트에 값 추가
@@ -109,69 +103,108 @@ public class PassIntoModel {
 	   throws Exception
 	   {
 		   request.setCharacterEncoding("UTF-8");
-	
-		   String title=request.getParameter("title");
-		   String content=request.getParameter("content");
-		   System.out.println(title);
+		   request.getSession().setAttribute("userId","admin");
+		   String userId = (String) request.getSession().getAttribute("userId");
+		   //System.out.println(userId);
+		   
+		   String  content1 = request.getParameter("content1");
+		   System.out.println("content1 :"+content1);
+		   String  content2 = request.getParameter("content2");
+		   System.out.println("content2 :"+content2);
+		   String  content3 = request.getParameter("content3");
+		   System.out.println("content3 :"+content3);
+		  
+		   String content=content1+"|"+content2+"^"+content3;
 		   System.out.println(content);
+		   
+		   String title=request.getParameter("title");
 		 
 		   //DB연동 
 		   IntroductionVO vo=new IntroductionVO();
+		   vo.setUserId(userId);
 		   vo.setTitle(title);
 		   vo.setContent(content);
-		  
-		   
+		   //System.out.println("전체 내용 :" +vo.getContent());
+		
+		 
 		   IntroductionDAO.intoInsert(vo);
-		  // System.out.println(vo);
-		   
-		   request.getSession().setAttribute("userId","admin");
-		   String userId = (String) request.getSession().getAttribute("userId");
-		   System.out.println(userId);
-		   return "passinfo.do";
+		  
+		   return "redirect:passinfo.do";
 	   }
 	   
+	   // 자기소개서상세보기
+	   @RequestMapping("main/selfinto_content.do")
+	   public String intoContentData(HttpServletRequest request)
+	   {
+		   String no=request.getParameter("no");
+		   IntroductionVO vo=IntroductionDAO.intoContentData(Integer.parseInt(no));
+		   request.setAttribute("no", no);
+		   request.setAttribute("vo", vo);
+           System.out.println("제목 :"+vo.getTitle());
+		   System.out.println("결과 :"+vo.getContent());
+		   
+		
+		   
+		   
+		   return "../self/selfinto_content.jsp";
+	   }
+	  
 	   
 	  //자기소개서수정하기
 	   @RequestMapping("main/selfinto_update.do")
-	   public String intoUpdate(HttpServletRequest request)
+	   public String intoUpdateData(HttpServletRequest request)
 	   {
 		   String no=request.getParameter("no");
+		   System.out.println("수정할 내용 번호:"+no);
 		   // DB연동 
 		   IntroductionVO vo=IntroductionDAO.intoUpdateData(Integer.parseInt(no));
-		   
+		   System.out.println("수정 번호 :"+vo.getNo());
+		   System.out.println("제목 수정하기 :"+ vo.getTitle());
+		   System.out.println("제목 수정하기 :"+ vo.getContent());
 		   // 결과값 전송
 		   request.setAttribute("vo", vo);
 		   return "../self/selfinto_update.jsp";
 	   }
-	   
-	   
-/*	   @RequestMapping("main/selfinto_ok.do")
-	   public String intoUpdateOk(HttpServletRequest request)
-	   throws Exception
+	   @RequestMapping("main/selfinto_update_ok.do")
+	   public String intoUpdate(HttpServletRequest request) throws IOException
 	   {
 		   request.setCharacterEncoding("EUC-KR");
-		  
-		   String content=request.getParameter("content");
-		  // String pwd=request.getParameter("pwd");
 		   String no=request.getParameter("no");
+		   String userId=(String)request.getSession().getAttribute("name");
+		   String title=request.getParameter("title");
+		   String content=request.getParameter("content");
+		   System.out.println(no);
+		   System.out.println(userId);
+		   System.out.println(title);
+		   System.out.println(content);
 		   //DB연동 
-		   IntroductionVO vo=new IntroductionVO();
+		   IntroductionVO vo = new IntroductionVO();
 		   vo.setNo(Integer.parseInt(no));
+		   vo.setUserId(userId);
+		   vo.setTitle(title);
 		   vo.setContent(content);
-		   
-		   // DB연동 
-		   boolean bCheck=IntroductionDAO.intoUpdateData(vo);
-		   // 결과값을 전송 
-		   request.setAttribute("bCheck", bCheck);
-		   if(bCheck==true)
-		   {
-			   request.setAttribute("no", no);
-		   }
-		   return "update_ok.jsp";
-	   }*/
+	       IntroductionDAO.intoUpdate(vo);
+	       
+	       return "../self/selfinto_content.jsp";
+	   }
+	
+
 	   
+      //자기소개서 내용 삭제
+	   @RequestMapping("main/delete_ok.do")
+	   public String boardDelete(HttpServletRequest request)
+	   {
+		   String no=request.getParameter("no");
+		   IntroductionDAO.Delete(Integer.parseInt(no));
+		   request.setAttribute("infoDelete", no);
+		   return "passinfo.do";
+		 
+	   }
+	 
+	}
 	   
+  
 	   
-}
+
 	
 
