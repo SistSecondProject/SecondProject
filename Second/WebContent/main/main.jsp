@@ -103,70 +103,52 @@ height:16px;
 	<!-- content end -->
 
 	<footer>
-	<div class="container">
-		<div class="row">
-			<div>
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-5">
 				<div class="widget">
-					<h5 class="widgetheading">Get in touch with us</h5>
+					<h5 class="widgetheading">address</h5>
+					<address>
+						<strong>쌍용강북교육센터</strong><br> 강북 서울특별시 마포구 월드컵북로21
+						풍성빌딩 2,3,4층
+					</address>
 					
-						<strong>쌍용강북교육센터 강북 서울특별시 마포구 월드컵북로21 풍성빌딩 2,3,4층</strong>
-				
-						<br>
+				</div>
+			</div>
+					<div class="col-lg-3">
+						<div class="widget">
+							<h5 class="widgetheading">Tel</h5>
+							<ul class="link-list">
+								<p>
 						<i class="icon-phone"></i> Tel 02)336-8546~8 <br> <i
 							class="icon-envelope-alt"></i> Fax 02)334-5405
+					</p>
+							</ul>
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="widget">
+							<h5 class="widgetheading">photostream</h5>
+							<div class="flickr_badge">
+								<script type="text/javascript" src="https://www.flickr.com/badge_code_v2.gne?count=8&amp;display=random&amp;size=s&amp;layout=x&amp;source=user&amp;user=34178660@N03"></script>
+							</div>
+							<div class="clear">
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="widget">
+							<h5 class="widgetheading"></h5>
+							<ul class="link-list">
+								<li><a href="#"></a></li>
+						
+							</ul>
+						</div>
+					</div>
 					
 				</div>
 			</div>
-		<!-- 	<div class="col-lg-3">
-				<div class="widget">
-					<h5 class="widgetheading">Pages</h5>
-					<ul class="link-list">
-						<li><a href="#">Press release</a></li>
-						<li><a href="#">Terms and conditions</a></li>
-						<li><a href="#">Privacy policy</a></li>
-						<li><a href="#">Career center</a></li>
-						<li><a href="#">Contact us</a></li>
-					</ul>
-				</div>
-			</div> -->
-		<!-- 	<div class="col-lg-3">
-				<div class="widget">
-					<h5 class="widgetheading">Latest posts</h5>
-					<ul class="link-list">
-						<li><a href="#">Lorem ipsum dolor sit amet, consectetur
-								adipiscing elit.</a></li>
-						<li><a href="#">Pellentesque et pulvinar enim. Quisque at
-								tempor ligula</a></li>
-						<li><a href="#">Natus error sit voluptatem accusantium
-								doloremque</a></li>
-					</ul>
-				</div>
-			</div> -->
-			<!-- <div class="col-lg-3">
-				<div class="widget">
-					<h5 class="widgetheading">Ready & Start photostream</h5>
-					<div class="flickr_badge">
-						<script type="text/javascript"
-							src="https://www.flickr.com/badge_code_v2.gne?count=8&amp;display=random&amp;size=s&amp;layout=x&amp;source=user&amp;user=34178660@N03"></script>
-					</div>
-					<div class="clear"></div>
-				</div>
-			</div> -->
-		</div>
-	</div>
-<!-- 	<div id="sub-footer">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6">
-					<div class="copyright">
-						<p>&copy; Ready & Start. All rights reserved.</p>
-						<div class="credits"></div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div> -->
-	</footer>
+		</footer>
 	<script src="../js/jquery.js"></script>
 	<script src="../js/jquery.easing.1.3.js"></script>
 	<script src="../js/bootstrap.min.js"></script>

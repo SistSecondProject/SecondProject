@@ -162,7 +162,7 @@ font-weight: bold;
 										<dl>
 											<c:forEach var="j" begin="0" end="6">
 											<c:if test="${j!=6 }">
-												<dd><a href="javascript:void(window.open('calender_dt.do?link=${ciList[(i*7)+j].url }','정보','width=1050px,height=450px,top=200px,left=400px'))">${ciList[(i*7)+j].data }</a></dd>
+												<dd><a style="color: black" href="javascript:void(window.open('calender_dt.do?link=${ciList[(i*7)+j].url }','정보','width=1050px,height=450px,top=200px,left=400px'))">${ciList[(i*7)+j].data }</a></dd>
 												</c:if>
 											</c:forEach>
 										</dl>
