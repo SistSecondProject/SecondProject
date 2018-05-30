@@ -113,13 +113,13 @@ public static void specReplydisLikeData(int no){
 	}
 }
 	
-	public static List<SpecVO> specListData(){
+	public static List<SpecVO> specListData(Map map){
 		List<SpecVO> list=new ArrayList<SpecVO>();
 		SqlSession session=null;
 		try
 		{
 			session=ssf.openSession();
-			list=session.selectList("specList");
+			list=session.selectList("specList",map);
 			
 		}catch(Exception ex)
 		{
@@ -173,5 +173,46 @@ public static void specReplydisLikeData(int no){
 		return vo;
 	}
 	
+	public static int specTotalPage()
+	   {
+		   int total=0;
+		   SqlSession session=null;
+		   try
+		   {
+			   session=ssf.openSession();
+			   total=session.selectOne("specTotalPage");
+		   }catch(Exception ex)
+		   {
+			   System.out.println(ex.getMessage());
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close();
+		   }
+		   return total;
 	
+	
+}
+	public static int specTotalList()
+	   {
+		   int total=0;
+		   SqlSession session=null;
+		   try
+		   {
+			   session=ssf.openSession();
+			   total=session.selectOne("specTotalList");
+		   }catch(Exception ex)
+		   {
+			   System.out.println(ex.getMessage());
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close();
+		   }
+		   return total;
+	
+	
+}
 }
