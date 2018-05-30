@@ -42,6 +42,77 @@ public class SpecDAO {
 		return list;
 	}
 	
+	public static void specReplyInsertData(SpecReplyVO vo){
+		
+		SqlSession session=null;
+		try
+		{
+			session=ssf.openSession(true);
+			session.insert("specReplyInsert",vo);
+		}catch(Exception ex)
+		{
+			System.out.println(ex.getMessage());
+		}
+		finally
+		{
+			if(session!=null)
+				session.close();
+		}
+	}
+	
+public static void specReplyHitData(int no){
+		
+		SqlSession session=null;
+		try
+		{
+			session=ssf.openSession(true);
+			session.update("specReplyHit",no);
+		}catch(Exception ex)
+		{
+			System.out.println(ex.getMessage());
+		}
+		finally
+		{
+			if(session!=null)
+				session.close();
+		}
+	}
+
+public static void specReplyLikeData(int no){
+	
+	SqlSession session=null;
+	try
+	{
+		session=ssf.openSession(true);
+		session.update("specReplyLikePoint",no);
+	}catch(Exception ex)
+	{
+		System.out.println(ex.getMessage());
+	}
+	finally
+	{
+		if(session!=null)
+			session.close();
+	}
+}
+public static void specReplydisLikeData(int no){
+	
+	SqlSession session=null;
+	try
+	{
+		session=ssf.openSession(true);
+		session.update("specReplydisLikePoint",no);
+	}catch(Exception ex)
+	{
+		System.out.println(ex.getMessage());
+	}
+	finally
+	{
+		if(session!=null)
+			session.close();
+	}
+}
+	
 	public static List<SpecVO> specListData(){
 		List<SpecVO> list=new ArrayList<SpecVO>();
 		SqlSession session=null;
@@ -61,6 +132,26 @@ public class SpecDAO {
 		}
 		return list;
 	}
+	public static List<SpecReplyVO> specReplyListData(int no){
+		List<SpecReplyVO> list=new ArrayList<SpecReplyVO>();
+		SqlSession session=null;
+		try
+		{
+			session=ssf.openSession();
+			list=session.selectList("specReplyList",no);
+			
+		}catch(Exception ex)
+		{
+			System.out.println(ex.getMessage());
+		}
+		finally
+		{
+			if(session!=null)
+				session.close();
+		}
+		return list;
+	}
+	
 	
 	public static SpecVO specContentListData(int no){
 		SpecVO vo=null;

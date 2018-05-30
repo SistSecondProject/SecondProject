@@ -7,13 +7,28 @@
   insert into spec_board
   values((SELECT NVL(MAX(no)+1,1) FROM spec_board),#{userId},#{subject},#{content},SYSDATE,0,0,0)
 </insert>
-	<select id="specList" resultType="SpecVO" >
+<select id="specList" resultType="SpecVO" >
 		SELECT no,userid,subject,content,regdate,hit,likepoint,dislikepoint FROM spec_board ORDER BY no DESC
 	</select>
-	
 	<select id="specContentList" resultType="SpecVO" parameterType="int">
 		SELECT * FROM spec_board WHERE no=#{no}
 	</select>
+	<select id="specReplyList" resultType="SpecReplyVO" parameterType="int">
+		SELECT * FROM spec_board_comments WHERE boardno=#{no} ORDER BY commentNo
+	</select>
+	<insert id="specReplyInsert" parameterType="SpecReplyVO">
+  insert into spec_board_comments
+  values(#{boardNo },(SELECT NVL(MAX(commentNo)+1,1) FROM spec_board_comments),#{userId},#{content},SYSDATE,0,0,0,0,0)
+</insert>
+<update id="specReplyHit" parameterType="int">
+UPDATE spec_board SET hit=hit+1 WHERE no=#{no}
+</update>
+<update id="specReplyLikePoint" parameterType="int">
+UPDATE spec_board SET likepoint=likepoint+1 WHERE no=#{no}
+</update>
+<update id="specReplydisLikePoint" parameterType="int">
+UPDATE spec_board SET dislikepoint=dislikepoint+1 WHERE no=#{no}
+</update>
 	
 	<!-- 공지사항 -->
 	<select id="noticeList" resultType="NoticeVO" parameterType="java.util.Map">

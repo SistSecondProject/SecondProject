@@ -7,6 +7,7 @@ import java.util.*;
 import com.sist.community.NoticeDAO;
 import com.sist.community.NoticeVO;
 import com.sist.community.SpecDAO;
+import com.sist.community.SpecReplyVO;
 import com.sist.community.SpecVO;
 import com.sist.controller.Controller;
 import com.sist.controller.RequestMapping;
@@ -14,51 +15,82 @@ import com.sist.controller.RequestMapping;
 @Controller
 public class CommunityModel {
 	@RequestMapping("main/spec.do")
-	public String specboard(HttpServletRequest request) throws Exception {
+	public String specboard(HttpServletRequest request) throws Exception{
 		request.setCharacterEncoding("utf-8");
-		List<SpecVO> list = SpecDAO.specListData();
+		List<SpecVO> list=SpecDAO.specListData();
 		request.setAttribute("list", list);
-
+		
 		request.setAttribute("home_jsp", "../community/spec.jsp");
-
-		return "main.jsp";
+		
+		  return "main.jsp";
 	}
-
 	@RequestMapping("main/spec_insert.do")
-
+	
 	public String spec_okboard(HttpServletRequest request) {
 		request.setAttribute("home_jsp", "../community/spec_insert.jsp");
 		return "main.jsp";
 	}
-
 	@RequestMapping("main/spec_insert_ok.do")
-	public String spec_insertok(HttpServletRequest request) throws Exception {
+	public String spec_insertok(HttpServletRequest request) throws Exception{
 		request.setCharacterEncoding("utf-8");
-		request.getSession().setAttribute("userid", "admin");
-		String userid = (String) request.getSession().getAttribute("userid");
-		String subject = request.getParameter("subject");
-		String content = request.getParameter("content");
-		String password = request.getParameter("pwd");
-
-		SpecVO vo = new SpecVO();
-		vo.setUserId(userid);
-		vo.setSubject(subject);
-		vo.setContent(content);
-		vo.setPassword(password);
-		SpecDAO.specInsertData(vo);
-		return "redirect:spec.do";
+		   String userid=(String)request.getSession().getAttribute("name");
+		   String subject=request.getParameter("subject");
+		   String content=request.getParameter("content");
+		   String password=request.getParameter("pwd");
+		   
+		   
+		  SpecVO vo=new SpecVO();
+		  vo.setUserId(userid);
+		  vo.setSubject(subject);
+		  vo.setContent(content);
+		  vo.setPassword(password);
+		   SpecDAO.specInsertData(vo);
+		  return "redirect:spec.do";
 	}
-
 	@RequestMapping("main/spec_content.do")
-	public String spec_contentboard(HttpServletRequest request) throws Exception {
+	public String spec_contentboard(HttpServletRequest request) throws Exception{
 		request.setCharacterEncoding("EUC-KR");
-		String no = request.getParameter("no");
-
-		SpecVO vo = SpecDAO.specContentListData(Integer.parseInt(no));
+		String no=request.getParameter("no");
+		SpecDAO.specReplyHitData(Integer.parseInt(no));
+		SpecVO vo=SpecDAO.specContentListData(Integer.parseInt(no));
+		
+		List<SpecReplyVO> list=SpecDAO.specReplyListData(Integer.parseInt(no));
+		
 		request.setAttribute("vo", vo);
+		request.setAttribute("rlist", list);
 		request.setAttribute("home_jsp", "../community/spec_content.jsp");
-
-		return "main.jsp";
+		
+		  return "main.jsp";
+	}
+	@RequestMapping("main/reply_reply.do")
+	public String spec_contentreply(HttpServletRequest request) throws Exception{
+		request.setCharacterEncoding("utf-8");
+		 String userid=(String)request.getSession().getAttribute("name");
+		 String content=request.getParameter("msg");
+		String boardno=request.getParameter("no");
+		
+		SpecReplyVO vo=new SpecReplyVO();
+		vo.setBoardNo(Integer.parseInt(boardno));
+		vo.setUserId(userid);
+		vo.setContent(content);
+		SpecDAO.specReplyInsertData(vo);
+	
+		
+		  return "redirect:spec_content.do?no="+boardno;
+	}
+	@RequestMapping("main/spec_content_like.do")
+	public String likepointData(HttpServletRequest request) {
+		String no=request.getParameter("no");
+		SpecDAO.specReplyLikeData(Integer.parseInt(no));
+		
+		return "redirect:spec_content.do?no="+no;
+	}
+	@RequestMapping("main/spec_content_dislike.do")
+	public String dislikepointData(HttpServletRequest request) {
+		String no=request.getParameter("no");
+		SpecDAO.specReplydisLikeData(Integer.parseInt(no));
+		
+		return "redirect:spec_content.do?no="+no;
 	}
 
 	// 공지사항
