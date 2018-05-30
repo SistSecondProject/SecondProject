@@ -34,7 +34,7 @@
    </sql> 
    
    <select id="infoContentData" resultType="IntroductionVO" parameterType="int">
-     SELECT title,content
+     SELECT no,title,content
      FROM User_Introduction
      WHERE no=#{no}
    </select>
@@ -44,7 +44,7 @@
 <!-- 수정하기 -->
  
    
- <update id="intoUpdateData" parameterType="int">
+ <update id="intoUpdateData" parameterType="IntroductionVO">
    UPDATE User_Introduction SET title=#{title},content=#{content}
    WHERE no=#{no}
    </update>  

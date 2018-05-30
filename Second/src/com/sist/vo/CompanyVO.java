@@ -1,6 +1,8 @@
 package com.sist.vo;
 
-public class CompanyVO {
+import java.io.Serializable;
+
+public class CompanyVO implements Serializable{
 	private int companyCode;
 	private int categoryCode;
 	private String ceo;

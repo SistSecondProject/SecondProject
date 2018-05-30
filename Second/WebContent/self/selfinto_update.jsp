@@ -2,12 +2,12 @@
     pageEncoding="EUC-KR"%>
   
       <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-       <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
+ 
 <!DOCTYPE html>
 
 <head>
   <meta charset="EUC-KR">
-  <title>�����ϱ�</title>  
+  <title>¼öÁ¤ÇÏ±â</title>  
    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="/resources/demos/style.css">
 <!--   <link rel="stylesheet" href="./css/bootstrap.min.css"> -->
@@ -102,37 +102,38 @@ div#p
 
 <body>
     <br>
-    <form>
-    <c:forEach var="no" items="${vo }">
-     <tr>
-        <td class="text-left">
-        <br>
-         <a href="selfinto_update_ok.do?no=${vo.no }" class="btn btn-sm btn-primary">����</a>
-         <a href="#" class="btn btn-sm btn-warning">���</a>
-         
-        </td>
-       </tr>  
-      </c:forEach>
+    <form method=post action="selfinto_update_ok.do">
+    <input type="hidden" name="no" value="${vo.no }">
     
-  <div id="side1" class="ct" style="font-family:arial;">�ڱ�Ұ��� ������ �Է��ϼ��� :<textarea rows="1" cols="55" style="margin: 2px;" height="236px;" width="283px;" name="title" >${vo.title }</textarea></div>
+    <tr>
+        <td colspan="2" class="text-center">
+         <input type="submit" class="btn btn-sm btn-primary"
+          value="¼öÁ¤" id="writeBtn">
+         <input type="button" class="btn btn-sm btn-primary"
+          value="Ãë¼Ò" onclick="javascript:history.back()">
+        </td>
+       </tr> 
+     
+    
+  <div id="side1" class="ct" style="font-family:arial;">ÀÚ±â¼Ò°³¼­ Á¦¸ñÀ» ÀÔ·ÂÇÏ¼¼¿ä :<textarea rows="1" cols="55" style="margin: 2px;" height="236px;" width="283px;" name="title" >${vo.title }</textarea></div>
          
-    <div id="side" class="ct" style="font-family:arial;">�׸� 1<span style="float:right">+</span></div>
+    <div id="side" class="ct" style="font-family:arial;">Ç×¸ñ 1<span style="float:right">+</span></div>
          <div class="p">
-         <textarea rows="13" cols="95" placeholder="������ �Է��ϼ���" style="margin: 0px;" height="236px;" width="283px;" name="content1"  >${fn:substring(vo.content,0,fn:indexOf(vo.content,'|')) }</textarea>
+         <textarea rows="13" cols="95" placeholder="³»¿ëÀ» ÀÔ·ÂÇÏ¼¼¿ä" style="margin: 0px;" height="236px;" width="283px;" name="content1"  >${fn:substring(vo.content,0,fn:indexOf(vo.content,'|')) }</textarea>
          </div>
        
          
          
          
       
-      <div id="side" class="ct">�׸� 2<span style="float:right">+</span></div>
+      <div id="side" class="ct">Ç×¸ñ 2<span style="float:right">+</span></div>
           <div class="p">
-         <textarea rows="13" cols="95" placeholder="������ �Է��ϼ���" style="margin: 0px;" height="236px;" width="283px;" name="content2">${fn:substring(vo.content,fn:indexOf(vo.content,'|')+1,fn:indexOf(vo.content,'^')) }</textarea>
+         <textarea rows="13" cols="95" placeholder="³»¿ëÀ» ÀÔ·ÂÇÏ¼¼¿ä" style="margin: 0px;" height="236px;" width="283px;" name="content2">${fn:substring(vo.content,fn:indexOf(vo.content,'|')+1,fn:indexOf(vo.content,'^')) }</textarea>
          </div>
          
-       <div id="side" class="ct">�׸� 3<span style="float:right">+</span></div>
+       <div id="side" class="ct">Ç×¸ñ 3<span style="float:right">+</span></div>
           <div class="p">
-         <textarea rows="13" cols="95" placeholder="������ �Է��ϼ���" style="margin: 0px;" height="236px;" width="283px;" name="content3">${fn:substring(vo.content,fn:indexOf(vo.content,'^')+1,fn:length(vo.content)) }</textarea>
+         <textarea rows="13" cols="95" placeholder="³»¿ëÀ» ÀÔ·ÂÇÏ¼¼¿ä" style="margin: 0px;" height="236px;" width="283px;" name="content3">${fn:substring(vo.content,fn:indexOf(vo.content,'^')+1,fn:length(vo.content)) }</textarea>
          </div>
     
  

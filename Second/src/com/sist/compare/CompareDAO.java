@@ -40,7 +40,7 @@ public class CompareDAO {
 		return list;
 	}
 	
-	public static Compare_ResultVO resultData(int companyCode) {
+	public static Compare_ResultVO resultData(int companyCode){
 		Compare_ResultVO vo = null;
 		SqlSession session = null;
 		try {

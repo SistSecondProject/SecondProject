@@ -130,7 +130,7 @@ public class IntroductionDAO {
 		   try
 		   {
 			   session=ssf.openSession();
-			   vo = session.selectOne("intoUpdateData",no);
+			   vo = session.selectOne("infoContentData",no);
 			   
 		   }catch(Exception ex)
 		   {
@@ -152,8 +152,8 @@ public class IntroductionDAO {
 		   try
 		   {
 			   session=ssf.openSession(true);
-			   session.update("intoUpdate",vo);
-			   session.commit();
+			   session.update("intoUpdateData",vo);
+			   //session.commit(true);
 			   
 		   }catch(Exception ex)
 		   {

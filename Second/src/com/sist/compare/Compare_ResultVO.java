@@ -1,6 +1,8 @@
 package com.sist.compare;
 
-public class Compare_ResultVO {
+import java.io.Serializable;
+
+public class Compare_ResultVO implements Serializable {
 	private int companyCode;//기업코드
 	private double promotion_possibility; //승진 가능성
 	private double welfare_pay;  //복지 및 급여

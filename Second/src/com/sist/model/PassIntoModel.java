@@ -143,10 +143,7 @@ public class PassIntoModel {
 		   request.setAttribute("vo", vo);
            System.out.println("제목 :"+vo.getTitle());
 		   System.out.println("결과 :"+vo.getContent());
-		   
-		
-		   
-		   
+
 		   return "../self/selfinto_content.jsp";
 	   }
 	  
@@ -156,15 +153,18 @@ public class PassIntoModel {
 	   public String intoUpdateData(HttpServletRequest request)
 	   {
 		   String no=request.getParameter("no");
-		   System.out.println("수정할 내용 번호:"+no);
+		  // System.out.println("수정할 내용 번호:"+no);
 		   // DB연동 
 		   IntroductionVO vo=IntroductionDAO.intoUpdateData(Integer.parseInt(no));
-		   System.out.println("수정 번호 :"+vo.getNo());
+		/*   System.out.println("수정 번호 :"+vo.getNo());
 		   System.out.println("제목 수정하기 :"+ vo.getTitle());
-		   System.out.println("제목 수정하기 :"+ vo.getContent());
+		   System.out.println("제목 수정하기 :"+ vo.getContent());*/
 		   // 결과값 전송
+		   
 		   request.setAttribute("vo", vo);
-		   return "../self/selfinto_update.jsp";
+		   request.setAttribute("home_jsp", "../self/selfinto_update.jsp");
+		   return "main.jsp";
+		 // return "../self/selfinto_update.jsp";
 	   }
 	   @RequestMapping("main/selfinto_update_ok.do")
 	   public String intoUpdate(HttpServletRequest request) throws IOException
@@ -173,11 +173,19 @@ public class PassIntoModel {
 		   String no=request.getParameter("no");
 		   String userId=(String)request.getSession().getAttribute("name");
 		   String title=request.getParameter("title");
-		   String content=request.getParameter("content");
-		   System.out.println(no);
-		   System.out.println(userId);
-		   System.out.println(title);
-		   System.out.println(content);
+		   String  content1 = request.getParameter("content1");  
+		   String  content2 = request.getParameter("content2"); 
+		   String  content3 = request.getParameter("content3");
+		   /*System.out.println("content2 :"+content2);
+		   System.out.println("content1 :"+content1);
+		   System.out.println("content3 :"+content3);*/
+		   String content=content1+"|"+content2+"^"+content3;
+		   //System.out.println(content);
+
+		   /*System.out.println("m번호: "+no);
+	       System.out.println("m아이디:"+userId);
+	       System.out.println("m제목:"+title);
+	       System.out.println("m내용:"+content);*/
 		   //DB연동 
 		   IntroductionVO vo = new IntroductionVO();
 		   vo.setNo(Integer.parseInt(no));
@@ -185,8 +193,11 @@ public class PassIntoModel {
 		   vo.setTitle(title);
 		   vo.setContent(content);
 	       IntroductionDAO.intoUpdate(vo);
-	       
-	       return "../self/selfinto_content.jsp";
+	     /* System.out.println("d번호: "+no);
+	       System.out.println("d아이디:"+userId);
+	       System.out.println("d제목:"+title);
+	       System.out.println("d내용:"+content);*/
+	       return "redirect:passinfo.do";
 	   }
 	
 

@@ -2,6 +2,12 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 
+<%
+	String cp = request.getContextPath();
+    session.getAttribute("name");
+    
+%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -21,17 +27,6 @@
 <link href="../css/chartsize.css" rel="stylesheet" />
 <!-- <link rel='stylesheet' href='Nwagon.css' type='text/css'> -->
 <script src="../js/Nwagon.js"></script>
-<script src="https://code.jquery.com/jquery.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){
-	var message= $('#message').attr('value');
-	if(message!=null)
-		alert('이미 로그인한 사용자 입니다. 이전 접속을 종료합니다.');
-});
-</script>
-
-
 <style type="text/css">
 body, body.modal {
     margin-right: 0 !important;
@@ -49,9 +44,6 @@ height:16px;
 <link href="../skins/default.css" rel="stylesheet" />
 </head>
 <body>
-<c:if test="${message ne null }">
-<input type="hidden" id="message" value="1">
-</c:if>
 	<div id="wrapper">
 		<!-- start header -->
 		
@@ -64,7 +56,7 @@ height:16px;
 						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="main.do"><span>T</span>EST</a>
+					<a class="navbar-brand" href="main.do"><span>Ready&Start</a>
 				</div>
 				<div class="navbar-collapse collapse ">
 					<ul class="nav navbar-nav">
@@ -113,20 +105,19 @@ height:16px;
 	<footer>
 	<div class="container">
 		<div class="row">
-			<div class="col-lg-3">
+			<div>
 				<div class="widget">
 					<h5 class="widgetheading">Get in touch with us</h5>
-					<address>
-						<strong>쌍용강북교육센터</strong><br> 강북 서울특별시 마포구 월드컵북로21<br>
-						풍성빌딩 2,3,4층
-					</address>
-					<p>
+					
+						<strong>쌍용강북교육센터 강북 서울특별시 마포구 월드컵북로21 풍성빌딩 2,3,4층</strong>
+				
+						<br>
 						<i class="icon-phone"></i> Tel 02)336-8546~8 <br> <i
 							class="icon-envelope-alt"></i> Fax 02)334-5405
-					</p>
+					
 				</div>
 			</div>
-			<div class="col-lg-3">
+		<!-- 	<div class="col-lg-3">
 				<div class="widget">
 					<h5 class="widgetheading">Pages</h5>
 					<ul class="link-list">
@@ -137,8 +128,8 @@ height:16px;
 						<li><a href="#">Contact us</a></li>
 					</ul>
 				</div>
-			</div>
-			<div class="col-lg-3">
+			</div> -->
+		<!-- 	<div class="col-lg-3">
 				<div class="widget">
 					<h5 class="widgetheading">Latest posts</h5>
 					<ul class="link-list">
@@ -150,8 +141,8 @@ height:16px;
 								doloremque</a></li>
 					</ul>
 				</div>
-			</div>
-			<div class="col-lg-3">
+			</div> -->
+			<!-- <div class="col-lg-3">
 				<div class="widget">
 					<h5 class="widgetheading">Ready & Start photostream</h5>
 					<div class="flickr_badge">
@@ -160,10 +151,10 @@ height:16px;
 					</div>
 					<div class="clear"></div>
 				</div>
-			</div>
+			</div> -->
 		</div>
 	</div>
-	<div id="sub-footer">
+<!-- 	<div id="sub-footer">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-6">
@@ -174,7 +165,7 @@ height:16px;
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 	</footer>
 	<script src="../js/jquery.js"></script>
 	<script src="../js/jquery.easing.1.3.js"></script>
