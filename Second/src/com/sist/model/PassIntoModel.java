@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.sist.community.NoticeDAO;
 import com.sist.community.SpecDAO;
 import com.sist.community.SpecVO;
 import com.sist.controller.Controller;
@@ -191,7 +192,7 @@ public class PassIntoModel {
 
 	   
       //자기소개서 내용 삭제
-	   @RequestMapping("main/delete_ok.do")
+	   @RequestMapping("main/delete.do")
 	   public String boardDelete(HttpServletRequest request)
 	   {
 		   String no=request.getParameter("no");
@@ -200,6 +201,21 @@ public class PassIntoModel {
 		   return "passinfo.do";
 		 
 	   }
+	   /*
+	    * // 삭제
+	@RequestMapping("main/noticeDelete.do")
+	   public String noticeDeleteData(HttpServletRequest request)
+	   {
+		   String no=request.getParameter("no");
+		   
+		   NoticeDAO.noticeDelete(Integer.parseInt(no));
+		   
+		   request.setAttribute("noticeDelete", no);
+		   
+		   return "redirect:noticeList.do";
+	   }
+	    * 
+	    */
 	 
 	}
 	   

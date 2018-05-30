@@ -14,107 +14,66 @@ import org.apache.tools.ant.util.SymbolicLinkUtils;
 import com.sist.pass_info.PassVO;
 
 public class MemberDAO {
-	 private static SqlSessionFactory ssf;
-		 
-		 static  
-		   {
-			   try
-			   {
-				   // XML읽기
-				   Reader reader=Resources.getResourceAsReader("Config.xml");
-				   // Config.xml => mapper.xml
-				   // 파싱요청 
-				   ssf=new SqlSessionFactoryBuilder().build(reader);
-				   // ssf => getConnection(),disConnection()
-				   // Spring,MyBatis ==> classpath:SRC
-			   }catch(Exception ex)
-			   {
-				   System.out.println(ex.getMessage());
-			   }
-		   }
-		 
-		 //id중복
-		 public int idCheck(String id) {
-                SqlSession session=null;
-                int count=0;
-                try
-                {
-                      session=ssf.openSession();
-                      count = session.selectOne("IdCheck", id);
-                  	
-            	}catch(Exception ex) {
-            	
-            		System.out.println(ex.getMessage());
-            	}
-                
-                finally {
-            		if(session!=null)
-            			session.close();
-            	}
-            	return count;
+	  private static SqlSessionFactory ssf;
+      
+      static  
+        {
+           try
+           {
+              // XML읽기
+              Reader reader=Resources.getResourceAsReader("Config.xml");
+              // Config.xml => mapper.xml
+              // 파싱요청 
+              ssf=new SqlSessionFactoryBuilder().build(reader);
+              // ssf => getConnection(),disConnection()
+              // Spring,MyBatis ==> classpath:SRC
+           }catch(Exception ex)
+           {
+              System.out.println(ex.getMessage());
+           }
+        }
+      
+     // id중복
+        public int idCheck(String userId) {
+           SqlSession session = null;
+           int count = 0;
+           try {
+              session = ssf.openSession();
+              count = session.selectOne("idCheck", userId);
+           } catch (Exception ex) {
+              System.out.println("idCheck >>> " + ex.getMessage());
+           } finally {
+              if (session != null)
+                 session.close();
+           }
+           System.out.println("count >>> " + count);
+           return count;
+        }
 
-		    }
-		 //우편번호 검색
-		 public ArrayList<ZipcodeVO> postfind(String dong)
-		 {
-		 ArrayList<ZipcodeVO> list = new ArrayList<ZipcodeVO>();
-		 SqlSession session= null;  
-		 try
-		   {
-			 session = ssf.openSession();
-		     list = session.selectOne("postfindData",dong);
-		   }catch(Exception ex)
-		   {
-			   System.out.println(ex.getMessage());
-		   }
-		   finally
-		   {
-			   if(session!=null)
-       			session.close();
-		   }
-		   return list;
-				   
-		 }		   
-		 //동으로 검색
-		   public int postfindCount(String dong)
-		   {
-			   SqlSession session=null;
-               int count=0;
-			   try
-			   {
-				   session=ssf.openSession();
-                   count = session.selectOne("postfindCount", dong);
-				   
-			   }catch(Exception ex)
-			   {
-				   System.out.println(ex.getMessage());
-			   }
-			   finally
-			   {
-				   if(session!=null)
-		       			session.close();
-			   }
-			   
-			   return count;
-		   } 
-		  //회원 가입하기 
-		   public static void memberJoin(MemberVO vo)
-		   { 
-				//Connecion = SqlSession
-				SqlSession session = null;
-				try {
-					session=ssf.openSession(true);
-					session.insert("memberJoin",vo);
-				}catch (Exception ex) 
-				{
-					System.out.println(ex.getMessage());
-				}
-				finally 
-				{
-						if(session!=null) 
-						session.close();
-					}
-		   }
+        // 회원가입
+        public static void memberJoin(MemberVO vo) {
+           /*System.out.println("getUserId >>> " + vo.getUserId());
+           System.out.println("getpassword >>> " + vo.getPassword());
+           System.out.println("getName >>> " + vo.getName());
+           System.out.println("getEmailAddress >>> " + vo.getEmailAddress());
+           System.out.println("getFavoriteCategory >>> " + vo.getFavoriteCategory());
+           System.out.println("getPostAddress >>> " + vo.getPostAddress());
+           System.out.println("getRoadnameAddress >>> " + vo.getRoadnameAddress());
+           System.out.println("getDetailAddress >>> " + vo.getDetailAddress());
+           System.out.println("getUserLevel >>> " + vo.getUserLevel());
+           System.out.println("getIsLogin >>> " + vo.getIsLogin());*/
+           SqlSession session = null;
+           try {
+              session = ssf.openSession(true);
+              session.insert("memberJoin", vo);
+
+           } catch (Exception ex) {
+              System.out.println("memberJoin >>> " + ex.getMessage());
+           } finally {
+              if (session != null)
+                 session.close();
+           }
+        }
 		   
 
 		   //로그인 처리
