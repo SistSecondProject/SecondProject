@@ -27,8 +27,7 @@
 				<div class="row">
 					<h2>공지사항</h2>
 					<p>회원님에게 신속히 알려드릴 필요성이 있는 자료를 제공해 드립니다</p>
-					<br>
-					<br>
+					<br> <br>
 					<table class="table table-hover">
 						<thead>
 							<tr class="warning">
@@ -59,19 +58,23 @@
 					</table>
 					<table class="table table-hover">
 						<tr>
+						<c:choose>
+							<c:when test="${sessionScope.name=='admin' }">
 							<td class="text-left"><a href="noticeInsert.do">
 									<button type="button" class="btn btn-theme"
 										style="float: left;">글쓰기</button>
 							</a></td>
-							<td class="text-right">
-								<a href="noticeList.do?page=${curpage-1 }"
-								class="btn btn-sm btn-warning">◀</a>
-
-								<a href="noticeList.do?page=${curpage+1 }"
-								class="btn btn-sm btn-warning">▶</a>
-								&nbsp;&nbsp;&nbsp;${curpage } page / ${totalpage } pages 
-								
-							</td>
+							</c:when>
+							<c:otherwise>
+							
+							</c:otherwise>
+						</c:choose>
+							<td class="text-right"><a
+								href="noticeList.do?page=${curpage-1 }"
+								class="btn btn-sm btn-warning">◀</a> <a
+								href="noticeList.do?page=${curpage+1 }"
+								class="btn btn-sm btn-warning">▶</a> &nbsp;&nbsp;&nbsp;${curpage }
+								page / ${totalpage } pages</td>
 						</tr>
 					</table>
 				</div>

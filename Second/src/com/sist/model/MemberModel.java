@@ -122,7 +122,7 @@ public class MemberModel {
 		vo.setUserLevel(userLevel);
 		MemberDAO.memberJoin(vo);
 		
-		return "redirect:../main/main.do";
+		return "../member/welcome.jsp";
 	}
 	@RequestMapping("member/idCheck_ok.do")
 	public String idCheck(HttpServletRequest request) {
