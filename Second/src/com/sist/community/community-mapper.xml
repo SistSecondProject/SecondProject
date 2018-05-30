@@ -7,8 +7,10 @@
   insert into spec_board
   values((SELECT NVL(MAX(no)+1,1) FROM spec_board),#{userId},#{subject},#{content},SYSDATE,0,0,0)
 </insert>
-<select id="specList" resultType="SpecVO" >
-		SELECT no,userid,subject,content,regdate,hit,likepoint,dislikepoint FROM spec_board ORDER BY no DESC
+<select id="specList" resultType="SpecVO" parameterType="java.util.Map" >
+		<!-- SELECT no,userid,subject,content,regdate,hit,likepoint,dislikepoint FROM spec_board ORDER BY no DESC -->
+		SELECT no,userid,subject,content,regdate,hit,likepoint,dislikepoint,num
+FROM (SELECT no,userid,subject,content,regdate,hit,likepoint,dislikepoint,rownum as num FROM spec_board) WHERE num BETWEEN #{start} AND #{end} ORDER BY no DESC
 	</select>
 	<select id="specContentList" resultType="SpecVO" parameterType="int">
 		SELECT * FROM spec_board WHERE no=#{no}
@@ -30,6 +32,13 @@ UPDATE spec_board SET likepoint=likepoint+1 WHERE no=#{no}
 UPDATE spec_board SET dislikepoint=dislikepoint+1 WHERE no=#{no}
 </update>
 	
+	 <select id="specTotalPage" resultType="int">
+     SELECT CEIL(COUNT(*)/10) FROM spec_board
+   </select> 
+    <select id="specTotalList" resultType="int">
+     SELECT COUNT(*) FROM spec_board
+   </select> 
+   
 	<!-- 공지사항 -->
 	<select id="noticeList" resultType="NoticeVO" parameterType="java.util.Map">
      SELECT no,userId,subject,content,regdate,hit,num

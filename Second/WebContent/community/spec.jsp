@@ -71,13 +71,26 @@
                  <input type=submit class="btn btn-sm btn-info" value=검색>
          </td>
          <td class="text-right" style="padding-right: 100px">
-         <button type="button" class="btn btn-xs btn-default">◀</button>
-           <a href="#">1</a>&nbsp;&nbsp;
-           <a href="#">2</a>&nbsp;&nbsp;
-           <a href="#">3</a>&nbsp;&nbsp;
-           <a href="#">4</a>&nbsp;&nbsp;
-           <a href="#">5</a>
-           <button type="button" class="btn btn-xs btn-default">▶</button>
+          ${curpage } page / ${totalpage} pages
+         <a type="button" class="btn btn-xs btn-default" href="spec.do?page=${curpage==1?curpage:curpage-1}">◀</a>
+         <%-- <c:forEach var="i" begin="1" end="${totalpage }">
+           <a href="spec.do?page=${i}">${i }</a>&nbsp;&nbsp;
+           <a href="spec.do?page=${curpage+1 }">2</a>&nbsp;&nbsp;
+           <a href="spec.do?page=${curpage+2 }">3</a>&nbsp;&nbsp;
+           <a href="spec.do?page=${curpage+3 }">4</a>&nbsp;&nbsp;
+           <a href="spec.do?page=${curpage+4 }">5</a>
+           </c:forEach> --%>
+           <c:forEach var="list" begin="${startpage}" end="${endpage}" step="1">
+
+<c:if test="${curpage eq list}">
+		[${list}]
+	</c:if>
+	<c:if test="${curpage ne list}">
+		<a href="spec.do?page=${list}">${list}</a>
+	</c:if>
+</c:forEach>
+
+           <a type="button" class="btn btn-xs btn-default" href="spec.do?page=${curpage==totalpage?curpage:curpage+1}">▶</a>
            
          </td>
         </tr>

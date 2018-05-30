@@ -2,6 +2,7 @@ package com.sist.model;
 
 import javax.servlet.http.HttpServletRequest;
 
+
 import java.util.*;
 
 import com.sist.community.NoticeDAO;
@@ -17,11 +18,39 @@ public class CommunityModel {
 	@RequestMapping("main/spec.do")
 	public String specboard(HttpServletRequest request) throws Exception{
 		request.setCharacterEncoding("utf-8");
-		List<SpecVO> list=SpecDAO.specListData();
-		request.setAttribute("list", list);
-		
 		request.setAttribute("home_jsp", "../community/spec.jsp");
 		
+		String page=request.getParameter("page");
+		
+		   if(page==null)
+			   page="1";
+		   int curpage=Integer.parseInt(page);
+		   int rowSize=10;
+		   // rownum = 1
+		   // 1~10
+		   // 11~20
+		   int totalpage=SpecDAO.specTotalPage();
+		   /*int start=(curpage*rowSize)-(rowSize-1);*/
+		   int totallist=SpecDAO.specTotalList();
+		   int start=(totallist-((curpage*rowSize)-1));
+		   int end=(totallist-((curpage-1)*rowSize));
+		   int pagenum=5;
+		   int startPage = ((curpage-1)/pagenum)*pagenum+1;
+		   int endPage = startPage+pagenum-1;
+		   if(endPage > totalpage) endPage = totalpage;
+
+
+
+		   Map map=new HashMap();
+		   map.put("start", start);
+		   map.put("end", end);
+		   List<SpecVO> list=SpecDAO.specListData(map);
+		   request.setAttribute("list", list);
+		   request.setAttribute("curpage", curpage);
+		   request.setAttribute("totalpage", totalpage);
+		   request.setAttribute("startpage", startPage);
+		   request.setAttribute("endpage", endPage);
+		   
 		  return "main.jsp";
 	}
 	@RequestMapping("main/spec_insert.do")

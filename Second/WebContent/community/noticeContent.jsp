@@ -58,8 +58,15 @@
 						<tr>
 							<td class="text-right">
 								<!-- <a href="" class="btn btn-sm btn-warning">답변</a> -->
+								<c:choose>
+								<c:when test="${sessionScope.name=='admin'}">
 								<a href="noticeUpdate.do?no=${vo.no }" class="btn btn-warning btn-sm ">수정</a>
 								<a href="noticeDelete.do?no=${vo.no }" class="btn btn-theme btn-sm ">삭제</a>
+								</c:when>
+								<c:otherwise>
+								
+								</c:otherwise>
+								</c:choose>
 								<a href="noticeList.do" class="btn btn-sm btn-default">목록</a></td>
 						</tr>
 					</table>
