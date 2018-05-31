@@ -2,6 +2,7 @@ package com.sist.model;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.util.*;
 
@@ -73,7 +74,7 @@ public class CommunityModel {
 		request.setCharacterEncoding("utf-8");
 		   String userid=(String)request.getSession().getAttribute("name");
 		   String subject=request.getParameter("subject");
-		   String content=request.getParameter("content");
+		   String content=request.getParameter("content").replace("\r\n", "<br>");
 		   String password=request.getParameter("pwd");
 		   
 		   
@@ -81,7 +82,7 @@ public class CommunityModel {
 		  vo.setUserId(userid);
 		  vo.setSubject(subject);
 		  vo.setContent(content);
-		  vo.setPassword(password);
+		  vo.setPassword(BCrypt.hashpw(password, BCrypt.gensalt()));
 		   SpecDAO.specInsertData(vo);
 		  return "redirect:spec.do";
 	}
@@ -133,6 +134,23 @@ public class CommunityModel {
 		
 		  return "main.jsp";
 	}
+	@RequestMapping("main/spec_delete_cp.do")
+	public String spec_content_cpboard(HttpServletRequest request) throws Exception{
+		request.setCharacterEncoding("utf-8");
+		String no=request.getParameter("no");
+		String pt=request.getParameter("pt");
+		
+		String dbpwd=SpecDAO.specpwdData(Integer.parseInt(no));
+		if(BCrypt.checkpw(pt,dbpwd)) {
+			SpecDAO.specListDelete(Integer.parseInt(no));
+			return "redirect:spec.do";
+		}else {
+			return "redirect:spec_content.do?no="+no;
+		}
+		
+		
+	}
+	
 	@RequestMapping("main/reply_reply.do")
 	public String spec_contentreply(HttpServletRequest request) throws Exception{
 		request.setCharacterEncoding("utf-8");
@@ -170,6 +188,10 @@ public class CommunityModel {
 		String update = request.getParameter("update");
 		if(update!=null)
 			request.setAttribute("update", "ok");
+		
+		String delete = request.getParameter("delete");
+		if(delete!=null)
+			request.setAttribute("delete", "deleteOk");
 		String page = request.getParameter("page");
 		if (page == null)
 			page = "1";
@@ -220,7 +242,7 @@ public class CommunityModel {
 		request.getSession().setAttribute("userId", "admin");
 		String userId = (String) request.getSession().getAttribute("userId");
 		String subject = request.getParameter("subject");
-		String content = request.getParameter("content");
+		String content = request.getParameter("content").replace("\r\n", "<br>");
 
 		NoticeVO vo = new NoticeVO();
 		vo.setUserId(userId);
@@ -252,7 +274,7 @@ public class CommunityModel {
 	@RequestMapping("main/noticeUpdate_ok.do")
 	   public String noticeUpdate_ok(HttpServletRequest request) throws Exception
 	   {
-		   request.setCharacterEncoding("EUC-KR");
+		   request.setCharacterEncoding("utf-8");
 		   String no=request.getParameter("no");
 		   String userId=(String)request.getSession().getAttribute("name");
 		   String subject=request.getParameter("subject");
@@ -284,7 +306,7 @@ public class CommunityModel {
 		   
 		   request.setAttribute("noticeDelete", no);
 		   
-		   return "redirect:noticeList.do";
+		   return "redirect:noticeList.do?delete=1";
 	   }
 }
 	

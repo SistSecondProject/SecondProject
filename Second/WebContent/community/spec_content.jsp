@@ -25,9 +25,21 @@ $(function(){
 		}
 		
 	});
+	
+	
 	$('#delete').click(function(){
-		if(confirm("삭제 하시겠습니까?")){
-			location.href="spec_content_delete.do?no=${vo.no }";
+		var pt=prompt("삭제 하시겠습니까?","비밀번호를 입력하세요");
+		
+		if(pt){
+			location.href="spec_delete_cp.do?no=${vo.no }&pt="+pt;
+			 /* if(pt=='${vo.password}'){ 
+				//if(BCrypt.checkpw(pt,'${vo.password}')){
+					location.href="spec_content_delete.do?no=${vo.no }&pt="+pt;
+				} */
+			
+			/* else{
+				alert("비밀번호가 틀렸습니다");
+			} */
 		}else{
 			return;
 		}
@@ -66,9 +78,9 @@ a.btn{border: 0px}
       <c:if test="${loginid==vo.userId }">
       <tr>
       <td class="text-right" colspan="2" style="border: 0px">
-      <a href="spec_content_change.do?no=${vo.no }" class="btn btn-sm btn-primary">수정</a>
+      <a href="spec_content_change.do?no=${vo.no }" class="btn btn-sm btn-primary" style="background-color: #0054FF">수정</a>
       
-      <a href="#" class="btn btn-sm btn-success" id="delete">삭제</a>
+      <a href="#" class="btn btn-sm btn-success" id="delete" style="background-color: #F15F5F">삭제</a>
          <%--  <a href="spec_content_delete.do?no=${vo.no }" class="btn btn-sm btn-success">삭제</a> --%>
           </td>
       </tr>
@@ -114,10 +126,10 @@ a.btn{border: 0px}
            <tr style="border: 1px">
            <td class="text-left" style="float:left;" width="100%"><strong>${list.userId }</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font size="2px"><fmt:formatDate value="${list.regdate }" pattern="yyyy-MM-dd"/></font><br>${list.content }</td>
            <td class="text-right">
-            <a href="#" class="btn btn-xs btn-warning insert" value="${list.boardNo }">댓글</a>
+           <%--  <a href="#" class="btn btn-xs btn-warning insert" value="${list.boardNo }">댓글</a>
           <!-- <a href="" class="btn btn-sm btn-warning" id="reply">댓글</a> -->
           <a href="" class="btn btn-sm btn-primary">수정</a>
-          <a href="#" class="btn btn-sm btn-success">삭제</a>
+          <a href="#" class="btn btn-sm btn-success">삭제</a> --%>
          </td>
            </tr>
            

@@ -9,18 +9,7 @@
 <link rel="stylesheet" type="text/css" href="../member/shadow/css/shadowbox.css">
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript" src="../member/shadow/js/shadowbox.js"></script>
-<script type="text/javascript">
-$(document).ready(function() {
-    //라디오 요소처럼 동작시킬 체크박스 그룹 셀렉터
-    $('input[type="checkbox"][name="group"]').click(function(){
-        //클릭 이벤트 발생한 요소가 체크 상태인 경우
-        if ($(this).prop('checked')) {
-            //체크박스 그룹의 요소 전체를 체크 해제후 클릭한 요소 체크 상태지정
-            $('input[type="checkbox"][name="group"]').prop('checked', false);
-            $(this).prop('checked', true);
-        }
-    });
-});
+
 </script>
 <script type="text/javascript">
 	Shadowbox.init({
@@ -211,34 +200,34 @@ $(document).ready(function() {
 						<label class="col-md-4 control-label" for="textinput">관심직종</label>
 						<div class="col-md-4">
 									<li class="list-group-item">서비스업 
-										<input type="checkbox" name="favoriteCategory" value="1">
+										<input type="radio" name="favoriteCategory" value="1">
 							</li>
 									<li class="list-group-item">제조/화학
-										 <input type="checkbox" name="favoriteCategory" value="2">
+										 <input type="radio" name="favoriteCategory" value="2">
 									</li>
 									<li class="list-group-item">의료/제약/복지 
-										<input type="checkbox" name="favoriteCategory" value="3">
+										<input type="radio" name="favoriteCategory" value="3">
 									</li>
 									<li class="list-group-item">유통/무역/운송
-										 <input type="checkbox" name="favoriteCategory" value="4">
+										 <input type="radio" name="favoriteCategory" value="4">
 									</li>
 									<li class="list-group-item">교육업 
-										<input type="checkbox" name="favoriteCategory" value="5">
+										<input type="radio" name="favoriteCategory" value="5">
 									</li>
 									<li class="list-group-item">건설업 
-										<input type="checkbox" name="favoriteCategory" value="6">
+										<input type="radio" name="favoriteCategory" value="6">
 									</li>
 									<li class="list-group-item">IT/웹/통신
-										 <input type="checkbox" name="favoriteCategory" value="7">
+										 <input type="radio" name="favoriteCategory" value="7">
 									</li>
 									<li class="list-group-item">미디어/디자인 
-										<input type="checkbox" name="favoriteCategory" value="8">
+										<input type="radio" name="favoriteCategory" value="8">
 									</li>
 									<li class="list-group-item">은행/금융업
-										 <input type="checkbox" name="favoriteCategory" value="9">
+										 <input type="radio" name="favoriteCategory" value="9">
 									</li>
 									<li class="list-group-item">기관/협회
-										 <input type="checkbox" name="favoriteCategory" value="10">
+										 <input type="radio" name="favoriteCategory" value="10">
 									</li>
 						</div>
 

@@ -39,17 +39,17 @@
 
 						</tr>
 						<tr>
-							<td class="text-center info" colspan="2">작성자 :${vo.userId}
-								&nbsp;&nbsp;|&nbsp;&nbsp; 개시일 <fmt:formatDate
+							<td class="warning text-center" colspan="2">작성자 :&nbsp;${vo.userId}
+								&nbsp;&nbsp;|&nbsp;&nbsp; 작성일&nbsp; <fmt:formatDate
 									value="${vo.regdate }" pattern="yyyy-MM-dd" />
-								&nbsp;&nbsp;|&nbsp;&nbsp; 조회수 : ${vo.hit }
+								&nbsp;&nbsp;|&nbsp;&nbsp; 조회수 :&nbsp;${vo.hit }
 							</td>
 
 						</tr>
 
 						<tr>
 							<td class="text-left" colspan="2" height="180px"><font
-								size="6px">${vo.content }</font><br></td>
+								size="3px">${vo.content }</font><br></td>
 						</tr>
 
 					</table>

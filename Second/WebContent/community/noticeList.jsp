@@ -14,10 +14,20 @@ $(document).ready(function(){
 		alert('수정완료');
 });
 </script>
+<script type="text/javascript">
+$(document).ready(function(){
+	var message= $('#flag').attr('value');
+	if(message=='deleteOk')
+		alert('삭제되었습니다');
+});
+</script>
 </head>
 <body>
 <c:if test="${update ne null }">
 <input type="hidden" id="flag" value="${update}">
+</c:if>
+<c:if test="${delete ne null }">
+<input type="hidden" id="flag" value="${delete}">
 </c:if>
 	<div id="wrapper">
 		<section id="inner-headline">

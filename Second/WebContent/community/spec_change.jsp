@@ -20,20 +20,22 @@
 		</section>
   <div class="container">
     <div class="row align-center">
-      <h1>글쓰기</h1>
-      <form method=post action="spec_insert_ok.do">
+      <h1>글 수정</h1>
+      <form method=post action="spec_content_change_ok.do?no=${vo.no }">
       <table class="table table-hover align-center" style="margin: 0px auto">
+       
        <tr>
         <td width="15%" class="info text-right">제목</td>
         <td width="85%" class="text-left">
-         <input type=text name=subject size=45 required>
+         <input type=text name=subject size=45 value="${vo.subject }" required>
+         <input name=no value="${vo.no }" hidden="">
         </td>
        </tr>
        
        <tr>
         <td width="15%" class="info text-right">내용</td>
         <td width="85%" class="text-left">
-         <textarea rows="10" cols="50" name=content required></textarea>
+         <textarea rows="10" cols="50" name=content required>${vo.content }</textarea>
         </td>
        </tr>
        

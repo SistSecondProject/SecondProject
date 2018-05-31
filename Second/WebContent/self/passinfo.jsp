@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
         
@@ -16,20 +16,20 @@
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <link href="css/size.css" rel="stylesheet" />
 <!-- css -->
-<!--ajax : ê²€ìƒ‰í•˜ê¸° -->
+<!--ajax : °Ë»öÇÏ±â -->
 <script type="text/javascript">
 $(function(){
 	
 	 $('#title').keyup(function(){
 		  var k=$(this).val();
-		  $('#user-table>tbody>tr').hide(); // ì²˜ìŒì—ëŠ” ë‹«ëŠ”ë‹¤.
+		  $('#user-table>tbody>tr').hide(); // Ã³À½¿¡´Â ´İ´Â´Ù.
 		 var temp=$("#user-table>tbody>tr>td:nth-child(3n+1):contains('"+k+"')");
 	     $(temp).parent().show();
 	 });
 
 	 $(".tm").on("click", function(){
 			var no = $(this).attr("value");
-			//syso ê°™ì€ê²ƒ consol
+			//syso °°Àº°Í consol
 			//alert("no="+no);
 			$.ajax({
 				type:"POST",
@@ -42,7 +42,7 @@ $(function(){
 					
 				},
 				error: function(data){
-					console.log("ì‹¤íŒ¨")
+					console.log("½ÇÆĞ")
 				}
 			});
 			
@@ -81,12 +81,12 @@ body
 
 #side
 {
-  padding:5px;
+  
   border:1px solid #8F9F7B;
-  background:#001C54;
-  color: #F7F7F7;
+  background:#BDBDBD;
+  color: #151515;
   font-size: 20px;
-  width:700px;
+  width:1000px;
   font:arial;
   height:50px;
   margin:10px 0 0 10px;
@@ -95,29 +95,13 @@ body
   
 }
 
-
-#side1
-{
-  padding:5px;
-  border:1px solid #8F9F7B;
-  background:#DE5863;
-  color: #F7F7F9;
-  color:black;
-  font-size: 15px;
-  width:700px;
-  font:arial;
-  height:50px;
-  margin:10px 0 0 10px;
-  cursor:pointer
-  
-}
 
 .p
 {
   
-  width:700px;
+  width:1000px;
   height:300px;
-  background:#DE5863;
+  background:#E6E6E6;
   padding:5px;
   border:1px solid #CCC;
   color:#4E514E;
@@ -131,15 +115,16 @@ div#p
 }
 
 </style>
-<!-- ë‚´ìš©ì“°ê¸° ê´€ë ¨ -->
+<!-- ³»¿ë¾²±â °ü·Ã -->
 
 <style type="text/css">
 
 #testModal{
    max-height: 900px;
-   max-width: 1200px;  
+   max-width: 2000px;  
 
 }
+
 #favorites{
 	border:1px solid #2F5030;
 	background-color :#ffffff;
@@ -169,8 +154,8 @@ div#p
   height: 0;
 }
 
-#title2{
-padding:8px;
+#input-group{
+padding:5px;
 
 
 }
@@ -187,7 +172,7 @@ padding:8px;
 					<ul class="breadcrumb">
 						<li><a href="#"><i class="fa fa-home"></i></a><i
 							class="icon-angle-right"></i></li>
-						<li class="active">í•©ê²©ìì†Œì„œ</li>
+						<li class="active">ÇÕ°İÀÚ¼Ò¼­</li>
 					</ul>
 				</div>
 			</div>
@@ -198,7 +183,7 @@ padding:8px;
      <div class="container">
 	<div class="row">
 		<div class="col-lg-5">
-               <!-- tabs ì²¨ë¶€ -->
+               <!-- tabs Ã·ºÎ -->
             <%-- <jsp:include page="tabs.jsp"></jsp:include>  --%> 
           <%--   <jsp:include page="${passinfo_jsp }"></jsp:include> --%>
           <div class="col-lg-6 col-sm6"> 
@@ -207,18 +192,18 @@ padding:8px;
     <div class="btn-pref btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
         <div class="btn-group" role="group">
             <button type="button" id="stars" class="btn" href="#tab1" data-toggle="tab">
-                <div>í•©ê²©ìê¸°ì†Œê°œì„œ</div>
+                <div>ÇÕ°İÀÚ±â¼Ò°³¼­</div>
             </button>
         </div>
         <div class="btn-group" role="group">
           <c:choose>
 			<c:when test="${empty sessionScope.name}">
 		       <button type="button"  class="btn" data-toggle="tab">
-                <div>ë¡œê·¸ì¸ì´ í•„ìš”í•œ ì„œë¹„ìŠ¤ì…ë‹ˆë‹¤.</div>
+                <div>·Î±×ÀÎÀÌ ÇÊ¿äÇÑ ¼­ºñ½ºÀÔ´Ï´Ù.</div>
 			</c:when>
 			<c:otherwise>
 			<button type="button" id="favorites" class="btn" href="#tab2" data-toggle="tab">
-                <div>ë‚´ ìì†Œì„œ ë³´ê´€í•¨</div>
+                <div>³» ÀÚ¼Ò¼­ º¸°üÇÔ</div>
             </button>
             </c:otherwise>
 			</c:choose>
@@ -232,14 +217,14 @@ padding:8px;
 
       <div class="well">
       <div class="tab-content">
-              	<!-- ê²€ìƒ‰ ì°½ -->
+              	<!-- °Ë»ö Ã¢ -->
 	         <td>
 		     <form class="form-horizontal">
 		  <div class="form-group">
 		    <div class="col-sm-10">
-		      <input type="text" class="form-control" id="title" placeholder="íšŒì‚¬ëª…ì„ ì…ë ¥í•˜ì„¸ìš”.">
+		      <input type="text" class="form-control" id="title" placeholder="È¸»ç¸íÀ» ÀÔ·ÂÇÏ¼¼¿ä.">
 		    </div>
-		    <input type="button" id="findBtn" value="ê²€ìƒ‰" class="btn btn-sm btn-primary">
+		    <input type="button" id="findBtn" value="°Ë»ö" class="btn btn-sm btn-primary">
 		  </div>
 		  </form>
 		  </td>
@@ -249,10 +234,10 @@ padding:8px;
     	<table class="table table-hover" id="user-table">
     	<thead>     
         <tr class="success">
-        <!-- í•©ìë¦¬ìŠ¤íŠ¸ --> 
-         <th width=30% class="text-center" align="center">íšŒì‚¬ëª…</th>
-         <th width=30% class="text-center" align="center">ì§€ì›ë¶„ì•¼</th>
-         <th width=40% class="text-center" align="center">ì œëª©</th>
+        <!-- ÇÕÀÚ¸®½ºÆ® --> 
+         <th width=30% class="text-center" align="center">È¸»ç¸í</th>
+         <th width=30% class="text-center" align="center">Áö¿øºĞ¾ß</th>
+         <th width=40% class="text-center" align="center">Á¦¸ñ</th>
          
         </tr>
         </thead>
@@ -273,22 +258,20 @@ padding:8px;
          </tr>
         </c:forEach>  
      </tbody>
-     </table>
-           <tr class="text-center">
-         ${curpage } page / ${totalpage} pages
-         </tr>
       
+     </table>   
+     ${curpage } page / ${totalpage} pages   
         </div>
     
         <div class="tab-pane fade in" id="tab2">
              
     	     <table class="table table-hover2">
         <tr class="success">
-        <!--  ìê¸°ì†Œê°œì„œ ë³´ê´€í•¨ -->
+        <!--  ÀÚ±â¼Ò°³¼­ º¸°üÇÔ -->
        
-         <th width=10% class="text-center"  align="center">ë²ˆí˜¸</th>
-         <th width=40% class="text-center" align="center">ì œëª©</th>
-         <th width=20% class="text-center" align="center">ì‘ì„±ì¼</th>
+         <th width=10% class="text-center"  align="center">¹øÈ£</th>
+         <th width=40% class="text-center" align="center">Á¦¸ñ</th>
+         <th width=20% class="text-center" align="center">ÀÛ¼ºÀÏ</th>
          
         </tr>
         <form id=insert>
@@ -307,95 +290,103 @@ padding:8px;
          </tr>
         </c:forEach> 
         </form> 
-               
+         
       </table>
+           
         </div>
+       
       </div>
-      
+     
        <td class="text-center">
           
            
-             <ul class="pagination">
+      
               
-   				    <li><a href="passinfo.do?page=${curpage-1 }">â—€</a></li>
-   				
-   				    <li><a href="passinfo.do?page=${curpage}">1</a></li>
-				    <li><a href="passinfo.do?page=${curpage+1 }">2</a></li>
-				    <li><a href="passinfo.do?page=${curpage+2 }">3</a></li>
-				    <li><a href="passinfo.do?page=${curpage+3 }">4</a></li>
-				    <li><a href="passinfo.do?page=${curpage+4 }">5</a></li>
-				   
-				    <li> <a href="passinfo.do?page=${curpage+1 }">â–¶</a></li>
-  			</ul>
+   		  <td class="text-right" style="padding-right: 100px">
+          
+         <a type="button" class="btn btn-xs btn-default" href="passinfo.do?page=${curpage==1?curpage:curpage-1}">¢¸</a>
+           <c:forEach var="list" begin="${start}" end="${end}" step="1">
+
+<%-- <c:if test="${curpage eq list}">
+		[${list}]
+	</c:if>
+	<c:if test="${curpage ne list}">
+		<a href="passinfo.do?page=${list}">${list}</a>
+	</c:if> --%>
+</c:forEach>
+
+           <a type="button" class="btn btn-xs btn-default" href="passinfo.do?page=${curpage==totalpage?curpage:curpage+1}">¢º</a>
+           
+         </td>
+  			
          </td> 
     </div>
           
 		 </div>
 		 					
+	 <div class="col-lg-7">
+			  <!-- ÀÚ¼Ò¼­ ³»¿ë º¸±â ºÎºĞ Ã·ºÎ -->            
+           <jsp:include page="${detail }"></jsp:include> 
+    </div>
+        
+        <!-- ÇÕ°İ ÀÚ¼Ò¼­ ³»¿ë º¸±â -->
+<div class="modal" id="testModal" tabindex="-1" role="dialog">
+	<br>
+	<br>
+	 <div class="col-lg-6">
+		<div class="modal-content">
+			<div class="modal-body">
+				<h1>ÇÕ°İÀÚ±â¼Ò°³¼­ </h1>
+				<br>
+			</div>
+			<div>
+			<br><span id=passdetail><br><br><br></span>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn" data-dismiss="modal">´İ±â</button>
+			</div>
+		</div>	
+     </div>
+	
 	 <div class="col-lg-5">
-			  <!-- ìì†Œì„œ ì‘ì„±ë¶€ë¶„ ì²¨ë¶€ -->           
-    
-    <form method=post action="selftest_ok.do">
-    <br>
- 
-   <div id="side1" class="ct" style="font-family:arial;">ìê¸°ì†Œê°œì„œ ì œëª©ì„ ì…ë ¥í•˜ì„¸ìš” : <textarea rows="1" cols="55" style="margin: 2px;" height="236px;" width="283px;" name="title" ></textarea></div>
-     <div class="p" height=100px;>
-       
-         </div>
-    <div id="side" class="ct" style="font-family:arial;">í•­ëª© 1<span style="float:right">+</span></div>
+	 
+	 <form method=post action="selftest_ok.do">
+	    <div class="input-group">
+    <span class="input-group-addon">ÀÚ±â¼Ò°³¼­ Á¦¸ñ</span>
+    <input id="msg" name=title type="text" class="form-control" name="msg" placeholder="ÀÚ±â¼Ò°³¼­ Á¦¸ñÀ» ÀÔ·ÂÇÏ¼¼¿ä">
+  </div>
+  
+  
+    <div id="side" class="ct" style="font-family:arial;">¼ÒÁ¦¸ñ 1<span style="float:right">+</span></div>
          <div class="p">
-         <textarea rows="15" cols="95" placeholder="ë‚´ìš©ì„ ì…ë ¥í•˜ì„¸ìš”" style="margin: 0px;" height="236px;" width="283px;" name="content1" ></textarea>
+     
+         <textarea rows="10" cols="95" placeholder="³»¿ëÀ» ÀÔ·ÂÇÏ¼¼¿ä" style="margin: 0px;" height="236px;" width="283px;" name="content1" ></textarea>
          </div>
          
       
-      <div id="side" class="ct">í•­ëª© 2<span style="float:right">+</span></div>
+      <div id="side" class="ct">¼ÒÁ¦¸ñ 2<span style="float:right">+</span></div>
           <div class="p">
-         <textarea rows="15" cols="95" placeholder="ë‚´ìš©ì„ ì…ë ¥í•˜ì„¸ìš”" style="margin: 0px;" height="236px;" width="283px;" name="content2" ></textarea>
+         <textarea rows="10" cols="95" placeholder="³»¿ëÀ» ÀÔ·ÂÇÏ¼¼¿ä" style="margin: 0px;" height="236px;" width="283px;" name="content2" ></textarea>
          </div>
          
-       <div id="side" class="ct">í•­ëª© 3<span style="float:right">+</span></div>
+       <div id="side" class="ct">¼ÒÁ¦¸ñ 3<span style="float:right">+</span></div>
           <div class="p">
-         <textarea rows="15" cols="95" placeholder="ë‚´ìš©ì„ ì…ë ¥í•˜ì„¸ìš”" style="margin: 0px;" height="236px;" width="283px;" name="content3"></textarea>
+         <textarea rows="10" cols="95" placeholder="³»¿ëÀ» ÀÔ·ÂÇÏ¼¼¿ä" style="margin: 0px;" height="236px;" width="283px;" name="content3"></textarea>
          </div>
        
          <br>
          <tr>
         <td colspan="4" class="text-center" id="save">
          <input type="submit" class="btn btn-sm btn-primary"
-          value="ì €ì¥" id="writeBtn">
+          value="ÀúÀå" id="writeBtn">
         </td>
        </tr>
-        </form>
-        <!-- í•©ê²© ìì†Œì„œ ë‚´ìš© ë³´ê¸° -->
-<div class="modal" id="testModal" tabindex="-1" role="dialog">
-
-	<div class="modal-dialog modal-lg">
-
-		<div class="modal-content">
-			<div class="modal-body">
-				<h1>í•©ê²© ìì†Œì„œ ë‚´ìš©</h1>
-			</div>
-			<div>
-			<span id=passdetail></span>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn" data-dismiss="modal">ë‹«ê¸°</button>
-			</div>
-		</div>
-
-	</div>
-
-</div>
-
-
-
-         
-    
-       
-  
-          
+       </form>
 	
-	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+	</div>
+   </div>
+</div>  
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
  	  
 				</div>
  			

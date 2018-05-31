@@ -50,14 +50,10 @@
    </update>  
    
    
-   <!-- 삭제하기 -->
+  <!-- 삭제하기 -->
   <delete id="infoDelete" parameterType="int">
      DELETE FROM User_Introduction
      WHERE no=#{no}
     </delete>
-    
-    <select id="findList" parameterType="String" resultType="IntroductionVO">
-    	select * from user_introduction where userid=#{userid}
-    </select>
     
 </mapper>
