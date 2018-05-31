@@ -25,29 +25,8 @@ public class PassIntoModel {
 	public String compareListData(HttpServletRequest request) throws Exception {
 		
 		request.setAttribute("home_jsp", "../self/passinfo.jsp");
-		//request.setAttribute("content_jsp", "../self/selftest.jsp"); //자소서 작성부분 include함.
+		request.setAttribute("detail", "../self/selfinto_content.jsp"); //자소서 작성부분 include함.
 
-		/*  자기소개서 리스트
-		 * String page=request.getParameter("page");
-		if(page==null)
-			   page="1";
-		   int curpage=Integer.parseInt(page);
-		   int rowSize=10;
-		   // rownum = 1
-		   // 1~10
-		   // 11~20
-		   int start=(curpage*rowSize)-(rowSize-1);
-		   int end=curpage*rowSize;
-		   Map map=new HashMap();
-		   map.put("start", start);
-		   map.put("end", end);
-		   
-		   List<IntroductionVO> list=IntroductionDAO.intoListData(map);
-		   int totalpage=IntroductionDAO.intoTotalPage();
-		   request.setAttribute("list", list);
-		   request.setAttribute("curpage", curpage);
-		   request.setAttribute("totalpage", totalpage);*/
-		  
 			//합격 자소서 리스트를 출력
 			String page=request.getParameter("page");
 			
@@ -72,9 +51,11 @@ public class PassIntoModel {
 			   request.setAttribute("curpage", curpage);
 			   request.setAttribute("totalpage", totalpage);
 			   
+			   
+			   
+			   
 			
 			   //자기 자소서 출력하는 관련 값 넘기기
-		  
 			  List<IntroductionVO> list=IntroductionDAO.intoListData(map);
 			  request.setAttribute("list", list);
 			
@@ -85,7 +66,7 @@ public class PassIntoModel {
 		   return "main.jsp";
 	   }
 			
-	 // 합격자소서상세보기
+	 // 합격자소서 상세보기
 	   @RequestMapping("main/pass_result.do")
 	   public String passContentData(HttpServletRequest request)
 	   {
@@ -137,21 +118,25 @@ public class PassIntoModel {
 	   @RequestMapping("main/selfinto_content.do")
 	   public String intoContentData(HttpServletRequest request)
 	   {
+		   
 		   String no=request.getParameter("no");
 		   IntroductionVO vo=IntroductionDAO.intoContentData(Integer.parseInt(no));
 		   request.setAttribute("no", no);
 		   request.setAttribute("vo", vo);
+		   request.setAttribute("home_jsp", "../self/selfinto_content.jsp");
            System.out.println("제목 :"+vo.getTitle());
 		   System.out.println("결과 :"+vo.getContent());
-
-		   return "../self/selfinto_content.jsp";
+		   
+		   return "passinfo.do";
 	   }
 	  
 	   
 	  //자기소개서수정하기
 	   @RequestMapping("main/selfinto_update.do")
-	   public String intoUpdateData(HttpServletRequest request)
+	   public String intoUpdateData(HttpServletRequest request) throws Exception
 	   {
+		   request.setCharacterEncoding("UTF-8");
+		   request.setAttribute("detail", "../self/selfinto_update.jsp");
 		   String no=request.getParameter("no");
 		  // System.out.println("수정할 내용 번호:"+no);
 		   // DB연동 
@@ -162,14 +147,16 @@ public class PassIntoModel {
 		   // 결과값 전송
 		   
 		   request.setAttribute("vo", vo);
-		   request.setAttribute("home_jsp", "../self/selfinto_update.jsp");
+		   request.setAttribute("home_jsp", "../self/passinfo.jsp");
 		   return "main.jsp";
+		   
 		 // return "../self/selfinto_update.jsp";
 	   }
+	   
 	   @RequestMapping("main/selfinto_update_ok.do")
 	   public String intoUpdate(HttpServletRequest request) throws IOException
 	   {
-		   request.setCharacterEncoding("EUC-KR");
+		   request.setCharacterEncoding("UTF-8");
 		   String no=request.getParameter("no");
 		   String userId=(String)request.getSession().getAttribute("name");
 		   String title=request.getParameter("title");
@@ -202,31 +189,17 @@ public class PassIntoModel {
 	
 
 	   
-      //자기소개서 내용 삭제
+	   //자기소개서 내용 삭제
 	   @RequestMapping("main/delete.do")
 	   public String boardDelete(HttpServletRequest request)
 	   {
 		   String no=request.getParameter("no");
 		   IntroductionDAO.Delete(Integer.parseInt(no));
 		   request.setAttribute("infoDelete", no);
-		   return "passinfo.do";
+		   return "redirect:passinfo.do";
 		 
 	   }
-	   /*
-	    * // 삭제
-	@RequestMapping("main/noticeDelete.do")
-	   public String noticeDeleteData(HttpServletRequest request)
-	   {
-		   String no=request.getParameter("no");
-		   
-		   NoticeDAO.noticeDelete(Integer.parseInt(no));
-		   
-		   request.setAttribute("noticeDelete", no);
-		   
-		   return "redirect:noticeList.do";
-	   }
-	    * 
-	    */
+	
 	 
 	}
 	   

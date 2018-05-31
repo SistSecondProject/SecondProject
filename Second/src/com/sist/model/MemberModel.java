@@ -107,16 +107,16 @@ public class MemberModel {
 
 			if (login_result.equals("NOID")) {
 				request.setAttribute("message", "아이디 또는 패스워드를 잘못 입력 하셨습니다.");
-
-				return "../login/login.jsp";
+				request.setAttribute("home_jsp", "../login/login.jsp"); 
+				return "main.jsp";
 				// return "redirect:main/login.do";
 
 			}
 
 			if (login_result.equals("NOPW")) {
 				request.setAttribute("message", "아이디 또는 패스워드를 잘못 입력 하셨습니다.");
-
-				return "../login/login.jsp";
+				request.setAttribute("home_jsp", "../login/login.jsp");
+				return "main.jsp";
 				// return "redirect:main/login.do";
 			}
 
