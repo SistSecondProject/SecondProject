@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 
 <head>
-  <meta charset="EUC-KR">
+<meta charset="UTF-8">
   <title>내용보기</title>  
    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="/resources/demos/style.css">
@@ -49,8 +49,8 @@ body
 {
   padding:5px;
   border:1px solid #8F9F7B;
-  background:#001C54;
-  color: #F7F7F7;
+  background:#BDBDBD;
+  color: #151515;
   font-size: 20px;
   width:700px;
   font:arial;
@@ -66,7 +66,7 @@ body
 {
   padding:5px;
   border:1px solid #8F9F7B;
-  background:#DE5863;
+  background:#BDBDBD;
   color: #F7F7F9;
   color:black;
   font-size: 15px;
@@ -82,14 +82,14 @@ body
 {
   
   width:700px;
-  height:200px;
-  background:#DE5863;
+  height:220px;
+  background:#E6E6E6;
   padding:5px;
   border:1px solid #CCC;
   color:#4E514E;
   line-height:1.5;
   margin:0 0 10px 10px;
- display:block;
+  display:block;
 } 
 div#p
 {
@@ -100,43 +100,62 @@ div#p
 </head>
 
 <body>
-    <br>
+   
     
-    <form>
+    
+      <form method=post action="selfinto_update_ok.do">
     
      <tr>
         <td class="text-left">
+        
         <br>
-         <a href="../main/selfinto_update.do?no=${no }" class="btn btn-sm btn-primary">수정</a>
-         <a href="delete_ok.do?no=${vo.no}" class="btn btn-sm btn-warning">삭제</a>
-             
-         <a href="../main/passinfo.do" class="btn btn-sm btn-info">목록</a>
+        <input type="hidden" name="no" value="${vo.no }">
+    	<br>
+   		 <tr>
+        <td colspan="2" class="text-center">
+         <input type="submit" class="btn btn-sm btn-info"
+          value="수정하기" id="writeBtn">
+        
+         <%-- <a href="../main/selfinto_update.do?no=${no }" class="btn btn-sm btn-primary">수정</a> --%>
+         <a href="delete.do?no=${no}" class="btn btn-sm btn-warning">삭제</a>
+               
+         <c:choose>
+			<c:when test="${empty sessionScope.name}">
+           		  로그인이 필요한 서비스입니다.
+			</c:when>
+			<c:otherwise>
+               	  작성한 자소서를 선택하세요
+            </c:otherwise>
+			</c:choose> 
         </td>
        </tr>  
       
-       
-     
-  <div id="side1" class="ct" style="font-family:arial;">자기소개서 제목을 입력하세요 :<textarea rows="1" cols="55" style="margin: 2px;" height="236px;" width="283px;" name="title" readonly="readonly" >${vo.title }</textarea></div>
+      
+      <br>
+  	    &emsp;<div class="input-group">
+    <span class="input-group-addon">자기소개서 제목</span>
+   <input id="msg" name=title type="text" class="form-control" name="msg" width="100%" value="${vo.title }">
+  </div>
        
     
      
-    <div id="side" class="ct" style="font-family:arial;">항목 1<span style="float:right">+</span></div>
+    <div id="side" class="ct" style="font-family:arial;">소제목 1<span style="float:right">+</span></div>
          <div class="p">
-         <textarea rows="13" cols="95" placeholder="내용을 입력하세요" style="margin: 0px;" height="236px;" width="283px;" name="content1" readonly="readonly" >${fn:substring(vo.content,0,fn:indexOf(vo.content,'|')) }</textarea>
+         <textarea rows="10" cols="95" placeholder="로그인 후 이용하세요" style="margin: 0px;" height="236px;" width="283px;" name="content1" >${fn:substring(vo.content,0,fn:indexOf(vo.content,'|')) }</textarea>
          </div>
        
          
          
          
       
-      <div id="side" class="ct">항목 2<span style="float:right">+</span></div>
+      <div id="side" class="ct">소제목 2<span style="float:right">+</span></div>
           <div class="p">
-         <textarea rows="13" cols="95" placeholder="내용을 입력하세요" style="margin: 0px;" height="236px;" width="283px;" name="content2" readonly="readonly"  >${fn:substring(vo.content,fn:indexOf(vo.content,'|')+1,fn:indexOf(vo.content,'^')) }</textarea>
+         <textarea rows="10" cols="95" placeholder="로그인 후 이용하세요" style="margin: 0px;" height="236px;" width="283px;" name="content2" >${fn:substring(vo.content,fn:indexOf(vo.content,'|')+1,fn:indexOf(vo.content,'^')) }</textarea>
          </div>
          
-       <div id="side" class="ct">항목 3<span style="float:right">+</span></div>
+       <div id="side" class="ct">소제목 3<span style="float:right">+</span></div>
           <div class="p">
-         <textarea rows="13" cols="95" placeholder="내용을 입력하세요" style="margin: 0px;" height="236px;" width="283px;" name="content3" readonly="readonly" >${fn:substring(vo.content,fn:indexOf(vo.content,'^')+1,fn:length(vo.content)) }</textarea>
+         <textarea rows="10" cols="95" placeholder="로그인 후 이용하세요" style="margin: 0px;" height="236px;" width="283px;" name="content3" >${fn:substring(vo.content,fn:indexOf(vo.content,'^')+1,fn:length(vo.content)) }</textarea>
          </div>
     
 

@@ -170,44 +170,25 @@ public class IntroductionDAO {
 	   
 	   //내용 삭제
 
-   public static void Delete(int no)
-   {
-	   SqlSession session=null;
-	   try
+	   public static void Delete(int no)
 	   {
-		   session=ssf.openSession(true);
-		   session.delete("infoDelete",no);
-	   }catch(Exception ex)
-	   {
-		   System.out.println(ex.getMessage());
-	   }
-	   finally
-	   {
-		   if(session!=null)
-			   session.close();
-	   }
-	   
+		   SqlSession session=null;
+		   try
+		   {
+			   session=ssf.openSession(true);
+			   session.delete("infoDelete",no);
+		   }catch(Exception ex)
+		   {
+			   System.out.println(ex.getMessage());
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close();
+		   }
+		   
 
-   }
-   public static List<IntroductionVO> findList(String userid) {
-	   List<IntroductionVO> list =null;
-	   
-	   SqlSession session=null;
-	   try
-	   {
-		   session=ssf.openSession();
-		   list=session.selectList("findList",userid);		   
-	   }catch(Exception ex)
-	   {
-		   System.out.println(ex.getMessage());
 	   }
-	   finally
-	   {
-		   if(session!=null)
-			   session.close();
-	   }
-	   return list;   
-   }
 
 	      
 }
