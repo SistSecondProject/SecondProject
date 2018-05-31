@@ -60,6 +60,27 @@ public class SpecDAO {
 		}
 	}
 	
+public static String specpwdData(int no){
+		
+		SqlSession session=null;
+		String pwdreturn=null;
+		try
+		{
+			session=ssf.openSession();
+			pwdreturn=session.selectOne("pwdsearchData",no);
+		}catch(Exception ex)
+		{
+			System.out.println(ex.getMessage());
+		}
+		finally
+		{
+			if(session!=null)
+				session.close();
+		}
+		return pwdreturn;
+	}
+	
+	
 public static void specReplyHitData(int no){
 		
 		SqlSession session=null;

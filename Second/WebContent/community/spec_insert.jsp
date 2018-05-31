@@ -24,13 +24,6 @@
       <form method=post action="spec_insert_ok.do">
       <table class="table table-hover align-center" style="margin: 0px auto">
        <tr>
-        <td width="15%" class="info text-right">작성자</td>
-        <td width="85%" class="text-left">
-         <input type=text name=name size=15 required>
-        </td>
-       </tr>
-       
-       <tr>
         <td width="15%" class="info text-right">제목</td>
         <td width="85%" class="text-left">
          <input type=text name=subject size=45 required>

@@ -23,6 +23,10 @@ FROM (SELECT no,userid,subject,content,regdate,hit,likepoint,dislikepoint,passwo
 	<select id="specReplyList" resultType="SpecReplyVO" parameterType="int">
 		SELECT * FROM spec_board_comments WHERE boardno=#{no} ORDER BY commentNo
 	</select>
+	<select id="pwdsearchData" resultType="String" parameterType="int">
+	SELECT password FROM spec_board WHERE no=#{no}
+	</select>
+	
 	<insert id="specReplyInsert" parameterType="SpecReplyVO">
   insert into spec_board_comments
   values(#{boardNo },(SELECT NVL(MAX(commentNo)+1,1) FROM spec_board_comments),#{userId},#{content},SYSDATE,0,0,0,0,0)
