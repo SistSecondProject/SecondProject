@@ -40,9 +40,9 @@ h1{
        
        <tr>
         <td colspan="2" class="text-center">
-         <input type="submit" class="btn btn-sm btn-primary"
+         <input type="submit" class="btn btn-sm btn-warning"
           value="수정" id="writeBtn">
-         <input type="button" class="btn btn-sm btn-primary"
+         <input type="button" class="btn btn-sm btn-default"
           value="취소" onclick="javascript:history.back()">
         </td>
        </tr>

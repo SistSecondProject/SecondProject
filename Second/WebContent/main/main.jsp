@@ -87,10 +87,9 @@ height:16px;
                   <a href="user.do">회원정보 &emsp; </a>
                   <li><p>
                    <form action="../main/logout.do" method="post">
-                  <input type="submit" style="border:none; font-size:10pt; font-weight:bold; background-color:white" value="|로그아웃">
-                  <div><h5><p>${name }님 환영합니다.</h5></div>
+                  <input type="submit" style="border:none; font-size:10pt; font-weight:bold; background-color:white" value="|&emsp;로그아웃">
+                  		${name }님 환영합니다.
                      </form>
-                 
                   </c:otherwise>
                   </c:choose>
 						</li>

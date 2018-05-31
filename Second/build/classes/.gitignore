@@ -1,2 +1,6 @@
 /db.properties
+/.gitignore
+/Config.xml
+/PWencrypt.class
+/VO/
 /com/

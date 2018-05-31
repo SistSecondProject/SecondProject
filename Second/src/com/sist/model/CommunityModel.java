@@ -170,6 +170,10 @@ public class CommunityModel {
 		String update = request.getParameter("update");
 		if(update!=null)
 			request.setAttribute("update", "ok");
+		
+		String delete = request.getParameter("delete");
+		if(delete!=null)
+			request.setAttribute("delete", "deleteOk");
 		String page = request.getParameter("page");
 		if (page == null)
 			page = "1";
@@ -284,7 +288,7 @@ public class CommunityModel {
 		   
 		   request.setAttribute("noticeDelete", no);
 		   
-		   return "redirect:noticeList.do";
+		   return "redirect:noticeList.do?delete=1";
 	   }
 }
 	
