@@ -74,7 +74,7 @@ public class CommunityModel {
 		request.setCharacterEncoding("utf-8");
 		   String userid=(String)request.getSession().getAttribute("name");
 		   String subject=request.getParameter("subject");
-		   String content=request.getParameter("content");
+		   String content=request.getParameter("content").replace("\r\n", "<br>");
 		   String password=request.getParameter("pwd");
 		   
 		   
@@ -242,7 +242,7 @@ public class CommunityModel {
 		request.getSession().setAttribute("userId", "admin");
 		String userId = (String) request.getSession().getAttribute("userId");
 		String subject = request.getParameter("subject");
-		String content = request.getParameter("content");
+		String content = request.getParameter("content").replace("\r\n", "<br>");
 
 		NoticeVO vo = new NoticeVO();
 		vo.setUserId(userId);
@@ -274,7 +274,7 @@ public class CommunityModel {
 	@RequestMapping("main/noticeUpdate_ok.do")
 	   public String noticeUpdate_ok(HttpServletRequest request) throws Exception
 	   {
-		   request.setCharacterEncoding("EUC-KR");
+		   request.setCharacterEncoding("utf-8");
 		   String no=request.getParameter("no");
 		   String userId=(String)request.getSession().getAttribute("name");
 		   String subject=request.getParameter("subject");

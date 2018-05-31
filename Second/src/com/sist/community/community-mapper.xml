@@ -43,10 +43,10 @@ UPDATE spec_board SET subject=#{subject},content=#{content} WHERE no=#{no}
 </update>
 
 <update id="specReplyLikePoint" parameterType="int">
-UPDATE spec_board SET likepoint=likepoint+1 WHERE no=#{no}
+UPDATE spec_board SET likepoint=likepoint+1,hit=hit-1 WHERE no=#{no}
 </update>
 <update id="specReplydisLikePoint" parameterType="java.util.Map">
-UPDATE spec_board SET dislikepoint=dislikepoint+1 WHERE no=#{no}
+UPDATE spec_board SET dislikepoint=dislikepoint+1,hit=hit-1 WHERE no=#{no}
 </update>
 	
 	 <select id="specTotalPage" resultType="int">
