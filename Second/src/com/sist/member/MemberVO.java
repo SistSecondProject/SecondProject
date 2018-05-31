@@ -1,4 +1,7 @@
 package com.sist.member;
+
+import org.mindrot.jbcrypt.BCrypt;
+
 /*
  * 
  *  USERID

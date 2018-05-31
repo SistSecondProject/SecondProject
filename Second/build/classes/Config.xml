@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+  <properties resource="db.properties"/>
+  <typeAliases>
+     <typeAlias type="com.sist.self_introduction.IntroductionVO" alias="IntroductionVO"/>
+    <typeAlias type="com.sist.pass_info.PassVO" alias="PassVO"/>
+    <typeAlias type="com.sist.member.MemberVO" alias="MemberVO"/> 
+      <typeAlias type="com.sist.compare.CompareVO" alias="CompareVO"/> 
+       <typeAlias type="com.sist.compare.Compare_ResultVO" alias="Compare_ResultVO"/> 
+      <typeAlias type="com.sist.community.SpecVO" alias="SpecVO"/> 
+      <typeAlias type="com.sist.community.NoticeVO" alias="NoticeVO"/> 
+      <typeAlias type="com.sist.community.SpecReplyVO" alias="SpecReplyVO"/> 
+  </typeAliases>
+  
+  <environments default="development">
+    <environment id="development">
+      <transactionManager type="JDBC"/>
+      <dataSource type="POOLED">
+        <property name="driver" value="${driver}"/>
+        <property name="url" value="${url}"/>
+        <property name="username" value="${username}"/>
+        <property name="password" value="${password}"/>
+      </dataSource>
+    </environment>
+  </environments>
+  <mappers>
+  		<mapper resource="com/sist/dao/company-mapper.xml" />
+     <mapper resource="com/sist/self_introduction/into-mapper.xml"/> 
+    <mapper resource="com/sist/pass_info/pass-mapper.xml"/>
+     <mapper resource="com/sist/compare/compare-mapper.xml"/>
+     <mapper resource="com/sist/community/community-mapper.xml"/>
+      <mapper resource="com/sist/member/member-mapper.xml"/>   
+  </mappers>
+</configuration>

@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.apache.tools.ant.util.SymbolicLinkUtils;
+import org.mindrot.jbcrypt.BCrypt;
 
 import com.sist.pass_info.PassVO;
 import com.sist.vo.RecruitmentVO;
@@ -108,9 +109,11 @@ public class MemberDAO {
 		 * System.out.println("getUserLevel >>> " + vo.getUserLevel());
 		 * System.out.println("getIsLogin >>> " + vo.getIsLogin());
 		 */
+		
+		vo.setPassword(BCrypt.hashpw(vo.getPassword(), BCrypt.gensalt()));
 		SqlSession session = null;
 		try {
-			session = ssf.openSession(true);
+			session = ssf.openSession(true);			
 			session.insert("memberJoin", vo);
 
 		} catch (Exception ex) {
@@ -127,6 +130,7 @@ public class MemberDAO {
 		String result = "";
 		int id_count = 0;
 		SqlSession session = null;// Connection
+		
 		try {
 			session = ssf.openSession();
 			id_count = session.selectOne("isLogin_id", userId);
@@ -138,8 +142,9 @@ public class MemberDAO {
 
 				MemberVO vo = new MemberVO();
 				vo = session.selectOne("isLogin_pwd", userId);
-
-				if (password.equals(vo.getPassword())) {
+				//System.out.println(vo.getPassword());
+				
+				if (BCrypt.checkpw(password,vo.getPassword())) {
 					result = vo.getUserId();
 					System.out.println("로그인 성공");
 
@@ -209,7 +214,7 @@ public class MemberDAO {
 		try {
 			Map map = new HashMap();
 			map.put("userid", userid);
-			map.put("password", pw);
+			map.put("password", BCrypt.hashpw(pw, BCrypt.gensalt()));
 			session = ssf.openSession(true);
 			session.update("changePW", map);
 		} catch (Exception ex) {
