@@ -19,18 +19,15 @@ public class CommunityModel {
 	public String specboard(HttpServletRequest request) throws Exception{
 		request.setCharacterEncoding("utf-8");
 		request.setAttribute("home_jsp", "../community/spec.jsp");
-		
+		  String userid=(String)request.getSession().getAttribute("name");
 		String page=request.getParameter("page");
-		
+		String search=request.getParameter("search");
+		String option=request.getParameter("option");
 		   if(page==null)
 			   page="1";
 		   int curpage=Integer.parseInt(page);
 		   int rowSize=10;
-		   // rownum = 1
-		   // 1~10
-		   // 11~20
 		   int totalpage=SpecDAO.specTotalPage();
-		   /*int start=(curpage*rowSize)-(rowSize-1);*/
 		   int totallist=SpecDAO.specTotalList();
 		   int start=(totallist-((curpage*rowSize)-1));
 		   int end=(totallist-((curpage-1)*rowSize));
@@ -39,22 +36,34 @@ public class CommunityModel {
 		   int endPage = startPage+pagenum-1;
 		   if(endPage > totalpage) endPage = totalpage;
 
-
-
 		   Map map=new HashMap();
 		   map.put("start", start);
 		   map.put("end", end);
 		   List<SpecVO> list=SpecDAO.specListData(map);
-		   request.setAttribute("list", list);
+		   List<SpecVO> slist=SpecDAO.specSearchData(search);
+		   if(search==null) {
+			   request.setAttribute("list", list);
+			   
+		   }else {
+			   request.setAttribute("list", slist); 
+		   }
+		   request.setAttribute("userid", userid);
 		   request.setAttribute("curpage", curpage);
 		   request.setAttribute("totalpage", totalpage);
 		   request.setAttribute("startpage", startPage);
 		   request.setAttribute("endpage", endPage);
-		   
+		   System.out.println(search);
 		  return "main.jsp";
 	}
-	@RequestMapping("main/spec_insert.do")
 	
+	@RequestMapping("main/specSearch.do")
+	public String specboard_Search(HttpServletRequest request){
+		String search=request.getParameter("search");
+		String no=request.getParameter("no");
+		 return "redirect:spec_content.do?no="+no;
+	}
+	
+	@RequestMapping("main/spec_insert.do")
 	public String spec_okboard(HttpServletRequest request) {
 		request.setAttribute("home_jsp", "../community/spec_insert.jsp");
 		return "main.jsp";
@@ -76,15 +85,48 @@ public class CommunityModel {
 		   SpecDAO.specInsertData(vo);
 		  return "redirect:spec.do";
 	}
+	@RequestMapping("main/spec_content_delete.do")
+	public String spec_delete(HttpServletRequest request) throws Exception{
+		request.setCharacterEncoding("utf-8");
+		String no=request.getParameter("no");
+		SpecDAO.specListDelete(Integer.parseInt(no));
+		
+		return "redirect:spec.do";
+	}
+		@RequestMapping("main/spec_content_change_ok.do")
+	public String spec_content_changeOK(HttpServletRequest request) throws Exception{
+		request.setCharacterEncoding("utf-8");
+		String no=request.getParameter("no");
+		String subject=request.getParameter("subject");
+		 String content=request.getParameter("content");
+		 Map map=new HashMap();
+		 map.put("subject", subject);
+		 map.put("content", content);
+		 map.put("no", no);
+		
+		SpecDAO.specChangeData(map);
+	
+		
+		  return "redirect:spec_content.do?no="+no;
+		}
+@RequestMapping("main/spec_content_change.do")
+	public String spec_content_change(HttpServletRequest request) {
+	String no=request.getParameter("no");
+	request.setAttribute("home_jsp", "../community/spec_change.jsp");
+	SpecVO vo=SpecDAO.specContentListData(Integer.parseInt(no));
+	request.setAttribute("vo", vo);
+	 return "main.jsp";
+	}	
 	@RequestMapping("main/spec_content.do")
 	public String spec_contentboard(HttpServletRequest request) throws Exception{
 		request.setCharacterEncoding("EUC-KR");
 		String no=request.getParameter("no");
+		 String loginid=(String)request.getSession().getAttribute("name");
 		SpecDAO.specReplyHitData(Integer.parseInt(no));
 		SpecVO vo=SpecDAO.specContentListData(Integer.parseInt(no));
 		
 		List<SpecReplyVO> list=SpecDAO.specReplyListData(Integer.parseInt(no));
-		
+		request.setAttribute("loginid", loginid);
 		request.setAttribute("vo", vo);
 		request.setAttribute("rlist", list);
 		request.setAttribute("home_jsp", "../community/spec_content.jsp");

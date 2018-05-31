@@ -25,10 +25,20 @@ $(function(){
 		}
 		
 	});
+	$('#delete').click(function(){
+		if(confirm("삭제 하시겠습니까?")){
+			location.href="spec_content_delete.do?no=${vo.no }";
+		}else{
+			return;
+		}
+	});
 	
-
 });
 </script>
+
+<style type="text/css">
+a.btn{border: 0px}
+</style>
 </head>
 <body>
 
@@ -53,6 +63,16 @@ $(function(){
   <div class="row" style="height: 60px">
    </div>
       <table class="table table-hover">
+      <c:if test="${loginid==vo.userId }">
+      <tr>
+      <td class="text-right" colspan="2" style="border: 0px">
+      <a href="spec_content_change.do?no=${vo.no }" class="btn btn-sm btn-primary">수정</a>
+      
+      <a href="#" class="btn btn-sm btn-success" id="delete">삭제</a>
+         <%--  <a href="spec_content_delete.do?no=${vo.no }" class="btn btn-sm btn-success">삭제</a> --%>
+          </td>
+      </tr>
+      </c:if>
         <tr>
         <td width="15%"><img src="../img/qa.png" width="100%"></td>
          <td width="85%" class="text-left" style="padding-left: 70px">	

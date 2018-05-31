@@ -78,6 +78,24 @@ public static void specReplyHitData(int no){
 		}
 	}
 
+public static void specChangeData(Map map){
+	
+	SqlSession session=null;
+	try
+	{
+		session=ssf.openSession(true);
+		session.update("specChange",map);
+	}catch(Exception ex)
+	{
+		System.out.println(ex.getMessage());
+	}
+	finally
+	{
+		if(session!=null)
+			session.close();
+	}
+}
+
 public static void specReplyLikeData(int no){
 	
 	SqlSession session=null;
@@ -112,7 +130,25 @@ public static void specReplydisLikeData(int no){
 			session.close();
 	}
 }
+
+public static void specListDelete(int no){
 	
+	SqlSession session=null;
+	try
+	{
+		session=ssf.openSession(true);
+		session.delete("specListDelete",no);
+	}catch(Exception ex)
+	{
+		System.out.println(ex.getMessage());
+	}
+	finally
+	{
+		if(session!=null)
+			session.close();
+	}
+}
+
 	public static List<SpecVO> specListData(Map map){
 		List<SpecVO> list=new ArrayList<SpecVO>();
 		SqlSession session=null;
@@ -120,6 +156,25 @@ public static void specReplydisLikeData(int no){
 		{
 			session=ssf.openSession();
 			list=session.selectList("specList",map);
+			
+		}catch(Exception ex)
+		{
+			System.out.println(ex.getMessage());
+		}
+		finally
+		{
+			if(session!=null)
+				session.close();
+		}
+		return list;
+	}
+	public static List<SpecVO> specSearchData(String search){
+		List<SpecVO> list=new ArrayList<SpecVO>();
+		SqlSession session=null;
+		try
+		{
+			session=ssf.openSession();
+			list=session.selectList("specSearchList",search);
 			
 		}catch(Exception ex)
 		{

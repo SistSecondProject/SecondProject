@@ -28,9 +28,11 @@
   <h2>스펙 평가</h2>
   <p>누구나 자유롭게 자신의 스펙을 평가받는 공간입니다</p>
   <div class="row" style="height: 60px">
+  <c:if test="${userid!=null }">
   <a href="spec_insert.do">
   <button type="button" class="btn btn-primary" style="float: right;background-color: #4374D9" >글쓰기</button>
   </a>
+  </c:if>
    </div>
   <table class="table table-hover">
     <thead>
@@ -63,12 +65,14 @@
   <table class="table table-hover">
         <tr>
          <td class="text-left">
-          Search:&nbsp;  <select class="input">
-                  <option>작성자</option>
+        
+                 <form method="post" action="spec.do">
+                  Search:&nbsp;   <select class="input" name="option" >
                   <option>제목</option>
                  </select>&nbsp;
-                 <input type=text name=ss class="input" size=12>
-                 <input type=submit class="btn btn-sm btn-info" value=검색>
+                 <input type="text" name="search" class="input" size=12>
+                 <button type=submit class="btn btn-sm btn-info">검색</button>
+                 </form>
          </td>
          <td class="text-right" style="padding-right: 100px">
           ${curpage } page / ${totalpage} pages
