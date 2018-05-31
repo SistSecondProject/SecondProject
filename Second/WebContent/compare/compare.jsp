@@ -12,6 +12,10 @@
 function a(){ 
 	var comp1=$('#comp1').attr("name"); 
 	var comp2=$('#comp2').attr("name");
+	if(comp1==null||comp2==null){
+		alert("비교할 전체 기업을 선택해주세요");
+		return;
+	}
 	location.href ="compare_result.do?comp1="+comp1+"&comp2="+comp2; 
 }
 
@@ -19,6 +23,10 @@ function a(){
 function b(){ 
 	var mycomp1=$('#mycomp1').attr("name"); 
 	var mycomp2=$('#mycomp2').attr("name");
+	if(mycomp1==null||mycomp2==null){
+		alert("비교할 나의 기업을 선택해주세요");
+		return;
+	}
 	location.href ="compare_result.do?comp1="+mycomp1+"&comp2="+mycomp2; 
 }
 
