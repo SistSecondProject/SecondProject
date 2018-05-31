@@ -63,7 +63,7 @@
 				</div>
 
 				<a class="btn btn-primary btn-large btn-block" onclick="login();" type=button>login</a><br>
-				<a class="login-link" href="../member/join.jsp" style="font-size:13pt; font-weight:bold">회원가입</a>
+				<a class="login-link" href="../member/join.do" style="font-size:13pt; font-weight:bold">회원가입</a>
 				
 				
 		    
