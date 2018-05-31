@@ -189,6 +189,25 @@ public class IntroductionDAO {
 		   
 
 	   }
-
+	   public static List<IntroductionVO> findList(String userid) {
+		   List<IntroductionVO> list =null;
+		   
+		   SqlSession session=null;
+		   try
+		   {
+			   session=ssf.openSession();
+			   list=session.selectList("findList",userid);		   
+		   }catch(Exception ex)
+		   {
+			   System.out.println(ex.getMessage());
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close();
+		   }
+		   return list;   
+	   }
 	      
 }
+
