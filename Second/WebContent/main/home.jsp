@@ -180,8 +180,7 @@ font-weight: bold;
 	</section>
 	<!-- /about -->
 	<center>
-		<h2 id="section-heading animated" data-animation="bounceInUp">SCORES
-			& RATINGS</h2>
+		<h2 id="section-heading animated" data-animation="bounceInUp">SALARY RANK</h2>(단위:만원)
 	</center>
 	<section id="parallax1" class="section"
 		data-stellar-background-ratio="0.5">
@@ -191,46 +190,46 @@ font-weight: bold;
 			<div class="col-lg-2">
 				<div class="align-center color-white txt-shadow">
 					<div class="icon">
-						<i class="fa fa-coffee fa-5x"></i>
+					<img src="https://jpassets.jobplanet.co.kr/production/uploads/company/logo/2943/thumb_376.jpg">
 					</div>
-					 <span class="count">5</span><font size=15>.</font> <span class="count">8</span><br> <span
-						class="text">Black Coffee Cups</span>
+					 <span class="count">9946</span><br> <span
+						class="text">한국프랜지공업(주)</span>
 				</div>
 			</div>
 			<div class="col-lg-2">
 				<div class="align-center color-white txt-shadow">
 					<div class="icon">
-						<i class="fa fa-music fa-5x"></i>
+					<img src="https://jpassets.jobplanet.co.kr/production/uploads/company/logo/3419/thumb_________.png">
 					</div>
-					  <span class="count">202</span><br> <span
-						class="text">MP3 Songs</span>
+					  <span class="count">9922</span><br> <span
+						class="text">한국쓰리엠(주)</span>
 				</div>
 			</div>
 			<div class="col-lg-2">
 				<div class="align-center color-white txt-shadow">
 					<div class="icon">
-						<i class="fa fa-music fa-5x"></i>
+					<img src="https://jpassets.jobplanet.co.kr/production/uploads/company/logo/1289/thumb______.jpg	">
 					</div>
-					  <span class="count">503</span><br> 
-					<span class="text">MP3 Songs</span>
+					  <span class="count">9908</span><br> 
+					<span class="text">현대자동차(주)</span>
 				</div>
 			</div>
 			<div class="col-lg-2">
 				<div class="align-center color-white txt-shadow">
 					<div class="icon">
-						<i class="fa fa-clock-o fa-5x"></i>
+					<img src="https://jpassets.jobplanet.co.kr/production/uploads/company/logo/84811/thumb_84811.png">
 					</div>
-					 <span class="count">1235</span><br> <span
-						class="text">Hard Minutes</span>
+					 <span class="count">9888</span><br> <span
+						class="text">(주)글락소스미스클라인</span>
 				</div>
 			</div>
 			<div class="col-lg-2">
 				<div class="align-center color-white txt-shadow">
 					<div class="icon">
-						<i class="fa fa-heart fa-5x"></i>
+					<img src="https://jpassets.jobplanet.co.kr/production/uploads/company/logo/22475/thumb_22475.JPG">
 					</div>
-					 <span class="count">478</span><br> <span
-						class="text">Lovely Clients</span>
+					 <span class="count">9885</span><br> <span
+						class="text">아이비케이투자증권(주)</span>
 				</div>
 			</div>
 			<div class="col-lg-1"></div>
