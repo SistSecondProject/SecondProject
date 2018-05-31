@@ -44,8 +44,11 @@ public class MemberModel {
 		request.setAttribute("catename", MemberDAO.categoryName());
 		MemberVO vo = MemberDAO.findData(userid);
 		request.setAttribute("membervo", vo);
-		request.setAttribute("favoritelist", CompanyDAO.findFavoriteCompany(userid));
+		request.setAttribute("favoritelist", CompanyDAO.findFavoriteCompany(userid));		
 		request.setAttribute("recruitlist", MemberDAO.recruitmentList(userid));
+		//request.setAttribute("infolist", arg1);
+		
+		
 
 		List<Integer> highlist = CompanyDAO.highScoreList();
 		List<CompanyVO> highscorecompanylist = new ArrayList<CompanyVO>();

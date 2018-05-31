@@ -121,8 +121,8 @@ $(document).ready(function(){
 							<div class="widget">
 								<h4 class="widgetheading">작성 자소서</h4>
 								<ul class="tags">
-									<c:forEach var="ivo" items="${info}">
-										<li><a href="passinfo.do?!!!!!!!!!!code=${ivo.Code}">${ivo.title }</a></li>
+									<c:forEach var="ivo" items="${infolist}">
+										<li><a href="selfinto_content.do?no=${ivo.Code}">${ivo.title }</a></li>
 									</c:forEach>
 								</ul>
 							</div>

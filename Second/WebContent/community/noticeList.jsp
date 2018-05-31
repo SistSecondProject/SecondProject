@@ -5,9 +5,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script src="https://code.jquery.com/jquery.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	var message= $('#flag').attr('value');
+	if(message=='ok')
+		alert('수정완료');
+});
+</script>
 </head>
 <body>
-
+<c:if test="${update ne null }">
+<input type="hidden" id="flag" value="${update}">
+</c:if>
 	<div id="wrapper">
 		<section id="inner-headline">
 			<div class="container">

@@ -167,6 +167,9 @@ public class CommunityModel {
 	// 공지사항
 	@RequestMapping("main/noticeList.do")
 	public String noticeListData(HttpServletRequest request){
+		String update = request.getParameter("update");
+		if(update!=null)
+			request.setAttribute("update", "ok");
 		String page = request.getParameter("page");
 		if (page == null)
 			page = "1";
@@ -268,7 +271,7 @@ public class CommunityModel {
 		   System.out.println("subject:"+subject);*/
 		   NoticeDAO.noticeUpdate(vo);
 		   
-		   return "redirect:noticeList.do";
+		   return "redirect:noticeList.do?update=1";
 	   }
 	
 	// 삭제
