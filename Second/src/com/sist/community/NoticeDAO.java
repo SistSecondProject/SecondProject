@@ -135,4 +135,27 @@ public class NoticeDAO {
 				session.close();
 		}
 	}
+	
+	// 메인 공지사항
+	public static List<NoticeVO> mainNoticeListData(){
+		List<NoticeVO> list=new ArrayList<NoticeVO>();
+		SqlSession session=null;
+		try
+		{
+			session=ssf.openSession();
+			list=session.selectList("mainNoticeList");
+			
+		}catch(Exception ex)
+		{
+			System.out.println(ex.getMessage());
+		}
+		finally
+		{
+			if(session!=null)
+				session.close();
+		}
+		return list;
+	}
+
+	
 }

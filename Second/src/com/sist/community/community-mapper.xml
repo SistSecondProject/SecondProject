@@ -47,6 +47,11 @@ UPDATE spec_board SET dislikepoint=dislikepoint+1 WHERE no=#{no}
      FROM Notice_Board ORDER BY no DESC))
      WHERE num BETWEEN #{start} AND #{end}
    </select>
+     
+   <select id="mainNoticeList" resultType="NoticeVO">
+     SELECT no,userId,subject,content,regdate,hit FROM Notice_Board ORDER BY no DESC
+   </select>
+   
    
    <!--총페이지 읽기 -->
    	<select id="noticeTotalPage" resultType="int">

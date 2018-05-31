@@ -314,39 +314,33 @@ font-weight: bold;
 					<center>
 						<h2 class="section-heading animated" data-animation="bounceInUp">NOTICE</h2>
 						<table class="table table-hover">
+							<thead>
 							<tr class="warning">
 								<th width=10% class="text-center">번호</th>
-								<th width=45% class="text-center">제목</th>
-								<th width=15% class="text-center">이름</th>
-								<th width=20% class="text-center">작성일</th>
+								<th width=5%></th>
+								<th width=40% class="text-center">제목</th>
+								<th width=25% class="text-center">작성자</th>
+								<th width=10% class="text-center">작성일</th>
 								<th width=10% class="text-center">조회수</th>
 							</tr>
-							<c:forEach var="vo" items="${list }">
-								<tr>
-									<td width=10% class="text-center">${vo.no }</td>
-									<td width=45% class="text-left"><a
-										href="content.do?no=${vo.no }">${vo.subject }</a></td>
-									<td width=15% class="text-center">${vo.name }</td>
-									<td width=20% class="text-center"><fmt:formatDate
+						</thead>
+						<tbody>
+							<c:forEach var="vo" items="${list }" begin="1" end="10" step="1">
+								<tr class="list">
+									<td class="text-center">${vo.no }</td>
+									<td></td>
+
+									<td class="text-left"><a
+										href="noticeContent.do?no=${vo.no }">${vo.subject }</a></td>
+
+									<td class="text-center">${vo.userId }</td>
+									<td class="text-center"><fmt:formatDate
 											value="${vo.regdate }" pattern="yyyy-MM-dd" /></td>
-									<td width=10% class="text-center">${vo.hit }</td>
+									<td class="text-center">${vo.hit }</td>
 								</tr>
 							</c:forEach>
-						</table>
-						<table class="table table-hover">
-							<tr>
-								<td class="text-left"><select class="input">
-										<option>이름</option>
-										<option>제목</option>
-										<option>내용</option>
-								</select>&nbsp; <input type=text name=ss class="input" size=12> <input
-									type=submit class="btn btn-rounded btn-sm btn-warning" value=찾기>
-								</td>
-								<td class="text-right"><a href="#"
-									class="btn btn-sm btn-rounded btn-theme">◀</a> <a href="#"
-									class="btn btn-sm btn-rounded btn-theme">▶</a>
-									&nbsp;&nbsp;&nbsp;${curpage } page / ${totalpage } pages</td>
-							</tr>
+						</tbody>
+
 						</table>
 					</center>
 				</div>
