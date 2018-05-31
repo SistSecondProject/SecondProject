@@ -31,8 +31,12 @@ import com.sist.vo.CompanyVO;
 public class MemberModel {
 	@RequestMapping("main/user.do")
 	public String user(HttpServletRequest request) {
-		if(request.getParameter("denied")!=null)
-			request.setAttribute("denied", "denied");
+		if(request.getParameter("denied")!=null) {
+			if(request.getParameter("denied").equals("2"))
+				request.setAttribute("denied", "admin");
+			else
+				request.setAttribute("denied", "denied");
+		}
 		String userid = (String) request.getSession().getAttribute("name");
 		if(userid==null)
 			return "redirect:main.do";
@@ -226,7 +230,9 @@ public class MemberModel {
 		
 		if(MemberDAO.isLogin(userid, password).equals("NOPW"))
 			return "redirect:user.do?denied=1";
-		else
+		else if(userid.equals("admin")) {
+			return "redirect:user.do?denied=2";
+		}else
 			MemberDAO.withdrawal(userid);
 		request.getSession().invalidate();
 		return "redirect:main.do";

@@ -9,13 +9,15 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	var message= $('#flag').attr('value');
-	if(message!=null)
+	if(message=='denied')
 		alert('비밀번호 불일치');
+	else if(message=='admin')
+		alert('admin 삭제 금지');
 });
 </script>
 <body>
 <c:if test="${denied ne null }">
-<input type="hidden" id="flag" value ="flag">
+<input type="hidden" id="flag" value ="${denied}">
 </c:if>
 	<div id="wrapper">
 		<section id="inner-headline">
