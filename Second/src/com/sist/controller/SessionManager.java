@@ -52,7 +52,7 @@ public class SessionManager implements HttpSessionListener {
 				continue;
 			}
 			if(sh_session.getId().equals(sid)){
-				System.out.println(sh_session.getId()+" : "+sid);
+				//System.out.println(sh_session.getId()+" : "+sid);
 				flag=true;
 				break;
 			}
@@ -95,7 +95,7 @@ public class SessionManager implements HttpSessionListener {
 						e.printStackTrace();
 					}*/
 					// 해당 세션 무효화
-					System.out.println(idInSession +" - "+sh_session.getId() +" : CLOSE SESSION");
+					//System.out.println(idInSession +" - "+sh_session.getId() +" : CLOSE SESSION");
 					sh_session.invalidate();
 					ret = true;
 					break;

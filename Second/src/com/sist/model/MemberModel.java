@@ -24,6 +24,7 @@ import com.sist.controller.SessionManager;
 import com.sist.dao.CompanyDAO;
 import com.sist.member.MemberDAO;
 import com.sist.member.MemberVO;
+import com.sist.self_introduction.IntroductionDAO;
 import com.sist.self_introduction.IntroductionVO;
 import com.sist.vo.CompanyVO;
 
@@ -46,7 +47,7 @@ public class MemberModel {
 		request.setAttribute("membervo", vo);
 		request.setAttribute("favoritelist", CompanyDAO.findFavoriteCompany(userid));		
 		request.setAttribute("recruitlist", MemberDAO.recruitmentList(userid));
-		//request.setAttribute("infolist", arg1);
+		request.setAttribute("infolist", IntroductionDAO.findList(userid));
 		
 		
 
@@ -62,8 +63,8 @@ public class MemberModel {
 				break;
 		}
 		// List<IntroductionVO> infolist = IntroductionDAO.findList(userid);
-		List<IntroductionVO> infolist = new ArrayList<IntroductionVO>();
-		request.setAttribute("infolist", infolist);
+	/*	List<IntroductionVO> infolist = new ArrayList<IntroductionVO>();
+		request.setAttribute("infolist", infolist);*/
 		request.setAttribute("highList", highscorecompanylist);
 
 		return "main.jsp";
@@ -122,7 +123,7 @@ public class MemberModel {
 
 			HttpSession session = request.getSession(true);
 			session.setAttribute("name", login_result);
-
+			session.setAttribute("sid", session.getId());
 			if (SessionManager.getInstance().checkDuplicationLogin(session.getId(), login_result)) {
 				// request.setAttribute("message", "이미 로그인한 사용자 입니다. 이전 접속을 종료합니다.");
 				return "redirect:main.do?duplicate=1";

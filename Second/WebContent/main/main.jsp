@@ -28,7 +28,20 @@ $(document).ready(function(){
 	var message= $('#message').attr('value');
 	if(message!=null)
 		alert('이미 로그인한 사용자 입니다. 이전 접속을 종료합니다.');
+	doPoll();
 });
+function doPoll(){
+    $.post('session.do',{sid:'${sid}'}, function(data) {
+    	if('${sid}'!=''){
+    		if(data=='false'){
+    			alert('로그아웃 되었습니다.');
+    			location.href='main.do';
+    		}else{
+    			setTimeout(doPoll,5000);
+    		}
+    	}
+    });
+};
 </script>
 <style type="text/css">
 body, body.modal {
@@ -62,7 +75,7 @@ height:16px;
 						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="main.do"><span>Ready&Start</a>
+					<a class="navbar-brand" href="main.do"><span><img src="../img/RS.png" style=""></a>
 				</div>
 				<div class="navbar-collapse collapse ">
 					<ul class="nav navbar-nav">

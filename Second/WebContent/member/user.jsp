@@ -122,7 +122,16 @@ $(document).ready(function(){
 								<h4 class="widgetheading">작성 자소서</h4>
 								<ul class="tags">
 									<c:forEach var="ivo" items="${infolist}">
-										<li><a href="selfinto_content.do?no=${ivo.Code}">${ivo.title }</a></li>
+										<li><a href="selfinto_content.do?no=${ivo.no}">${ivo.title } (${ivo.regdate})</a></li>
+										<!--  
+										
+  private int no;
+  private String userId;
+  private String title;
+  private String content;
+  private Date regdate;
+										
+										-->
 									</c:forEach>
 								</ul>
 							</div>
