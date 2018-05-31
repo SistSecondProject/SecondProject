@@ -7,10 +7,6 @@
 <head>
 <meta  charset="EUC-KR">
 <title>Insert title here</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
   <link rel="stylesheet" href="../login/css/loginstyle.css"> 
    <script type="text/javascript">
  
@@ -43,12 +39,13 @@
   
   }</style>
 </head>
-<body>
-
-   <div class="login">
+<body style="background-color:white">
+	<hr style="border: solid 0.3px #4296c4">
+   <div class="login" style="width: 600px; height:700px;">
+   <br><br><br><br><br><br>
    <form name="loginForm"  method="post">
      	
-		<div class="login-screen">
+		<div class="login-screen" style="background-color:#f4f7fc">
 			<div class="app-title">
 				<h1>Login</h1>
 			</div> 
@@ -65,8 +62,8 @@
 				 <div id="pass_text" style="text-algin:center" class="danger">${message}</div>
 				</div>
 
-				<a class="btn btn-primary btn-large btn-block" onclick="login();" type=button>login</a>
-				<a class="login-link" href="../member/join.do">회원가입</a>
+				<a class="btn btn-primary btn-large btn-block" onclick="login();" type=button>login</a><br>
+				<a class="login-link" href="../member/join.jsp" style="font-size:13pt; font-weight:bold">회원가입</a>
 				
 				
 		    
