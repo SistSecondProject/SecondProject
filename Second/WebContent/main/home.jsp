@@ -2,7 +2,7 @@
 	pageEncoding="EUC-KR"
 	import="com.sist.calender.*,java.util.*,com.sist.news.dao.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -325,7 +325,7 @@ font-weight: bold;
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="vo" items="${list }" begin="1" end="10" step="1">
+							<c:forEach var="vo" items="${list }" begin="0" end="9">
 								<tr class="list">
 									<td class="text-center">${vo.no }</td>
 									<td></td>
@@ -341,6 +341,7 @@ font-weight: bold;
 							</c:forEach>
 						</tbody>
 
+
 						</table>
 					</center>
 				</div>
@@ -348,6 +349,7 @@ font-weight: bold;
 		</div>
 	</div>
 	</section>
+	<hr>
 	<!-- 수상 내역 -->
 	<section id="clients">
 	<div class="container">

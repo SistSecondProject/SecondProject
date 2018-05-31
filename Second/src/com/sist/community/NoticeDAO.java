@@ -38,7 +38,7 @@ public class NoticeDAO {
 		}
 		return list;
 	}
-
+	// 전체 페이지
 	public static int noticeTotalPage() {
 		int total = 0;
 		SqlSession session = null;

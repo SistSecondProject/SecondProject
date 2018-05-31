@@ -81,7 +81,7 @@ height:16px;
 						<li>
 				<c:choose>
                   <c:when test="${empty sessionScope.name}">
-                    <a href="login.do">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|로그인</a>
+                    <a href="login.do">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;로그인</a>
                   </c:when>
                   <c:otherwise>
                   <a href="user.do">회원정보 &emsp; </a>
@@ -113,28 +113,30 @@ height:16px;
 				<div class="row">
 					<div class="col-lg-5">
 				<div class="widget">
-					<h5 class="widgetheading">address</h5>
+					<h5 class="widgetheading">Get in touch with us</h5>
 					<address>
-						<strong>쌍용강북교육센터</strong><br> 강북 서울특별시 마포구 월드컵북로21
+						<strong>Address</strong><br> 강북 서울특별시 마포구 월드컵북로21
 						풍성빌딩 2,3,4층
+						<br>R&S 고객센터 02-2025-4733 (평일 09:00~19:00, 주말·공휴일 휴무)
 					</address>
 					
 				</div>
 			</div>
 					<div class="col-lg-3">
 						<div class="widget">
-							<h5 class="widgetheading">Tel</h5>
-							<ul class="link-list">
-								<p>
-						<i class="icon-phone"></i> Tel 02)336-8546~8 <br> <i
-							class="icon-envelope-alt"></i> Fax 02)334-5405
-					</p>
-							</ul>
+							<h5 class="widgetheading"></h5>
+							<br>
+						<strong>Email &nbsp;&nbsp;</strong>
+						help@readyandstart.co.kr<br>
+						<strong>Tel &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
+						02) 336-8546~8 <br> 
+						<strong>Fax&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
+						02) 334-5405
 						</div>
 					</div>
 					<div class="col-lg-3">
 						<div class="widget">
-							<h5 class="widgetheading">photostream</h5>
+							<h5 class="widgetheading">Ready & Start photostream</h5>
 							<div class="flickr_badge">
 								<script type="text/javascript" src="https://www.flickr.com/badge_code_v2.gne?count=8&amp;display=random&amp;size=s&amp;layout=x&amp;source=user&amp;user=34178660@N03"></script>
 							</div>
