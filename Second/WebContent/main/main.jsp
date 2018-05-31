@@ -35,7 +35,7 @@ function doPoll(){
     	if('${sid}'!=''){
     		if(data=='false'){
     			alert('로그아웃 되었습니다.');
-    			location.href='main.do';
+    			location.href='logout.do';
     		}else{
     			setTimeout(doPoll,5000);
     		}
