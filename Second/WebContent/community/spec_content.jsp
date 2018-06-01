@@ -97,7 +97,7 @@ a.btn{border: 0px}
         </tr>
         
         <tr>
-         <td class="text-left" colspan="2" height="180px"><font size="6px">${vo.content }</font><br></td>
+         <td class="text-left" colspan="2" height="180px"><font size="4px">${vo.content }</font><br></td>
         </tr>
         <tr>
         <td class="text-center" colspan="2" style="border: 0; padding-right: 50px"><a href="spec_content_like.do?no=${vo.no }" class="btn btn-sm btn-warning" style="background-color: #4374D9; border: 0" >${vo.likePoint }<br>좋아요</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="spec_content_dislike.do?no=${vo.no }" class="btn btn-sm btn-warning" style="background-color: #FFE08C; border: 0">${vo.dislikePoint }<br>싫어요</a>
