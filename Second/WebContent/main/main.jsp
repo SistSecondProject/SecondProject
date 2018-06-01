@@ -75,7 +75,7 @@ height:16px;
 						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="main.do"><span><img src="../img/RS.png" style=""></a>
+					<a class="navbar-brand" href="main.do"><span><img src="../img/RS.png" style='height:380%; width:80%;'></a>
 				</div>
 				<div class="navbar-collapse collapse ">
 					<ul class="nav navbar-nav">
