@@ -91,9 +91,9 @@ $(document).ready(function(){
 							</c:otherwise>
 						</c:choose>
 							<td class="text-right"><a
-								href="noticeList.do?page=${curpage-1 }"
+								href="noticeList.do?page=${curpage==1?curpage:curpage-1}"
 								class="btn btn-sm btn-warning">◀</a> <a
-								href="noticeList.do?page=${curpage+1 }"
+								href="noticeList.do?page=${curpage==totalpage?curpage:curpage+1}"
 								class="btn btn-sm btn-warning">▶</a> &nbsp;&nbsp;&nbsp;${curpage }
 								page / ${totalpage } pages</td>
 						</tr>
