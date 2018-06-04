@@ -51,7 +51,7 @@ $(document).ready(function(){
 					<br> <br>
 					<table class="table table-hover">
 						<thead>
-							<tr class="warning">
+							<tr class="">
 								<th width=10% class="text-center">번호</th>
 								<th width=5%></th>
 								<th width=40% class="text-center">제목</th>
@@ -92,9 +92,9 @@ $(document).ready(function(){
 						</c:choose>
 							<td class="text-right"><a
 								href="noticeList.do?page=${curpage==1?curpage:curpage-1}"
-								class="btn btn-sm btn-warning">◀</a> <a
+								class="btn btn-sm btn-default">◀</a> <a
 								href="noticeList.do?page=${curpage==totalpage?curpage:curpage+1}"
-								class="btn btn-sm btn-warning">▶</a> &nbsp;&nbsp;&nbsp;${curpage }
+								class="btn btn-sm btn-default">▶</a> &nbsp;&nbsp;&nbsp;${curpage }
 								page / ${totalpage } pages</td>
 						</tr>
 					</table>

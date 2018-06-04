@@ -314,7 +314,7 @@ font-weight: bold;
 						<h2 class="section-heading animated" data-animation="bounceInUp">NOTICE</h2>
 						<table class="table table-hover">
 							<thead>
-							<tr class="warning">
+							<tr class="">
 								<th width=10% class="text-center">번호</th>
 								<th width=5%></th>
 								<th width=40% class="text-center">제목</th>
